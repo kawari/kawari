@@ -1,0 +1,134 @@
+
+KAWARI: HOW TO BUILD
+
+1. 準備
+---------------
+
+ディレクトリ構成は以下のようになっています。
+
+build/mach/MACH_TYPE : バイナリが生成される場所
+build/src            : ソース(euc-jp)
+
+
+bcc32, VC++でコンパイルする場合、ソースをSJISに変換する必要があります。
+Ruby 1.6, bash, findがある環境で、
+
+    $ cd KAWARI/build
+    $ ./conv.sh -c sjis src
+
+によって、全ソースをSJISに変換します。
+
+
+2. コンパイル
+---------------
+
+2.1. GNU g++
+---------------
+
+!!! Makefileを編集する必要があります !!!
+
+gcc.mak中の以下の行を、コンパイル環境に従って書き換えてください。
+
+    MACH_TYPE = mingw
+        コンパイル環境を"cygwin", "mingw", "linux", "freebsd", "darwin"
+        から選んでください。
+
+    SHIORI = shiori
+        生成する共有ライブラリ名を記述してください。システム独自の修飾子は
+        自動的に付加されます。
+
+    STLport = yes
+        STLportを使用する場合、yesを設定してください。
+        使用しない場合はコメントアウトしてください。
+
+    STLP_CFLAGS = -I/mingw/include/stlport
+    STLP_LIBS = -lstlport_mingw32_static
+        STLportを使用する場合、コンパイルオプション、リンカオプションを記述
+        してください。ターゲット環境にあったライブラリを選択するよう注意して
+        ください。
+
+    UPX = /path/to/upx
+        PATHに入っていないupxを使いたい場合、パスを指定してください。
+        upxがパスに入っている場合、upxを使わない場合はコメントアウトして
+        ください。
+
+注意:
+  * cygwinおよびmingwでは、gcc3系でwstringがコンパイルできない現象が起きる
+    ようです。STLportを導入してください。
+
+    STLport:
+    http://www.stlport.org/
+
+    STLport版iostreamライブラリは必須ではありません。ヘッダのみの導入で問題
+    無いはずです。
+
+  * mingw4では、STLport無しでコンパイルできることを確認しています。
+
+
+編集を終了したら、makeしてください。
+
+    $ make -f gcc.mak depend
+    $ make -f gcc.mak
+
+FreeBSDでは、makeではなくgmakeを使用してください。
+成功すると、build/mach/<選択したMACH_TYPE>以下に生成物が置かれます。
+
+
+2.2. Borland bcc32
+------------------
+
+Ruby 1.6, bash, findがある環境で、
+
+    $ cd KAWARI/build
+    $ ./conv.sh -c sjis src
+
+を実行し、ソースをSJISに変換します。変換したらbcc.makをmakeしてください。
+特にmakefileを変更する必要はありません。
+
+    $ make -f bcc.mak
+
+
+2.3. Microsoft VC++(7.1)
+-------------------
+
+Ruby 1.6, bash, findがある環境で、
+
+    $ cd KAWARI/build
+    $ ./conv.sh -c sjis src
+
+を実行し、ソースをSJISに変換してからコンパイルします。
+
+    vc_kawari/vc_kawari.sln
+    vc_kawari/vc_kawari.suo
+    vc_kawari/vc_kawari.vcproj
+    vc_kawari/vc_kosui.sln
+    vc_kawari/vc_kosui.suo
+    vc_kawari/vc_kosui.vcproj
+
+以下はVC++ 7.1以前のプロジェクトファイルですが、動作は保証しません。参考程度に。
+
+    vc_kawari/vc_kawari.dsw
+    vc_kawari/vc_kosui.dsw
+
+
+3. hacking KAWARI
+-----------------
+
+ソースファイルが増えた場合、files.makを編集してください。
+
+
+4. あとがき
+----------------
+
+偽林檎向けのJava SAORI、ninix向けのPython SAORI(and Python I/F)は、
+実験中の機能です。ドキュメントはまだ整備できていません。
+同様に、SHIORI Objectに関する記述も、ソースファイル中のコメントのみです。
+上記機能を試してみたい人は、ソースファイルを読んで自力で何とかして下さい。
+ドキュメント化する意思はありますが、いつになるか分かりません。ごめんなさい。
+
+どうしても試してみたいという奇特な方は、個別にメール等で連絡下さい。
+対応できるかもしれません。
+
+また、VC++に関してはメンテナンスが滞りがちであり、うまくコンパイルできない
+可能性があります。ソースファイルの登録不足等があった場合、gcc.makを参考に
+自力でファイルを追加登録して下さい。

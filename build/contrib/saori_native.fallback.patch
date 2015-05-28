@@ -1,0 +1,131 @@
+--- saori_native.cpp.orig	Fri Feb 13 13:59:14 2004
++++ saori_native.cpp	Fri Feb 13 14:35:32 2004
+@@ -5,6 +5,8 @@
+ //
+ //      Programed by Suikyo.
+ //
++//  2004.02.13  Phase 8.2.0   (phonohawk) libdlを使う場合には代替ライブラリも探す
++//                  参考:  http://ccm.sherry.jp/ninni/pa_spec/saori-posix.html
+ //  2002.04.15  Phase 8.0.0   えびさわさんバージョンを参考に導入
+ //
+ //---------------------------------------------------------------------------
+@@ -16,14 +18,73 @@
+ //---------------------------------------------------------------------------
+ #ifndef KAWARI_MS
+ #	include <dlfcn.h>
++#       include <stdlib.h>
++#       include <sys/types.h>
++#       include <sys/stat.h>
++#       include <unistd.h>
+ #endif
+ #include <iostream>
+ #include <string>
++#include <vector>
+ #include <map>
+ using namespace std;
+ using namespace saori;
+ using namespace kawari_log;
+ //---------------------------------------------------------------------------
++#ifndef KAWARI_MS
++static string str_getenv(const string& name) {
++    char* var = getenv(name.c_str());
++    if (var == NULL) {
++	return string();
++    }
++    else {
++	return string(var);
++    }
++}
++static vector<string> posix_dll_search_path;
++static bool posix_dll_search_path_is_ready = false;
++static string posix_search_fallback_dll(const string& dllfile) {
++    // dllfileは探したいファイルDLL名。パス区切り文字は/。
++    // 代替ライブラリが見付かればその絶対パスを、
++    // 見付けられなければ空文字列を返す。
++    
++    if (!posix_dll_search_path_is_ready) {
++	// SAORI_FALLBACK_PATHを見る。
++	string path = str_getenv("SAORI_FALLBACK_PATH");
++	if (path.length() > 0) {
++	    while (true) {
++		string::size_type colon_pos = path.find(':');
++		if (colon_pos == string::npos) {
++		    posix_dll_search_path.push_back(path);
++		    break;
++		}
++		else {
++		    posix_dll_search_path.push_back(path.substr(0, colon_pos));
++		    path.erase(0, colon_pos+1);
++		}
++	    }
++	}
++	posix_dll_search_path_is_ready = true;
++    }
++
++    string::size_type pos_slash = dllfile.rfind('/');
++    string fname(
++	dllfile.begin() + (pos_slash == string::npos ? 0 : pos_slash),
++	dllfile.end());
++
++    for (vector<string>::const_iterator ite = posix_dll_search_path.begin();
++	 ite != posix_dll_search_path.end(); ite++ ) {
++	string fpath = *ite + '/' + fname;
++	struct stat sb;
++	if (stat(fpath.c_str(), &sb) == 0) {
++	    // 代替ライブラリが存在するようだ。これ以上のチェックは省略。
++	    return fpath;
++	}
++    }
++    return string();
++}
++#endif
++//---------------------------------------------------------------------------
+ namespace {
+ //---------------------------------------------------------------------------
+ // prototypes
+@@ -50,7 +111,44 @@
+ #else
+ // libdl
+ SAORI_HANDLE load_library(const string &file){
+-	return (SAORI_HANDLE)::dlopen(file.c_str(), RTLD_GLOBAL|RTLD_NOW);
++	bool fallback_always = false;
++	string env_fallback_always = str_getenv("SAORI_FALLBACK_ALWAYS");
++	if (env_fallback_always.length() > 0 && env_fallback_always != "0") {
++	    fallback_always = true;
++	}
++	
++	bool do_fallback = true;
++	if (!fallback_always) {
++	    // SAORI_FALLBACK_ALWAYSが空でも0でもなければ、まずは試しにdlopenしてみる。
++	    void* handle = ::dlopen(file.c_str(), RTLD_LAZY);
++	    if (handle != NULL) {
++		// load, unload, requestを取り出してみる。
++		void* sym_load = ::dlsym(handle, "load");
++		void* sym_unload = ::dlsym(handle, "unload");
++		void* sym_request = ::dlsym(handle, "request");
++		if (sym_load != NULL && sym_unload != NULL && sym_request != NULL) {
++		    do_fallback = false;
++		}
++	    }
++	    ::dlclose(handle);
++	}
++	
++	if (do_fallback) {
++	    // 代替ライブラリを探す。
++	    string fallback_lib = posix_search_fallback_dll(file);
++	    if (fallback_lib.length() == 0) {
++		// 無い
++		// Loggerを使うには、この関数がIModuleFactoryのメソッドでなければならない…
++		return NULL;
++	    }
++	    else {
++		// あったので、これを使う。
++		return (SAORI_HANDLE)::dlopen(fallback_lib.c_str(), RTLD_LAZY);
++	    }
++	}
++	else {
++	    return (SAORI_HANDLE)::dlopen(file.c_str(), RTLD_LAZY);
++	}
+ }
+ void unload_library(SAORI_HANDLE handle){
+ 	::dlclose((void *)handle);

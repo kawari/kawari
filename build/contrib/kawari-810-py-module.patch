@@ -1,0 +1,184 @@
+*** kawari810/build/src/gcc.mak.org	2003-05-17 09:25:08.000000000 +0900
+--- kawari810/build/src/gcc.mak	2003-06-11 17:15:39.000000000 +0900
+***************
+*** 6,12 ****
+  # ターゲットによって書き換え
+  
+  ## mach type: cygwin, mingw, linux, freebsd, darwin
+! MACH_TYPE = mingw
+  
+  ## target name
+  SHIORI = shiori
+--- 6,12 ----
+  # ターゲットによって書き換え
+  
+  ## mach type: cygwin, mingw, linux, freebsd, darwin
+! MACH_TYPE = linux
+  
+  ## target name
+  SHIORI = shiori
+***************
+*** 37,43 ****
+  ## fi
+  
+  ## if use Python SAORI(and Python I/F), set PYTHON=yes
+! # PYTHON = yes
+  
+  ## (Python) and if win32
+  # PYTHON_CFLAGS = -I/python22jp/include
+--- 37,43 ----
+  ## fi
+  
+  ## if use Python SAORI(and Python I/F), set PYTHON=yes
+! PYTHON = yes
+  
+  ## (Python) and if win32
+  # PYTHON_CFLAGS = -I/python22jp/include
+***************
+*** 65,70 ****
+--- 65,71 ----
+  endif
+  
+  ifeq ($(PYTHON),yes)
++ 	SHIOSRC := $(SHIOSRC) $(SHIOSRC_python)
+  	LIBSRC := $(LIBSRC) $(LIBSRC_python)
+  	ifndef PYTHON_CFLAGS
+  		PYTHON_CFLAGS = -I$(shell python -c "import sys; print sys.prefix+'/include/python'+sys.version[:3]")
+*** kawari810/build/src/files.mak.org	2003-03-09 01:18:22.000000000 +0900
+--- kawari810/build/src/files.mak	2003-06-11 16:42:26.000000000 +0900
+***************
+*** 62,68 ****
+  
+  LIBSRC_python = saori/saori_python.cpp
+  
+! SHIOSRC_python = 
+  
+  KOSUISRC_win32 = tool/kosui_dsstp.cpp \
+                   tool/kdb.cpp
+--- 62,68 ----
+  
+  LIBSRC_python = saori/saori_python.cpp
+  
+! SHIOSRC_python = shiori/py_shiori.cpp
+  
+  KOSUISRC_win32 = tool/kosui_dsstp.cpp \
+                   tool/kdb.cpp
+*** kawari810/build/src/shiori/py_shiori.cpp.org	2003-03-09 01:36:20.000000000 +0900
+--- kawari810/build/src/shiori/py_shiori.cpp	2003-06-12 12:42:11.000000000 +0900
+***************
+*** 1,6 ****
+--- 1,7 ----
+  //---------------------------------------------------------------------------
+  #include "config.h"
+  //---------------------------------------------------------------------------
++ #include "include/shiori.h"
+  #include "shiori/py_shiori.h"
+  #include "shiori/kawari_shiori.h"
+  #include "saori/saori_python.h"
+***************
+*** 12,17 ****
+--- 13,23 ----
+  //---------------------------------------------------------------------------
+  static unsigned int shiori_handle = 0;
+  
++ extern "C" PyObject *saori_exist;
++ extern "C" PyObject *saori_load;
++ extern "C" PyObject *saori_unload;
++ extern "C" PyObject *saori_request;
++ 
+  static PyObject *wrap_getmoduleversion(PyObject *self, PyObject *args)
+  {
+  	static string verstr;
+***************
+*** 51,57 ****
+  		Py_INCREF(Py_False);
+  		return Py_False;
+  	}
+! 	handle=0;
+  	TKawariShioriFactory::DisposeFactory();
+  
+  	Py_XDECREF(saori_exist);
+--- 57,63 ----
+  		Py_INCREF(Py_False);
+  		return Py_False;
+  	}
+! 	shiori_handle=0;
+  	TKawariShioriFactory::DisposeFactory();
+  
+  	Py_XDECREF(saori_exist);
+*** kawari810/build/src/saori/saori_python.cpp.org	2003-03-09 01:38:06.000000000 +0900
+--- kawari810/build/src/saori/saori_python.cpp	2003-06-11 18:40:46.000000000 +0900
+***************
+*** 100,109 ****
+  //---------------------------------------------------------------------------
+  // Python I/F
+  
+! static PyObject *saori_exist = NULL;
+! static PyObject *saori_load = NULL;
+! static PyObject *saori_unload = NULL;
+! static PyObject *saori_request = NULL;
+  //---------------------------------------------------------------------------
+  PyObject *wrap_setcallback(PyObject *self, PyObject *args)
+  {
+--- 100,109 ----
+  //---------------------------------------------------------------------------
+  // Python I/F
+  
+! PyObject *saori_exist = NULL;
+! PyObject *saori_load = NULL;
+! PyObject *saori_unload = NULL;
+! PyObject *saori_request = NULL;
+  //---------------------------------------------------------------------------
+  PyObject *wrap_setcallback(PyObject *self, PyObject *args)
+  {
+***************
+*** 119,125 ****
+  	if (!PyCallable_Check(saori_exist) ||
+  		!PyCallable_Check(saori_load) ||
+  		!PyCallable_Check(saori_unload) ||
+! 		!PyCallable_Check(saori_exist)) {
+  		PyErr_SetString(PyExc_TypeError, "parameter must be callable");
+  		return NULL;
+  	}
+--- 119,125 ----
+  	if (!PyCallable_Check(saori_exist) ||
+  		!PyCallable_Check(saori_load) ||
+  		!PyCallable_Check(saori_unload) ||
+! 		!PyCallable_Check(saori_request)) {
+  		PyErr_SetString(PyExc_TypeError, "parameter must be callable");
+  		return NULL;
+  	}
+***************
+*** 200,206 ****
+  {
+  	if (saori_request == NULL) {
+  		cout << "request result err" << endl;
+! 		return NULL;
+  	}
+  
+  	PyObject *arglist = Py_BuildValue("(ss)", saori, req);
+--- 200,206 ----
+  {
+  	if (saori_request == NULL) {
+  		cout << "request result err" << endl;
+! 		return "";
+  	}
+  
+  	PyObject *arglist = Py_BuildValue("(ss)", saori, req);
+***************
+*** 208,214 ****
+  	Py_XDECREF(arglist);
+  	if (result == NULL) {
+  		cout << "request result err" << endl;
+! 		return NULL;
+  	}
+  
+  	char *res = NULL;
+--- 208,214 ----
+  	Py_XDECREF(arglist);
+  	if (result == NULL) {
+  		cout << "request result err" << endl;
+! 		return "";
+  	}
+  
+  	char *res = NULL;

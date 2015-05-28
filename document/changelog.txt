@@ -1,0 +1,66 @@
+ChangeLog
+
+2008/03/30 Phase 8.2.8
+ * fixed "textsave" command (ignore 3rd,4th... argument)
+   (Thanks: Don, ukya, xenon)
+
+2008/02/16 Phase 8.2.7
+ * fixed "insertstr" command (work as "insert" command) (Thanks: Phantom 9)
+ * fixed "entrycount" command (answer wrong number) (Thanks: Phantom 9)
+
+2008/01/27 Phase 8.2.6
+ * fixed "gsub" command (the substitution leakage when consecutive pattern
+   is substituted by null) (Thanks: C.Ponapalt)
+
+2008/01/26 Phase 8.2.5
+ * fixed the midpoint(0xa5) problem in Japanese character code
+   (gcc optimize option: -Os => -O1. enbuged by UPX!)
+ * fixed "isexist" command (do not work in root directory)
+ * add "quiet"mode option for kosui (--quiet). After the initialization file
+   is read, kosui ends at once when quiet mode. 
+ * fixed compile error for ninix-aya environment (Thanks: paulliu)
+
+2005/10/30 Phase 8.2.4
+ * fixed "rfind" command (do not work)
+ * add project files for Visual C++ 7.1(Thanks: Shiba-yan)
+ * fixed compile problem for Visual C++ 7.1 in 'misc/l10.cpp ctow' function
+   (Thanks: Shiba-yan)
+ * fixed a typo in 'gcc.mak' for 'ninix-aya' (Thanks: jado)
+
+2005/07/03 Phase 8.2.3
+ * arranged the index management code of dictionary commands
+ * changed "inc/dec" commands to enable to use the index value which likes
+   dictionary commands
+
+2005/06/21 Phase 8.2.3RC (closed)
+ * fixed auto type judgement feature(number or character) in expression
+ * release compiler: MinGW 2.0.0-3 -> MinGW 4.1.0(gcc.3.4.2)
+ * built shiori.dll binary by 'gcc -shared' instead of 'dllwrap'
+ * supported gcc3.x(warning messages)
+ * fixed "split" command (NULL pointer violation!)
+ * fixed "inc/dec" command (freezed when using the negative index value)
+ * added "mktime" command
+
+2004/09/05 Phase8.2.2
+ * fixed dictionary commands which cannot use the negative index value
+   from Phase 8.2.1
+
+2004/09/04 Phase8.2.1
+ * fixed dictionary commands which cannot use some S-JIS characters for
+   entry name when using index (Thanks 89@OpenKEEPS thread)
+ * include patches for 'ninix-aya' and 'Nise-Ringo' (Thanks ABE, phonohawk)
+
+2004/02/01 Phase8.2.0
+ * changed "date" command to enable to format a second from the Epoc
+ * fixed "split" command (NULL string separator problem)
+ * changed "split" command. When you omit 3rd argument or set "", it splits
+   by char.
+ * changed "join" command. You chan omit 3rd argument.
+ * fixed "listsub" command ("ghost" entrytree problem)
+ * fixed string search/replace commands. (fix differences from specification)
+ * fixed string search/replace commands. (illegular index problem)
+ * added "rsub" command
+ * added "getenv" command
+ * added "textappend" command
+ * added "continue" syntax. It can execute in loop syntax only.
+ * changed "break" syntax. It can execute in loop syntax only.
