@@ -24,11 +24,11 @@ public:
 	{
 //		iterator it=lower_bound(key);
 //		std::multimap<KeyType,DataType>::iterator it;
-		typename std::multimap<KeyType, DataType>::iterator it=lower_bound(key);
+		typename std::multimap<KeyType, DataType>::iterator it=this->lower_bound(key);
 		// 2001/12/16 suikyo@yk.rim.or.jp : imortal entry bug
 //		if(it==end()) it=insert(pair<KeyType,DataType>(key,DataType()));
 //		if(it==upper_bound(key)) it=insert(pair<const KeyType,DataType>(key,DataType()));
-		if(it==upper_bound(key)) it=insert(typename TMMap<KeyType,DataType>::value_type(key,DataType()));
+		if(it==this->upper_bound(key)) it=this->insert(typename TMMap<KeyType,DataType>::value_type(key,DataType()));
 		return((*it).second);
 	}
 /*
@@ -43,7 +43,7 @@ public:
 	void Add(const KeyType& key,const DataType& data)
 	{
 //		insert(pair<const KeyType,DataType>(key,data));
-		insert(typename TMMap::value_type(key,data));
+		this->insert(typename TMMap::value_type(key,data));
 	}
 
 };
