@@ -148,19 +148,19 @@ ALLTARGET = $(MACH)/$(DYNLIBPREFIX)$(SHIORI)$(DYNLIBEXT) \
 all : $(ALLTARGET) upx
 
 $(MACH)/$(DYNLIBPREFIX)$(SHIORI)$(DYNLIBEXT) : $(SHIOOBJ) $(COREOBJ) $(DEPLIB)
-	$(CXX) -o$@ $(SHARED_$(MACH_TYPE)) $(LDFLAGS) $(SHIOOBJ) $(COREOBJ) $(LIBS)
+	$(CXX) -o $@ $(SHARED_$(MACH_TYPE)) $(LDFLAGS) $(SHIOOBJ) $(COREOBJ) $(LIBS)
 
 $(MACH)/kosui$(EXEEXT) : $(KOSUIOBJ) $(COREOBJ) $(DEPLIB)
-	$(CXX) -o$@ $(LDFLAGS) $(KOSUIOBJ) $(COREOBJ) $(LIBS)
+	$(CXX) -o $@ $(LDFLAGS) $(KOSUIOBJ) $(COREOBJ) $(LIBS)
 
 $(MACH)/kawari_encode$(EXEEXT) : tool/kawari_encode$(OBJEXT) $(CRYPTOBJ)
-	$(CXX) -o$@ tool/kawari_encode$(OBJEXT) $(CRYPTOBJ) $(LDFLAGS)
+	$(CXX) -o $@ tool/kawari_encode$(OBJEXT) $(CRYPTOBJ) $(LDFLAGS)
 
 $(MACH)/kawari_encode2$(EXEEXT) : tool/kawari_encode2$(OBJEXT) $(CRYPTOBJ)
-	$(CXX) -o$@ tool/kawari_encode2$(OBJEXT) $(CRYPTOBJ) $(LDFLAGS)
+	$(CXX) -o $@ tool/kawari_encode2$(OBJEXT) $(CRYPTOBJ) $(LDFLAGS)
 
 $(MACH)/kawari_decode2$(EXEEXT) : tool/kawari_decode2$(OBJEXT) $(CRYPTOBJ)
-	$(CXX) -o$@ tool/kawari_decode2$(OBJEXT) $(CRYPTOBJ) $(LDFLAGS)
+	$(CXX) -o $@ tool/kawari_decode2$(OBJEXT) $(CRYPTOBJ) $(LDFLAGS)
 
 $(MACH)/libjvm.dll.a : win32jvm.def
 	dlltool --def win32jvm.def -l $@ --dllname jvm.dll -k -C -a
@@ -168,7 +168,7 @@ $(MACH)/libjvm.dll.a : win32jvm.def
 .SUFFIXES : .cpp .h .a .def
 
 %.o : %.cpp
-	$(CXX) $(CFLAGS) -o$@ -c $<
+	$(CXX) $(CFLAGS) -o $@ -c $<
 
 clean :
 	-rm $(COREOBJ) $(SHIOOBJ) $(KOSUIOBJ) $(TOOLOBJ) $(TEMPORARY_FILES)
@@ -180,6 +180,6 @@ depend : clean
 	$(RUBY) ./makedepend.rb > depend.mak
 
 upx : $(ALLTARGET)
-	$(UPX) $(ALLTARGET)
+	$(if $(UPX), $(UPX) $(ALLTARGET))
 
 include depend.mak
