@@ -22,7 +22,7 @@ Ruby 1.6, bash, findがある環境で、
 2. コンパイル
 ---------------
 
-2.1. GNU g++
+2.1. GNU g++ / emscripten
 ---------------
 
 !!! Makefileを編集する必要があります !!!
@@ -30,7 +30,7 @@ Ruby 1.6, bash, findがある環境で、
 gcc.mak中の以下の行を、コンパイル環境に従って書き換えてください。
 
     MACH_TYPE = mingw
-        コンパイル環境を"cygwin", "mingw", "linux", "freebsd", "darwin"
+        コンパイル環境を"cygwin", "mingw", "linux", "freebsd", "darwin", "js"
         から選んでください。
 
     SHIORI = shiori
