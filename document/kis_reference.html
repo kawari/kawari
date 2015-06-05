@@ -1,11 +1,11 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
 <HTML lang="ja">
 <HEAD>
- <META http-equiv="Content-Type" content="text/html; charset=SHIFT_JIS">
+ <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <META http-equiv="Content-Script-Type" content="text/javascript">
  <META http-equiv="Content-Style-Type" content="text/css">
  <LINK rel="stylesheet" type="text/css" href="kawari.css">
- <TITLE>�ؘa���C�����C���X�N���v�g ���t�@�����X</TITLE>
+ <TITLE>華和梨インラインスクリプト リファレンス</TITLE>
 <STYLE type="text/css">
 <!--
 TABLE.command_table {
@@ -35,298 +35,298 @@ TABLE.command CAPTION{
 </STYLE>
 <BODY text="black" bgcolor="white">
 
-  <H1>�v���O���}�u����AI���W���[�� "�ؘa��" 
-    �C�����C���X�N���v�g ���t�@�����X�}�j���A��</H1>
+  <H1>プログラマブル準AIモジュール "華和梨" 
+    インラインスクリプト リファレンスマニュアル</H1>
 <DIV align="right">
   <P>
     2005/07/03<BR>
     Phase 8.2.3
   </P><P>
-    �ؘa���J���`�[�� :<BR>
-    NAKAUE.T (Meister), �UMeister (���T), ���Ɓ[, ����, ������̂ɂ�
+    華和梨開発チーム :<BR>
+    NAKAUE.T (Meister), 偽Meister (夢乃), さとー, 酔狂, さくらのにえ
   </P>
 </DIV>
 
 <H2>Index</H2>
 
-<A href="index.html" class="toindex">�� back</A>
+<A href="index.html" class="toindex">← back</A>
 <BR>
 
 <BLOCKQUOTE>
-<A href="#gaiyou">1. �T�v</A><BR>
-<A href="#shoshiki">2. ����</A><BR>
-<A href="#hyouka">3. �]���A�߂�l�A�^�U�̔���</A><BR>
-<A href="#command">4. �R�}���h</A><BR>
-�@<A href="#commandlist">4.1. �R�}���h�ꗗ</A><BR>
-�@<A href="#commandref">4.2. �R�}���h���t�@�����X</A><BR>
-�@�@<A href="#syntax">4.2.1. �\��</A><BR>
-�@�@<A href="#dic-handle">4.2.2. �R�}���h-��������</A><BR>
-�@�@<A href="#file-io">4.2.3. �R�}���h-�t�@�C������</A><BR>
-�@�@<A href="#counter">4.2.4. �R�}���h-�J�E���^</A><BR>
-�@�@<A href="#string">4.2.5. �R�}���h-�����񑀍�</A><BR>
-�@�@<A href="#saori">4.2.6. �R�}���h-SAORI</A><BR>
-�@�@<A href="#communicate">4.2.7. �R�}���h-�R�~���j�P�[�g�@�\</A><BR>
-�@�@<A href="#output">4.2.8. �R�}���h-�o��</A><BR>
-�@�@<A href="#aux">4.2.9. �R�}���h-�⏕�@�\</A><BR>
-�@�@<A href="#othercmd">4.2.10. �R�}���h-���̑�</A><BR>
+<A href="#gaiyou">1. 概要</A><BR>
+<A href="#shoshiki">2. 書式</A><BR>
+<A href="#hyouka">3. 評価、戻り値、真偽の判定</A><BR>
+<A href="#command">4. コマンド</A><BR>
+　<A href="#commandlist">4.1. コマンド一覧</A><BR>
+　<A href="#commandref">4.2. コマンドリファレンス</A><BR>
+　　<A href="#syntax">4.2.1. 構文</A><BR>
+　　<A href="#dic-handle">4.2.2. コマンド-辞書操作</A><BR>
+　　<A href="#file-io">4.2.3. コマンド-ファイル操作</A><BR>
+　　<A href="#counter">4.2.4. コマンド-カウンタ</A><BR>
+　　<A href="#string">4.2.5. コマンド-文字列操作</A><BR>
+　　<A href="#saori">4.2.6. コマンド-SAORI</A><BR>
+　　<A href="#communicate">4.2.7. コマンド-コミュニケート機能</A><BR>
+　　<A href="#output">4.2.8. コマンド-出力</A><BR>
+　　<A href="#aux">4.2.9. コマンド-補助機能</A><BR>
+　　<A href="#othercmd">4.2.10. コマンド-その他</A><BR>
 <A href="#appendix">Appendix</A><BR>
-�@<A href="#apdx1">I. �C�����C���X�N���v�g�̒ǉ����@</A><BR>
-�@<A href="#apdx2">II. ����</A><BR>
+　<A href="#apdx1">I. インラインスクリプトの追加方法</A><BR>
+　<A href="#apdx2">II. 注釈</A><BR>
 </BLOCKQUOTE>
 
 <A name="gaiyou"></A>
-<H2>1. �T�v</H2>
+<H2>1. 概要</H2>
 
 <P>
-�ؘa���C�����C���X�N���v�g(KIS : Kawari Inline Script)�́A
-�ؘa���̎����t�@�C�����Ŏg�p�ł���ȈՌ���ł��B
-�C�����C���X�N���v�g���g�p���邱�Ƃɂ��A
-�ؘa�����s���Ɏ����֒P���ǉ�������A
-�{�̂���ʒm�����C�x���g�ɉ������������s�����肷�邱�Ƃ��ł��܂��B
+華和梨インラインスクリプト(KIS : Kawari Inline Script)は、
+華和梨の辞書ファイル中で使用できる簡易言語です。
+インラインスクリプトを使用することにより、
+華和梨実行中に辞書へ単語を追加したり、
+本体から通知されるイベントに応じた処理を行ったりすることができます。
 </P>
 
 <A name="shoshiki"></A>
-<H2>2. ����</H2>
+<H2>2. 書式</H2>
 
 <P>
-�C�����C���X�N���v�g�́A�P�ꒆ�Ɂu<SPAN class="tt">$(�`)</SPAN>�v
-�ň͂�ŋL�q���܂��B��́u$(�`)�v�ň͂܂ꂽ����A�u�C�����C���X�N���v�g�u���b�N�v�ƌĂт܂��B
-��̃u���b�N�̒��ɂ́A�����̕����L�q�ł��܂��B
-���ƕ��̊Ԃ́u<SPAN class="tt">;</SPAN>�v(�Z�~�R����)�ŋ�؂�܂��B
-��̕��́A��̃R�}���h�Ɨ�ȏ�̈�������\������܂��B
-�R�}���h�A�Z�~�R�����A�e�����̊Ԃ́A���ꂼ���ȏ�̋󔒂ŋ�؂�܂��B
+インラインスクリプトは、単語中に「<SPAN class="tt">$(～)</SPAN>」
+で囲んで記述します。一つの「$(～)」で囲まれた塊を、「インラインスクリプトブロック」と呼びます。
+一つのブロックの中には、複数の文を記述できます。
+文と文の間は「<SPAN class="tt">;</SPAN>」(セミコロン)で区切ります。
+一つの文は、一つのコマンドと零個以上の引数から構成されます。
+コマンド、セミコロン、各引数の間は、それぞれ一つ以上の空白で区切ります。
 </P>
 
 <PRE>
-  �C�����C���X�N���v�g:
-    �u���b�N
+  インラインスクリプト:
+    ブロック
 
-  �u���b�N:
-    $(��)
-    $(�� ; �� ; �c)
+  ブロック:
+    $(文)
+    $(文 ; 文 ; …)
 
-  ��:
-    �R�}���h�� ����1 ����2 �c
+  文:
+    コマンド名 引数1 引数2 …
 </PRE>
 
 <A name="hyouka"></A>
-<H2>3. �]���A�߂�l�A�^�U�̔���</H2>
+<H2>3. 評価、戻り値、真偽の判定</H2>
 
 <P>
-�u���b�N���C�x���g�Ăяo���A���b�v������ʂ��ĉؘa���ɉ��߂���邱�Ƃ��A
-�u�]���v�ƌĂт܂��B�u���b�N�͕]�������ƁA�u�߂�l�v��Ԃ��܂��B
-�߂�l�͈�̕�����ŁA�ǂ̂悤�Ȗ߂�l��Ԃ����̓R�}���h�ɂ���ĈقȂ�܂��B
-�R�}���h�ɂ���ẮA�˂Ɂu""�v(�󕶎���)��Ԃ����Ƃ�����܂��B
+ブロックがイベント呼び出し、発話要求等を通じて華和梨に解釈されることを、
+「評価」と呼びます。ブロックは評価されると、「戻り値」を返します。
+戻り値は一つの文字列で、どのような戻り値を返すかはコマンドによって異なります。
+コマンドによっては、つねに「""」(空文字列)を返すこともあります。
 </P><P>
-�u���b�N�������̕����琬��ꍇ�A�u���b�N�̖߂�l�́A
-�u���b�N���̑S�Ă̕��̖߂�l�����Ɍq�������̂ł��B
-�Ȃ��A�u���b�N����߂�l��Ԃ������Ȃ��ꍇ�A
-<A href="#silent">silent</A>�R�}���h���g�p����Η}���ł��܂��B
+ブロックが複数の文から成る場合、ブロックの戻り値は、
+ブロック中の全ての文の戻り値を順に繋げたものです。
+なお、ブロックから戻り値を返したくない場合、
+<A href="#silent">silent</A>コマンドを使用すれば抑制できます。
 </P><P>
-�ؘa�����߂�l��]�����A�u�[���㐔�ɂ�����u�^�v���u�U�v���𔻒肷��ہA
-���̂悤�Ȋ�Ŕ��肵�܂��B
+華和梨が戻り値を評価し、ブール代数における「真」か「偽」かを判定する際、
+次のような基準で判定します。
 </P>
 <UL>
-	<LI>�󕶎���u""�v�A������u"0"�v�A������u"false"�v�Ȃ�΁u�U�v</LI>
-	<LI>�u�U�v�ȊO�Ȃ�΁u�^�v("�ق�"�A"1"�A"true"�A" "(��)...)</LI>
+	<LI>空文字列「""」、文字列「"0"」、文字列「"false"」ならば「偽」</LI>
+	<LI>「偽」以外ならば「真」("ほげ"、"1"、"true"、" "(空白)...)</LI>
 </UL>
 <P>
-���̐^�U�̔���́A��q����\���R�}���h�A�֐��R�}���h��킸���ʂł��B
-�R�}���h��Ǝ��ɒǉ�����ꍇ�A�^�U�̔���͂��̊�ɍ��킹�ĉ������B
+この真偽の判定は、後述する構文コマンド、関数コマンド問わず共通です。
+コマンドを独自に追加する場合、真偽の判定はこの基準に合わせて下さい。
 </P>
 
 <A name="command"></A>
-<H2>4. �R�}���h</H2>
+<H2>4. コマンド</H2>
 
 <P>
-�R�}���h�͑傫�������āA<A href="#if">if</A>�R�}���h��
-<A href="#while">while</A>�R�}���h�̂悤�ȁu�\���R�}���h�v�ƁA
-<A href="#adddict">adddict</A>�R�}���h��<A href="#date">date</A>�R�}���h��
-�悤�ȁu�֐��R�}���h�v�̓�ɕ��ނł��܂��B
-�\���R�}���h�͗^����ꂽ�����̐^�U�ɏ]���A�����̗���𐧌䂵�܂��B����A
-�֐��R�}���h�͗^����ꂽ�����ɏ]���A���ۂ̏������s���܂��B
+コマンドは大きく分けて、<A href="#if">if</A>コマンドや
+<A href="#while">while</A>コマンドのような「構文コマンド」と、
+<A href="#adddict">adddict</A>コマンドや<A href="#date">date</A>コマンドの
+ような「関数コマンド」の二つに分類できます。
+構文コマンドは与えられた条件の真偽に従い、処理の流れを制御します。一方、
+関数コマンドは与えられた引数に従い、実際の処理を行います。
 <SUP><FONT size="-1"><A href="#ref1">*1</A></FONT></SUP>
 <SUP><FONT size="-1"><A href="#ref2">*2</A></FONT></SUP>
 </P><P>
-�������鋰��̖����ꍇ�A�\���R�}���h�́u�\���v�A�֐��R�}���h�͒P��
-�u�R�}���h�v�ƌĂԂ��Ƃ�����܂��B
+混同する恐れの無い場合、構文コマンドは「構文」、関数コマンドは単に
+「コマンド」と呼ぶことがあります。
 </P>
 
 <A name="commandlist"></A>
-<H3>4.1. �R�}���h�ꗗ</H3>
+<H3>4.1. コマンド一覧</H3>
 
 <DIV align="center">
 
 <TABLE class="command_table" width="80%">
-<CAPTION>�\���R�}���h</CAPTION>
-<TR><TD><A href="#if">if</A></TD><TD>�������f</TD></TR>
-<TR><TD><A href="#foreach">foreach</A></TD><TD>�w��G���g�����̂��ׂĂ̒P��ɑ΂��R�}���h���s</TD></TR>
-<TR><TD><A href="#loop">loop</A></TD><TD>�w��񐔃��[�v</TD></TR>
-<TR><TD><A href="#silent">silent</A></TD><TD>�u���b�N�̏o�͂�}��</TD></TR>
-<TR><TD><A href="#until">until</A></TD><TD>��������������܂Ń��[�v</TD></TR>
-<TR><TD><A href="#while">while</A></TD><TD>�������������Ă���ԃ��[�v</TD></TR>
-<TR><TD><A href="#break">break</A></TD><TD>���[�v����̒E�o</TD></TR>
-<TR><TD><A href="#continue">continue</A></TD><TD>���[�v�擪�ɖ߂�</TD></TR>
-<TR><TD><A href="#NULL">NULL</A></TD><TD>�󕶎���</TD></TR>
-<TR><TD><A href="#randomselect">?</A></TD><TD>�����_���I��</TD></TR>
-<TR><TD><A href="#function">function</A></TD><TD>�֐���`</TD></TR>
-<TR><TD><A href="#rmfunc">rmfunc</A></TD><TD>���[�U��`�֐��̍폜</TD></TR>
-<TR><TD><A href="#return">return</A></TD><TD>�֐�����̒E�o</TD></TR>
+<CAPTION>構文コマンド</CAPTION>
+<TR><TD><A href="#if">if</A></TD><TD>条件判断</TD></TR>
+<TR><TD><A href="#foreach">foreach</A></TD><TD>指定エントリ中のすべての単語に対しコマンド実行</TD></TR>
+<TR><TD><A href="#loop">loop</A></TD><TD>指定回数ループ</TD></TR>
+<TR><TD><A href="#silent">silent</A></TD><TD>ブロックの出力を抑制</TD></TR>
+<TR><TD><A href="#until">until</A></TD><TD>条件が成立するまでループ</TD></TR>
+<TR><TD><A href="#while">while</A></TD><TD>条件が成立している間ループ</TD></TR>
+<TR><TD><A href="#break">break</A></TD><TD>ループからの脱出</TD></TR>
+<TR><TD><A href="#continue">continue</A></TD><TD>ループ先頭に戻る</TD></TR>
+<TR><TD><A href="#NULL">NULL</A></TD><TD>空文字列</TD></TR>
+<TR><TD><A href="#randomselect">?</A></TD><TD>ランダム選択</TD></TR>
+<TR><TD><A href="#function">function</A></TD><TD>関数定義</TD></TR>
+<TR><TD><A href="#rmfunc">rmfunc</A></TD><TD>ユーザ定義関数の削除</TD></TR>
+<TR><TD><A href="#return">return</A></TD><TD>関数からの脱出</TD></TR>
 </TABLE>
 
 <BR clear="all">
 
 <TABLE class="command_table" width="80%">
-<CAPTION>�֐��R�}���h</CAPTION>
-<TR class="genre"><TD colspan="2">��������</TD></TR>
-<TR><TD><A href="#dictcommon">���ʎ���</TD><TD>��������R�}���h�ɋ��ʂ̓���</TD></TR>
-<TR><TD><A href="#set">set</A></TD><TD>�G���g���ɒP����Z�b�g</TD></TR>
-<TR><TD><A href="#setstr">setstr</A></TD><TD>�G���g���ɕ�������Z�b�g</TD></TR>
-<TR><TD><A href="#adddict">adddict</A></TD><TD>�G���g���ɒP���ǉ�</TD></TR>
-<TR><TD><A href="#adddictstr">adddictstr</A></TD><TD>�G���g���ɕ������ǉ�</TD></TR>
-<TR><TD><A href="#push">push</A></TD><TD>�G���g���ɒP���ǉ�</TD></TR>
-<TR><TD><A href="#pushstr">pushstr</A></TD><TD>�G���g���ɕ������ǉ�</TD></TR>
-<TR><TD><A href="#unshift">unshift</A></TD><TD>�G���g���̐擪�ɒP���}��</TD></TR>
-<TR><TD><A href="#unshiftstr">unshiftstr</A></TD><TD>�G���g���̐擪�ɕ������}��</TD></TR>
-<TR><TD><A href="#insert">insert</A></TD><TD>�G���g�����̎w�肵���ʒu�ɒP���}��</TD></TR>
-<TR><TD><A href="#insertstr">insertstr</A></TD><TD>�G���g�����̎w�肵���ʒu�ɕ������}��</TD></TR>
-<TR><TD><A href="#get">get</A></TD><TD>�G���g�����̒P��𓾂�</TD></TR>
-<TR><TD><A href="#getcode">getcode</A></TD><TD>�G���g����]�������ɎQ��</TD></TR>
-<TR><TD><A href="#getrandom">getrandom</A></TD><TD>�G���g�����̂����ꂩ�̒P��𓾂�</TD></TR>
-<TR><TD><A href="#pop">pop</A></TD><TD>�G���g���Ō���̒P���Ԃ��A�G���g������폜</TD></TR>
-<TR><TD><A href="#popcode">popcode</A></TD><TD>�G���g���Ō���̒P���]�������ɕԂ��A�G���g������폜</TD></TR>
-<TR><TD><A href="#shift">shift</A></TD><TD>�G���g���擪�̒P���Ԃ��A�G���g������폜</TD></TR>
-<TR><TD><A href="#shiftcode">shiftcode</A></TD><TD>�G���g���擪�̒P���]�������ɕԂ��A�G���g������폜</TD></TR>
-<TR><TD><A href="#clear">clear</A></TD><TD>�G���g������P����폜</TD></TR>
-<TR><TD><A href="#cleartree">cleartree</A></TD><TD>�G���g���c���[����P����폜</TD></TR>
+<CAPTION>関数コマンド</CAPTION>
+<TR class="genre"><TD colspan="2">辞書操作</TD></TR>
+<TR><TD><A href="#dictcommon">共通事項</TD><TD>辞書操作コマンドに共通の特徴</TD></TR>
+<TR><TD><A href="#set">set</A></TD><TD>エントリに単語をセット</TD></TR>
+<TR><TD><A href="#setstr">setstr</A></TD><TD>エントリに文字列をセット</TD></TR>
+<TR><TD><A href="#adddict">adddict</A></TD><TD>エントリに単語を追加</TD></TR>
+<TR><TD><A href="#adddictstr">adddictstr</A></TD><TD>エントリに文字列を追加</TD></TR>
+<TR><TD><A href="#push">push</A></TD><TD>エントリに単語を追加</TD></TR>
+<TR><TD><A href="#pushstr">pushstr</A></TD><TD>エントリに文字列を追加</TD></TR>
+<TR><TD><A href="#unshift">unshift</A></TD><TD>エントリの先頭に単語を挿入</TD></TR>
+<TR><TD><A href="#unshiftstr">unshiftstr</A></TD><TD>エントリの先頭に文字列を挿入</TD></TR>
+<TR><TD><A href="#insert">insert</A></TD><TD>エントリ内の指定した位置に単語を挿入</TD></TR>
+<TR><TD><A href="#insertstr">insertstr</A></TD><TD>エントリ内の指定した位置に文字列を挿入</TD></TR>
+<TR><TD><A href="#get">get</A></TD><TD>エントリ中の単語を得る</TD></TR>
+<TR><TD><A href="#getcode">getcode</A></TD><TD>エントリを評価せずに参照</TD></TR>
+<TR><TD><A href="#getrandom">getrandom</A></TD><TD>エントリ中のいずれかの単語を得る</TD></TR>
+<TR><TD><A href="#pop">pop</A></TD><TD>エントリ最後尾の単語を返し、エントリから削除</TD></TR>
+<TR><TD><A href="#popcode">popcode</A></TD><TD>エントリ最後尾の単語を評価せずに返し、エントリから削除</TD></TR>
+<TR><TD><A href="#shift">shift</A></TD><TD>エントリ先頭の単語を返し、エントリから削除</TD></TR>
+<TR><TD><A href="#shiftcode">shiftcode</A></TD><TD>エントリ先頭の単語を評価せずに返し、エントリから削除</TD></TR>
+<TR><TD><A href="#clear">clear</A></TD><TD>エントリから単語を削除</TD></TR>
+<TR><TD><A href="#cleartree">cleartree</A></TD><TD>エントリツリーから単語を削除</TD></TR>
 
-<TR><TD><A href="#size">size</A></TD><TD>�G���g�����̒P�ꐔ�𐔂���</TD></TR>
+<TR><TD><A href="#size">size</A></TD><TD>エントリ中の単語数を数える</TD></TR>
 
-<TR><TD><A href="#find">find</A></TD><TD>�G���g�����̒P��̍ŏ��̈ʒu�𓾂�</TD></TD>
-<TR><TD><A href="#rfind">rfind</A></TD><TD>�G���g�����̒P��̍Ō�̈ʒu�𓾂�</TD></TD>
-<TR><TD><A href="#copy">copy</A></TD><TD>�G���g�����e�̃R�s�[</TD></TD>
-<TR><TD><A href="#copytree">copytree</A></TD><TD>�G���g�����e���G���g���\�����ƃR�s�[</TD></TD>
-<TR><TD><A href="#move">move</A></TD><TD>�G���g�����e�̈ړ�</TD></TD>
-<TR><TD><A href="#movetree">movetree</A></TD><TD>�G���g�����e���G���g���\�����ƈړ�</TD></TD>
-<TR><TD><A href="#listsub">listsub</A></TD><TD>�T�u�G���g���̃��X�g�𓾂�</TD></TD>
-<TR><TD><A href="#listtree">listtree</A></TD><TD>�G���g���c���[�S�̂̃��X�g�𓾂�</TD></TD>
-<TR><TD><A href="#writeprotect">writeprotect</A></TD><TD>�G���g�����������ݕs�ɂ���</TD></TD>
+<TR><TD><A href="#find">find</A></TD><TD>エントリ中の単語の最初の位置を得る</TD></TD>
+<TR><TD><A href="#rfind">rfind</A></TD><TD>エントリ中の単語の最後の位置を得る</TD></TD>
+<TR><TD><A href="#copy">copy</A></TD><TD>エントリ内容のコピー</TD></TD>
+<TR><TD><A href="#copytree">copytree</A></TD><TD>エントリ内容をエントリ構造ごとコピー</TD></TD>
+<TR><TD><A href="#move">move</A></TD><TD>エントリ内容の移動</TD></TD>
+<TR><TD><A href="#movetree">movetree</A></TD><TD>エントリ内容をエントリ構造ごと移動</TD></TD>
+<TR><TD><A href="#listsub">listsub</A></TD><TD>サブエントリのリストを得る</TD></TD>
+<TR><TD><A href="#listtree">listtree</A></TD><TD>エントリツリー全体のリストを得る</TD></TD>
+<TR><TD><A href="#writeprotect">writeprotect</A></TD><TD>エントリを書き込み不可にする</TD></TD>
 
-<TR class="genre"><TD colspan="2">�t�@�C������</TD></TR>
-<TR><TD><A href="#save">save</A></TD><TD>�G���g�����t�@�C���ɕۑ�</TD></TR>
-<TR><TD><A href="#savecrypt">savecrypt</A></TD><TD>�G���g�����t�@�C���ɈÍ������ĕۑ�</TD></TR>
-<TR><TD><A href="#load">load</A></TD><TD>�ؘa���`�������t�@�C����ǂݍ���</TD></TR>
-<TR><TD><A href="#textload">textload</A></TD><TD>�e�L�X�g�t�@�C����ǂݍ���</TD></TR>
-<TR><TD><A href="#textappend">textappend</A></TD><TD>�e�L�X�g�t�@�C����ǋL</TD></TR>
-<TR><TD><A href="#textsave">textsave</A></TD><TD>�e�L�X�g�t�@�C����ۑ�</TD></TR>
-<TR><TD><A href="#readdir">readdir</A></TD><TD>�f�B���N�g����ǂݍ���</TD></TR>
-<TR><TD><A href="#cncpath">cncpath</A></TD><TD>�p�X�����V�X�e���Ŏg����悤�ɂ���</TD></TR>
-<TR><TD><A href="#dirname">dirname</A></TD><TD>�p�X������f�B���N�g����������؂�o��</TD></TR>
-<TR><TD><A href="#filename">filename</A></TD><TD>�p�X������t�@�C����������؂�o��</TD></TR>
-<TR><TD><A href="#isexist">isexist</A></TD><TD>�w��t�@�C�������݂��邩���肷��</TD></TR>
-<TR><TD><A href="#isdir">isdir</A></TD><TD>�w��t�@�C�����f�B���N�g�������肷��</TD></TR>
-<TR><TD><A href="#isfile">isfile</A></TD><TD>�w��t�@�C�����ʏ�t�@�C�������肷��</TD></TR>
+<TR class="genre"><TD colspan="2">ファイル操作</TD></TR>
+<TR><TD><A href="#save">save</A></TD><TD>エントリをファイルに保存</TD></TR>
+<TR><TD><A href="#savecrypt">savecrypt</A></TD><TD>エントリをファイルに暗号化して保存</TD></TR>
+<TR><TD><A href="#load">load</A></TD><TD>華和梨形式辞書ファイルを読み込む</TD></TR>
+<TR><TD><A href="#textload">textload</A></TD><TD>テキストファイルを読み込む</TD></TR>
+<TR><TD><A href="#textappend">textappend</A></TD><TD>テキストファイルを追記</TD></TR>
+<TR><TD><A href="#textsave">textsave</A></TD><TD>テキストファイルを保存</TD></TR>
+<TR><TD><A href="#readdir">readdir</A></TD><TD>ディレクトリを読み込む</TD></TR>
+<TR><TD><A href="#cncpath">cncpath</A></TD><TD>パス名をシステムで使えるようにする</TD></TR>
+<TR><TD><A href="#dirname">dirname</A></TD><TD>パス名からディレクトリ名部分を切り出す</TD></TR>
+<TR><TD><A href="#filename">filename</A></TD><TD>パス名からファイル名部分を切り出す</TD></TR>
+<TR><TD><A href="#isexist">isexist</A></TD><TD>指定ファイルが存在するか判定する</TD></TR>
+<TR><TD><A href="#isdir">isdir</A></TD><TD>指定ファイルがディレクトリか判定する</TD></TR>
+<TR><TD><A href="#isfile">isfile</A></TD><TD>指定ファイルが通常ファイルか判定する</TD></TR>
 
-<TR class="genre"><TD colspan="2">�J�E���^</TD></TR>
-<TR><TD><A href="#dec">dec</A></TD><TD>�w��G���g���̒P��𐔎��ƌ��Ȃ����Z����</TD></TR>
-<TR><TD><A href="#inc">inc</A></TD><TD>�w��G���g���̒P��𐔎��ƌ��Ȃ����Z����</TD></TR>
+<TR class="genre"><TD colspan="2">カウンタ</TD></TR>
+<TR><TD><A href="#dec">dec</A></TD><TD>指定エントリの単語を数字と見なし減算する</TD></TR>
+<TR><TD><A href="#inc">inc</A></TD><TD>指定エントリの単語を数字と見なし加算する</TD></TR>
 <!--
-<TR class="genre"><TD colspan="2">�]���E��r</TD></TR>
-<TR><TD><A href="#expr">expr</A></TD><TD>����]������</TD></TR>
-<TR><TD><A href="#test">test</A></TD><TD>�l���r����</TD></TR>
+<TR class="genre"><TD colspan="2">評価・比較</TD></TR>
+<TR><TD><A href="#expr">expr</A></TD><TD>式を評価する</TD></TR>
+<TR><TD><A href="#test">test</A></TD><TD>値を比較する</TD></TR>
 -->
 
-<TR class="genre"><TD colspan="2">�����񑀍�</TD></TR>
-<TR><TD><A href="#length">length</A></TD><TD>������̒����𓾂�</TD></TR>
-<TR><TD><A href="#match">match</A></TD><TD>���镔�������񂪌����ŏ��̈ʒu�𓾂�</TD></TR>
-<TR><TD><A href="#rmatch">rmatch</A></TD><TD>���镔�������񂪌����Ō�̈ʒu�𓾂�</TD></TR>
-<TR><TD><A href="#match_at">match_at</A></TD><TD>���镔�������񂪎w��ʒu�ɑ��݂��邩�ۂ����肷��</TD></TR>
-<TR><TD><A href="#substr">substr</A></TD><TD>����������𓾂�</TD></TR>
-<TR><TD><A href="#char_at">char_at</A></TD><TD>�w��ʒu�̕����𓾂�</TD></TR>
-<TR><TD><A href="#sub">sub</A></TD><TD>�}�b�`����ŏ��̕������u��������</TD></TR>
-<TR><TD><A href="#gsub">gsub</A></TD><TD>�}�b�`����S�Ă̕������u��������</TD></TR>
-<TR><TD><A href="#rsub">rsub</A></TD><TD>�}�b�`����Ō���̕������u��������</TD></TR>
-<TR><TD><A href="#tr">tr</A></TD><TD>������u��������</TD></TR>
-<TR><TD><A href="#reverse">reverse</A></TD><TD>��������t���ɂ���</TD></TR>
-<TR><TD><A href="#tolower">tolower</A></TD><TD>�A���t�@�x�b�g���������ɂ���</TD></TR>
-<TR><TD><A href="#toupper">toupper</A></TD><TD>�A���t�@�x�b�g��啶���ɂ���</TD></TR>
-<TR><TD><A href="#chr">chr</A></TD><TD>�w�肵�������R�[�h�̈ꕶ����Ԃ�</TD></TR>
-<TR><TD><A href="#split">split</A></TD><TD>���������؂蕶���ŕ���</TD></TR>
-<TR><TD><A href="#join">join</A></TD><TD>��؂蕶���ŕ����������</TD></TR>
-<TR><TD><A href="#compare">compare</A></TD><TD>��������r����</TD></TR>
+<TR class="genre"><TD colspan="2">文字列操作</TD></TR>
+<TR><TD><A href="#length">length</A></TD><TD>文字列の長さを得る</TD></TR>
+<TR><TD><A href="#match">match</A></TD><TD>ある部分文字列が現れる最初の位置を得る</TD></TR>
+<TR><TD><A href="#rmatch">rmatch</A></TD><TD>ある部分文字列が現れる最後の位置を得る</TD></TR>
+<TR><TD><A href="#match_at">match_at</A></TD><TD>ある部分文字列が指定位置に存在するか否か判定する</TD></TR>
+<TR><TD><A href="#substr">substr</A></TD><TD>部分文字列を得る</TD></TR>
+<TR><TD><A href="#char_at">char_at</A></TD><TD>指定位置の文字を得る</TD></TR>
+<TR><TD><A href="#sub">sub</A></TD><TD>マッチする最初の文字列を置き換える</TD></TR>
+<TR><TD><A href="#gsub">gsub</A></TD><TD>マッチする全ての文字列を置き換える</TD></TR>
+<TR><TD><A href="#rsub">rsub</A></TD><TD>マッチする最後尾の文字列を置き換える</TD></TR>
+<TR><TD><A href="#tr">tr</A></TD><TD>文字を置き換える</TD></TR>
+<TR><TD><A href="#reverse">reverse</A></TD><TD>文字列を逆順にする</TD></TR>
+<TR><TD><A href="#tolower">tolower</A></TD><TD>アルファベットを小文字にする</TD></TR>
+<TR><TD><A href="#toupper">toupper</A></TD><TD>アルファベットを大文字にする</TD></TR>
+<TR><TD><A href="#chr">chr</A></TD><TD>指定した文字コードの一文字を返す</TD></TR>
+<TR><TD><A href="#split">split</A></TD><TD>文字列を区切り文字で分解</TD></TR>
+<TR><TD><A href="#join">join</A></TD><TD>区切り文字で文字列を結合</TD></TR>
+<TR><TD><A href="#compare">compare</A></TD><TD>文字列を比較する</TD></TR>
 
 <TR class="genre"><TD colspan="2">SAORI</TD></TR>
-<TR><TD><A href="#saoriregist">saoriregist</A></TD><TD>SAORI��o�^����</TD></TR>
-<TR><TD><A href="#saorierase">saorierase</A></TD><TD>SAORI�̓o�^����������</TD></TR>
-<TR><TD><A href="#saorilist">saorilist</A></TD><TD>�o�^����SAORI�ꗗ��Ԃ�</TD></TR>
-<TR><TD><A href="#callsaori">callsaori</A></TD><TD>�o�^����SAORI���Ăяo��</TD></TR>
-<TR><TD><A href="#callsaorix">callsaorix</A></TD><TD>�o�^����SAORI���Ăяo��(���@�\��)</TD></TR>
+<TR><TD><A href="#saoriregist">saoriregist</A></TD><TD>SAORIを登録する</TD></TR>
+<TR><TD><A href="#saorierase">saorierase</A></TD><TD>SAORIの登録を解除する</TD></TR>
+<TR><TD><A href="#saorilist">saorilist</A></TD><TD>登録中のSAORI一覧を返す</TD></TR>
+<TR><TD><A href="#callsaori">callsaori</A></TD><TD>登録したSAORIを呼び出す</TD></TR>
+<TR><TD><A href="#callsaorix">callsaorix</A></TD><TD>登録したSAORIを呼び出す(高機能版)</TD></TR>
 
-<TR class="genre"><TD colspan="2">�R�~���j�P�[�g�@�\</TD></TR>
-<TR><TD><A href="#communicate">communicate</A></TD><TD>����G���g���̑S�Ă̒P���]�����A�l�����������_���őI��</TD></TR>
-<TR><TD><A href="#matchall">matchall</A></TD><TD>�S�ẴL�[���[�h�ɑ΂��ă}�b�`���O</TD></TR>
+<TR class="genre"><TD colspan="2">コミュニケート機能</TD></TR>
+<TR><TD><A href="#communicate">communicate</A></TD><TD>あるエントリの全ての単語を評価し、値から一つをランダムで選ぶ</TD></TR>
+<TR><TD><A href="#matchall">matchall</A></TD><TD>全てのキーワードに対してマッチング</TD></TR>
 
-<TR class="genre"><TD colspan="2">�o��</TD></TR>
-<TR><TD><A href="#echo">echo</A></TD><TD>�������󔒕����Őڑ����ĕԂ�</TD></TR>
-<TR><TD><A href="#encode_entryname">encode_entryname</A></TD><TD>�G���g�����Ɏg�p�ł��閼�O�ɕϊ�</TD></TR>
-<TR><TD><A href="#escape">escape</A></TD><TD>�������̂�����X�N���v�g���G�X�P�[�v����</TD></TR>
+<TR class="genre"><TD colspan="2">出力</TD></TR>
+<TR><TD><A href="#echo">echo</A></TD><TD>引数を空白文字で接続して返す</TD></TR>
+<TR><TD><A href="#encode_entryname">encode_entryname</A></TD><TD>エントリ名に使用できる名前に変換</TD></TR>
+<TR><TD><A href="#escape">escape</A></TD><TD>引数内のさくらスクリプトをエスケープする</TD></TR>
 
-<TR class="genre"><TD colspan="2">�⏕�@�\</TD></TR>
-<TR><TD><A href="#entry">entry</A></TD><TD>�G���g�����Ăяo��</TD></TR>
-<TR><TD><A href="#entrycount">entrycount</A></TD><TD>�G���g��������Ԃ�</TD></TR>
-<TR><TD><A href="#eval">eval</A></TD><TD>�P����ĕ]��</TD></TR>
-<TR><TD><A href="#urllist">urllist</A></TD><TD>SHIORI/2.5�`���̂������߃��X�g���o�͂���</TD></TR>
-<TR><TD><A href="#wordcount">wordcount</A></TD><TD>�P�ꑍ����Ԃ�</TD></TR>
-<TR><TD><A href="#xargs">xargs</A></TD><TD>������W�J���Ď��s����</TD></TR>
+<TR class="genre"><TD colspan="2">補助機能</TD></TR>
+<TR><TD><A href="#entry">entry</A></TD><TD>エントリを呼び出す</TD></TR>
+<TR><TD><A href="#entrycount">entrycount</A></TD><TD>エントリ総数を返す</TD></TR>
+<TR><TD><A href="#eval">eval</A></TD><TD>単語を再評価</TD></TR>
+<TR><TD><A href="#urllist">urllist</A></TD><TD>SHIORI/2.5形式のおすすめリストを出力する</TD></TR>
+<TR><TD><A href="#wordcount">wordcount</A></TD><TD>単語総数を返す</TD></TR>
+<TR><TD><A href="#xargs">xargs</A></TD><TD>引数を展開して実行する</TD></TR>
 
-<TR class="genre"><TD colspan="2">���̑�</TD></TR>
-<TR><TD><A href="#rccharset">rccharset</A></TD><TD>���b�Z�[�W�����Z�b�g�ݒ�</TD></TR>
-<TR><TD><A href="#date">date</A></TD><TD>�������w��t�H�[�}�b�g�ŕԂ�</TD></TR>
-<TR><TD><A href="#mktime">mktime</A></TD><TD>������ʎZ�o�ߕb���ɕϊ�����</TD></TR>
-<TR><TD><A href="#getenv">getenv</A></TD><TD>���ϐ��̓��e��Ԃ�</TD></TR>
-<TR><TD><A href="#help">help</A></TD><TD>KIS�R�}���h�I�����C���w���v</TD></TR>
-<TR><TD><A href="#logfile">logfile</A></TD><TD>���O�t�@�C�����w�肷��</TD></TR>
-<TR><TD><A href="#loglevel">loglevel</A></TD><TD>���O�Ɏ���ނ����߂�</TD></TR>
-<TR><TD><A href="#logprint">logprint</A></TD><TD>���O�ɏo�͂���</TD></TR>
-<TR><TD><A href="#debugger">debugger</A></TD><TD>�K���f�o�b�K��ON/OFF</TD></TR>
-<TR><TD><A href="#rand">rand</A></TD><TD>�����_���Ȑ�����Ԃ�</TD></TR>
-<TR><TD><A href="#srand">srand</A></TD><TD>�����̎��ݒ肷��</TD></TR>
-<TR><TD><A href="#securitylevel">securitylevel</A></TD><TD>�Z�L�����e�B���x���̎w��</TD></TR>
-<TR><TD><A href="#ver">ver</A></TD><TD>�o�[�W�����ԍ��擾</TD></TR>
+<TR class="genre"><TD colspan="2">その他</TD></TR>
+<TR><TD><A href="#rccharset">rccharset</A></TD><TD>メッセージ文字セット設定</TD></TR>
+<TR><TD><A href="#date">date</A></TD><TD>日時を指定フォーマットで返す</TD></TR>
+<TR><TD><A href="#mktime">mktime</A></TD><TD>日時を通算経過秒数に変換する</TD></TR>
+<TR><TD><A href="#getenv">getenv</A></TD><TD>環境変数の内容を返す</TD></TR>
+<TR><TD><A href="#help">help</A></TD><TD>KISコマンドオンラインヘルプ</TD></TR>
+<TR><TD><A href="#logfile">logfile</A></TD><TD>ログファイルを指定する</TD></TR>
+<TR><TD><A href="#loglevel">loglevel</A></TD><TD>ログに取る種類を決める</TD></TR>
+<TR><TD><A href="#logprint">logprint</A></TD><TD>ログに出力する</TD></TR>
+<TR><TD><A href="#debugger">debugger</A></TD><TD>幸水デバッガのON/OFF</TD></TR>
+<TR><TD><A href="#rand">rand</A></TD><TD>ランダムな整数を返す</TD></TR>
+<TR><TD><A href="#srand">srand</A></TD><TD>乱数の種を設定する</TD></TR>
+<TR><TD><A href="#securitylevel">securitylevel</A></TD><TD>セキュリティレベルの指定</TD></TR>
+<TR><TD><A href="#ver">ver</A></TD><TD>バージョン番号取得</TD></TR>
 </TABLE>
 </DIV>
 
 <A name="commandref"></A>
-<H3>4.2. �R�}���h���t�@�����X</H3>
+<H3>4.2. コマンドリファレンス</H3>
 <A name="syntax"></A>
-<H4>4.2.1. �\��</H4>
+<H4>4.2.1. 構文</H4>
 
 <TABLE class="command" width="100%">
 <CAPTION>
 	break<A name="break"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
 		$(break)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		loop�Auntil�Awhile�Aforeach���̃��[�v�\�����甲���o���B
+		loop、until、while、foreach等のループ構文から抜け出す。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  # data�G���g�����̒P��𒲂ׁA�uEND�v�������烋�[�v���甲����
+例
+  # dataエントリ内の単語を調べ、「END」だったらループから抜ける
   $(
     setstr @count 0;
     loop $(size data) $(
@@ -347,33 +347,33 @@ TABLE.command CAPTION{
 	continue<A name="continue"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
 		$(continue)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		loop�Auntil�Awhile�Aforeach���̃��[�v�\�����ŁA
-		���݂̃��[�v�������I�����A���̃��[�v�����ɓ���
+		loop、until、while、foreach等のループ構文中で、
+		現在のループ処理を終了し、次のループ処理に入る
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  # data�G���g���̒P��Łu�S�[�X�g�v���܂ޒP��̂�data2�G���g���ɃR�s�[
+例
+  # dataエントリの単語で「ゴースト」を含む単語のみdata2エントリにコピー
   $(
     loop $(size data) $(
         setstr @count ${-1};
         echo $data[${@count}];
-        if $[ $data[${@count} !~ "�S�[�X�g" ] $(
+        if $[ $data[${@count} !~ "ゴースト" ] $(
             continue;
         );
         pushstr data2 $data[${@count}];
@@ -388,52 +388,52 @@ TABLE.command CAPTION{
 	function<A name="function"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(function �֐��� �֐��̒�`)
-		$(function �֐���)
+		$(function 関数名 関数の定義)
+		$(function 関数名)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		������2�̏ꍇ�Ȃ�
-		������1�̏ꍇ�A�֐���`���e�̕�����\��
+		引数が2つの場合なし
+		引数が1つの場合、関数定義内容の文字列表現
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
 	  <P>
-	    �֐��R�}���h���`����B
-	    �֐���`���A@arg�G���g���������Ƃ��Ďg�p�ł���B$@arg[0]�͊֐����ŁA
-	    ������$@arg[1]����ƂȂ�B
-	    �֐���`�S�̖̂߂�l���A�֐��̖߂�l�ƂȂ�B
+	    関数コマンドを定義する。
+	    関数定義中、@argエントリが引数として使用できる。$@arg[0]は関数名で、
+	    引数は$@arg[1]からとなる。
+	    関数定義全体の戻り値が、関数の戻り値となる。
 	  </P><P>
-	    �g�ݍ��݊֐��Ɠ������O�̃R�}���h(�������A�\���R�}���h�͕s��)����`�\�B
-	    �����̑g�ݍ��݃R�}���h�ƃ��[�U��`�R�}���h�����݂����ꍇ�A
-	    ���[�U��`�R�}���h���D�悵�ČĂяo�����B
-	    ���̏ꍇ�A�擪��<SPAN class="tt">"."</SPAN>��t���ČĂяo�����Ƃɂ��A
-	    ���̑g�ݍ��݃R�}���h�������I�ɌĂяo�����Ƃ��ł���B
+	    組み込み関数と同じ名前のコマンド(ただし、構文コマンドは不可)も定義可能。
+	    同名の組み込みコマンドとユーザ定義コマンドが存在した場合、
+	    ユーザ定義コマンドが優先して呼び出される。
+	    その場合、先頭に<SPAN class="tt">"."</SPAN>を付けて呼び出すことにより、
+	    元の組み込みコマンドを強制的に呼び出すことができる。
 	  </P><P>
-	    �������֐��������������ꍇ�A�֐���`�̓��e�̕�����\�����Ԃ�B
-	    ���̖߂�l�́A�֐���`���e���G���g���ɋL�q���A
-	    getcode�R�}���h�ŃG���g�����Ăяo�����ꍇ�Ɠ����ł���B
+	    引数が関数名だけだった場合、関数定義の内容の文字列表現が返る。
+	    この戻り値は、関数定義内容をエントリに記述し、
+	    getcodeコマンドでエントリを呼び出した場合と等価である。
 	  </P>
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # �G���g���ɃZ�b�g�����l��߂�l�Ƃ���֐����`����
+  # エントリにセットした値を戻り値とする関数を定義する
   function tset $(
-    # ������2�łȂ���Ή������Ȃ�
+    # 引数が2個でなければ何もしない
     if $[ $(size @arg) != 3 ] $(return "");
     set $@arg[1] $(getcode @arg[2]);
     get @arg[2];
   );
-  # ���[�U��`�֐�tset�̒�`���Afuncdef�G���g���Ɋi�[
+  # ユーザ定義関数tsetの定義を、funcdefエントリに格納
   set funcdef $(function tset);
   =end
 </PRE>
@@ -445,42 +445,42 @@ TABLE.command CAPTION{
 	if<A name="if"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(if ������ �^�̏ꍇ�̕�)<BR>
-		$(if ������ �^�̏ꍇ�̕� else �U�̏ꍇ�̕�)<BR>
-		$(if ������ �^�̏ꍇ�̕� else if ������2 �c)<BR>
+		$(if 条件文 真の場合の文)<BR>
+		$(if 条件文 真の場合の文 else 偽の場合の文)<BR>
+		$(if 条件文 真の場合の文 else if 条件文2 …)<BR>
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�^�̏ꍇ�̕��A�܂��͋U�̏ꍇ�̕��̖߂�l
+		真の場合の文、または偽の場合の文の戻り値
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�������̐^�U�ɉ����A�^�̏ꍇ�̕��A
-		�܂��͋U�̏ꍇ�̕������s����B
-		else if�߂͉��i�ł��Ȃ��鎖���ł���B<BR>
-		else�Ȃǂ̃R�}���h�̑O��ɂ͕K���󔒕����E���s�������K�v�B
-<!--		������Ȃ����낤����́F�Ȃ��AKIS�ɂ́u�Ԃ牺����else�v�̖��͑��݂��Ȃ��B -->
+		条件文の真偽に応じ、真の場合の文、
+		または偽の場合の文を実行する。
+		else if節は何段でもつなげる事ができる。<BR>
+		elseなどのコマンドの前後には必ず空白文字・改行文字が必要。
+<!--		分からないだろうこれは：なお、KISには「ぶら下がりelse」の問題は存在しない。 -->
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��1
-  $(if $[ ${mode} == "Y" ] "\h\�͂�\e" else "\h������\e")
-    # mode�G���g���̓��e�Ō����������̂�"Y"�̏ꍇ�A�u�͂��v�ƕ\��
-    # ����ȊO�̏ꍇ�́u�������v�ƕ\��
+例1
+  $(if $[ ${mode} == "Y" ] "\h\はい\e" else "\hいいえ\e")
+    # modeエントリの内容で検索したものが"Y"の場合、「はい」と表示
+    # それ以外の場合は「いいえ」と表示
 
-��2
+例2
   $(if "true" $(set a "1" ; set b "2") )
-    # a�G���g���̓��e��1�Ab�G���g���̓��e��2�ɂȂ�
-    # �}���`�X�e�[�g�����g(����)���g���Ă���
+    # aエントリの内容は1、bエントリの内容は2になる
+    # マルチステートメント(複文)を使っている
 
-��3
+例3
   =dict
   a : 1
   b : 2
@@ -489,16 +489,16 @@ TABLE.command CAPTION{
   =kis
   if $[ ${a} == "1" ] $(
     if $[ ${b} == "2"] $(
-      echo "������";
+      echo "あたり";
     ) else $(
-      echo "�͂���";
+      echo "はずれ";
     );
   ) else $(
-    echo "�͂���";
+    echo "はずれ";
   );
   =end
-  # if���̓���q�̗�
-  # �u������v�ƕ\�������
+  # if文の入れ子の例
+  # 「あたり」と表示される
 </PRE>
 </TD></TR>
 </TABLE>
@@ -508,30 +508,30 @@ TABLE.command CAPTION{
 	foreach<A name="foreach"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(foreach �G���g��1 �G���g��2 ��1)
+		$(foreach エントリ1 エントリ2 文1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		��1���G���g��2���̑S�P��ɂ��ĕ]����������
+		文1をエントリ2内の全単語について評価した結果
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��2���̑S�P������ɃG���g��1�ɃZ�b�g���A���̂Ǖ�1��]������B
-		��1�ɒu���u���b�N��p����ꍇ�ɂ́A$()���ň͂ށB
+		エントリ2内の全単語を順にエントリ1にセットし、そのつど文1を評価する。
+		文1に置換ブロックを用いる場合には、$()等で囲む。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  $(set N 0 ; foreach i npw $(echo ${i}�l�A ; inc N) ; echo �ȏ�${N}��)
-  # npw�G���g�����̐l����S�āu�l�v�����ČĂсA�Ō�Ɂu�ȏ�n���v��
-  # �l����\��
+例
+  $(set N 0 ; foreach i npw $(echo ${i}様、 ; inc N) ; echo 以上${N}名)
+  # npwエントリ内の人名を全て「様」をつけて呼び、最後に「以上n名」と
+  # 人数を表示
 </PRE>
 </TD></TR>
 </TABLE>
@@ -541,29 +541,29 @@ TABLE.command CAPTION{
 	loop<A name="loop"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(loop �� ��1)
+		$(loop 回数 文1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		��1�̖߂�l
+		文1の戻り値
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�w�肵���񐔂����A��1���J��Ԃ��]������B
-		�񐔁A��1�ɒu���u���b�N��p����ꍇ�ɂ́A$()���ň͂ށB
+		指定した回数だけ、文1を繰り返し評価する。
+		回数、文1に置換ブロックを用いる場合には、$()等で囲む。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   $(loop 10 "tick!")
-  # �utick!�v��10��\�������
+  # 「tick!」と10回表示される
 </PRE>
 </TD></TR>
 </TABLE>
@@ -573,35 +573,35 @@ TABLE.command CAPTION{
 	return<A name="return"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(return �߂�l)
+		$(return 戻り値)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�w�肵���߂�l
+		指定した戻り値
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�֐�����w�肵���߂�l�Œ����ɔ�����B�߂�l�͏ȗ��\�ŁA
-		�ȗ������ꍇ�A����܂ł̊֐��̏o�͂��֐��̖߂�l�ƂȂ�B
+		関数から指定した戻り値で直ちに抜ける。戻り値は省略可能で、
+		省略した場合、それまでの関数の出力が関数の戻り値となる。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  function ����񂯂� $(
+  function じゃんけん $(
     if $[ $@arg[1] == 1 ] $(
-      return "���[";
+      return "ぐー";
     ) else if $[ $@arg[1] == 2 ] $(
-      return "���傫";
+      return "ちょき";
     ) else $(
-      return "�ρ[";
+      return "ぱー";
     );
   );
   =end
@@ -613,30 +613,30 @@ TABLE.command CAPTION{
 	rmfunc<A name="rmfunc"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(rmfunc ���[�U��`�֐���)
+		$(rmfunc ユーザ定義関数名)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
 	  <P>
-	    ���[�U����`�����֐��R�}���h���폜����B
+	    ユーザが定義した関数コマンドを削除する。
 	  </P>
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # my_find�R�}���h���폜����
+  # my_findコマンドを削除する
   rmfunc my_find;
   =end
 </PRE>
@@ -649,31 +649,31 @@ TABLE.command CAPTION{
 	silent<A name="silent"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
 		$(silent)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�}���`�X�e�[�g�����g���Asilent���o�ꂷ��܂ł̖߂�l��j���B
+		マルチステートメント中、silentが登場するまでの戻り値を破棄。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   $(echo 1 ; echo 2 ; silent ; echo 3)
-  #�u3�v���u���b�N�̖߂�l�ɂȂ�
-�Q�l
+  #「3」がブロックの戻り値になる
+参考
   $(echo 1 ; echo 2 ; echo 3)
-  #�u123�v���u���b�N�̖߂�l�ɂȂ�
+  #「123」がブロックの戻り値になる
 </PRE>
 </TD></TR>
 </TABLE>
@@ -683,35 +683,35 @@ TABLE.command CAPTION{
 	until<A name="until"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(until ������ ��1)
+		$(until 条件文 文1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		��1�̖߂�l
+		文1の戻り値
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		��������]�����A���ʂ��U�Ȃ�Ε�1��]������B
-		���̓�����A�������̕]�����ʂ��U�ł���ԁA�����ƌJ��Ԃ��B
-		�������A��1�ɒu���u���b�N��p����ꍇ�ɂ́A$()���ň͂ށB
+		条件文を評価し、結果が偽ならば文1を評価する。
+		この動作を、条件文の評価結果が偽である間、ずっと繰り返す。
+		条件文、文1に置換ブロックを用いる場合には、$()等で囲む。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   setstr A ${npw};
   setstr B ${npw};
   until $[ ${A} != ${B} ] $(
     setstr B ${npw};
   );
-  # A�G���g����B�G���g�����K���قȂ�悤�ɂ���
+  # AエントリとBエントリが必ず異なるようにする
   =end
 </PRE>
 </TD></TR>
@@ -722,36 +722,36 @@ TABLE.command CAPTION{
 	while<A name="while"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(while ������ ��1)
+		$(while 条件文 文1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		��1�̖߂�l
+		文1の戻り値
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		��������]�����A���ʂ��^�Ȃ�Ε�1��]������B
-		���̓�����A�������̕]�����ʂ��^�ł���ԁA�����ƌJ��Ԃ��B
-		�������A��1�ɒu���u���b�N��p����ꍇ�ɂ́A$()���ň͂ށB
+		条件文を評価し、結果が真ならば文1を評価する。
+		この動作を、条件文の評価結果が真である間、ずっと繰り返す。
+		条件文、文1に置換ブロックを用いる場合には、$()等で囲む。
 	</TD>
 </TR>
 <TR>
 <TD colspan="2">
 <PRE>
-��
+例
   =kis
   setstr A ${npw};
   setstr B ${npw};
   while $[ ${A} == ${B} ] $(
     setstr B ${npw};
   );
-  # A�G���g����B�G���g�����K���قȂ�悤�ɂ���
+  # AエントリとBエントリが必ず異なるようにする
   =end
 </PRE></TD></TR>
 </TABLE>
@@ -761,34 +761,34 @@ TABLE.command CAPTION{
 	NULL<A name="NULL"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
 		$(NULL)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�(�󕶎���)
+		なし(空文字列)
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-	  �󕶎����Ԃ��B<SPAN class="tt">""</SPAN>�Ɠ����B
-	  �ߋ��݊����ƃf�o�b�O�Ȃǂ̕֋X�̂��߂Ɏc���Ă���B
+	  空文字列を返す。<SPAN class="tt">""</SPAN>と同等。
+	  過去互換性とデバッグなどの便宜のために残っている。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   if $[ ${test1} == $(NULL) ] $(
-    echo "test1�̓J��";
+    echo "test1はカラ";
   );
   =end
-  # test1����̃G���g���A�������͕]�����ʂ�""�̏ꍇ�A
-  # �u�G���g��1�̓J���v��Ԃ�
+  # test1が空のエントリ、もしくは評価結果が""の場合、
+  # 「エントリ1はカラ」を返す
 </PRE>
 </TD></TR>
 </TABLE>
@@ -798,82 +798,82 @@ TABLE.command CAPTION{
 	?<A name="randomselect"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(? ��1  ��2 ...  ��n)
+		$(? 文1  文2 ...  文n)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		��1���當n�܂ł̓��ǂꂩ��̖߂�l
+		文1から文nまでの内どれか一つの戻り値
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		��1�`��n����A�ǂꂩ��������_���ɑI��ŕ]������B
-		�g��makoto�̑�p�B
+		文1～文nから、どれか一つをランダムに選んで評価する。
+		拡張makotoの代用。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  $(? "�E" "��")"�ɍs��"
-  # �u�E�ɍs���v�܂��́u���ɍs���v���Ԃ�
+例
+  $(? "右" "左")"に行く"
+  # 「右に行く」または「左に行く」が返る
 </PRE>
 </TD></TR>
 </TABLE>
 
 <A name="dic-handle"></A>
-<H4>4.2.2. �R�}���h-��������</H4>
+<H4>4.2.2. コマンド-辞書操作</H4>
 
 <TABLE class="command" width="100%">
 <CAPTION>
-	��������R�}���h���ʎ���<A name="dictcommon"></A>
+	辞書操作コマンド共通事項<A name="dictcommon"></A>
 </CAPTION>
 <TR>
 	<TD width="10%">&nbsp;</TD>
 	<TD>
-		��������R�}���h�̂����A�P��E������Z�b�g/�ǉ�/�}���R�}���h�A
-		get�Agetcode�Aclear�R�}���h�́A
-		���ʂ��ăG���g����z��Ƃ��Ĉ����@�\������B�����̃R�}���h�ł́A
-		�G���g�����������ꏊ�ŁA���̂悤�ɏ������Ƃ��o����B
+		辞書操作コマンドのうち、単語・文字列セット/追加/挿入コマンド、
+		get、getcode、clearコマンドは、
+		共通してエントリを配列として扱う機能がある。これらのコマンドでは、
+		エントリ名を書く場所で、次のように書くことが出来る。
 		<UL>
-		<LI>�u�G���g��1�v�Ə������ꍇ�A�G���g��1�S�̂��w���B</LI>
-		<LI>�u�G���g��1[0]�v�Ə������ꍇ�A�G���g��1��1�Ԗڂ̒P����w���B</LI>
-		<LI>�u�G���g��1[0..3]�v�Ə������ꍇ�A
-			�G���g��1��1�Ԗڂ���4�Ԗڂ̒P����w���B</LI>
-		<LI>�u�G���g��1[-1]�v�Ə������ꍇ�A�G���g��1�̖����̒P����w���B</LI>
-		<LI>�u�G���g��1[-2..-4�v�Ə������ꍇ�A
-			�G���g��1�̖�������2�Ԗڂ���A��������4�Ԗڂ̒P����w���B
+		<LI>「エントリ1」と書いた場合、エントリ1全体を指す。</LI>
+		<LI>「エントリ1[0]」と書いた場合、エントリ1の1番目の単語を指す。</LI>
+		<LI>「エントリ1[0..3]」と書いた場合、
+			エントリ1の1番目から4番目の単語を指す。</LI>
+		<LI>「エントリ1[-1]」と書いた場合、エントリ1の末尾の単語を指す。</LI>
+		<LI>「エントリ1[-2..-4」と書いた場合、
+			エントリ1の末尾から2番目から、末尾から4番目の単語を指す。
 		</UL>
-		[ ]���̓G���g���z��Ăяo�����l�A0�I���W���ł��邱�Ƃɒ��ӁB
-		�܂��A[ ]���ő��݂��Ȃ��Y�������w�肵���ꍇ�A��������B
-		�Ȃ��A��L�@�\�̓G���g���z��Ăяo���ƌ����ځE�@�\�����Ă��邪�A
-		<EM>�܂��������֌W�̋@�\</EM>�ł��邱�Ƃɒ��ӁB<BR>
+		[ ]内はエントリ配列呼び出し同様、0オリジンであることに注意。
+		また、[ ]内で存在しない添え字を指定した場合、無視する。
+		なお、上記機能はエントリ配列呼び出しと見た目・機能が似ているが、
+		<EM>まったく無関係の機能</EM>であることに注意。<BR>
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   word : "one" , "two" , "three" , "four" , "five" , "six" , "seven"
   
   =kis
   setstr word[4] "5th element";
-  # word�G���g��5�Ԗڂ̒P����u5th element�v�Œu��������
+  # wordエントリ5番目の単語を「5th element」で置き換える
   
-  setstr word2[0..5] "�����l";
-  # word2�G���g����6�́u�����l�v�Ƃ�����������Z�b�g����
+  setstr word2[0..5] "初期値";
+  # word2エントリに6個の「初期値」という文字列をセットする
   
   clear word[1];
-  # word�G���g����2�Ԗڂ̒P��(two)���폜
+  # wordエントリの2番目の単語(two)を削除
 
   get word;
-  # �uonethreefour5th elementsixseven�v��Ԃ�
+  # 「onethreefour5th elementsixseven」を返す
   
   get word[100];
-  # word�G���g���ɂ�6�����P�ꂪ�Ȃ��̂ŁA�����Ԃ��Ȃ�
+  # wordエントリには6個しか単語がないので、何も返さない
   =end
 </PRE>
 </TD></TR>
@@ -884,38 +884,38 @@ TABLE.command CAPTION{
 	adddict<A name="adddict"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(adddict �G���g��1 �P��1)
+		$(adddict エントリ1 単語1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1�ɒP��1��ǉ�����B<BR>
-		�G���g�����̎w��ɂ́A<A href="#dictcommon">��������R�}���h���ʂ̏���</A>�𗘗p�ł���B
+		エントリ1に単語1を追加する。<BR>
+		エントリ名の指定には、<A href="#dictcommon">辞書操作コマンド共通の書式</A>を利用できる。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # npw�G���g���Ɂu�c���^�I�q�v��ǉ�
-  adddict npw �c���^�I�q;
+  # npwエントリに「田中真紀子」を追加
+  adddict npw 田中真紀子;
   
-  # name�G���g����npw�G���g�����̒P���ǉ�
+  # nameエントリにnpwエントリ中の単語を追加
   adddict name ${npw}
   
-  # Act�G���g���ɒP��u${normal}�v��ǉ�
+  # Actエントリに単語「${normal}」を追加
   adddict Act "${normal}";
   
-  # ���̍s�����s����ƁAnormal�G���g���̒���P����Ăяo��
+  # 次の行を実行すると、normalエントリの中を単語を呼び出す
   echo ${Act};
   =end
 </PRE>
@@ -927,40 +927,40 @@ TABLE.command CAPTION{
 	adddictstr<A name="adddictstr"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD>
-		$(adddictstr �G���g��1 ������1)
+		$(adddictstr エントリ1 文字列1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1�ɕ�����1��ǉ�����Badddict�Ƃ̈Ⴂ�́A
-		�ǉ��������̂��K���u���u���b�N�ł͂Ȃ��A������ɂȂ�_�ł���B<BR>
-		�G���g�����̎w��ɂ́A<A href="#dictcommon">��������R�}���h���ʂ̏���</A>�𗘗p�ł���B
+		エントリ1に文字列1を追加する。adddictとの違いは、
+		追加したものが必ず置換ブロックではなく、文字列になる点である。<BR>
+		エントリ名の指定には、<A href="#dictcommon">辞書操作コマンド共通の書式</A>を利用できる。
 
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # npw�G���g���Ɂu�c���^�I�q�v��ǉ�
-  adddictstr npw �c���^�I�q;
+  # npwエントリに「田中真紀子」を追加
+  adddictstr npw 田中真紀子;
   
-  # name�G���g����npw�G���g�����̒P���ǉ�
+  # nameエントリにnpwエントリ中の単語を追加
   adddictstr name ${npw}
   
-  # Act�G���g���ɕ�����u${normal}�v��ǉ�
+  # Actエントリに文字列「${normal}」を追加
   adddictstr Act "${normal}";
   
-  # ���̍s�����s����ƁA�u${normal}�v��Ԃ��B
+  # 次の行を実行すると、「${normal}」を返す。
   echo ${Act};
   =end
 </PRE>
@@ -972,38 +972,38 @@ TABLE.command CAPTION{
 	clear<A name="clear"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(clear �G���g��1)
+		$(clear エントリ1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1����P����폜����B<BR>
-		�G���g�����̎w��ɂ́A<A href="#dictcommon">��������R�}���h���ʂ̏���</A>�𗘗p�ł���B
+		エントリ1から単語を削除する。<BR>
+		エントリ名の指定には、<A href="#dictcommon">辞書操作コマンド共通の書式</A>を利用できる。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   test1 : word1, word2, word3
 
   =kis
   foreach @word test1 $(echo ${@word})
-  # �uword1word2word3�v��Ԃ�
+  # 「word1word2word3」を返す
 
   clear test1;
-  # test1�G���g���̓��e��S�ď���
+  # test1エントリの内容を全て消去
 
   foreach @word test1 $(echo ${@word})
-  # �����Ԃ��Ȃ�
+  # 何も返さない
   =end
 </PRE>
 </TD></TR>
@@ -1014,38 +1014,38 @@ TABLE.command CAPTION{
   cleartree<A name="cleartree"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(cleartree �G���g��1)
+    $(cleartree エントリ1)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �Ȃ�
+    なし
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �u�G���g��1.�v�Ŗ��O���n�܂�G���g���̓��e��S�č폜����B
-    �Ⴆ�΁u�G���g��1.a�v�A�u�G���g��1.b�v�Ƃ����G���g�����������Ƃ���ƁA
-    �����̓��e���폜�����B
+    「エントリ1.」で名前が始まるエントリの内容を全て削除する。
+    例えば「エントリ1.a」、「エントリ1.b」というエントリがあったとすると、
+    これらの内容が削除される。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  ghost1.name : �܂��
-  ghost1.shiori : �ؘa��
+例
+  ghost1.name : まゆら
+  ghost1.shiori : 華和梨
   ghost1.shiori.phase : 7.3.1
-  ghost1.author : ���u
-  ghost1.shell : �T���^,�����ւ�,��,�ĕ�
+  ghost1.author : 夢蛍
+  ghost1.shell : サンタ,着せ替え,白,夏服
   
   =kis
   cleartree ghost1;
   =end
-  # ��L�G���g���̓��e�͑S�č폜�����
+  # 上記エントリの内容は全て削除される
 </PRE>
 </TD></TR>
 </TABLE>
@@ -1055,39 +1055,39 @@ TABLE.command CAPTION{
   copy<A name="copy"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(copy �G���g��1 �G���g��2)
+    $(copy エントリ1 エントリ2)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �Ȃ�
+    なし
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �G���g��1�̓��e���A���ׂăG���g��2�ɃR�s�[����B
-    �G���g��2�̈ȑO�̓��e�͂��̂܂܎c��A
-    �G���g��1�̓��e���G���g��2�ɒǉ�����B
+    エントリ1の内容を、すべてエントリ2にコピーする。
+    エントリ2の以前の内容はそのまま残り、
+    エントリ1の内容をエントリ2に追加する。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  ghost1 : ������ , �܂�� , �ޗ� , ���� , ${ghost2}
-  ghost2 : �T���o�[���C�� , �Ŏq , �Ԃ����
+例
+  ghost1 : さくら , まゆら , 奈留 , 理夢 , ${ghost2}
+  ghost2 : サンバーレイン , 毒子 , 花ちゃん
   
   =kis
   copy ghost1 ghost3;
   
   getcode ghost3;
-  # �u"������""�܂��""�ޗ�""����"${ghost2}�v���Ԃ�
+  # 「"さくら""まゆら""奈留""理夢"${ghost2}」が返る
   
   size ghost1;
-  # 5���Ԃ�
+  # 5が返る
   =end
 </PRE>
 </TD></TR>
@@ -1098,43 +1098,43 @@ TABLE.command CAPTION{
   copytree<A name="copytree"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(copytree �G���g��1 �G���g��2)
+    $(copytree エントリ1 エントリ2)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �Ȃ�
+    なし
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �u�G���g��1.�v�Ŗ��O���n�܂�G���g���̍\�����A�G���g��2�ɃR�s�[����B
-    �Ⴆ�΁u�G���g��1.a�v�A�u�G���g��1.b�v�Ƃ����G���g�����������Ƃ���ƁA
-    ���ꂼ��̓��e���u�G���g��2.a�v�A�u�G���g��2.b�v�G���g���ɃR�s�[����B
+    「エントリ1.」で名前が始まるエントリの構造を、エントリ2にコピーする。
+    例えば「エントリ1.a」、「エントリ1.b」というエントリがあったとすると、
+    それぞれの内容を「エントリ2.a」、「エントリ2.b」エントリにコピーする。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  ghost1.name : �܂��
-  ghost1.shiori : �ؘa��
+例
+  ghost1.name : まゆら
+  ghost1.shiori : 華和梨
   ghost1.shiori.phase : 7.3.1
-  ghost1.author : ���u
-  ghost1.shell : �T���^,�����ւ�,��,�ĕ�
+  ghost1.author : 夢蛍
+  ghost1.shell : サンタ,着せ替え,白,夏服
   
   =kis
   copytree ghost1 ghost2;
   =end
-  # �ughost2.�v�Ŏn�܂�G���g���̓��e���A���̂悤�ɂȂ�
-  # ghost2.name : �܂��
-  # ghost2.shiori : �ؘa��
+  # 「ghost2.」で始まるエントリの内容が、次のようになる
+  # ghost2.name : まゆら
+  # ghost2.shiori : 華和梨
   # ghost2.shiori.phase : 7.3.1
-  # ghost2.author : ���u
-  # ghost2.shell : �T���^,�����ւ�,��,�ĕ�
+  # ghost2.author : 夢蛍
+  # ghost2.shell : サンタ,着せ替え,白,夏服
 </PRE>
 </TD></TR>
 </TABLE>
@@ -1144,45 +1144,45 @@ TABLE.command CAPTION{
 	find<A name="find"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-	 $(find �G���g��1 �P��1)<BR>
-	 $(find �G���g��1 �P��1 �C���f�b�N�X)
+	 $(find エントリ1 単語1)<BR>
+	 $(find エントリ1 単語1 インデックス)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�P��1�̈ʒu�B������Ȃ������ꍇ"-1"�B
+		単語1の位置。見つからなかった場合"-1"。
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-	  �G���g��1���ŁA�P��1�������ŏ��̈ʒu��Ԃ��B
-	  �C���f�b�N�X���w�肳�ꂽ�ꍇ�A���̃C���f�b�N�X�ȍ~�ŁA
-	  �Ō�Ɍ����ʒu��Ԃ��B
-	  �C���f�b�N�X�͐����łȂ���΂Ȃ�Ȃ��B
+	  エントリ1内で、単語1が現れる最初の位置を返す。
+	  インデックスが指定された場合、そのインデックス以降で、
+	  最後に現れる位置を返す。
+	  インデックスは整数でなければならない。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  �n��: ����, ${�l��}�̉�, �O����, ����, ${�l��}�̎d����
-  ���: ${�l��}�̉�
+例
+  地名: ここ, ${人名}の家, 三丁目, ここ, ${人名}の仕事場
+  候補: ${人名}の家
 
   =kis
-  find �n�� ����;
-  # "0"���Ԃ�B
+  find 地名 ここ;
+  # "0"が返る。
 
-  find �n�� ���� 1;
-  # "3"���Ԃ�B
+  find 地名 ここ 1;
+  # "3"が返る。
 
-  find �n�� "${�l��}"�̉�;
-  # "1"���Ԃ�B
+  find 地名 "${人名}"の家;
+  # "1"が返る。
 
-  find �n�� $(getcode ���[0]);
-  # "1"���Ԃ�B
+  find 地名 $(getcode 候補[0]);
+  # "1"が返る。
   =end
 </PRE>
 </TD></TR>
@@ -1193,37 +1193,37 @@ TABLE.command CAPTION{
 	get<A name="get"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD>
-		$(get �G���g��1)
+		$(get エントリ1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�G���g��1�̎w��͈͂̒P���S�ĕ]����������
+		エントリ1の指定範囲の単語を全て評価した結果
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1�̎w��͈͂̒P����A�Y���������őS�ĕ]�����A
-		���ʂ��������ĕԂ��B�w��͈͂��ȗ������ꍇ�A
-		�G���g��1�̑S�P�ꂪ�ΏۂƂȂ�B<BR>
-		�G���g�����̎w��ɂ́A<A href="#dictcommon">��������R�}���h���ʂ̏���</A>�𗘗p�ł���B
+		エントリ1の指定範囲の単語を、添え字昇順で全て評価し、
+		結果を結合して返す。指定範囲を省略した場合、
+		エントリ1の全単語が対象となる。<BR>
+		エントリ名の指定には、<A href="#dictcommon">辞書操作コマンド共通の書式</A>を利用できる。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  word1 : �� , �� , �� , �� , ��
+例
+  word1 : あ , い , う , え , お
   word2 : $(date %y) , $(date %M) , $(date %d)
 
   =kis
   get word1;
-  # �u�����������v��Ԃ�
+  # 「あいうえお」を返す
   get word2;
-  # �u20020425�v�̌`���ō����̓��t��Ԃ�
+  # 「20020425」の形式で今日の日付を返す
   =end
 </PRE>
 </TD></TR>
@@ -1234,37 +1234,37 @@ TABLE.command CAPTION{
 	getcode<A name="getcode"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD>
-		$(getcode �G���g��1)
+		$(getcode エントリ1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�G���g��1�̎w��͈͂̒P���S�ĕ]���O�̌`���Ō�����������
+		エントリ1の指定範囲の単語を全て評価前の形式で結合した結果
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1�̎w��͈͂̒P����A�Y���������őS�ĕ]�������ɎQ�Ƃ��A
-		���ʂ��������ĕԂ��B�w��͈͂��ȗ������ꍇ�A
-		�G���g��1�̑S�P�ꂪ�ΏۂƂȂ�B<BR>
-		�G���g�����̎w��ɂ́A<A href="#dictcommon">��������R�}���h���ʂ̏���</A>�𗘗p�ł���B
+		エントリ1の指定範囲の単語を、添え字昇順で全て評価せずに参照し、
+		結果を結合して返す。指定範囲を省略した場合、
+		エントリ1の全単語が対象となる。<BR>
+		エントリ名の指定には、<A href="#dictcommon">辞書操作コマンド共通の書式</A>を利用できる。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  word1 : �� , �� , �� , �� , ��
+例
+  word1 : あ , い , う , え , お
   word2 : $(date %y) , $(date %M) , $(date %d)
 
   =kis
   get word1;
-  # �u"��""��""��""��""��"�v��Ԃ�
+  # 「"あ""い""う""え""お"」を返す
   get word2;
-  # �u$(date %y)$(date %M)$(date %d)�v��Ԃ�
+  # 「$(date %y)$(date %M)$(date %d)」を返す
   =end
 </PRE>
 </TD></TR>
@@ -1275,38 +1275,38 @@ TABLE.command CAPTION{
 	getrandom<A name="getrandom"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(getrandom �G���g��1 �P��1)
+		$(getrandom エントリ1 単語1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�G���g��1�̒P��̂����ꂩ�A�܂��͒P��1
+		エントリ1の単語のいずれか、または単語1
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1�̒P��������_����1�I�����A�]�����ʂ�Ԃ��B
-		�G���g��1�ɒP�ꂪ���������ꍇ�A�P��1��Ԃ��B
-		�@�\��entry�Ƃ܂����������ł���B
+		エントリ1の単語をランダムに1つ選択し、評価結果を返す。
+		エントリ1に単語が無かった場合、単語1を返す。
+		機能はentryとまったく同じである。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   getrandom "npw";
-  # ${npw}�Ɠ���
+  # ${npw}と同じ
   
   getrandom "message."$(rand 3);
-  # ${message.0}����${message.2}�̂ǂꂩ�Ɠ���
+  # ${message.0}から${message.2}のどれかと同じ
 
   getrandom "System.OtherGhost" ${myname};
-  # ${System.OtherGhost}�Ɠ���
-  # ���ʂ���̏ꍇ�́A${myname}�̖߂�l���Ԃ�
+  # ${System.OtherGhost}と同じ
+  # 結果が空の場合は、${myname}の戻り値が返る
   =end
 </PRE>
 </TD></TR>
@@ -1317,38 +1317,38 @@ TABLE.command CAPTION{
 	insert<A name="insert"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(insert �G���g��1[�C���f�b�N�X1] �P��1)
+		$(insert エントリ1[インデックス1] 単語1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1�́u�C���f�b�N�X1+1�v�Ԗڂ̒P��̒��O�ɁA�P��1��}������B<BR>
-		�G���g�����̎w��ɂ́A<A href="#dictcommon">��������R�}���h���ʂ̏���</A>�𗘗p�ł���B
+		エントリ1の「インデックス1+1」番目の単語の直前に、単語1を挿入する。<BR>
+		エントリ名の指定には、<A href="#dictcommon">辞書操作コマンド共通の書式</A>を利用できる。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   word : 1 , 2 , 3 , 4 , 5 , 6 , 7
   key : AAA
   
   =kis
   get word;
-  # �u1234567�v���Ԃ�
+  # 「1234567」が返る
   
   insert word[3] "${key}";
   
   get word;
-  # �u123AAA4567�v���Ԃ�
+  # 「123AAA4567」が返る
   =end
 </PRE>
 </TD></TR>
@@ -1359,40 +1359,40 @@ TABLE.command CAPTION{
 	insertstr<A name="insertstr"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(insertstr �G���g��1[�C���f�b�N�X1] ������1)
+		$(insertstr エントリ1[インデックス1] 文字列1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1�́u�C���f�b�N�X1+1�v�Ԗڂ̒P��̒��O�ɁA������1��}������B
-		insert�Ƃ̈Ⴂ�́A
-		�ǉ��������̂��K���u���u���b�N�ł͂Ȃ��A������ɂȂ�_�ł���B<BR>
-		�G���g�����̎w��ɂ́A<A href="#dictcommon">��������R�}���h���ʂ̏���</A>�𗘗p�ł���B
+		エントリ1の「インデックス1+1」番目の単語の直前に、文字列1を挿入する。
+		insertとの違いは、
+		追加したものが必ず置換ブロックではなく、文字列になる点である。<BR>
+		エントリ名の指定には、<A href="#dictcommon">辞書操作コマンド共通の書式</A>を利用できる。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   word : 1 , 2 , 3 , 4 , 5 , 6 , 7
   key : AAA
   
   =kis
   get word;
-  # �u1234567�v���Ԃ�
+  # 「1234567」が返る
   
   insertstr word[3] "${key}";
   
   get word;
-  # �u123${key}4567�v���Ԃ�
+  # 「123${key}4567」が返る
   =end
 </PRE>
 </TD></TR>
@@ -1403,38 +1403,38 @@ TABLE.command CAPTION{
   listsub<A name="listsub"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(listsub �G���g��1 �G���g��2)
+    $(listsub エントリ1 エントリ2)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �Ȃ�
+    なし
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �u�G���g��2.�v�Ŗ��O���n�܂�A����ȏ�u.�v���܂܂�Ȃ��G���g�����̈ꗗ���A�G���g��1�ɒǉ�����B
-   �G���g��2�Ɂu.�v���w�肷��ƁA�ŏ��(�u.�v��S���܂܂Ȃ�)�G���g�����̈ꗗ��������B
+    「エントリ2.」で名前が始まり、それ以上「.」が含まれないエントリ名の一覧を、エントリ1に追加する。
+   エントリ2に「.」を指定すると、最上位(「.」を全く含まない)エントリ名の一覧が得られる。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  ghost1.name : �܂��
-  ghost1.shiori : �ؘa��
+例
+  ghost1.name : まゆら
+  ghost1.shiori : 華和梨
   ghost1.shiori.phase : 7.3.1
-  ghost1.author : ���u
-  ghost1.shell : �T���^,�����ւ�,��,�ĕ�
+  ghost1.author : 夢蛍
+  ghost1.shell : サンタ,着せ替え,白,夏服
   
   =kis
-  listsub �ꗗ ghost1;
+  listsub 一覧 ghost1;
 
-  getcode �ꗗ;
-  # "ghost1.name""ghost1.shiori""ghost1.author""ghsot1.shell"���Ԃ�B
+  getcode 一覧;
+  # "ghost1.name""ghost1.shiori""ghost1.author""ghsot1.shell"が返る。
 </PRE>
 </TD></TR>
 </TABLE>
@@ -1444,33 +1444,33 @@ TABLE.command CAPTION{
   listtree<A name="listtree"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(listtree �G���g��1 �G���g��2)
+    $(listtree エントリ1 エントリ2)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �Ȃ�
+    なし
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �u�G���g��2.�v�Ŗ��O���n�܂�G���g�����ꗗ���A�G���g��1�ɒǉ�����B
-    �G���g��2�Ɂu.�v���w�肷��ƁA�S�G���g�����ꗗ���擾�ł���B
+    「エントリ2.」で名前が始まるエントリ名一覧を、エントリ1に追加する。
+    エントリ2に「.」を指定すると、全エントリ名一覧を取得できる。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   listtree SHIORI System.Request;
-  # SHIORI�G���g���ɁA�{�̂���̃��N�G�X�g�w�b�_�ꗗ��ǉ�����
+  # SHIORIエントリに、本体からのリクエストヘッダ一覧を追加する
   
   listree Entries .;
-  # �S�G���g������Entries�G���g���ɒǉ��B��ɍ��͖S����GET Status�p
+  # 全エントリ名をEntriesエントリに追加。主に今は亡き対GET Status用
 </PRE>
 </TD></TR>
 </TABLE>
@@ -1480,40 +1480,40 @@ TABLE.command CAPTION{
   move<A name="move"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(move �G���g��1 �G���g��2)
+    $(move エントリ1 エントリ2)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �Ȃ�
+    なし
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �G���g��1�̓��e���A���ׂăG���g��2�Ɉڂ��B
-    ���s��A�G���g��1�̓��e�͍폜�����B
-    �G���g��2�̈ȑO�̓��e�͂��̂܂܎c��A
-    �G���g��1�̓��e���G���g��2�ɒǉ�����B
+    エントリ1の内容を、すべてエントリ2に移す。
+    実行後、エントリ1の内容は削除される。
+    エントリ2の以前の内容はそのまま残り、
+    エントリ1の内容をエントリ2に追加する。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  ghost1 : ������ , �܂�� , �ޗ� , ���� , ${ghost2}
-  ghost2 : �T���o�[���C�� , �Ŏq , �Ԃ����
+例
+  ghost1 : さくら , まゆら , 奈留 , 理夢 , ${ghost2}
+  ghost2 : サンバーレイン , 毒子 , 花ちゃん
   
   =kis
   move ghost1 ghost3;
   
   getcode ghost3;
-  # �u"������""�܂��""�ޗ�""����"${ghost2}�v���Ԃ�
+  # 「"さくら""まゆら""奈留""理夢"${ghost2}」が返る
   
   size ghost1;
-  # 0���Ԃ�
+  # 0が返る
   =end
 </PRE>
 </TD></TR>
@@ -1524,44 +1524,44 @@ TABLE.command CAPTION{
   movetree<A name="movetree"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(movetree �G���g��1 �G���g��2)
+    $(movetree エントリ1 エントリ2)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �Ȃ�
+    なし
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �u�G���g��1.�v�Ŗ��O���n�܂�G���g���̍\�����A�G���g��2�Ɉڂ��B
-    �Ⴆ�΁u�G���g��1.a�v�A�u�G���g��1.b�v�Ƃ����G���g�����������Ƃ���ƁA
-    ���ꂼ��̓��e���u�G���g��2.a�v�A�u�G���g��2.b�v�G���g���ɃR�s�[����B
-    ���̌�G���g��1.a�A�G���g��1.b�����폜����B
+    「エントリ1.」で名前が始まるエントリの構造を、エントリ2に移す。
+    例えば「エントリ1.a」、「エントリ1.b」というエントリがあったとすると、
+    それぞれの内容を「エントリ2.a」、「エントリ2.b」エントリにコピーする。
+    その後エントリ1.a、エントリ1.b等を削除する。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  ghost1.name : �܂��
-  ghost1.shiori : �ؘa��
+例
+  ghost1.name : まゆら
+  ghost1.shiori : 華和梨
   ghost1.shiori.phase : 7.3.1
-  ghost1.author : ���u
-  ghost1.shell : �T���^,�����ւ�,��,�ĕ�
+  ghost1.author : 夢蛍
+  ghost1.shell : サンタ,着せ替え,白,夏服
   
   =kis
   movetree ghost1 ghost2;
   =end
-  # �ughost2.�v�Ŏn�܂�G���g���̓��e���A���̂悤�ɂȂ�
-  # ghost2.name : �܂��
-  # ghost2.shiori : �ؘa��
+  # 「ghost2.」で始まるエントリの内容が、次のようになる
+  # ghost2.name : まゆら
+  # ghost2.shiori : 華和梨
   # ghost2.shiori.phase : 7.3.1
-  # ghost2.author : ���u
-  # ghost2.shell : �T���^,�����ւ�,��,�ĕ�
+  # ghost2.author : 夢蛍
+  # ghost2.shell : サンタ,着せ替え,白,夏服
 </PRE>
 </TD></TR>
 </TABLE>
@@ -1571,39 +1571,39 @@ TABLE.command CAPTION{
 	pop<A name="pop"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD>
-		$(pop �G���g��1)
+		$(pop エントリ1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�G���g��1�̖����̒P��
+		エントリ1の末尾の単語
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1�̖����ɂ���P����폜���A�����Ԃ��B
-		�G���g��1�ɒP�ꂪ������΁A�󕶎����Ԃ��B
+		エントリ1の末尾にある単語を削除し、それを返す。
+		エントリ1に単語が無ければ、空文字列を返す。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  PASOPIA : �p�\�s�A7
+例
+  PASOPIA : パソピア7
   oldmachine : PC9801,X68k,MSX2,PC8801,X1,PC8001,${PASOPIA}
   
   =kis
   foreach @pc oldmachine $(echo " "${@pc});
-  # �u PC9801 X68k MSX2 PC8801 X1 PC8001 �p�\�s�A7�v��Ԃ�
+  # 「 PC9801 X68k MSX2 PC8801 X1 PC8001 パソピア7」を返す
   
   pop oldmachine;
-  # �u�p�\�s�A7�v��Ԃ�
+  # 「パソピア7」を返す
   
   foreach @pc oldmachine $(echo " "${@pc});
-  # �u PC9801 X68k MSX2 PC8801 X1 PC8001�v��Ԃ�
+  # 「 PC9801 X68k MSX2 PC8801 X1 PC8001」を返す
   =end
 </PRE>
 </TD></TR>
@@ -1614,39 +1614,39 @@ TABLE.command CAPTION{
 	popcode<A name="popcode"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD>
-		$(popcode �G���g��1)
+		$(popcode エントリ1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�G���g��1�̖����̒P��̕]���O�̌`��
+		エントリ1の末尾の単語の評価前の形式
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1�̖����ɂ���P����폜���A�]���O�̌`���ŕԂ��B
-		�G���g��1�ɒP�ꂪ������΁A�󕶎����Ԃ��B
+		エントリ1の末尾にある単語を削除し、評価前の形式で返す。
+		エントリ1に単語が無ければ、空文字列を返す。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  PASOPIA : �p�\�s�A7
+例
+  PASOPIA : パソピア7
   oldmachine : PC9801,X68k,MSX2,PC8801,X1,PC8001,${PASOPIA}
   
   =kis
   foreach @pc oldmachine $(echo " "${@pc});
-  # �u PC9801 X68k MSX2 PC8801 X1 PC8001 �p�\�s�A7�v��Ԃ�
+  # 「 PC9801 X68k MSX2 PC8801 X1 PC8001 パソピア7」を返す
   
   popcode oldmachine;
-  # �u${PASOPIA}�v��Ԃ�
+  # 「${PASOPIA}」を返す
   
   foreach @pc oldmachine $(echo " "${@pc});
-  # �u PC9801 X68k MSX2 PC8801 X1 PC8001�v��Ԃ�
+  # 「 PC9801 X68k MSX2 PC8801 X1 PC8001」を返す
   =end
 </PRE>
 </TD></TR>
@@ -1657,38 +1657,38 @@ TABLE.command CAPTION{
 	push<A name="push"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD>
-		$(push �G���g��1 �P��1)
+		$(push エントリ1 単語1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1�̖����ɒP��1��ǉ�����Badddict�Ɠ��`�B<BR>
-		�G���g�����̎w��ɂ́A<A href="#dictcommon">��������R�}���h���ʂ̏���</A>�𗘗p�ł���B
+		エントリ1の末尾に単語1を追加する。adddictと同義。<BR>
+		エントリ名の指定には、<A href="#dictcommon">辞書操作コマンド共通の書式</A>を利用できる。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # npw�G���g���Ɂu�c���^�I�q�v��ǉ�
-  push npw �c���^�I�q;
+  # npwエントリに「田中真紀子」を追加
+  push npw 田中真紀子;
   
-  # name�G���g����npw�G���g�����̒P���ǉ�
+  # nameエントリにnpwエントリ中の単語を追加
   push name ${npw}
   
-  # Act�G���g���ɒP��u${normal}�v��ǉ�
+  # Actエントリに単語「${normal}」を追加
   push Act "${normal}";
   
-  # ���̍s�����s����ƁAnormal�G���g���̒���P����Ăяo��
+  # 次の行を実行すると、normalエントリの中を単語を呼び出す
   echo ${Act};
   =end
 </PRE>
@@ -1700,38 +1700,38 @@ TABLE.command CAPTION{
 	pushstr<A name="pushstr"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD>
-		$(pushstr �G���g��1 ������1)
+		$(pushstr エントリ1 文字列1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1�̖����ɕ�����1��ǉ�����Badddictstr�Ɠ��`�B<BR>
-		�G���g�����̎w��ɂ́A<A href="#dictcommon">��������R�}���h���ʂ̏���</A>�𗘗p�ł���B
+		エントリ1の末尾に文字列1を追加する。adddictstrと同義。<BR>
+		エントリ名の指定には、<A href="#dictcommon">辞書操作コマンド共通の書式</A>を利用できる。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # npw�G���g���Ɂu�c���^�I�q�v��ǉ�
-  pushstr npw �c���^�I�q;
+  # npwエントリに「田中真紀子」を追加
+  pushstr npw 田中真紀子;
   
-  # name�G���g����npw�G���g�����̒P���ǉ�
+  # nameエントリにnpwエントリ中の単語を追加
   pushstr name ${npw}
   
-  # Act�G���g���ɕ�����u${normal}�v��ǉ�
+  # Actエントリに文字列「${normal}」を追加
   pushstr Act "${normal}";
   
-  # ���̍s�����s����ƁA�u${normal}�v��Ԃ��B
+  # 次の行を実行すると、「${normal}」を返す。
   echo ${Act};
   =end
 </PRE>
@@ -1743,45 +1743,45 @@ TABLE.command CAPTION{
 	rfind<A name="rfind"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-	 $(rfind �G���g��1 �P��1)<BR>
-	 $(rfind �G���g��1 �P��1 �C���f�b�N�X)
+	 $(rfind エントリ1 単語1)<BR>
+	 $(rfind エントリ1 単語1 インデックス)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�P��1�̈ʒu�B������Ȃ������ꍇ"-1"�B
+		単語1の位置。見つからなかった場合"-1"。
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-	  �G���g��1���ŁA�P��1�������Ō�̈ʒu��Ԃ��B
-	  �C���f�b�N�X���w�肳�ꂽ�ꍇ�A���̃C���f�b�N�X�ȑO�ŁA
-	  �Ō�Ɍ����ʒu��Ԃ��B
-	  �C���f�b�N�X�͐����łȂ���΂Ȃ�Ȃ��B
+	  エントリ1内で、単語1が現れる最後の位置を返す。
+	  インデックスが指定された場合、そのインデックス以前で、
+	  最後に現れる位置を返す。
+	  インデックスは整数でなければならない。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  �n��: ����, ${�l��}�̉�, �O����, ����, ${�l��}�̎d����
-  ���: ${�l��}�̉�
+例
+  地名: ここ, ${人名}の家, 三丁目, ここ, ${人名}の仕事場
+  候補: ${人名}の家
 
   =kis
-  rfind �n�� ����;
-  # "3"���Ԃ�B
+  rfind 地名 ここ;
+  # "3"が返る。
 
-  rind �n�� ���� 2;
-  # "0"���Ԃ�B
+  rind 地名 ここ 2;
+  # "0"が返る。
 
-  rfind �n�� "${�l��}"�̉�;
-  # "1"���Ԃ�B
+  rfind 地名 "${人名}"の家;
+  # "1"が返る。
 
-  rfind �n�� $(getcode ���[0]);
-  # "1"���Ԃ�B
+  rfind 地名 $(getcode 候補[0]);
+  # "1"が返る。
   =end
 </PRE>
 </TD></TR>
@@ -1792,42 +1792,42 @@ TABLE.command CAPTION{
 	set<A name="set"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(set �G���g��1 �P��1)
+		$(set エントリ1 単語1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1�̓��e���폜���Ă���A�P��1��o�^����B<BR>
-		�G���g�����̎w��ɂ́A<A href="#dictcommon">��������R�}���h���ʂ̏���</A>�𗘗p�ł���B
+		エントリ1の内容を削除してから、単語1を登録する。<BR>
+		エントリ名の指定には、<A href="#dictcommon">辞書操作コマンド共通の書式</A>を利用できる。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   dummy : 1
-  angry : �{���Ă�]�I
+  angry : 怒ってるゾ！
   
   =kis
   set mode 1;
-  # mode�G���g���̓��e�́u1�v�����ɂȂ�
+  # modeエントリの内容は「1」だけになる
   
   set mody ${dummy};
-  # mode�G���g���̓��e��${dummy}���u1�v�ɂȂ�
+  # modeエントリの内容は${dummy}＝「1」になる
   
   set emotion "${angry}";
-  # emotion�G���g���̓��e�͒P��u${angry}�v�ɂȂ�
+  # emotionエントリの内容は単語「${angry}」になる
   
   echo ${emotion};
-  # �u�{���Ă�]�I�v��Ԃ�
+  # 「怒ってるゾ！」を返す
   
   =end
 </PRE>
@@ -1839,44 +1839,44 @@ TABLE.command CAPTION{
 	setstr<A name="setstr"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(setstr �G���g��1 ������1)
+		$(setstr エントリ1 文字列1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1�̓��e���폜���Ă���A������1��o�^����B
-		set�Ƃ̈Ⴂ�́A
-		�ǉ��������̂��K���u���u���b�N�ł͂Ȃ��A������ɂȂ�_�ł���B<BR>
-		�G���g�����̎w��ɂ́A<A href="#dictcommon">��������R�}���h���ʂ̏���</A>�𗘗p�ł���B
+		エントリ1の内容を削除してから、文字列1を登録する。
+		setとの違いは、
+		追加したものが必ず置換ブロックではなく、文字列になる点である。<BR>
+		エントリ名の指定には、<A href="#dictcommon">辞書操作コマンド共通の書式</A>を利用できる。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   dummy : 1
-  angry : �{���Ă�]�I
+  angry : 怒ってるゾ！
   
   =kis
   setstr mode 1;
-  # mode�G���g���̓��e�́u1�v�����ɂȂ�
+  # modeエントリの内容は「1」だけになる
   
   setstr mody ${dummy};
-  # mode�G���g���̓��e��${dummy}���u1�v�ɂȂ�
+  # modeエントリの内容は${dummy}＝「1」になる
   
   setstr emotion "${angry}";
-  # emotion�G���g���̓��e�͕�����u${angry}�v�ɂȂ�
+  # emotionエントリの内容は文字列「${angry}」になる
   
   echo ${emotion};
-  # �u${angry}�v��Ԃ�
+  # 「${angry}」を返す
   
   =end
 </PRE>
@@ -1888,29 +1888,29 @@ TABLE.command CAPTION{
 	shift<A name="shift"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD>
-		$(shift �G���g��1)
+		$(shift エントリ1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�G���g��1�̐擪�ɂ���P��
+		エントリ1の先頭にある単語
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1�̐擪�ɂ���P�����폜���A�����Ԃ��B
-		�G���g��1�ɒP�ꂪ������΁A�󕶎����Ԃ��B
+		エントリ1の先頭にある単語を一つ削除し、それを返す。
+		エントリ1に単語が無ければ、空文字列を返す。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   counter : 1, 2, 3, 4, 5
-  sentence : \h���̕����Ă΂��̂�$(shift counter)��ڂ��ˁB\e
+  sentence : \hこの文が呼ばれるのは$(shift counter)回目だね。\e
 </PRE>
 </TD></TR>
 </TABLE>
@@ -1920,29 +1920,29 @@ TABLE.command CAPTION{
 	shiftcode<A name="shiftcode"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD>
-		$(shiftcode �G���g��1)
+		$(shiftcode エントリ1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�G���g��1�̐擪�ɂ���P��̕]���O�̌`��
+		エントリ1の先頭にある単語の評価前の形式
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1�̐擪�ɂ���P�����폜���A�]���O�̌`���ŕԂ��B
-		�G���g��1�ɒP�ꂪ������΁A�󕶎����Ԃ��B
+		エントリ1の先頭にある単語を一つ削除し、評価前の形式で返す。
+		エントリ1に単語が無ければ、空文字列を返す。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   counter : 1, 2, 3, 4, 5
-  sentence : \h���̕����Ă΂��̂�$(shiftcode counter)��ڂ��ˁB\e
+  sentence : \hこの文が呼ばれるのは$(shiftcode counter)回目だね。\e
 </PRE>
 </TD></TR>
 </TABLE>
@@ -1952,36 +1952,36 @@ TABLE.command CAPTION{
 	size<A name="size"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(size �G���g��1)
+		$(size エントリ1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�P�ꐔ
+		単語数
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1���̒P�ꐔ��Ԃ��B
+		エントリ1中の単語数を返す。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  ���� : ����
-  ninni.angels,famous.ghosts : �ޗ�, ���肱, �܂��, ${����}
-  dark.sisters,famous.ghosts : �Ŏq, �Ԃ����, �T���o�[���C��, ${����}
+例
+  理夢 : 理夢
+  ninni.angels,famous.ghosts : 奈留, せりこ, まゆら, ${理夢}
+  dark.sisters,famous.ghosts : 毒子, 花ちゃん, サンバーレイン, ${理夢}
   
   =kis
   size dark.sisters;
-  # 4���Ԃ�
+  # 4が返る
   
   size famous.ghosts;
-  # 8���Ԃ�
+  # 8が返る
   =end
 </PRE>
 </TD></TR>
@@ -1992,37 +1992,37 @@ TABLE.command CAPTION{
 	unshift<A name="unshift"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD>
-		$(unshift �G���g��1 �P��1)
+		$(unshift エントリ1 単語1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1�̐擪�ɒP��1��}������B
+		エントリ1の先頭に単語1を挿入する。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  ghosts : �܂��,����,�Ŏq,���q,����,�z�q
-  �C�� : ������
+例
+  ghosts : まゆら,理夢,毒子,白子,美耳,陽子
+  任意 : さくら
   
   =kis
   get ghosts;
-  # �u�܂�痝���Ŏq���q�����z�q�v��Ԃ�
+  # 「まゆら理夢毒子白子美耳陽子」を返す
   
-  unshift ghosts "${�C��}";
+  unshift ghosts "${任意}";
   
   get ghosts;
-  # �u������܂�痝���Ŏq���q�����z�q�v��Ԃ�
+  # 「さくらまゆら理夢毒子白子美耳陽子」を返す
   =end
 </PRE>
 </TD></TR>
@@ -2033,39 +2033,39 @@ TABLE.command CAPTION{
 	unshiftstr<A name="unshiftstr"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD>
-		$(unshiftstr �G���g��1 ������1)
+		$(unshiftstr エントリ1 文字列1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1�̐擪�ɕ�����1��}������B
-		unshift�Ƃ̈Ⴂ�́A
-		�ǉ��������̂��K���u���u���b�N�ł͂Ȃ��A������ɂȂ�_�ł���B
+		エントリ1の先頭に文字列1を挿入する。
+		unshiftとの違いは、
+		追加したものが必ず置換ブロックではなく、文字列になる点である。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  ghosts : �܂��,����,�Ŏq,���q,����,�z�q
-  �C�� : ������
+例
+  ghosts : まゆら,理夢,毒子,白子,美耳,陽子
+  任意 : さくら
   
   =kis
   get ghosts;
-  # �u�܂�痝���Ŏq���q�����z�q�v��Ԃ�
+  # 「まゆら理夢毒子白子美耳陽子」を返す
   
-  unshift ghosts "${�C��}";
+  unshift ghosts "${任意}";
   
   get ghosts;
-  # �u${�C��}�܂�痝���Ŏq���q�����z�q�v��Ԃ�
+  # 「${任意}まゆら理夢毒子白子美耳陽子」を返す
   =end
 </PRE>
 </TD></TR>
@@ -2076,32 +2076,32 @@ TABLE.command CAPTION{
 	writeprotect<A name="writeprotect"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD>
-		$(writeprotect �G���g��1)
+		$(writeprotect エントリ1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-	 �G���g��1��(�N����)�������ݕs�ɂ���B
-	 �]��resource.homeurl�Ȃǂ̓V�X�e�����Ńv���e�N�g���Ă������A
-	 Phase 8�ł͏d�v��񂪂ǂ��ɏ�����邩������Ȃ����߁A
-	 ���[�U��~�h���E�F�A�������Ńv���e�N�g����������悤�ɂ����B
-	 �v���e�N�g���O���R�}���h�͑��݂��Ȃ��B
-	 �v���e�N�g���ꂽ�G���g���ɏ����������Ƃ����ꍇ�AError���x���̃��O���o�͂����B
+	 エントリ1を(起動中)書き込み不可にする。
+	 従来resource.homeurlなどはシステム側でプロテクトしていたが、
+	 Phase 8では重要情報がどこに書かれるか分からないため、
+	 ユーザやミドルウェアが自分でプロテクトをかけられるようにした。
+	 プロテクトを外すコマンドは存在しない。
+	 プロテクトされたエントリに書き込もうとした場合、Errorレベルのログが出力される。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  username : ����l�l
+例
+  username : ご主人様
 
   =kis
   writeprotect username;
@@ -2111,48 +2111,48 @@ TABLE.command CAPTION{
 </TABLE>
 
 <A name="file-io"></A>
-<H4>4.2.3. �R�}���h-�t�@�C������</H4>
+<H4>4.2.3. コマンド-ファイル操作</H4>
 
 <TABLE class="command" width="100%">
 <CAPTION>
 	cncpath<A name="cncpath"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD>
-		$(cncpath �p�X��)
-		$(cncpath �p�X�� �t�@�C����)
+		$(cncpath パス名)
+		$(cncpath パス名 ファイル名)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		���K�������p�X��
+		正規化したパス名
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�p�X��؂�L����'/'��'\'�����݂����p�X�����A
-		���������t�@�C���V�X�e���œK�؂ȃp�X��؂�L���ɕϊ����ĕԂ��B
-		�t�@�C�������w�肵���ꍇ�A�p�X�ƓK�؂Ȍ`�Ō������āA
-		�����悤�ɓK�؂ȃp�X��؂�L���ŕԂ��B
-		�p�X�Ƃ��ĉ��߂ł��Ȃ��ꍇ�A�����Ԃ��Ȃ��B
+		パス区切り記号に'/'と'\'が混在したパス名を、
+		実装したファイルシステムで適切なパス区切り記号に変換して返す。
+		ファイル名も指定した場合、パスと適切な形で結合して、
+		同じように適切なパス区切り記号で返す。
+		パスとして解釈できない場合、何も返さない。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # �����ł�MS Windows��̃I���W�i���ؘa����z�肵�Ă���
+  # ここではMS Windows上のオリジナル華和梨を想定している
   
-  # "..\..\unix"���Ԃ�
+  # "..\..\unix"が返る
   cncpath ../../unix;
   
-  # "C:\WINDOWS\SYSTEM"���Ԃ�
+  # "C:\WINDOWS\SYSTEM"が返る
   cncpath C:/WINDOWS\SYSTEM
   
-  # "..\..\UNIX\LS.EXE"���Ԃ�
+  # "..\..\UNIX\LS.EXE"が返る
   cncpath ../../UNIX/ LS.EXE
   =end
 </PRE>
@@ -2164,31 +2164,31 @@ TABLE.command CAPTION{
 	dirname<A name="dirname"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD>
-		$(dirname �p�X��)
+		$(dirname パス名)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		���K�������f�B���N�g����
+		正規化したディレクトリ名
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�^����ꂽ�p�X����cncpath�Ő��K�����A
-		�f�B���N�g���������𒊏o���ĕԂ��B
+		与えられたパス名をcncpathで正規化し、
+		ディレクトリ名部分を抽出して返す。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # �����ł�MS Windows��̃I���W�i���ؘa����z�肵�Ă���
+  # ここではMS Windows上のオリジナル華和梨を想定している
   
-  # "C:\Program Files\Microsoft Office\Office"���Ԃ�
+  # "C:\Program Files\Microsoft Office\Office"が返る
   dirname "C:/Program Files/Microsoft Office/Office/POWERPNT.EXE"
   =end
 </PRE>
@@ -2200,31 +2200,31 @@ TABLE.command CAPTION{
 	filename<A name="filename"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD>
-		$(filename �p�X��)
+		$(filename パス名)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�t�@�C����
+		ファイル名
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�^����ꂽ�p�X����cncpath�Ő��K�����A
-		�t�@�C���������𒊏o���ĕԂ��B
+		与えられたパス名をcncpathで正規化し、
+		ファイル名部分を抽出して返す。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # �����ł�MS Windows��̃I���W�i���ؘa����z�肵�Ă���
+  # ここではMS Windows上のオリジナル華和梨を想定している
   
-  # "POWERPNT.EXE"���Ԃ�
+  # "POWERPNT.EXE"が返る
   filename "C:/Program Files/Microsoft Office/Office/POWERPNT.EXE"
   =end
 </PRE>
@@ -2236,35 +2236,35 @@ TABLE.command CAPTION{
 	isdir<A name="isdir"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD>
-		$(isdir �p�X��)
+		$(isdir パス名)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�p�X���f�B���N�g���Ȃ�ΐ^�A�����łȂ���΋U
+		パスがディレクトリならば真、そうでなければ偽
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�^����ꂽ�p�X�����f�B���N�g�����ǂ������肷��B
-		�p�X���f�B���N�g���Ȃ�ΐ^�A�����łȂ���΋U��Ԃ��B
-		�p�X�̃t�@�C�������݂��Ȃ��ꍇ�̓���͕s��ł���B
+		与えられたパス名がディレクトリかどうか判定する。
+		パスがディレクトリならば真、そうでなければ偽を返す。
+		パスのファイルが存在しない場合の動作は不定である。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # MATERIA��ghost\master�t�H���_�Ŏ��s�����ꍇ��z��
+  # MATERIAのghost\masterフォルダで実行した場合を想定
   
   isdir $(cncpath profile);
-  # 1���Ԃ�
+  # 1が返る
   isdir shiori.dll;
-  # ""���Ԃ�
+  # ""が返る
   =end
 </PRE>
 </TD></TR>
@@ -2275,36 +2275,36 @@ TABLE.command CAPTION{
 	isexist<A name="isexist"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD>
-		$(isexist �p�X��)
+		$(isexist パス名)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�p�X�����݂���ΐ^�A�����łȂ���΋U
+		パスが存在すれば真、そうでなければ偽
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�^����ꂽ�p�X�������݂��邩�ǂ������肷��B
-		�p�X�����݂���ΐ^�A�����łȂ���΋U��Ԃ��B
+		与えられたパス名が存在するかどうか判定する。
+		パスが存在すれば真、そうでなければ偽を返す。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # MATERIA��ghost\master�t�H���_�Ŏ��s�����ꍇ��z��
+  # MATERIAのghost\masterフォルダで実行した場合を想定
   
   isexist $(cncpath profile);
-  # 1���Ԃ�
+  # 1が返る
   isexist shiori.dll;
-  # 1���Ԃ�
+  # 1が返る
   isexist $(cncpath ..\..\..\..\embryo.exe);
-  # ""���Ԃ�
+  # ""が返る
   =end
 </PRE>
 </TD></TR>
@@ -2315,35 +2315,35 @@ TABLE.command CAPTION{
 	isfile<A name="isfile"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD>
-		$(isfile �p�X��)
+		$(isfile パス名)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�p�X���ʏ�t�@�C���Ȃ�ΐ^�A�����łȂ���΋U
+		パスが通常ファイルならば真、そうでなければ偽
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�^����ꂽ�p�X�����ʏ�t�@�C�����ǂ������肷��B
-		�p�X���ʏ�t�@�C���Ȃ�ΐ^�A�����łȂ���΋U��Ԃ��B
-		�p�X�̃t�@�C�������݂��Ȃ��ꍇ�̓���͕s��ł���B
+		与えられたパス名が通常ファイルかどうか判定する。
+		パスが通常ファイルならば真、そうでなければ偽を返す。
+		パスのファイルが存在しない場合の動作は不定である。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # MATERIA��ghost\master�t�H���_�Ŏ��s�����ꍇ��z��
+  # MATERIAのghost\masterフォルダで実行した場合を想定
   
   isfile $(cncpath profile);
-  # ""���Ԃ�
+  # ""が返る
   isfile shiori.dll;
-  # 1���Ԃ�
+  # 1が返る
   =end
 </PRE>
 </TD></TR>
@@ -2354,32 +2354,32 @@ TABLE.command CAPTION{
 	load<A name="load"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(load �t�@�C����)
+		$(load ファイル名)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�ؘa�������`���t�@�C����ǂݍ��ށB�Í����������B
-		�t�@�C�����̐擪���u/�v�u\�v�܂��̓h���C�u������n�܂�ꍇ�ɂ�
-		��΃p�X�Ƃ݂Ȃ��A����ȊO�̏ꍇ�ɂ̓S�[�X�g�̃f�B���N�g�������
-		���΃p�X�Ƃ݂Ȃ��B
+		華和梨辞書形式ファイルを読み込む。暗号化辞書も可。
+		ファイル名の先頭が「/」「\」またはドライブ名から始まる場合には
+		絶対パスとみなし、それ以外の場合にはゴーストのディレクトリからの
+		相対パスとみなす。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   load dict-flag.txt;
-  # dict-flag.txt��ǂݍ���
+  # dict-flag.txtを読み込む
   =end
 </PRE>
 </TD></TR>
@@ -2390,32 +2390,32 @@ TABLE.command CAPTION{
 	readdir<A name="readdir"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(readdir �G���g��1 �f�B���N�g��)
+		$(readdir エントリ1 ディレクトリ)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�w��f�B���N�g���Ɋ܂܂��t�@�C���E�f�B���N�g������
-		�G���g��1�ɕۑ�����B�G���g��1�̈ȑO�̓��e�͏��������B<BR>
-		�f�B���N�g�����͑��΃p�X���B�J�����g�f�B���N�g����'.'�A
-		�e�f�B���N�g����'..'�͗\�ߍ폜�����B
+		指定ディレクトリに含まれるファイル・ディレクトリ名を
+		エントリ1に保存する。エントリ1の以前の内容は消去される。<BR>
+		ディレクトリ名は相対パスも可。カレントディレクトリの'.'、
+		親ディレクトリの'..'は予め削除される。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   readdir shell "..\..\shell";
-  # ���S�[�X�g�Ŏg�p�ł���V�F���ꗗ��shell�ɕۑ�
+  # 自ゴーストで使用できるシェル一覧をshellに保存
   =end
 </PRE>
 </TD></TR>
@@ -2426,31 +2426,31 @@ TABLE.command CAPTION{
 	save<A name="save"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(save �t�@�C���� �G���g����1 ... )
+		$(save ファイル名 エントリ名1 ... )
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�t�@�C���ɃG���g�����e���ؘa�������`���ŃZ�[�u����B
-		�w��t�@�C���̈ȑO�̓��e�͏������A
-		�w��G���g���Q�̓��e�Ńt�@�C�����㏑������B
+		ファイルにエントリ内容を華和梨辞書形式でセーブする。
+		指定ファイルの以前の内容は消去し、
+		指定エントリ群の内容でファイルを上書きする。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   save dict-flag.txt flag1 flag2 flag3;
-  # flag1�Aflag2�Aflag3�G���g����dict-flag.txt�ɕۑ�
+  # flag1、flag2、flag3エントリをdict-flag.txtに保存
   =end
 </PRE>
 </TD></TR>
@@ -2461,31 +2461,31 @@ TABLE.command CAPTION{
 	savecrypt<A name="savecrypt"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(savecrypt �t�@�C���� �G���g����1 ... )
+		$(savecrypt ファイル名 エントリ名1 ... )
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�t�@�C���ɃG���g�����e���Í����ؘa�������`���ŃZ�[�u����B
-		�w��t�@�C���̈ȑO�̓��e�͏������A
-		�w��G���g���Q�̓��e�Ńt�@�C�����㏑������B
+		ファイルにエントリ内容を暗号化華和梨辞書形式でセーブする。
+		指定ファイルの以前の内容は消去し、
+		指定エントリ群の内容でファイルを上書きする。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   savecrypt dict-flag.txt flag1 flag2 flag3;
-  # flag1�Aflag2�Aflag3�G���g����dict-flag.txt�ɈÍ������ĕۑ�
+  # flag1、flag2、flag3エントリをdict-flag.txtに暗号化して保存
   =end
 </PRE>
 </TD></TR>
@@ -2496,33 +2496,33 @@ TABLE.command CAPTION{
 	textappend<A name="textappend"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD>
-		$(textappend �t�@�C���� �G���g��1 [�G���g��2..])
+		$(textappend ファイル名 エントリ1 [エントリ2..])
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1�A�G���g��2�c�̑S�Ă̓��e���A�e�L�X�g�t�@�C��1�ɒǋL����B
-		�Z�L�����e�B�̊ϓ_����A�����o���t�@�C�����͑��΃p�X�݂̂ł���B
-		�G���g���̓��e�́A�Y�������ɕ]�����Ă��̌��ʂ������o���B
-		�t�@�C���ɏ����o���ہA�Y�������ƂɍŌ�ɉ��s����B
-		textsave�Ƃ̈Ⴂ�́A�e�L�X�g�t�@�C��1�̈ȑO�̓��e���c��_�ł���B
+		エントリ1、エントリ2…の全ての内容を、テキストファイル1に追記する。
+		セキュリティの観点から、書き出すファイル名は相対パスのみである。
+		エントリの内容は、添え字順に評価してその結果を書き出す。
+		ファイルに書き出す際、添え字ごとに最後に改行する。
+		textsaveとの違いは、テキストファイル1の以前の内容が残る点である。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  textappend highscore.dat �V�^�C�g���ێ��Җ�;
-  # highscore.dat�ɁA�u�V�^�C�g���ێ��Җ��v�G���g���̓��e��ǋL
+  textappend highscore.dat 新タイトル保持者名;
+  # highscore.datに、「新タイトル保持者名」エントリの内容を追記
   =end
 </PRE>
 </TD></TR>
@@ -2533,35 +2533,35 @@ TABLE.command CAPTION{
 	textload<A name="textload"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(textload �G���g��1 �e�L�X�g�t�@�C��1)
+		$(textload エントリ1 テキストファイル1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�e�L�X�g�t�@�C��1�̓��e��ǂݍ��ށB<BR>
-		�t�@�C����1�s�ڂ̓G���g��1�̈�ڂ̒P��A
-		2�s�ڂ̓G���g��1�̓�ڂ̒P��ƂȂ�B
-		�s���̉��s�R�[�h�́A�폜���Ă���G���g���Ɋi�[����B
+		テキストファイル1の内容を読み込む。<BR>
+		ファイルの1行目はエントリ1の一つ目の単語、
+		2行目はエントリ1の二つ目の単語となる。
+		行末の改行コードは、削除してからエントリに格納する。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   textload poem mypoem.txt;
-  # poem�G���g���Ƀt�@�C��'mypoem.txt'��ǂݍ���
+  # poemエントリにファイル'mypoem.txt'を読み込む
   
   echo \0$(set @i 0 ; loop $(size poem) $(get poem[${@i}] ; inc @i))\e;
-  # �t�@�C��mypoem.txt�̓��e��ǂݍ��݁A�����瑤�o���[���œ��e��\������
+  # ファイルmypoem.txtの内容を読み込み、さくら側バルーンで内容を表示する
   =end
 </PRE>
 </TD></TR>
@@ -2572,85 +2572,85 @@ TABLE.command CAPTION{
 	textsave<A name="textsave"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD>
-		$(textsave �t�@�C���� �G���g��1 [�G���g��2..])
+		$(textsave ファイル名 エントリ1 [エントリ2..])
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1�A�G���g��2�c�̑S�Ă̓��e���A�e�L�X�g�t�@�C��1�ɏ����o���B
-		�Z�L�����e�B�̊ϓ_����A�����o���t�@�C�����͑��΃p�X�݂̂ł���B
-		�G���g���̓��e�́A�Y�������ɕ]�����Ă��̌��ʂ������o���B
-		�t�@�C���ɏ����o���ہA�Y�������ƂɍŌ�ɉ��s����B
-		textappend�Ƃ̈Ⴂ�́A�e�L�X�g�t�@�C��1�̈ȑO�̓��e���c��Ȃ��_�ł���B
+		エントリ1、エントリ2…の全ての内容を、テキストファイル1に書き出す。
+		セキュリティの観点から、書き出すファイル名は相対パスのみである。
+		エントリの内容は、添え字順に評価してその結果を書き出す。
+		ファイルに書き出す際、添え字ごとに最後に改行する。
+		textappendとの違いは、テキストファイル1の以前の内容が残らない点である。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  textsave highscore.dat �^�C�g���ێ��Җ��ꗗ;
-  # highscore.dat�ɁA�u�^�C�g���ێ��Җ��ꗗ�v�G���g���̓��e��ۑ�
+  textsave highscore.dat タイトル保持者名一覧;
+  # highscore.datに、「タイトル保持者名一覧」エントリの内容を保存
   =end
 </PRE>
 </TD></TR>
 </TABLE>
 
 <A name="counter"></A>
-<H4>4.2.4. �R�}���h-�J�E���^</H4>
+<H4>4.2.4. コマンド-カウンタ</H4>
 
 <TABLE class="command" width="100%">
 <CAPTION>
 	dec<A name="dec"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(dec �G���g��1 ���� ����)
+		$(dec エントリ1 減分 下限)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1�������������Z����B�����Ɖ����͏ȗ��\�B
-		�������ȗ������ꍇ�A1�ƌ��Ȃ��B
-		���Z�������ʂ�������菬�����Ȃ����ꍇ�A�G���g��1�̓��e�͉����ƂȂ�B
-		�������ȗ�����Ƃ��܂ł����Z�ł���B<BR>
-		�G���g�����̎w��ɂ́A<A href="#dictcommon">��������R�}���h���ʂ̏���</A>�𗘗p�ł���B
+		エントリ1を減分だけ減算する。減分と下限は省略可能。
+		減分を省略した場合、1と見なす。
+		減算した結果が下限より小さくなった場合、エントリ1の内容は下限となる。
+		下限を省略するといつまでも減算できる。<BR>
+		エントリ名の指定には、<A href="#dictcommon">辞書操作コマンド共通の書式</A>を利用できる。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   dec N;
-  # N��1�������炷
+  # Nを1だけ減らす
   
   dec N 5;
-  # N��5�������炷
+  # Nを5だけ減らす
   
   dec N 10 0;
-  # N��10�������炵�A���ʂ�0��菬�������N��0�Ƃ���
+  # Nを10だけ減らし、結果が0より小さければNは0とする
   
   dec N[0];
-  # N[0]��1�������炷
+  # N[0]を1だけ減らす
   
   dec N[0..3] 2 0;
-  # N[0]����N[3]�܂ł����ꂼ��2�������炵�A���ʂ�0��菬�������0�Ƃ���
+  # N[0]からN[3]までをそれぞれ2だけ減らし、結果が0より小さければ0とする
   =end
 </PRE>
 </TD></TR>
@@ -2661,83 +2661,83 @@ TABLE.command CAPTION{
 	inc<A name="inc"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(inc �G���g��1 ���� ���)
+		$(inc エントリ1 増分 上限)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g��1�𑝕��������Z����B�����Ə���͏ȗ��\�B
-		�������ȗ������ꍇ�A1�ƌ��Ȃ��B
-		���Z�������ʂ�������傫���Ȃ����ꍇ�A�G���g��1�̓��e�͏���ƂȂ�B
-		������ȗ�����Ƃ��܂ł����Z�ł���B<BR>
-		�G���g�����̎w��ɂ́A<A href="#dictcommon">��������R�}���h���ʂ̏���</A>�𗘗p�ł���B
+		エントリ1を増分だけ加算する。増分と上限は省略可能。
+		増分を省略した場合、1と見なす。
+		加算した結果が上限より大きくなった場合、エントリ1の内容は上限となる。
+		上限を省略するといつまでも加算できる。<BR>
+		エントリ名の指定には、<A href="#dictcommon">辞書操作コマンド共通の書式</A>を利用できる。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   inc N;
-  # N��1�������₷
+  # Nを1だけ増やす
   
   inc N 5;
-  # N��5�������₷
+  # Nを5だけ増やす
   
   inc N 10 100;
-  # N��10�������₵�A���ʂ�100���傫�����N��100�Ƃ���
+  # Nを10だけ増やし、結果が100より大きければNは100とする
   
   inc N[2] 4;
-  # N[2]��4�������₷
+  # N[2]を4だけ増やす
   
   inc N[1..-1] 2 100;
-  # N[0]�ȊO��N�����ꂼ��2�������₵�A���ʂ�100���傫�����100�Ƃ���
+  # N[0]以外のNをそれぞれ2だけ増やし、結果が100より大きければ100とする
   =end
 </PRE>
 </TD></TR>
 </TABLE>
 
 <A name="string"></A>
-<H4>4.2.5. �����񑀍�</H4>
+<H4>4.2.5. 文字列操作</H4>
 
 <TABLE class="command" width="100%">
 <CAPTION>
   char_at<A name="char_at"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(char_at ������1 �C���f�b�N�X)
+    $(char_at 文字列1 インデックス)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    ������1�́u�C���f�b�N�X+1�v�����ڂ̕���
+    文字列1の「インデックス+1」文字目の文字
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �w�蕶����̎w�肵���ꏊ��1������Ԃ��B
-    �}���`�o�C�g������1�����Ɛ�����B
-    �C���f�b�N�X��0�I���W���ł��邱�Ƃɒ��ӁB
+    指定文字列の指定した場所の1文字を返す。
+    マルチバイト文字も1文字と数える。
+    インデックスは0オリジンであることに注意。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  char_at ���E��A����ɂ��́B 2;
-  # �u��v���Ԃ�
+  char_at 世界よ、こんにちは。 2;
+  # 「よ」が返る
   =end
 </PRE>
 </TD></TR>
@@ -2748,32 +2748,32 @@ TABLE.command CAPTION{
 	chr<A name="chr"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(chr �����R�[�h)
+		$(chr 文字コード)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�w�肵�������R�[�h�̈ꕶ��
+		指定した文字コードの一文字
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�w�肵�������R�[�h�̈ꕶ����Ԃ��B
+		指定した文字コードの一文字を返す。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   chr 1;
-  # ������u�o�C�g�l1�v���Ԃ�
+  # いわゆる「バイト値1」が返る
   
   chr 2;
-  # ������u�o�C�g�l2�v���Ԃ�
+  # いわゆる「バイト値2」が返る
   =end
 </PRE>
 </TD></TR>
@@ -2784,29 +2784,29 @@ TABLE.command CAPTION{
   compare<A name="compare"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(compare ������1 ������2)
+    $(compare 文字列1 文字列2)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    -1�A0�A1�̂����ꂩ
+    -1、0、1のいずれか
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �����񓯎m�����������Ŕ�r����B
-    ������1��������2��莫�����Ō�Ȃ��1�A
-    ������1��������2��莫�����őO�Ȃ��-1�A
-    ������1�ƕ�����2�����������0��Ԃ��B
+    文字列同士を辞書順序で比較する。
+    文字列1が文字列2より辞書順で後ならば1、
+    文字列1が文字列2より辞書順で前ならば-1、
+    文字列1と文字列2が等しければ0を返す。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   dict : a , aa , b , c , xa , xy , z
   word : hello
   
@@ -2821,9 +2821,9 @@ TABLE.command CAPTION{
   );
   insertstr dict[${@count}] ${word};
   
-  # compare���g�����召��r�̗�
-  # �������Ƀ\�[�g�����G���g���ɑ΂��A�Y����0����${word}�Ɣ�r���A
-  # ${word}���傫�ȒP��̒��O��${word}��}�����Ă���
+  # compareを使った大小比較の例
+  # 辞書順にソートしたエントリに対し、添え字0から${word}と比較し、
+  # ${word}より大きな単語の直前に${word}を挿入している
   =end
 </PRE>
 </TD></TR>
@@ -2834,31 +2834,31 @@ TABLE.command CAPTION{
   gsub<A name="gsub"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(gsub ������1 �p�^�[�� �u��������)
+    $(gsub 文字列1 パターン 置換文字列)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �u����̕�����
+    置換後の文字列
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �w�蕶���񒆂Ɏw��p�^�[�����������ꍇ�A�u��������Œu��������B
-    sub�Ƃ̈Ⴂ�́A�w�蕶���񒆂Ɏw��p�^�[���������������ꍇ�A
-    �S�Ēu������_�ł���B
+    指定文字列中に指定パターンがあった場合、置換文字列で置き換える。
+    subとの違いは、指定文字列中に指定パターンが複数あった場合、
+    全て置換する点である。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   gsub hogehogehoge ge ro;
-  # �uhorohorohoro�v���Ԃ�
+  # 「horohorohoro」が返る
   =end
 </PRE>
 </TD></TR>
@@ -2869,32 +2869,32 @@ TABLE.command CAPTION{
   join<A name="join"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(join �G���g��1 ��؂蕶��)
+    $(join エントリ1 区切り文字)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    ������̕�����
+    結合後の文字列
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �G���g��1�̓��e���A��؂蕶�����Ԃɋ���ŏ��Ɍ������ĕԂ��B
-    �����̍ہA�G���g��1�̓��e�͏��ɕ]�������B<BR>
-    ��؂蕶���͏ȗ��\�ŁA�ȗ������ꍇ�̓k�������u""�v�������ꍇ�Ɠ����B
+    エントリ1の内容を、区切り文字を間に挟んで順に結合して返す。
+    結合の際、エントリ1の内容は順に評価される。<BR>
+    区切り文字は省略可能で、省略した場合はヌル文字「""」をした場合と同じ。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   path : WINDOWS, SYSTEM32, drivers, etc
   =kis
   join path "\\";
-  # �uWINDOWS\SYSTEM32\drivers\etc�v���Ԃ�
+  # 「WINDOWS\SYSTEM32\drivers\etc」が返る
   =end
 </PRE>
 </TD></TR>
@@ -2905,30 +2905,30 @@ TABLE.command CAPTION{
   length<A name="length"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(length ������1)
+    $(length 文字列1)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    ������1�̒���
+    文字列1の長さ
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �w�蕶����̒�����Ԃ��B
-    �}���`�o�C�g����1��������1�ł���B
+    指定文字列の長さを返す。
+    マルチバイト文字1字も長さ1である。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  length �ƂĂ������Ă����ɂ͉�������������Ȃ�1byte��������������;
-  # 31���Ԃ�
+  length とても長くてすぐには何文字か分からない1byte文字も交えた例;
+  # 31が返る
   =end
 </PRE>
 </TD></TR>
@@ -2939,40 +2939,40 @@ TABLE.command CAPTION{
   match<A name="match"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(match ������1 �p�^�[�� �C���f�b�N�X)
+    $(match 文字列1 パターン インデックス)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �p�^�[���̕�����1�̒��ɂ�����擪�ʒu
+    パターンの文字列1の中における先頭位置
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �w�蕶���񒆂Ɏw��p�^�[�����������ꍇ�A���̐擪�̈ʒu��Ԃ��B
-    �C���f�b�N�X�͏ȗ��\�ŁA�w�肵���ꍇ�A
-    �w�蕶����́u�C���f�b�N�X+1�v�����ڂ��猟�����n�߂�B
-    �ȗ������ꍇ�A�w�蕶����̐擪���猟�����n�߂�B
-    �߂�l��0�I���W���ŁA�p�^�[�������݂��Ȃ������ꍇ�A
-    -1��Ԃ��B
+    指定文字列中に指定パターンがあった場合、その先頭の位置を返す。
+    インデックスは省略可能で、指定した場合、
+    指定文字列の「インデックス+1」文字目から検索を始める。
+    省略した場合、指定文字列の先頭から検索を始める。
+    戻り値は0オリジンで、パターンが存在しなかった場合、
+    -1を返す。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  match �ő�������Ă��� ����;
-  # 1���Ԃ�
+  match 芝村をやっている 村を;
+  # 1が返る
   
-  match ���[��[���[���[�E�[��[�́[ ���[ 2;
-  # 4���Ԃ�
+  match あーりーあーもー殺ーるーのー あー 2;
+  # 4が返る
   
-  match ��́A��ł���B �W����;
-  # -1���Ԃ�
+  match 我は、我である。 ジャム;
+  # -1が返る
   =end
 </PRE>
 </TD></TR>
@@ -2983,40 +2983,40 @@ TABLE.command CAPTION{
   match_at<A name="match_at"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(match_at ������1 �p�^�[�� �C���f�b�N�X)
+    $(match_at 文字列1 パターン インデックス)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �p�^�[���������1�A�Ȃ����""
+    パターンがあれば1、なければ""
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-   �����񒆂̃C���f�b�N�X�Ԗ�(0�I���W��)�Ƀp�^�[�������݂����1�B
-   ���݂��Ȃ����""��Ԃ��B
-   �w��ȗ����̃C���f�b�N�X��0.
+   文字列中のインデックス番目(0オリジン)にパターンが存在すれば1。
+   存在しなければ""を返す。
+   指定省略時のインデックスは0.
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  match_at �ő�������Ă��� ����;
-  # ""���Ԃ�
+  match_at 芝村をやっている 村を;
+  # ""が返る
   
-  match_at �ő�������Ă��� ���� 1;
-  # 1���Ԃ�
+  match_at 芝村をやっている 村を 1;
+  # 1が返る
   
-  match_at ���[��[���[���[�E�[��[�́[ ���[ 4;
-  # 1���Ԃ�
+  match_at あーりーあーもー殺ーるーのー あー 4;
+  # 1が返る
   
-  match_at ��́A��ł���B �W����;
-  # ""���Ԃ�
+  match_at 我は、我である。 ジャム;
+  # ""が返る
   =end
 </PRE>
 </TD></TR>
@@ -3027,30 +3027,30 @@ TABLE.command CAPTION{
   reverse<A name="reverse"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(reverse ������1)
+    $(reverse 文字列1)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �O�オ�t�ɂȂ���������
+    前後が逆になった文字列
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    ������̑O������ւ���B
-    �o�C�g�P�ʂł͂Ȃ��A�����P�ʂœ���ւ��邱�Ƃɒ��ӁB
+    文字列の前後を入れ替える。
+    バイト単位ではなく、文字単位で入れ替えることに注意。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  reverse �ォ��ǂ�ł��R�{�R
-  # �u�R�{�R���ł�ǂ炩��v���Ԃ�
+  reverse 上から読んでも山本山
+  # 「山本山もでん読らか上」が返る
   =end
 </PRE>
 </TD></TR>
@@ -3061,40 +3061,40 @@ TABLE.command CAPTION{
   rmatch<A name="rmatch"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(rmatch ������1 �p�^�[�� �C���f�b�N�X)
+    $(rmatch 文字列1 パターン インデックス)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �p�^�[���̕�����1�̒��ɂ�����擪�ʒu
+    パターンの文字列1の中における先頭位置
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �w�蕶���񒆂Ɏw��p�^�[�����������ꍇ�A���̐擪�̈ʒu��Ԃ��B
-    �C���f�b�N�X�͏ȗ��\�ŁA�w�肵���ꍇ�A
-    �w�蕶����́u�C���f�b�N�X+1�v�����ڂ���A�O���Ɍ����Č������n�߂�B
-    �ȗ������ꍇ�A�w�蕶����̍Ō������O���Ɍ����Č������n�߂�B
-    �߂�l��0�I���W���ŁA�p�^�[�������݂��Ȃ������ꍇ�A
-    -1��Ԃ��B
+    指定文字列中に指定パターンがあった場合、その先頭の位置を返す。
+    インデックスは省略可能で、指定した場合、
+    指定文字列の「インデックス+1」文字目から、前方に向けて検索を始める。
+    省略した場合、指定文字列の最後尾から前方に向けて検索を始める。
+    戻り値は0オリジンで、パターンが存在しなかった場合、
+    -1を返す。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  rmatch �ő�������Ă��� ����;
-  # 1���Ԃ�
+  rmatch 芝村をやっている 村を;
+  # 1が返る
   
-  rmatch ���[��[���[���[�E�[��[�́[ ���[ 2;
-  # 0���Ԃ�
+  rmatch あーりーあーもー殺ーるーのー あー 2;
+  # 0が返る
   
-  rmatch ��́A��ł���B �W����;
-  # -1���Ԃ�
+  rmatch 我は、我である。 ジャム;
+  # -1が返る
   =end
 </PRE>
 </TD></TR>
@@ -3105,31 +3105,31 @@ TABLE.command CAPTION{
   rsub<A name="rsub"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(rsub ������1 �p�^�[�� �u��������)
+    $(rsub 文字列1 パターン 置換文字列)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �u����̕�����
+    置換後の文字列
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �w�蕶���񒆂Ɏw��p�^�[�����������ꍇ�A�u��������Œu��������B
-    gsub�Ƃ̈Ⴂ�́A�w�蕶���񒆂Ɏw��p�^�[���������������ꍇ�A
-    �Ō���̂P�����u������_�ł���B
+    指定文字列中に指定パターンがあった場合、置換文字列で置き換える。
+    gsubとの違いは、指定文字列中に指定パターンが複数あった場合、
+    最後尾の１つだけ置換する点である。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   rsub hogehogehoge ge ro;
-  # �uhogehogehoro�v���Ԃ�
+  # 「hogehogehoro」が返る
   =end
 </PRE>
 </TD></TR>
@@ -3140,45 +3140,45 @@ TABLE.command CAPTION{
 	split<A name="split"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(split �G���g��1 ������1 ��؂蕶����1)
+		$(split エントリ1 文字列1 区切り文字列1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		������1����؂蕶����1�ŕ������A�G���g��1�Ɋi�[����B
-		�G���g��1�̈ȑO�̓��e�͂��̂܂܎c��A
-		�V���Ɋi�[����镶�́A�G���g��1��push�����B<BR>
-		��؂蕶��1�͏ȗ��\�ŁA
-		�ȗ������ꍇ�͕�����1�𕶎����Ƃɕ�������B
+		文字列1を区切り文字列1で分割し、エントリ1に格納する。
+		エントリ1の以前の内容はそのまま残り、
+		新たに格納される文は、エントリ1にpushされる。<BR>
+		区切り文字1は省略可能で、
+		省略した場合は文字列1を文字ごとに分割する。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   split string "AA:BB:CC" ":";
-  # AA�ABB�ACC�ɕ���
+  # AA、BB、CCに分割
   
   split Header ${System.GhostEx} $(chr 1);
-  # GhostEx�w�b�_���o�C�g�l1�ŕ���
+  # GhostExヘッダをバイト値1で分割
   
-  split Msg "�Ă̒��̒�" "��";
-  # �āA���A���ɕ���
+  split Msg "籠の中の鳥" "の";
+  # 籠、中、鳥に分割
   
   split test "1ch2ch3ch" "ch";
-  # 1�A2�A3�ɕ���
+  # 1、2、3に分割
   
-  split char "���E��A����ɂ��́I";
-  # "���E��A����ɂ��́I"�𕶎����Ƃɕ���
+  split char "世界よ、こんにちは！";
+  # "世界よ、こんにちは！"を文字ごとに分割
   =end
 </PRE>
 </TD></TR>
@@ -3189,31 +3189,31 @@ TABLE.command CAPTION{
   sub<A name="sub"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(sub ������1 �p�^�[�� �u��������)
+    $(sub 文字列1 パターン 置換文字列)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �u����̕�����
+    置換後の文字列
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �w�蕶���񒆂Ɏw��p�^�[�����������ꍇ�A�u��������Œu��������B
-    gsub�Ƃ̈Ⴂ�́A�w�蕶���񒆂Ɏw��p�^�[���������������ꍇ�A
-    �擪�̂P�����u������_�ł���B
+    指定文字列中に指定パターンがあった場合、置換文字列で置き換える。
+    gsubとの違いは、指定文字列中に指定パターンが複数あった場合、
+    先頭の１つだけ置換する点である。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   sub hogehogehoge ge ro;
-  # �uhorohogehoge�v���Ԃ�
+  # 「horohogehoge」が返る
   =end
 </PRE>
 </TD></TR>
@@ -3224,36 +3224,36 @@ TABLE.command CAPTION{
   substr<A name="substr"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(substr ������1 �J�n�ʒu ����)
+    $(substr 文字列1 開始位置 長さ)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    ����������
+    部分文字列
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    ������1�̕����������Ԃ��B������1�́u�J�n�ʒu+1�v�����ڂ���A
-    �u�����v��������Ԃ��B�ʒu��0�I���W���ł���B
-    �����͏ȗ��ł��A�ȗ������ꍇ�A
-    �J�n�ʒu���疖���܂ł�Ԃ��B
-    �ʒu�����̐��̏ꍇ�A�������琔�����ʒu�ɂȂ�B
+    文字列1の部分文字列を返す。文字列1の「開始位置+1」文字目から、
+    「長さ」文字分を返す。位置は0オリジンである。
+    長さは省略でき、省略した場合、
+    開始位置から末尾までを返す。
+    位置が負の数の場合、末尾から数えた位置になる。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   substr ABCDEFG 3 2;
-  # �uDE�v��Ԃ�
+  # 「DE」を返す
   
   substr ABCDEFG 3;
-  # �uDEFG�v��Ԃ�
+  # 「DEFG」を返す
   =end
 </PRE>
 </TD></TR>
@@ -3264,33 +3264,33 @@ TABLE.command CAPTION{
 	tolower<A name="tolower"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(tolower ������1 ...)
+		$(tolower 文字列1 ...)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�����񒆂̃A���t�@�x�b�g�啶�����������ɒu����������
+		文字列中のアルファベット大文字を小文字に置換した結果
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�����񒆂̃A���t�@�x�b�g�啶�����������ɒu������B
-		���p�����݂̂ɍ�p����B
+		文字列中のアルファベット大文字を小文字に置換する。
+		半角文字のみに作用する。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   tolower ABC def;
-  # �uabc def�v���Ԃ�
+  # 「abc def」が返る
   
-  tolower �w�x�y XYZ;
-  # �u�w�x�y xyz�v���Ԃ�
+  tolower ＸＹＺ XYZ;
+  # 「ＸＹＺ xyz」が返る
   =end
 </PRE>
 </TD></TR>
@@ -3301,33 +3301,33 @@ TABLE.command CAPTION{
 	toupper<A name="toupper"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(toupper ������1 ...)
+		$(toupper 文字列1 ...)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�����񒆂̃A���t�@�x�b�g��������啶���ɒu����������
+		文字列中のアルファベット小文字を大文字に置換した結果
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�����񒆂̃A���t�@�x�b�g��������啶���ɒu������B
-		���p�����݂̂ɍ�p����B
+		文字列中のアルファベット小文字を大文字に置換する。
+		半角文字のみに作用する。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   toupper ABC def;
-  # �uABC DEF�v���Ԃ�
+  # 「ABC DEF」が返る
   
-  toupper ������ xyz;
-  # �u������ XYZ�v���Ԃ�
+  toupper ｘｙｚ xyz;
+  # 「ｘｙｚ XYZ」が返る
   =end
 </PRE>
 </TD></TR>
@@ -3338,81 +3338,81 @@ TABLE.command CAPTION{
   tr<A name="tr"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(tr ������1 �u���Ώە��� �ϊ�����)
+    $(tr 文字列1 置換対象文字 変換文字)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �u����̕�����
+    置換後の文字列
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �w�蕶���񒆂ɒu���Ώە����̂����ꂩ���������ꍇ�A
-    �Ή�����ϊ������ɒu��������B
-    �ϊ������ɑΉ����镔�����Ȃ��ꍇ�A""�ɒu��������B
-    perl��tr//d�Ɠ������������B
+    指定文字列中に置換対象文字のいずれかがあった場合、
+    対応する変換文字に置き換える。
+    変換文字に対応する部分がない場合、""に置き換える。
+    perlのtr//dと同じ動作をする。
  </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  tr Ab�b�������� ABCD�`�a�b�c�������� abcdwxyz1234;
-  # �uaby4�������v���Ԃ�
+  tr AbＣｄあいう ABCDＡＢＣＤａｂｃｄ abcdwxyz1234;
+  # 「aby4あいう」が返る
   =end
 </PRE>
 </TD></TR>
 </TABLE>
 
 <A name="saori"></A>
-<H4>4.2.6. �R�}���h-SAORI</H4>
+<H4>4.2.6. コマンド-SAORI</H4>
 
 <TABLE class="command" width="100%">
 <CAPTION>
   saoriregist<A name="saoriregist"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(saoriregist DLL�t�@�C�� �G�C���A�X [ �I�v�V���� ] )
+    $(saoriregist DLLファイル エイリアス [ オプション ] )
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �Ȃ�
+    なし
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
     <P>
-      SAORI���W���[���̓o�^�B
-      DLL�t�@�C���ɂ́A���΃p�X�܂��͐�΃p�X��DLL���w�肷��B
-      �G�C���A�X�́Acallsaori�R�}���h��SAORI���W���[�����Ăԍۂ̃L�[���[�h���w�肷��B
+      SAORIモジュールの登録。
+      DLLファイルには、相対パスまたは絶対パスでDLLを指定する。
+      エイリアスは、callsaoriコマンドでSAORIモジュールを呼ぶ際のキーワードを指定する。
     </P><P>
-      �I�v�V�����ɂ́ASAORI���W���[�������[�h����^�C�~���O���w�肷��B
-      SAORI�̒��ɂ̓��[�h�Ɏ��Ԃ̂�������̂�A
-      �Ă΂�Ȃ��\�������邱�Ƃ��l�����邽�߁A
-      ���̂悤�Ȓ������\�ƂȂ��Ă���B
-      �^�C�~���O�ɂ�<SPAN class="tt">"preload", "loadoncall", "noresident"</SPAN>
-      ��3��ނ�����A
-      ���ꂼ��A�usaoriregist���Ƀ��[�h�v�u�ŏ���callsaori(x)���ꂽ���Ƀ��[�h�v
-      �ucallsaori���Ƀ��[�h���A�I������瑦�A�����[�h�v���Ӗ�����B
-      �f�t�H���g��loadoncall�ł���B
+      オプションには、SAORIモジュールをロードするタイミングを指定する。
+      SAORIの中にはロードに時間のかかるものや、
+      呼ばれない可能性があることも考えられるため、
+      このような調整が可能となっている。
+      タイミングには<SPAN class="tt">"preload", "loadoncall", "noresident"</SPAN>
+      の3種類があり、
+      それぞれ、「saoriregist時にロード」「最初にcallsaori(x)された時にロード」
+      「callsaori時にロードし、終わったら即アンロード」を意味する。
+      デフォルトはloadoncallである。
     </P>
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # saori_cpuid.dll��cpuid�Ƃ��ēo�^�B���������[�h�B
+  # saori_cpuid.dllをcpuidとして登録。今すぐロード。
   saoriregist modules\saori_cpuid.dll cpuid preload
   =end
 </PRE>
@@ -3424,29 +3424,29 @@ TABLE.command CAPTION{
   saorierase<A name="saorierase"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(saorierase �G�C���A�X)
+    $(saorierase エイリアス)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �Ȃ�
+    なし
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �o�^�ς݂�SAORI��o�^���疕������B
-    ���[�h����Ă����畹���ăA�����[�h�����B
+    登録済みのSAORIを登録から抹消する。
+    ロードされていたら併せてアンロードされる。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # cpuid���A�����[�h
+  # cpuidをアンロード
   saorierase cpuid;
   =end
 </PRE>
@@ -3458,29 +3458,29 @@ TABLE.command CAPTION{
   saorilist<A name="saorilist"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(saorilist �G���g��1)
+    $(saorilist エントリ1)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �Ȃ�
+    なし
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �o�^�ς݂�SAORI�̃G�C���A�X���A���ׂăG���g��1�Ɋi�[����B
-    �I�v�V�����̎�ނɂ�炸�A�o�^���Ă���G�C���A�X��S�ĕԂ����Ƃɒ��ӁB
+    登録済みのSAORIのエイリアスを、すべてエントリ1に格納する。
+    オプションの種類によらず、登録しているエイリアスを全て返すことに注意。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # System.SaoriList�G���g���ɓo�^��SAORI�G�C���A�X�̈ꗗ���i�[
+  # System.SaoriListエントリに登録済SAORIエイリアスの一覧を格納
   saorilist System.SaoriList;
   =end
 </PRE>
@@ -3492,27 +3492,27 @@ TABLE.command CAPTION{
   callsaori<A name="callsaori"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    callsaori �G�C���A�X [ ���� ���� ... ]
+    callsaori エイリアス [ 引数 引数 ... ]
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    SAORI�̖߂�l(Result)
+    SAORIの戻り値(Result)
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �߂�l�����SAORI���Ăяo���B
+    戻り値が一つのSAORIを呼び出す。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  sentence : \0\s[0]������OS��$(callsaori cpuid os.name)�ˁB\e
+例
+  sentence : \0\s[0]ここのOSは$(callsaori cpuid os.name)ね。\e
 </PRE>
 </TD></TR>
 </TABLE>
@@ -3522,36 +3522,36 @@ TABLE.command CAPTION{
   callsaorix<A name="callsaorix"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    callsaorix �G�C���A�X �߂�l�i�[�G���g�� [ ���� ���� ... ]
+    callsaorix エイリアス 戻り値格納エントリ [ 引数 引数 ... ]
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    SAORI�Ăяo������(Result)
+    SAORI呼び出し結果(Result)
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �����̖߂�l������SAORI���Ăяo���A���ʂ𓾂�B
-    SAORI�̖߂�l��Value[���l]�w�b�_�Ɋi�[����Ă��邪�A
-    ������A�u<SPAN class="tt">�w��G���g��.Value[���l]</SPAN>�v
-    �G���g���Ɋi�[����B
-    �܂��A�u<SPAN class="tt">�w��G���g��.size</SPAN>�v
-    �ɁA����ꂽ�߂�l(Value)�̐���Ԃ��B
+    複数の戻り値を持つSAORIを呼び出し、結果を得る。
+    SAORIの戻り値はValue[数値]ヘッダに格納されているが、
+    これを、「<SPAN class="tt">指定エントリ.Value[数値]</SPAN>」
+    エントリに格納する。
+    また、「<SPAN class="tt">指定エントリ.size</SPAN>」
+    に、得られた戻り値(Value)の数を返す。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  # tmizu�����wmove.dll���g���A�L�����N�^�̗����ʒu���擾����
+例
+  # tmizu氏作のwmove.dllを使い、キャラクタの立ち位置を取得する
   =kis
   fuction getposition $(
-    # ����1 : 0=Sakura�A1=Kero
-    # ����2 : �߂�l�ԋp�p�G���g����
+    # 引数1 : 0=Sakura、1=Kero
+    # 引数2 : 戻り値返却用エントリ名
     if $[ $@arg[1] == 0 ] $(
       setstr @characterHWnd $System.HWnd.shell[0];
     ) else if $[ $@arg[1] == 1 ] $(
@@ -3569,135 +3569,135 @@ TABLE.command CAPTION{
 
 <!--
 <A name="calc"></A>
-<H4>4.2.5. �R�}���h-�]���E��r</H4>
+<H4>4.2.5. コマンド-評価・比較</H4>
 
 <TABLE class="command" width="100%">
 <CAPTION>
 	expr<A name="expr"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
 		$(expr EXPRESSION)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		EXPRESSION�̒l�B�^�U�l��"1"(�^)��""(�U)�ŕԂ�B
+		EXPRESSIONの値。真偽値は"1"(真)か""(偽)で返る。
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		EXPRESSION�ŗ^����ꂽ����]�����A���̒l��Ԃ��B
+		EXPRESSIONで与えられた式を評価し、その値を返す。
 		<A href="http://www.linux.or.jp/JM/html/gnumaniak/man1/expr.1.html">
-		GNU expr</A>���K�͂Ƃ����@�\�A�\�������B
-		�ȉ��ɗ��ӂ̂��ƁB
+		GNU expr</A>を規範とした機能、構文を持つ。
+		以下に留意のこと。
 		<UL>
-			<LI>���̋L���͋󔒂ŋ�؂�B</LI>
-			<LI>expr�͐��l�ƕ�����̑o���������B�������A
-			    ���l�Ƃ��ĔF�������̂͂�����u���p�v��10�i�����̂݁B</LI>
+			<LI>一つ一つの記号は空白で区切る。</LI>
+			<LI>exprは数値と文字列の双方を扱う。ただし、
+			    数値として認識されるのはいわゆる「半角」の10進整数のみ。</LI>
 		</UL>
-		EXPRESSION�̎�ނ͈ȉ��̒ʂ�B<BR>
+		EXPRESSIONの種類は以下の通り。<BR>
 		<DL>
 		<DT>ARG1 | ARG2</DT>
-			<DD>ARG1�B�������AARG1���U�Ȃ�ARG2�B</DD>
+			<DD>ARG1。ただし、ARG1が偽ならARG2。</DD>
 		<DT>ARG1 & ARG2</DT>
-			<DD>ARG1�B�������AARG1��ARG2�ǂ��炩���^�łȂ��Ȃ�A""�B</DD>
+			<DD>ARG1。ただし、ARG1とARG2どちらかが真でないなら、""。</DD>
 		<DT>ARG1 &lt; ARG2</DT>
-			<DD>ARG1��ARG2��菬������ΐ^("1")�B�����łȂ��Ȃ�U("")�B
-			�ȉ��A��r���Z�͑S�ĕ�����ɂ��K�p�B</DD>
+			<DD>ARG1がARG2より小さければ真("1")。そうでないなら偽("")。
+			以下、比較演算は全て文字列にも適用可。</DD>
 		<DT>ARG1 &lt;= ARG2</DT>
-			<DD>ARG1��ARG2�Ɠ��������A��菬������ΐ^�B�����łȂ���΋U�B</DD>
+			<DD>ARG1がARG2と等しいか、より小さければ真。そうでなければ偽。</DD>
 		<DT>ARG1 = ARG2</DT>
-			<DD>ARG1��ARG2����������ΐ^�B"=="�ɂ��Ή��B</DD>
+			<DD>ARG1とARG2が等しければ真。"=="にも対応。</DD>
 		<DT>ARG1 != ARG2</DT>
-			<DD>ARG1��ARG2���������Ȃ���ΐ^�B</DD>
+			<DD>ARG1とARG2が等しくなければ真。</DD>
 		<DT>ARG1 &gt;= ARG2</DT>
-			<DD>ARG1��ARG2�Ɠ��������A���傫����ΐ^�B�����łȂ���΋U�B</DD>
+			<DD>ARG1がARG2と等しいか、より大きければ真。そうでなければ偽。</DD>
 		<DT>ARG1 &gt; ARG2</DT>
-			<DD>ARG1��ARG2���傫����ΐ^�B�����łȂ���΋U�B</DD>
+			<DD>ARG1がARG2より大きければ真。そうでなければ偽。</DD>
 		<DT>ARG1 + ARG2</DT>
-			<DD>���Z�B�ǂ��炩���邢�͗��������l�łȂ����""�B</DD>
+			<DD>加算。どちらかあるいは両方が数値でなければ""。</DD>
 		<DT>ARG1 - ARG2</DT>
-			<DD>���Z�B�ǂ��炩���邢�͗��������l�łȂ����""�B</DD>
+			<DD>減算。どちらかあるいは両方が数値でなければ""。</DD>
 		<DT>ARG1 * ARG2</DT>
-			<DD>��Z�B�ǂ��炩���邢�͗��������l�łȂ����""�B</DD>
+			<DD>乗算。どちらかあるいは両方が数値でなければ""。</DD>
 		<DT>ARG1 / ARG2</DT>
-			<DD>���Z�B�ǂ��炩���邢�͗��������l�łȂ����""�B</DD>
+			<DD>除算。どちらかあるいは両方が数値でなければ""。</DD>
 		<DT>ARG1 % ARG2</DT>
-			<DD>��]�BARG1��ARG2�Ŋ������]��B
-			�ǂ��炩���邢�͗��������l�łȂ����""�B</DD>
+			<DD>剰余。ARG1をARG2で割った余り。
+			どちらかあるいは両方が数値でなければ""。</DD>
 		<DT>substr STRING POS LENGTH</DT>
-			<DD>����������𓾂�B
-			STRING����POS�Ԗڂ̕�������LENGTH�������؂�o���B
-			POS��1���琔����̂Œ��ӁB������u�S�p�����v��1������������B</DD>
+			<DD>部分文字列を得る。
+			STRING中のPOS番目の文字からLENGTH長だけ切り出す。
+			POSは1から数えるので注意。いわゆる「全角文字」も1文字ずつ数える。</DD>
 		<DT>index STRING CHARS</DT>
-			<DD>STRING����CHARS�Ɋ܂܂��ǂꂩ�̕������ŏ��Ɍ����ꏊ��Ԃ��B
-			�ʒu��1���琔����B</DD>
+			<DD>STRING中でCHARSに含まれるどれかの文字が最初に現れる場所を返す。
+			位置は1から数える。</DD>
 		<DT>length STRING</DT>
-			<DD>STRING�̒����B</DD>
+			<DD>STRINGの長さ。</DD>
 		<DT>quote  TOKEN</DT>
-			<DD>TOKEN����܂Ƃ܂�̕�����Ƃ݂Ȃ��B
-			TOKEN��"index"��"length"�ł����Ă�������L�[���[�h�Ƃ��Ȃ��悤�ɂ���B</DD>
+			<DD>TOKENを一まとまりの文字列とみなす。
+			TOKENが"index"や"length"であってもそれをキーワードとしないようにする。</DD>
 		<DT>( EXPRESSION )</DT>
-			<DD>EXPRESSION�̕]�����ʁB������g���ē���q�̕\�����\�ɂȂ�B
-			<SPAN class="tt">$(�`)</SPAN>
-			�̃C�����C���X�N���v�g���̂��̂����q�ɂ���킯�ł͂Ȃ����Ƃɒ��ӁB
-			<SPAN class="tt">$(expr �x���˂� & ( ( date %H ")" > 22 ")")</SPAN>
-			�ȂǂƂ������Ƃ͕s�\�B
-			�������A<SPAN class="tt">$(expr �x���˂� & ( $(date %H) > 22 ")")</SPAN>
-			�͉\�B
-			�܂��A<SPAN class="tt">)</SPAN>
-			���N�H�[�g���Ȃ���<SPAN class="tt">$(</SPAN>
-			�̑Ή��J�b�R���Ǝv����̂Œ��ӁB
+			<DD>EXPRESSIONの評価結果。これを使って入れ子の表現が可能になる。
+			<SPAN class="tt">$(～)</SPAN>
+			のインラインスクリプトそのものを入れ子にするわけではないことに注意。
+			<SPAN class="tt">$(expr 遅いねぇ & ( ( date %H ")" > 22 ")")</SPAN>
+			などということは不可能。
+			ただし、<SPAN class="tt">$(expr 遅いねぇ & ( $(date %H) > 22 ")")</SPAN>
+			は可能。
+			また、<SPAN class="tt">)</SPAN>
+			をクォートしないと<SPAN class="tt">$(</SPAN>
+			の対応カッコだと思われるので注意。
 			</DD>
 		<DT>find STRING SUBSTRING</DT>
-			<DD>STRING����SUBSTRING�������SUBSTRING��Ԃ��B�������""�B
-			�{����expr�ɂ͑��݂��Ȃ����Amatch�������̂ő�֕i�Ƃ��ē��������B
+			<DD>STRING中にSUBSTRINGがあればSUBSTRINGを返す。無ければ""。
+			本来のexprには存在しないが、matchが無いので代替品として導入した。
 			</DD>
 		<DT>findpos STRING SUBSTRING</DT>
-			<DD>STRING����SUBSTRING������΁A���̐擪�̈ʒu��Ԃ��B�Ȃ����""�B
-			�������{����expr�ɂ͑��݂��Ȃ����A�p�ɂɎg���̂œ��������B
+			<DD>STRING中にSUBSTRINGがあれば、その先頭の位置を返す。なければ""。
+			同じく本来のexprには存在しないが、頻繁に使うので導入した。
 			</DD>
 		<DT>STRING : REGEXP</DT>
 		<DT>match STRING REGEXP</DT>
-			<DD>�������B</DD>
+			<DD>未実装。</DD>
 		</DL>
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��F
+例：
 $(expr ${npw.special} | ${npw})
-    # npw.special�ɓ��e������΁A����B�������npw�̒u�����ʂ��Ԃ�B
+    # npw.specialに内容があれば、それ。無ければnpwの置換結果が返る。
 
 $(expr ${system.Sender} & ${system.Sentence})
-    # system.Sentence��system.Sender�o���ɓ��e������΁A
-    # system.Sender���Ԃ�B
+    # system.Sentenceとsystem.Sender双方に内容があれば、
+    # system.Senderが返る。
 
-$(expr substr �P2�R4�T6�V 1 3)
-    # �o�� : �P2�R
+$(expr substr １2３4５6７ 1 3)
+    # 出力 : １2３
 
-\u$(expr substr ${dms} 1 6)\w8\w8�c\w8\w8�c\w8\w8\w8\w8
-\h\s[7]�ǂ����ēr���Ŏ~�߂�񂾂���I\w8\e
+\u$(expr substr ${dms} 1 6)\w8\w8…\w8\w8…\w8\w8\w8\w8
+\h\s[7]どうして途中で止めるんだよっ！\w8\e
 
-$(expr index �ؘa���̑��� ��)
-    # �o�� : 6
+$(expr index 華和梨の代わり わ)
+    # 出力 : 6
 
 $(expr 20 * ( 3 + 2 ")")
-    # �o�� : 100
+    # 出力 : 100
 
-$(expr ${system.Sender} & ( ${system.Sender} != �܂�� ")")
-    # system.Sender����  ��  (�o�͖���)
-    # system.Sender��"�܂��" �� (�o�͖���)
-    # system.Sender��"�܂��"�ȊO �� system.Sender�̒l
+$(expr ${system.Sender} & ( ${system.Sender} != まゆら ")")
+    # system.Senderが空  →  (出力無し)
+    # system.Senderが"まゆら" → (出力無し)
+    # system.Senderが"まゆら"以外 → system.Senderの値
 
-$(expr find �ؘa���̑��� ��)
-    # �o�� : ��
-$(expr findpos �ؘa���̑��� ��)
-    # �o�� : 6
+$(expr find 華和梨の代わり わ)
+    # 出力 : わ
+$(expr findpos 華和梨の代わり わ)
+    # 出力 : 6
 </PRE>
 </TD></TR>
 </TABLE>
@@ -3707,123 +3707,123 @@ $(expr findpos �ؘa���̑��� ��)
 	test<A name="test"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(test ������)<BR>$([ ������ ])
+		$(test 条件式)<BR>$([ 条件式 ])
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		���������^�Ȃ�"true"�A�U�Ȃ�"false"
+		条件式が真なら"true"、偽なら"false"
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�������̐^�U��Ԃ��B��r���Z�q�͈ȉ����g����B
+		条件式の真偽を返す。比較演算子は以下が使える。
 		<UL>
 		<TABLE border="0">
-		<TR><TD></TD><TD></TD><TD>A : A���^�Ȃ�ΐ^</TD></TR>
-		<TR><TD></TD><TD align="center">!</TD><TD>A  : A���U�Ȃ�ΐ^</TD></TR>
-		<TR><TD>A</TD><TD align="center">==</TD><TD>B : A��B������������Ȃ�ΐ^</TD></TR>
-		<TR><TD>A</TD><TD align="center">=</TD><TD>B : A��B������������Ȃ�ΐ^</TD></TR>
-		<TR><TD>A</TD><TD align="center">!=</TD><TD>B : A��B������������łȂ���ΐ^</TD></TR>
-		<TR><TD>A</TD><TD align="center">&lt;</TD><TD>B : A��B��莫�����őO�ɂ���ΐ^</TD></TR>
-		<TR><TD>A</TD><TD align="center">&gt;</TD><TD>B : A��B��莫�����Ō�ɂ���ΐ^</TD></TR>
-		<TR><TD>A</TD><TD align="center">&lt;=</TD><TD>B : A��B��莫�����Ō�łȂ���ΐ^</TD></TR>
-		<TR><TD>A</TD><TD align="center">&gt;=</TD><TD>B : A��B��莫�����őO�ɂȂ���ΐ^</TD></TR>
-		<TR><TD>A</TD><TD align="center">-eq</TD><TD>B : A��B�Ɠ�������ΐ^</TD></TR>
-		<TR><TD>A</TD><TD align="center">-ne</TD><TD>B : A��B�Ɠ������Ȃ���ΐ^</TD></TR>
-		<TR><TD>A</TD><TD align="center">-lt</TD><TD>B : A��B��菬������ΐ^</TD></TR>
-		<TR><TD>A</TD><TD align="center">-gt</TD><TD>B : A��B���傫����ΐ^</TD></TR>
-		<TR><TD>A</TD><TD align="center">-le</TD><TD>B : A��B�ȉ��Ȃ�ΐ^</TD></TR>
-		<TR><TD>A</TD><TD align="center">-ge</TD><TD>B : A��B�ȏ�Ȃ�ΐ^</TD></TR>
-		<TR><TD>A</TD><TD align="center">&&</TD><TD>B : A��B�����ɐ^�Ȃ�ΐ^</TD></TR>
-		<TR><TD>A</TD><TD align="center">||</TD><TD>B : A��������B���^�Ȃ�ΐ^</TD></TR>
+		<TR><TD></TD><TD></TD><TD>A : Aが真ならば真</TD></TR>
+		<TR><TD></TD><TD align="center">!</TD><TD>A  : Aが偽ならば真</TD></TR>
+		<TR><TD>A</TD><TD align="center">==</TD><TD>B : AとBが同じ文字列ならば真</TD></TR>
+		<TR><TD>A</TD><TD align="center">=</TD><TD>B : AとBが同じ文字列ならば真</TD></TR>
+		<TR><TD>A</TD><TD align="center">!=</TD><TD>B : AとBが同じ文字列でなければ真</TD></TR>
+		<TR><TD>A</TD><TD align="center">&lt;</TD><TD>B : AがBより辞書順で前にあれば真</TD></TR>
+		<TR><TD>A</TD><TD align="center">&gt;</TD><TD>B : AがBより辞書順で後にあれば真</TD></TR>
+		<TR><TD>A</TD><TD align="center">&lt;=</TD><TD>B : AがBより辞書順で後でなければ真</TD></TR>
+		<TR><TD>A</TD><TD align="center">&gt;=</TD><TD>B : AがBより辞書順で前になければ真</TD></TR>
+		<TR><TD>A</TD><TD align="center">-eq</TD><TD>B : AがBと等しければ真</TD></TR>
+		<TR><TD>A</TD><TD align="center">-ne</TD><TD>B : AがBと等しくなければ真</TD></TR>
+		<TR><TD>A</TD><TD align="center">-lt</TD><TD>B : AがBより小さければ真</TD></TR>
+		<TR><TD>A</TD><TD align="center">-gt</TD><TD>B : AがBより大きければ真</TD></TR>
+		<TR><TD>A</TD><TD align="center">-le</TD><TD>B : AがB以下ならば真</TD></TR>
+		<TR><TD>A</TD><TD align="center">-ge</TD><TD>B : AがB以上ならば真</TD></TR>
+		<TR><TD>A</TD><TD align="center">&&</TD><TD>B : AとBが共に真ならば真</TD></TR>
+		<TR><TD>A</TD><TD align="center">||</TD><TD>B : AもしくはBが真ならば真</TD></TR>
 		</TABLE>
 		</UL>
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   XBOX : toy
   PS2 : computer
   Workstation : computer
   ZAURUS : 40000
   visor : 25000
-  $(test ${XBOX} == "toy")       # �utrue�v���Ԃ�
-  $(test ${PS2} != "computer")   # �ufalse�v���Ԃ�
-  $(test ${ZAURUS} -lt ${visor}) # �ufalse�v���Ԃ�
-  $(if $([ ${PS2} == ${Workstation} ]) "\hPS2�~�����I\e" "\hPS2����Ȃ��B\e")
-  # �uPS2�~�����I�v�ƕ\������
+  $(test ${XBOX} == "toy")       # 「true」が返る
+  $(test ${PS2} != "computer")   # 「false」が返る
+  $(test ${ZAURUS} -lt ${visor}) # 「false」が返る
+  $(if $([ ${PS2} == ${Workstation} ]) "\hPS2欲しい！\e" "\hPS2いらない。\e")
+  # 「PS2欲しい！」と表示する
 </PRE>
 </TD></TR>
 </TABLE>
 -->
 
 <A name="communicate"></A>
-<H4>4.2.7. �R�}���h-�R�~���j�P�[�g�@�\</H4>
+<H4>4.2.7. コマンド-コミュニケート機能</H4>
 
 <TABLE class="command" width="100%">
 <CAPTION>
   communicate<A name="communicate"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(communicate �G���g��1 �P��1)
+    $(communicate エントリ1 単語1)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �G���g��1�̎����G���g���̒P��A�������͒P��1
+    エントリ1の示すエントリの単語、もしくは単語1
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �G���g��1�̒P���S�ĕ]�����A�߂�l���������P��������_����1�I�сA
-    ������G���g�����ƌ��Ȃ��ăG���g���Ăяo���̌��ʂ�Ԃ��B
-    �߂�l�̂������P�ꂪ1�������ꍇ�A�P��1��Ԃ��B
-    �P��1�͏ȗ��\�B<BR>
-    �G���g�����̎w��ɂ́A<A href="#dictcommon">��������R�}���h���ʂ̏���</A>�𗘗p�ł���B
+    エントリ1の単語を全て評価し、戻り値があった単語をランダムに1個選び、
+    これをエントリ名と見なしてエントリ呼び出しの結果を返す。
+    戻り値のあった単語が1つも無い場合、単語1を返す。
+    単語1は省略可能。<BR>
+    エントリ名の指定には、<A href="#dictcommon">辞書操作コマンド共通の書式</A>を利用できる。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  �Ŏq.keyword1 : ���� , �ӂ͂͂͂� , �ϑ�
-  �Ŏq.answer1  : \t\0\s[7]���̂��Ƃ͌����Ȃ��I\e
-  �Ŏq.answer1  : \t\0\s[1]�c�B\e
+例
+  毒子.keyword1 : うむ , ふはははは , 変態
+  毒子.answer1  : \t\0\s[7]胸のことは言うなっ！\e
+  毒子.answer1  : \t\0\s[1]…。\e
   
-  �Ԃ����.keyword1 : �ǂȂ�������� , �������w���Ȃ̂�
-  �Ԃ����.answer1  : \t\0\s[8]���d�d\w8���܂肶�낶�댩��Ƃ��ĂȁB\e
-  �Ԃ����.answer1  : \t\0\s[1]�Ԃ���񂩂āc�B\e
+  花ちゃん.keyword1 : どないしたんや , 同じ中学生なのに
+  花ちゃん.answer1  : \t\0\s[8]あ‥‥\w8あまりじろじろ見んといてな。\e
+  花ちゃん.answer1  : \t\0\s[1]花ちゃんかて…。\e
   
   match_keys : $(
-    if $[ ${System.Request.Reference0} == "�Ŏq" ] $(
-      if $(xargs �Ŏq.keyword1 matchall ${System.Request.Reference1})
-        �Ŏq.answer1
+    if $[ ${System.Request.Reference0} == "毒子" ] $(
+      if $(xargs 毒子.keyword1 matchall ${System.Request.Reference1})
+        毒子.answer1
     )
   )
   
   match_keys : $(
-    if $[ ${System.Request.Reference0} == "�Ԃ����" ] $(
-      if $(xargs �Ԃ����.keyword1 matchall ${System.Request.Reference1})
-        �Ԃ����.answer1
+    if $[ ${System.Request.Reference0} == "花ちゃん" ] $(
+      if $(xargs 花ちゃん.keyword1 matchall ${System.Request.Reference1})
+        花ちゃん.answer1
     )
   )
   
   event.OnCommunicate : $(communicate match_keys ${communicate.else})
   
-  # �R�~���j�P�[�g�R�}���h�Q��p�����R�~���j�P�[�g�̎�����
-  # OnCommunicate�C�x���g��communicate�R�}���h���g���A�C�x���g������
-  # �L�q����match_keys�G���g����S�ĕ]���A�߂�l�̂������I��
-  # �����āA�߂�l���G���g�����ƌ��Ȃ��ăG���g���Ăяo�����s���A�����Ԃ�
-  # ���������ꍇ�Acommunicate.else�G���g���̒P���Ԃ�
+  # コミュニケートコマンド群を用いたコミュニケートの実装例
+  # OnCommunicateイベントでcommunicateコマンドを使い、イベント反応を
+  # 記述したmatch_keysエントリを全て評価、戻り値のうち一つを選ぶ
+  # そして、戻り値をエントリ名と見なしてエントリ呼び出しを行い、それを返す
+  # 何も無い場合、communicate.elseエントリの単語を返す
 </PRE>
 </TD></TR>
 </TABLE>
@@ -3833,82 +3833,82 @@ $(expr findpos �ؘa���̑��� ��)
   matchall<A name="matchall"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(matchall ������1 �L�[���[�h1 ...)
+    $(matchall 文字列1 キーワード1 ...)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �^�܂��͋U
+    真または偽
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �L�[���[�h���S�ĕ�����1�ɂ������ꍇ�A�^��Ԃ��B
-    �L�[���[�h��1�ȏ�Ȃ�΁A�����ł��񋓂ł���B
+    キーワードが全て文字列1にあった場合、真を返す。
+    キーワードは1個以上ならば、いくつでも列挙できる。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  �Ŏq.keyword1 : ���炠�� , �ŋ� , ���w�� , ��
+例
+  毒子.keyword1 : あらあら , 最近 , 中学生 , 乳
   
   =kis
-  matchall ${System.Request.Reference1} ����ɂ���;
-  # Reference1�Ɂu����ɂ��́v���܂܂��ꍇ�A�^��Ԃ�
+  matchall ${System.Request.Reference1} こんにちは;
+  # Reference1に「こんにちは」が含まれる場合、真を返す
   
-  matchall ${System.Request.Reference1} ���ɂイ �������� �H;
-  # Reference1�Ɂu���ɂイ�v�u���������v�u�H�v���܂܂��ꍇ�A�^��Ԃ�
-  # �Ⴆ�΁u���ɂイ���Ă��������́H�v�ƌ������͂������ꍇ�A�^��Ԃ�
+  matchall ${System.Request.Reference1} うにゅう おいしい ？;
+  # Reference1に「うにゅう」「おいしい」「？」が含まれる場合、真を返す
+  # 例えば「うにゅうっておいしいの？」と言う文章がきた場合、真を返す
   
-  xargs �Ŏq.keyword1 matchall ${System.Request.Reference1};
-  # xargs�Ƃ̍��킹�Z
-  # xargs�œŎq.keyword1�G���g���̒P����umatchall..�v�ȍ~�ɗ�
-  # ���ʂƂ��āA�Ŏq.keyword1�G���g���̒P�ꂪ���ׂ�Reference1�Ɋ܂܂��
-  # �ꍇ�A�^��Ԃ�
+  xargs 毒子.keyword1 matchall ${System.Request.Reference1};
+  # xargsとの合わせ技
+  # xargsで毒子.keyword1エントリの単語を「matchall..」以降に列挙
+  # 結果として、毒子.keyword1エントリの単語がすべてReference1に含まれる
+  # 場合、真を返す
   =end
 </PRE>
 </TD></TR>
 </TABLE>
 
 <A name="output"></A>
-<H4>4.2.8. �R�}���h-�o��</H4>
+<H4>4.2.8. コマンド-出力</H4>
 
 <TABLE class="command" width="100%">
 <CAPTION>
 	echo<A name="echo"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(echo �P��1 ...)
+		$(echo 単語1 ...)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�S�������󔒕����Őڑ���������
+		全引数を空白文字で接続したもの
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�^����ꂽ�S�������A�󔒕����ŋ�؂��ĕԂ��B
+		与えられた全引数を、空白文字で区切って返す。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   echo 1 2 3 4 5;
-  # �u1 2 3 4 5�v���Ԃ�
+  # 「1 2 3 4 5」が返る
   
   setstr test1 "TEST";
   echo ${test1};
-  # �uTEST�v���Ԃ�
+  # 「TEST」が返る
   =end
 </PRE>
 </TD></TR>
@@ -3919,33 +3919,33 @@ $(expr findpos �ؘa���̑��� ��)
   encode_entryname<A name="encode_entryname"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(encode_entryname ������1)
+    $(encode_entryname 文字列1)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �G���g�����Ɏg�p�ł��镶���ɕϊ�����������
+    エントリ名に使用できる文字に変換した文字列
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �w�蕶���񒆂̃G���g�����Ɏg�p�ł��Ȃ�������ϊ����A
-    �G���g�����Ɏg�p�ł��镶�����Ԃ��B
-    �g�p�ł��Ȃ������́A"_"�ɕϊ�����B
-    �G���g�����Ɏg�p�ł��Ȃ������ɂ��ẮA
-    KIS Programming Reference �́u3.�ؘa�����@�v���Q�Ƃ̂��ƁB
+    指定文字列中のエントリ名に使用できない文字を変換し、
+    エントリ名に使用できる文字列を返す。
+    使用できない文字は、"_"に変換する。
+    エントリ名に使用できない文字については、
+    KIS Programming Reference の「3.華和梨文法」を参照のこと。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  encode_entryname "�u#�v��u,�v��u �v�̓G���g�����Ɏg���܂���";
-  # "�u_�v��u_�v��u_�v�̓G���g�����Ɏg���܂���"���Ԃ�B
+  encode_entryname "「#」や「,」や「 」はエントリ名に使えません";
+  # "「_」や「_」や「_」はエントリ名に使えません"が返る。
   =end
 </PRE>
 </TD></TR>
@@ -3956,76 +3956,76 @@ $(expr findpos �ؘa���̑��� ��)
 	escape<A name="escape"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(escape �P��1 ...)
+		$(escape 単語1 ...)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�S�������󔒕����Őڑ����A�u\�v���u\\�v�ɁA�u%�v���u\%�v�ɒu����������
+		全引数を空白文字で接続し、「\」を「\\」に、「%」を「\%」に置換したもの
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�^����ꂽ�S�����̂�����X�N���v�g���G�X�P�[�v����B
+		与えられた全引数のさくらスクリプトをエスケープする。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   event.OnFileDropped : (
       $(escape ${System.Request.Reference0})
-      ���h���b�v����܂����B)
-  # �h���b�O���h���b�v���ꂽ�t�@�C������\������
+      がドロップされました。)
+  # ドラッグ＆ドロップされたファイル名を表示する
 </PRE>
 </TD></TR>
 </TABLE>
 
 <A name="aux"></A>
-<H4>4.2.9. �R�}���h-�⏕�@�\</H4>
+<H4>4.2.9. コマンド-補助機能</H4>
 
 <TABLE class="command" width="100%">
 <CAPTION>
 	entry<A name="entry"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(entry �G���g���� �P��1)
+		$(entry エントリ名 単語1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		${�G���g����}�̌��ʁA�܂��͒P��1
+		${エントリ名}の結果、または単語1
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�G���g�����烉���_���ɒP���I�сA�]������B
-		�w�肵���G���g������̏ꍇ�A�P��1��Ԃ��B
-		�P��1�͏ȗ��\�B�ȗ��������Ɏw�肵���G���g������̏ꍇ�A
-		�󕶎���Ԃ��B<BR>
-		eval�ł����l�̂��Ƃ��\�����Aentry�̕������ׂ��y���B
+		エントリからランダムに単語を選び、評価する。
+		指定したエントリが空の場合、単語1を返す。
+		単語1は省略可能。省略した時に指定したエントリが空の場合、
+		空文字を返す。<BR>
+		evalでも同様のことが可能だが、entryの方が負荷が軽い。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   entry "npw";
-  # ${npw}�Ɠ���
+  # ${npw}と同じ
   
   entry "message."$(rand 3);
-  # ${message.0}����${message.2}�̂ǂꂩ
+  # ${message.0}から${message.2}のどれか
   
   entry "system.OtherGhost" ${myname};
-  # ${system.OtherGhost}�Ɠ���
-  # ��̏ꍇ��${myname}�̖߂�l���Ԃ�
+  # ${system.OtherGhost}と同じ
+  # 空の場合は${myname}の戻り値が返る
   =end
 </PRE>
 </TD></TR>
@@ -4036,26 +4036,26 @@ $(expr findpos �ؘa���̑��� ��)
   entrycount<A name="entrycount"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
     $(entrycount)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �G���g���̑���
+    エントリの総数
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �G���g���̑�����Ԃ��B���AI�O���t�Ɏg�p����B
+    エントリの総数を返す。主にAIグラフに使用する。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   $(entrycount)
 </PRE>
 </TD></TR>
@@ -4066,44 +4066,44 @@ $(expr findpos �ؘa���̑��� ��)
 	eval<A name="eval"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(eval �P��1 ...)
+		$(eval 単語1 ...)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�f�R�[�h����
+		デコード結果
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�^����ꂽ�S��������${}�A$()�����ēx�ċA�I�ɕ]�����A
-		�W�J���ʂ�Ԃ��B�ċA�I�]�����s���ȊO��echo�Ɠ����B
+		与えられた全引数中の${}、$()等を再度再帰的に評価し、
+		展開結果を返す。再帰的評価を行う以外はechoと同じ。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  kawari     : �ؘa��
-  nise       : �U
-  shiori     : �x
+例
+  kawari     : 華和梨
+  nise       : 偽
+  shiori     : 栞
   niseshiori : ${nise}${shiori}
   
   =kis
-  eval "�����̋UAI��${kawari}�ł�";
-  # �u�����̋UAI�ؘ͉a���ł��v���Ԃ�
+  eval "理夢の偽AIは${kawari}です";
+  # 「理夢の偽AIは華和梨です」が返る
   
-  eval "�ޗ��̋UAI��${niseshiori}�ł�";
-  # �u�ޗ��̋UAI�͋U�x�ł��v���Ԃ�
+  eval "奈留の偽AIは${niseshiori}です";
+  # 「奈留の偽AIは偽栞です」が返る
   =end
 
-�Q�l
+参考
   =kis
-  echo "�ޗ��̋UAI��${niseshiori}�ł�";
-  # �u�ޗ��̋UAI��${niseshiori}�ł��v���Ԃ�
+  echo "奈留の偽AIは${niseshiori}です";
+  # 「奈留の偽AIは${niseshiori}です」が返る
   =end
 </PRE>
 </TD></TR>
@@ -4114,46 +4114,46 @@ $(expr findpos �ؘa���̑��� ��)
 	urllist<A name="urllist"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(urllist �T�C�g��1 URL1 �o�i�[URL1 ... �T�C�g��n URLn �o�i�[URLn)
+		$(urllist サイト名1 URL1 バナーURL1 ... サイト名n URLn バナーURLn)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�T�C�g��1[1]URL1[1]�o�i�[URL1[2]...�T�C�g��n[1]URLn[1]�o�i�[URLn[2]<BR>
-		��[1]�̓o�C�g�l1�A[2]�̓o�C�g�l2
+		サイト名1[1]URL1[1]バナーURL1[2]...サイト名n[1]URLn[1]バナーURLn[2]<BR>
+		※[1]はバイト値1、[2]はバイト値2
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		SHIORI/2.5�K�i�ɏ]���A�u�������߃��X�g�v�𐶐�����B
-		�����̐��͕K��3�̔{���ɂȂ邱�ƁB<BR>
-		�d�؂���̓T�C�g���Ɂu-�v��n���B
+		SHIORI/2.5規格に従い、「おすすめリスト」を生成する。
+		引数の数は必ず3の倍数になること。<BR>
+		仕切り線はサイト名に「-」を渡す。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   futaba : "http://futaba.mikage.to/"
   kawari : "http://meister-d-i.hoops.ne.jp/"
 
-  # �����瑤�̂������߃T�C�g�̃��X�g
+  # さくら側のおすすめサイトのリスト
   resource.sakura.recommendsites : $(
-    urllist "�ӂ��΂݂���" ${futaba} ${futaba}"banner.png"
-    "�����ȊO�̉���" ${kawari} ${kawari}"banner.png"
+    urllist "ふたばみかげ" ${futaba} ${futaba}"banner.png"
+    "何か以外の何か" ${kawari} ${kawari}"banner.png"
   )
 
-  # ���ɂイ���̂������߃T�C�g�̃��X�g
+  # うにゅう側のおすすめサイトのリスト
   resource.kero.recommendsites : (
-    $(urllist "�ӂ��΂݂���" "http://futaba.mikage.to/" "banner.png")
+    $(urllist "ふたばみかげ" "http://futaba.mikage.to/" "banner.png")
     $(urllist "-" "-" "-")
-    $(urllist "�����ȊO�̉���" "http://meister-d-i.hoops.ne.jp/" "banner.png")
+    $(urllist "何か以外の何か" "http://meister-d-i.hoops.ne.jp/" "banner.png")
   )
-  # �T�C�g���Ƃ�urllist�R�}���h�𕪂��ď������Ƃ��o����
-  # �d�؂���̏ꍇ�ł��A�_�~�[��URL�ƃo�i�[URL��^����K�v������
+  # サイトごとにurllistコマンドを分けて書くことも出来る
+  # 仕切り線の場合でも、ダミーのURLとバナーURLを与える必要がある
 </PRE>
 </TD></TR>
 </TABLE>
@@ -4163,26 +4163,26 @@ $(expr findpos �ؘa���̑��� ��)
   wordcount<A name="wordcount"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
     $(wordcount)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �P��̑���
+    単語の総数
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �P��̑�����Ԃ��B���AI�O���t�Ɏg�p����B
+    単語の総数を返す。主にAIグラフに使用する。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   $(wordcount)
 </PRE>
 </TD></TR>
@@ -4193,124 +4193,124 @@ $(expr findpos �ؘa���̑��� ��)
   xargs<A name="xargs"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(xargs �����G���g�� �R�}���h1 ...)
+    $(xargs 引数エントリ コマンド1 ...)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �R�}���h1�̎��s����
+    コマンド1の実行結果
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    �����G���g���̓��e��Y�������ɓW�J���āA�R�}���h1�̈����Ƃ��ė^����B
-    �R�}���h1�̌�ɏ����������́A
-    �����G���g���̓W�J���e���O���ɕt������B
-    �R�}���h1�̎��s���ʂ��߂�l�ƂȂ�B<BR>
-    �G���g�����̎w��ɂ́A<A href="#dictcommon">��������R�}���h���ʂ̏���</A>�𗘗p�ł���B
+    引数エントリの内容を添え字順に展開して、コマンド1の引数として与える。
+    コマンド1の後に書いた引数は、
+    引数エントリの展開内容より前方に付加する。
+    コマンド1の実行結果が戻り値となる。<BR>
+    エントリ名の指定には、<A href="#dictcommon">辞書操作コマンド共通の書式</A>を利用できる。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
-  SaveEntries : HighScore , Life , ����p�x , �D���x , �ŏI�X�V��
+例
+  SaveEntries : HighScore , Life , 喋り頻度 , 好感度 , 最終更新日
   
-  RecommendSites : "�f��" , "http://sakura.mikage.to" , "-"
-  RecommendSites : "�܂��" , "http://mayura.jp/" , "-"
+  RecommendSites : "伺か" , "http://sakura.mikage.to" , "-"
+  RecommendSites : "まゆら" , "http://mayura.jp/" , "-"
   RecommendSites : "-" , "-" , "-"
-  RecommendSites : "�ؘa��" , "http://kawari.sf.net/" , "-"
+  RecommendSites : "華和梨" , "http://kawari.sf.net/" , "-"
   
-  keyword1 : �ؘa�� , SHIORI , �S�[�X�g
+  keyword1 : 華和梨 , SHIORI , ゴースト
   
   =kis
   xargs SaveEntries save parameter.txt;
-  # SaveEntries�̓��e��W�J����save�R�}���h�����s�B
-  # �usave parameter.txt HighScore Lige ����p�x �D���x �ŏI�X�V���v
-  # �����s�����ꍇ�Ɠ����B
+  # SaveEntriesの内容を展開してsaveコマンドを実行。
+  # 「save parameter.txt HighScore Lige 喋り頻度 好感度 最終更新日」
+  # を実行した場合と等価。
   
   xargs RecommendSites urllist;
-  # urllist�R�}���h��RecommendSites�G���g���̓��e��W�J���ė^����
+  # urllistコマンドにRecommendSitesエントリの内容を展開して与える
   
   xargs keyword1 matchall ${System.Request.Reference0};
-  # keyword1�G���g���̑S�Ă̒P�ꂪReference0�Ƀ}�b�`������^��Ԃ�
+  # keyword1エントリの全ての単語がReference0にマッチしたら真を返す
   =end
 </PRE>
 </TD></TR>
 </TABLE>
 
 <A name="othercmd"></A>
-<H4>4.2.10. �R�}���h-���̑�</H4>
+<H4>4.2.10. コマンド-その他</H4>
 
 <TABLE class="command" width="100%">
 <CAPTION>
 	date<A name="date"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(date ����������1 �o�ߕb��1)
+		$(date 書式文字列1 経過秒数1)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�����̕�����
+		日時の文字列
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�o�ߕb��1��1970/1/1 0:00:00����̌o�ߕb���ƍl���A
-		����������1�ɏ]���āA�����̏���Ԃ��B
-		�o�ߕb��1�͏ȗ��\�ŁA�ȗ�����ƌ��������w�肵�����ƂɂȂ�B
-		����������ɂ͈ȉ����g����B
+		経過秒数1を1970/1/1 0:00:00からの経過秒数と考え、
+		書式文字列1に従って、日時の情報を返す。
+		経過秒数1は省略可能で、省略すると現時刻を指定したことになる。
+		書式文字列には以下が使える。
 		<UL>
 		<TABLE border="0">
-		<TR><TD>%d</TD><TD>: ��(2��,01..31)</TD></TR>
-		<TR><TD>%e</TD><TD>: ��(1..31)</TD></TR>
-		<TR><TD>%H</TD><TD>: ��(2��,00..23)</TD></TR>
-		<TR><TD>%j</TD><TD>: ��������̒ʎZ��(3��,001..366)</TD></TR>
-		<TR><TD>%J</TD><TD>: ��������̒ʎZ��(1..366)</TD></TR>
-		<TR><TD>%k</TD><TD>: ��(0..23)</TD></TR>
-		<TR><TD>%m</TD><TD>: ��(2��,01..12)</TD></TR>
-		<TR><TD>%M</TD><TD>: ��(2��,00..59)</TD></TR>
-		<TR><TD>%n</TD><TD>: ��(1..12)</TD></TR>
-		<TR><TD>%N</TD><TD>: ��(0..59)</TD></TR>
-		<TR><TD>%r</TD><TD>: �b(0..59)</TD></TR>
-		<TR><TD>%S</TD><TD>: �b(2��,00..59)</TD></TR>
-		<TR><TD>%s</TD><TD>: 1970/1/1 00:00:00(���莞)����̒ʎZ�b��</TD></TR>
-		<TR><TD>%w</TD><TD>: �j��(0..6,���j����0)</TD></TR>
-		<TR><TD>%y</TD><TD>: �N(4��,2000...)</TD></TR>
-		<TR><TD>%Y</TD><TD>: �N(4��,2000...)</TD></TR>
+		<TR><TD>%d</TD><TD>: 日(2桁,01..31)</TD></TR>
+		<TR><TD>%e</TD><TD>: 日(1..31)</TD></TR>
+		<TR><TD>%H</TD><TD>: 時(2桁,00..23)</TD></TR>
+		<TR><TD>%j</TD><TD>: 元日からの通算日(3桁,001..366)</TD></TR>
+		<TR><TD>%J</TD><TD>: 元日からの通算日(1..366)</TD></TR>
+		<TR><TD>%k</TD><TD>: 時(0..23)</TD></TR>
+		<TR><TD>%m</TD><TD>: 月(2桁,01..12)</TD></TR>
+		<TR><TD>%M</TD><TD>: 分(2桁,00..59)</TD></TR>
+		<TR><TD>%n</TD><TD>: 月(1..12)</TD></TR>
+		<TR><TD>%N</TD><TD>: 分(0..59)</TD></TR>
+		<TR><TD>%r</TD><TD>: 秒(0..59)</TD></TR>
+		<TR><TD>%S</TD><TD>: 秒(2桁,00..59)</TD></TR>
+		<TR><TD>%s</TD><TD>: 1970/1/1 00:00:00(協定時)からの通算秒数</TD></TR>
+		<TR><TD>%w</TD><TD>: 曜日(0..6,日曜日が0)</TD></TR>
+		<TR><TD>%y</TD><TD>: 年(4桁,2000...)</TD></TR>
+		<TR><TD>%Y</TD><TD>: 年(4桁,2000...)</TD></TR>
 		</TABLE>
 		</UL>
-		'%'�Ŏn�܂�}�N���ȊO�̕����́A���̂܂ܕ\������B
-		�܂��A������������ȗ������ꍇ�A
-		�u%y/%m/%d %H:%M:%S�v���Z�b�g�����ꍇ�Ɠ����ł���B
+		'%'で始まるマクロ以外の文字は、そのまま表示する。
+		また、書式文字列を省略した場合、
+		「%y/%m/%d %H:%M:%S」をセットした場合と等価である。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��1
+例1
   event.OnBoot : $(entry "time."$(date %H) )
-  time.01 : �ߑO�ꎞ�ł�\e
-  time.02 : �ߑO�񎞂ł�\e
-  (����)
-  time.23 : �ߌ�\�ꎞ�ł�\e
+  time.01 : 午前一時です\e
+  time.02 : 午前二時です\e
+  (中略)
+  time.23 : 午後十一時です\e
   
 
-��2
+例2
   event.OnFirstBoot : $(setstr 1stTime $(date %s) ; entry TalkFirstBoot)
   sentence : (
-      \0\s[0]�����ŏ��ɋN�������̂�
-      $(date %y ${1stTime})�N��
-      $(date %n ${1stTime})��
-      $(date %e ${1stTime})���ŁA\w8\w8
-      ������$[ ($(date %s) - ${1stTime}) / (3600 * 24) ]���ڂł��B\e
+      \0\s[0]私が最初に起動したのは
+      $(date %y ${1stTime})年の
+      $(date %n ${1stTime})月
+      $(date %e ${1stTime})日で、\w8\w8
+      今日で$[ ($(date %s) - ${1stTime}) / (3600 * 24) ]日目です。\e
   )
 </PRE>
 </TD></TR>
@@ -4321,34 +4321,34 @@ $(expr findpos �ؘa���̑��� ��)
   debugger<A name="debugger"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
    $(debugger on)<BR>
    $(debugger off)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �Ȃ�
+    なし
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-   �N�����̃S�[�X�g�ɁA
-   <A href="kosui.html">�K��</A>����̐ڑ����������ǂ��������߂�B
-   �����Ɂuon�v���w�肷��ƁA�ڑ��\�ɂȂ�B
-   �uoff�v���w�肷��Ɛڑ��s�ɂȂ�B
-   �ڑ��\�ȏꍇ�A
-   <SPAN class="tt">System.Debugger</SPAN>�G���g���Ɂu<SPAN class="tt">on</SPAN>�v�Ƃ���������`�����B
+   起動中のゴーストに、
+   <A href="kosui.html">幸水</A>からの接続を許すかどうかを決める。
+   引数に「on」を指定すると、接続可能になる。
+   「off」を指定すると接続不可になる。
+   接続可能な場合、
+   <SPAN class="tt">System.Debugger</SPAN>エントリに「<SPAN class="tt">on</SPAN>」という文が定義される。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # �K���ɂăf�o�b�O��
+  # 幸水にてデバッグ中
   debugger on;
   =end
 </PRE>
@@ -4360,30 +4360,30 @@ $(expr findpos �ؘa���̑��� ��)
   getenv<A name="getenv"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-   $(getenv ���ϐ���1)
+   $(getenv 環境変数名1)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    ���ϐ��̓��e
+    環境変数の内容
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    OS�̊��ϐ��̓��e��Ԃ��B
-    ���ϐ���1�Ŏw�肵�����ϐ��̓��e��Ԃ��B
-    �w�肵�����ϐ����Ȃ������ꍇ�A�k��������Ԃ��B
+    OSの環境変数の内容を返す。
+    環境変数名1で指定した環境変数の内容を返す。
+    指定した環境変数がなかった場合、ヌル文字を返す。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   $(getenv windir)
-  # ���ϐ�windir�����݂���ꍇ�A���̓��e��Ԃ�
+  # 環境変数windirが存在する場合、その内容を返す
 </PRE>
 </TD></TR>
 </TABLE>
@@ -4393,29 +4393,29 @@ $(expr findpos �ؘa���̑��� ��)
 	help<A name="help"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(help �R�}���h��)<BR>
+		$(help コマンド名)<BR>
 		$(help)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		���t�@�����X�܂��̓R�}���h�ꗗ
+		リファレンスまたはコマンド一覧
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�R�}���h���w�肳�ꂽ�ꍇ�́A���t�@�����X��Ԃ��B<BR>
-		�R�}���h���w�肳��Ȃ��ꍇ�́A�g�p�\�ȃR�}���h�̈ꗗ��Ԃ��B<BR>
-		�߂�l��"�K��"�ł̏o�͂�O��ɂ��Ă���B
+		コマンドが指定された場合は、リファレンスを返す。<BR>
+		コマンドが指定されない場合は、使用可能なコマンドの一覧を返す。<BR>
+		戻り値は"幸水"での出力を前提にしている。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��("�K��"�ł̎��s��)
+例("幸水"での実行例)
   echo-mode > $(help help)
   help
   syntax  : help Command1
@@ -4425,7 +4425,7 @@ $(expr findpos �ؘa���̑��� ��)
   Command list :
           echo
           set
-      (�E�E�E�����E�E�E)
+      (・・・中略・・・)
           escape
   echo-mode >
 </PRE>
@@ -4437,33 +4437,33 @@ $(expr findpos �ؘa���̑��� ��)
   logfile<A name="logfile"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(logfile �t�@�C����)
+    $(logfile ファイル名)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �Ȃ�
+    なし
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    ���O���o�͂���t�@�C����ݒ肷��B
-    <SPAN class="tt">"-"</SPAN>��ݒ肷��ƕW���o�͂ɂȂ�(�K���Ȃ�)�B
-    ���������ɂ���ƁA�ǂ��ɂ��o�͂���Ȃ�(�f�t�H���g)�B
+    ログを出力するファイルを設定する。
+    <SPAN class="tt">"-"</SPAN>を設定すると標準出力になる(幸水など)。
+    引数無しにすると、どこにも出力されない(デフォルト)。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # ���t�t�����O�t�@�C�����쐬
+  # 日付付きログファイルを作成
   logfile kawari-$(date %Y%m%d%H%M%S).log;
   
-  # ���O�֎~
+  # ログ禁止
   logfile;
   =end
 </PRE>
@@ -4475,47 +4475,47 @@ $(expr findpos �ؘa���̑��� ��)
   loglevel<A name="loglevel"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(loglevel �L�[���[�h�̗�)
+    $(loglevel キーワードの列挙)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �Ȃ�
+    なし
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    ���O�ɏo�͂�����e�����߂�B
-    �����ɗ񋓂����L�[���[�h�ɑΉ�������e���o�͂����悤�ɂȂ�B
-    �L�[���[�h�ɂ͈ȉ�������B
-    �f�t�H���g�ł�quiet�����A
-    ���݁A�ꕔ�̃��O���ݒ�𖳎����ďo�͂���Ă��܂����m�̃o�O����B
+    ログに出力する内容を決める。
+    引数に列挙したキーワードに対応する内容が出力されるようになる。
+    キーワードには以下がある。
+    デフォルトではquietだが、
+    現在、一部のログが設定を無視して出力されてしまう既知のバグあり。
     <TABLE border="0">
-      <TR><TD>error</TD><TD>�G���[</TD></TR>
-      <TR><TD>warning</TD><TD>�x��</TD></TR>
-      <TR><TD>info</TD><TD>������</TD></TR>
-      <TR><TD>decl</TD><TD>��G���g���ւ̓ǂݏo���A�N�Z�X</TD></TR>
-      <TR><TD>paranoia</TD><TD>��L�S�ā{���ɏڂ���������</TD></TR>
-      <TR><TD>baseevents</TD><TD>��{�C�x���g</TD></TR>
-      <TR><TD>timeevents</TD><TD>����(�b�A��)�C�x���g</TD></TR>
-      <TR><TD>rscevents</TD><TD>���\�[�X�₢���킹�C�x���g</TD></TR>
-      <TR><TD>quiet</TD><TD>���m�Ƀ��O���֎~����</TD></TR>
+      <TR><TD>error</TD><TD>エラー</TD></TR>
+      <TR><TD>warning</TD><TD>警告</TD></TR>
+      <TR><TD>info</TD><TD>動作情報</TD></TR>
+      <TR><TD>decl</TD><TD>空エントリへの読み出しアクセス</TD></TR>
+      <TR><TD>paranoia</TD><TD>上記全て＋非常に詳しい動作情報</TD></TR>
+      <TR><TD>baseevents</TD><TD>基本イベント</TD></TR>
+      <TR><TD>timeevents</TD><TD>時刻(秒、分)イベント</TD></TR>
+      <TR><TD>rscevents</TD><TD>リソース問い合わせイベント</TD></TR>
+      <TR><TD>quiet</TD><TD>明確にログを禁止する</TD></TR>
     </TABLE>
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # �ʏ�f�o�b�O���ɂ́A����ŏ\��
+  # 通常デバッグ時には、これで十分
   loglevel error warning info baseevents;
 
-  # �܂��A��x���炢�͎����Ă݂Ă������ł�
-  # �Ԉ���Ă��z�z�łł�������Ȃ��悤��
+  # まぁ、一度ぐらいは試してみてもいいです
+  # 間違っても配布版でこれをやらないように
   loglevel paranoia baseevents;
   =end
 </PRE>
@@ -4527,30 +4527,30 @@ $(expr findpos �ؘa���̑��� ��)
   logprint<A name="logprint"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(logprint �P�� [ �P�� ... ])
+    $(logprint 単語 [ 単語 ... ])
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �Ȃ�
+    なし
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    ���O�ɔC�ӂ̕�������o�͂���B
-    �����Ɏw�肳�ꂽ�S�Ă̒P����X�y�[�X������ŘA�����A�o�͂���B
+    ログに任意の文字列を出力する。
+    引数に指定された全ての単語をスペースを挟んで連結し、出力する。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # ������printf�f�o�b�O
-  logprint �����܂œ�����;
+  # いわゆるprintfデバッグ
+  logprint ここまで動いた;
   =end
 </PRE>
 </TD></TR>
@@ -4561,33 +4561,33 @@ $(expr findpos �ؘa���̑��� ��)
   mktime<A name="mktime"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(mktime �N �� �� �� �� �b)
+    $(mktime 年 月 日 時 分 秒)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    1970/1/1 0:00:00(���萢�E��)����w�莞���܂łɌo�߂����b��
+    1970/1/1 0:00:00(協定世界時)から指定時刻までに経過した秒数
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-    1970/1/1 0:00:00(���萢�E��)����A�����Ŏw�肵�������܂łɌo�߂����b����Ԃ��B
-    ��ɖ߂�l��$(date %s)�̑�2�����ɗ^����B
+    1970/1/1 0:00:00(協定世界時)から、引数で指定した時刻までに経過した秒数を返す。
+    主に戻り値を$(date %s)の第2引数に与える。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # 1970/1/1 0:00:00(UTC)����2005/4/1 0:30:25�܂łɌo�߂����b����Ԃ�
+  # 1970/1/1 0:00:00(UTC)から2005/4/1 0:30:25までに経過した秒数を返す
   mktime 2005 4 1 0 30 25;
   
-  # 2001/1/25 1:00:00����1000����̓��t�����߂�
-  # 1000������mktime�ŋ��߂������ɑ����āAdate�̑�2�����ɗ^���Ă���
+  # 2001/1/25 1:00:00から1000日後の日付を求める
+  # 1000日分をmktimeで求めた時刻に足して、dateの第2引数に与えている
   setstr @day $(mktime 2001 1 25 1 0 0);
   date "%y/%m/%d %H:%M:%S" $[ ${@day} + 1000 * 24 * 60 * 60 ];
   =end
@@ -4600,33 +4600,33 @@ $(expr findpos �ؘa���̑��� ��)
 	rand<A name="rand"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(rand ���)
+		$(rand 上限)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�����̕�����
+		整数の文字列
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		0�������̗�����Ԃ��B�߂�l��0���܂݁A������܂܂Ȃ��B
-		����͕��̐��ł��悢�B
+		0から上限の乱数を返す。戻り値は0を含み、上限を含まない。
+		上限は負の数でもよい。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   rand 52;
-  # 0����51�܂ł̗�����Ԃ�
+  # 0から51までの乱数を返す
   
   rand -10;
-  # 0����-9�܂ł̗�����Ԃ�
+  # 0から-9までの乱数を返す
   =end
 </PRE>
 </TD></TR>
@@ -4637,32 +4637,32 @@ $(expr findpos �ؘa���̑��� ��)
   rccharset<A name="rccharset"></A>
 </CAPTION>
 <TR>
-  <TD width="10%">����</TD>
+  <TD width="10%">書式</TD>
   <TD class="tt">
-    $(rccharset �����R�[�h��)
+    $(rccharset 文字コード名)
   </TD>
 </TR>
 <TR>
-  <TD>�߂�l</TD>
+  <TD>戻り値</TD>
   <TD>
-    �Ȃ�
+    なし
   </TD>
 </TR>
 <TR>
-  <TD>�@�\</TD>
+  <TD>機能</TD>
   <TD>
-   �ؘa���̏o�͂���G���[���b�Z�[�W�̌�����A�����R�[�h�Ŏw�肷��B
-   �w�肷�镶����͑啶���A�������𓯈ꎋ����(case insensitive)�B
-   �f�t�H���g��&quot;ISO-8859-1&quot;(�����锼�p�p�����A�ق�ASCII)�B
-   ����ȊO�ɂ́A���݂̏��A&quot;Shift_JIS&quot;�������g����B
-   �Ή����Ă��Ȃ������R�[�h���w�肷���ISO-8859-1�ɂȂ�B
+   華和梨の出力するエラーメッセージの言語を、文字コードで指定する。
+   指定する文字列は大文字、小文字を同一視する(case insensitive)。
+   デフォルトは&quot;ISO-8859-1&quot;(いわゆる半角英文字、ほぼASCII)。
+   それ以外には、現在の所、&quot;Shift_JIS&quot;だけが使える。
+   対応していない文字コードを指定するとISO-8859-1になる。
   </TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # ���{�l�Ȃ����ς�?
+  # 日本人ならやっぱり?
   rccharset Shift_JIS;
   =end
 </PRE>
@@ -4674,38 +4674,38 @@ $(expr findpos �ؘa���̑��� ��)
 	securitylevel<A name="securitylevel"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(securitylevel ���x���w��)
+		$(securitylevel レベル指定)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-	 �Z�L�����e�B���x�����w�肷��B
-	 �ȉ��̒l��ݒ�ł���B
+	 セキュリティレベルを指定する。
+	 以下の値を設定できる。
 	 <TABLE border="0" cellpadding="2" cellspacing="0">
-	  <TR><TD>0 / low</TD><TD> �S�ẴC�x���g��������B</TD></TR>
-	  <TR><TD>1 / middle</TD><TD> �O���������Ă����C�x���g���֎~�B</TD></TR>
-	  <TR><TD>2 / high</TD><TD> ���ʂ�1(middle)�Ɠ����B</TD></TR>
+	  <TR><TD>0 / low</TD><TD> 全てのイベントを許可する。</TD></TR>
+	  <TR><TD>1 / middle</TD><TD> 外部からやってきたイベントを禁止。</TD></TR>
+	  <TR><TD>2 / high</TD><TD> 当面は1(middle)と同じ。</TD></TR>
 	  <TR><TD>3 / ultrahigh</TD><TD>
-	   ���m�Ƀ��[�J���}�V�����s�ƋL���ꂽ�C�x���g�̂݋��B
+	   明確にローカルマシン発行と記されたイベントのみ許可。
 	  </TD></TR>
 	 </TABLE>
-	 �Ȃ��Asecuritylevel�R�}���h�́A�S�[�X�g���������̂݁A��񂾂����s�\�ł���B
+	 なお、securitylevelコマンドは、ゴースト初期化中のみ、一回だけ実行可能である。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
-  # �჌�x���ɐݒ�
+  # 低レベルに設定
   securitylevel low;
   =end
 </PRE>
@@ -4717,29 +4717,29 @@ $(expr findpos �ؘa���̑��� ��)
 	srand<A name="srand"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(srand �V�[�h)
+		$(srand シード)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�Ȃ�
+		なし
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		�����̎��ݒ肷��B��Ƀf�o�b�O�ړI�Ŏg�p����B
+		乱数の種を設定する。主にデバッグ目的で使用する。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��
+例
   =kis
   srand 12345678;
-  # �����̎���u12345678�v�ɐݒ肷��
+  # 乱数の種を「12345678」に設定する
   =end
 </PRE>
 </TD></TR>
@@ -4750,32 +4750,32 @@ $(expr findpos �ؘa���̑��� ��)
 	ver<A name="ver"></A>
 </CAPTION>
 <TR>
-	<TD width="10%">����</TD>
+	<TD width="10%">書式</TD>
 	<TD class="tt">
-		$(ver ���)
+		$(ver 情報名)
 	</TD>
 </TR>
 <TR>
-	<TD>�߂�l</TD>
+	<TD>戻り値</TD>
 	<TD>
-		�o�[�W�������
+		バージョン情報
 	</TD>
 </TR>
 <TR>
-	<TD>�@�\</TD>
+	<TD>機能</TD>
 	<TD>
-		"�ؘa��"�̏���Ԃ��B�u��񖼁v�ŗ~��������I���ł���B<BR>
-		��񖼂��ulicense�v�̏ꍇ�A
-		"�ؘa��"�̃��C�Z���X�������O�ɏo�͂���B
-		��񖼂��uauthor�v�̏ꍇ�A
-		"�ؘa��"�̊J���ҏ���Ԃ��B
-		��񖼂��ȗ������ꍇ�A"�ؘa��"�̃o�[�W��������Ԃ��B
-		�o�[�W�������̃t�H�[�}�b�g�́u��{����[.�⏕����[.�⏕����]]/�o�[�W�����ԍ��v�B
+		"華和梨"の情報を返す。「情報名」で欲しい情報を選択できる。<BR>
+		情報名が「license」の場合、
+		"華和梨"のライセンス情報をログに出力する。
+		情報名が「author」の場合、
+		"華和梨"の開発者情報を返す。
+		情報名を省略した場合、"華和梨"のバージョン情報を返す。
+		バージョン情報のフォーマットは「基本名称[.補助名称[.補助名称]]/バージョン番号」。
 	</TD>
 </TR>
 <TR><TD colspan="2">
 <PRE>
-��("�K��"�ł̎��s��)
+例("幸水"での実行例)
   echo-mode > $(ver)
   KAWARI.kdt/8.2.0
 </PRE>
@@ -4788,81 +4788,81 @@ $(expr findpos �ؘa���̑��� ��)
 <H2>Appendix</H2>
 
 <A name="apdx1"></A>
-<H3>I. �C�����C���X�N���v�g�̒ǉ����@</H3>
+<H3>I. インラインスクリプトの追加方法</H3>
 
 <P>
-�C�����C���X�N���v�g�̊֐��R�}���h�́A�ȒP�ɒǉ��ł���悤�A�ؘa���̑��̕�����
-�ʂ̃t�H���_�Ƀ\�[�X�����߂Ă���܂��Bsrc�t�H���_����kis�t�H���_������ł��B
-������"�ؘa��"���g������ہAKIS�̒ǉ������Ŗ]�ދ@�\�������邩�A�܂���������
-�������B���̏ꍇ�A�ؘa���̂ق��̋@�\�֗^����e�������Ȃ��A���p�̃G���o�O��
-�������܂��B�܂��A���̐l���\�[�X�R�[�h���ė��p���₷���Ȃ�͂��ł��B
+インラインスクリプトの関数コマンドは、簡単に追加できるよう、華和梨の他の部分と
+別のフォルダにソースが収めてあります。srcフォルダ中のkisフォルダがそれです。
+自分で"華和梨"を拡張する際、KISの追加だけで望む機能が得られるか、まず検討して
+下さい。この場合、華和梨のほかの機能へ与える影響が少なく、無用のエンバグを
+避けられます。また、他の人がソースコードを再利用しやすくなるはずです。
 </P><P>
-KIS�R�}���h�ǉ��̊�{�菇�͈ȉ��̒ʂ�ł��B
+KISコマンド追加の基本手順は以下の通りです。
 </P>
 
 <BLOCKQUOTE>
-  0) �\�[�X������������O�ɁA�I���W�i���̃\�[�X��Make�ł��邩�m�F����<BR>
-  1) �\�[�X�R�[�h��kis_echo.h/kis_echo.cpp���悭�ǂ�ŁA�Q�l�ɂ���<BR>
-  2) �g������KIS�R�}���h�̃w�b�_�t�@�C����p�ӂ���<BR>
+  0) ソースを書き換える前に、オリジナルのソースがMakeできるか確認する<BR>
+  1) ソースコードのkis_echo.h/kis_echo.cppをよく読んで、参考にする<BR>
+  2) 拡張するKISコマンドのヘッダファイルを用意する<BR>
 	<UL>
-     <LI>config.h��kis_base.h��include����</LI>
-     <LI>TKisFunction_base�N���X��public�Ɍp�����A�R�}���h�̃N���X�����</LI>
-     <LI>INLINE_SCRIPT_REGIST()�}�N�����g���A�R�}���h�̃N���X��o�^</LI>
-     <LI>�����o�֐�Init�ɊȒP�ȉ��������</LI>
-     <LI>�����o�֐�string Function(vector&lt;string&gt;&amp;)�ɏ���������</LI>
+     <LI>config.hとkis_base.hをincludeする</LI>
+     <LI>TKisFunction_baseクラスをpublicに継承し、コマンドのクラスを作る</LI>
+     <LI>INLINE_SCRIPT_REGIST()マクロを使い、コマンドのクラスを登録</LI>
+     <LI>メンバ関数Initに簡単な解説を書く</LI>
+     <LI>メンバ関数string Function(vector&lt;string&gt;&amp;)に処理を書く</LI>
 	</UL>
-  3) �w�b�_�t�@�C������kis_config.h�ɒǉ�����<BR>
-  4) cpp���������ꍇ�A�K���t�@�C������files.mak�ɒǉ����Ă���<BR>
+  3) ヘッダファイル名をkis_config.hに追加する<BR>
+  4) cppが増えた場合、必ずファイル名をfiles.makに追加しておく<BR>
   5) Make<BR>
 </BLOCKQUOTE>
 
 <P>
-�ǂ�KIS���ł�����A���Ћ����Ă��������B�I���W�i����"�ؘa��"�ɂ��̗p�������Ǝv���܂��B
+良いKISができたら、ぜひ教えてください。オリジナルの"華和梨"にも採用したいと思います。
 </P>
 
 <A name="apdx2"></A>
-<H3>II. ����</H3>
+<H3>II. 注釈</H3>
 
 <A name="ref1"></A>
-<H4>*1 �\���R�}���h�Ɗ֐��R�}���h</H4>
+<H4>*1 構文コマンドと関数コマンド</H4>
 <P>
-�\���Ɗ֐��́A���p��ł��d�v�ȈႢ�́A
+構文と関数の、実用上最も重要な違いは、
 <UL>
-<LI>�\���̕]���͈����]���ȑO�ɍs����
-<LI>�֐��̕]���͈����]���Ȍ�ɍs����
+<LI>構文の評価は引数評価以前に行われる
+<LI>関数の評価は引数評価以後に行われる
 </UL>
-�Ƃ����_�ł��B�����]���ȑO�́A
-�����́u${npw}�v��u$(echo Hello)�v���́u�������܂܁v�̏�Ԃł��B
-����A�����]���Ȍ�́A�����͓W�J����āA
-�u�J�����X�E�S�[���v��uHello�v���́u�����񂾂��v�̏�ԂƂȂ�܂��B
-�������ʏ�̕����񂾂��ł���ꍇ�͂��قǖ��ɂȂ�܂��񂪁A
-������<A href="#set">set</A>�R�}���h���́A
-�߂�l�����@�\���ړI�ƂȂ�R�}���h���������ꍇ�A
-���̍����Ӗ��������ƂɂȂ�܂��B
-<!-- �\���̈��������֐��̈��������ŁA�R�}���h�����s����邩�ۂ����قȂ�܂��B -->
+という点です。引数評価以前は、
+引数は「${npw}」や「$(echo Hello)」等の「書いたまま」の状態です。
+一方、引数評価以後は、引数は展開されて、
+「カルロス・ゴーン」や「Hello」等の「文字列だけ」の状態となります。
+引数が通常の文字列だけである場合はさほど問題になりませんが、
+引数に<A href="#set">set</A>コマンド等の、
+戻り値よりも機能が目的となるコマンドがあった場合、
+この差が意味を持つことになります。
+<!-- 構文の引数中か関数の引数中かで、コマンドが実行されるか否かが異なります。 -->
 </P>
 
 <PRE>
-  true : �^�ł��B$(set tmp OK)
-  # ���L�̓�́A�\����͋��炭�������ʂ����c
-  $(entry true ${cond})      # true����cond���s�����ł����s����Ă��܂��B
-  $(if ${cond} else ${true}) # true����cond���s�����Ȃ���s����Ȃ��B
+  true : 真です。$(set tmp OK)
+  # 下記の二つは、表示上は恐らく同じ結果だが…
+  $(entry true ${cond})      # true文はcondが不成立でも実行されてしまう。
+  $(if ${cond} else ${true}) # true文はcondが不成立なら実行されない。
 </PRE>
 
 <A name="ref2"></A>
-<H4>*2 �C�����C���X�N���v�g�ɓn���������̐�</H4>
+<H4>*2 インラインスクリプトに渡される引数の数</H4>
 <P>
-�R�}���h�Ɉ�����^���鎞�A�G���g���Ăяo���ŗ^����ꍇ���l���܂��B
+コマンドに引数を与える時、エントリ呼び出しで与える場合を考えます。
 
 <PRE>
   $(echo $(entry ${EntryName}) "Hello")
 </PRE>
 
 <P>
-���̃P�[�X�ŁAEntryName�G���g���ɉ����Z�b�g����Ă��Ȃ��ꍇ���l���܂��B
-���̏ꍇ�Aecho�R�}���h�̑�1������""�ŁA��2�������uHello�v�ɂȂ�܂��B
-��1�������uHello�v�Ƃ������Ƃ͂���܂���B
-�C�����C���X�N���v�g�ɓn���������̐��ƈʒu�́A�G���g�����߂̑O�Ɋm�肵�܂��B
+このケースで、EntryNameエントリに何もセットされていない場合を考えます。
+この場合、echoコマンドの第1引数は""で、第2引数が「Hello」になります。
+第1引数が「Hello」ということはありません。
+インラインスクリプトに渡される引数の数と位置は、エントリ解釈の前に確定します。
 </P>
 
 </BODY>

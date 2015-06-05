@@ -2,67 +2,67 @@
   "http://www.w3.org/TR/html4/loose.dtd">
 <HTML lang="ja">
 <HEAD>
- <META http-equiv="Content-Type" content="text/html; charset=SHIFT_JIS">
+ <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <META http-equiv="Content-Script-Type" content="text/javascript">
  <META http-equiv="Content-Style-Type" content="text/css">
  <LINK rel="stylesheet" type="text/css" href="kawari.css">
- <TITLE>�ؘa�� �d�v�ȕύX�_�ƈڍs�K�C�h</TITLE>
+ <TITLE>華和梨 重要な変更点と移行ガイド</TITLE>
 </HEAD>
 <BODY>
 
-<H1>�v���O���}�u����AI���W���[�� "�ؘa��" �d�v�ȕύX�_�ƈڍs�K�C�h</H1>
+<H1>プログラマブル準AIモジュール "華和梨" 重要な変更点と移行ガイド</H1>
 
 <DIV align="right">
   <P>
     2004/02/01<BR>
     Phase 8.2.0
   </P><P>
-    �ؘa���J���`�[�� :<BR>
-    NAKAUE.T (Meister), �UMeister (���T), ���Ɓ[, ����, ������̂ɂ�
+    華和梨開発チーム :<BR>
+    NAKAUE.T (Meister), 偽Meister (夢乃), さとー, 酔狂, さくらのにえ
   </P>
 </DIV>
 
 <P>
- �ؘa��Phase 8�ł́A���ĂȂ��قǑ�K�͂ȕύX���s���Ă��邽�߁A
- �ڍs�ɂ́A�����I�ɐV�����x�ɏ�芷����̂Ɠ����̃R�X�g��������ƌ����܂�܂��B
- ���̕��S�������ł����炷���߂ɁA
- �ߋ��݊����������Ȃ��d�v�ύX�_�ƁA�ڍs�̃q���g�������܂��B
- �V�����d�l�̏ڍׂ�<A href="users.html">���[�U�[�Y�}�j���A��</A>���Q�Ƃ��Ă��������B
+ 華和梨Phase 8では、かつてないほど大規模な変更が行われているため、
+ 移行には、実質的に新しい栞に乗り換えるのと同等のコストがかかると見込まれます。
+ その負担を少しでも減らすために、
+ 過去互換性を持たない重要変更点と、移行のヒントを挙げます。
+ 新しい仕様の詳細は<A href="users.html">ユーザーズマニュアル</A>を参照してください。
 </P>
 
 <H2>Index</H2>
 
-<A href="index.html" class="toindex">�� back</A>
+<A href="index.html" class="toindex">← back</A>
 <BR>
 
 <BLOCKQUOTE>
- <A href="#c1">1. kawari.ini����</A><BR>
- <A href="#c2">2. �V�X�e���G���g������/�C�x���g�G���g������</A><BR>
- <A href="#c3">3. �}�b�`�G���g������</A><BR>
- <A href="#c4">4. ����piro����</A><BR>
- <A href="#c5">5. �����Q�ƃ��[�������ύX</A><BR>
- <A href="#c6">6. expr, test����</A><BR>
- <A href="#c7">7. if���̕��@�ύX</A><BR>
- <A href="#c8">8. enumerate����</A><BR>
- <A href="#c9">9. get/set�̓���ύX</A><BR>
- <A href="#c10">10. ���̑���KIS�R�}���h�̕ύX</A><BR>
- <A href="#c11">11. �����s�Ή�</A><BR>
+ <A href="#c1">1. kawari.ini消滅</A><BR>
+ <A href="#c2">2. システムエントリ整理/イベントエントリ統合</A><BR>
+ <A href="#c3">3. マッチエントリ消滅</A><BR>
+ <A href="#c4">4. 内臓piro消滅</A><BR>
+ <A href="#c5">5. 履歴参照ルールが小変更</A><BR>
+ <A href="#c6">6. expr, test消滅</A><BR>
+ <A href="#c7">7. if文の文法変更</A><BR>
+ <A href="#c8">8. enumerate消滅</A><BR>
+ <A href="#c9">9. get/setの動作変更</A><BR>
+ <A href="#c10">10. その他のKISコマンドの変更</A><BR>
+ <A href="#c11">11. 複数行対応</A><BR>
 </BLOCKQUOTE>
 
 <A name="c1"></A>
-<H2>1. kawari.ini����</H2>
+<H2>1. kawari.ini消滅</H2>
 <P>
-  kawari.ini�͎g���Ȃ��Ȃ�܂����B
-  �ؘa�����ǂݍ��ޑS�Ẵt�@�C���́A�P��́u�ؘa�������`���v�ɂȂ�܂��B
-  �ؘa�������`���ł́A�u�]�[���؂�ւ��v�ɂ���āA�������ǂݍ��܂ꂽ�u�Ԃɂ��̏�Œ��ڎ��s�����KIS����������悤�ɂȂ��Ă��܂��B
-  �܂�A�ȑOkawari.ini�ł����ł��Ȃ��������Ƃ��A�S�Ă̎����t�@�C���ŉ\�ɂȂ�܂����B
+  kawari.iniは使えなくなりました。
+  華和梨が読み込む全てのファイルは、単一の「華和梨辞書形式」になります。
+  華和梨辞書形式では、「ゾーン切り替え」によって、辞書が読み込まれた瞬間にその場で直接実行されるKIS文を書けるようになっています。
+  つまり、以前kawari.iniでしかできなかったことが、全ての辞書ファイルで可能になりました。
 </P><P>
-  <EM>�ؘa��Phase8���ŏ��ɓǂރt�@�C���́ukawarirc.kis�v�ɂȂ�܂����B</EM>
-  ���R�A��������ʂ̎����t�@�C���ł��B
+  <EM>華和梨Phase8が最初に読むファイルは「kawarirc.kis」になりました。</EM>
+  当然、これも普通の辞書ファイルです。
 </P><P>
-  ����KIS�������]�[���ɐ؂�ւ���ɂ́A
-  ���̃]�[�����u<SPAN class="tt">=kis</SPAN>�v�݂̂̍s��
-  �u<SPAN class="tt">=end</SPAN>�v�݂̂̍s�ň͂��܂��B
+  直接KISを書くゾーンに切り替えるには、
+  そのゾーンを「<SPAN class="tt">=kis</SPAN>」のみの行と
+  「<SPAN class="tt">=end</SPAN>」のみの行で囲います。
 </P>
 <DIV class="sample">
   =kis<BR>
@@ -71,157 +71,157 @@
   =end
 </DIV>
 <P>
-  �]���̏�����Phase 8�̏����ŏ��������ƈȉ��̂悤�ɂȂ�܂��B
+  従来の書式をPhase 8の書式で書き直すと以下のようになります。
 </P>
 <DIV class="sample">
-  # �]��<BR>
+  # 従来<BR>
   dict : dict-dms.txt<BR>
   include : keeps.ini<BR>
-  adddict : author �UMeister<BR>
-  set : myname ��t���l��<BR>
+  adddict : author 偽Meister<BR>
+  set : myname 二葉亭四迷<BR>
   text : spell necronomicon.txt<BR>
   debug : log<BR>
   randomseed : 100<BR>
   security : 0<BR>
 </DIV>
 <DIV class="sample">
-  # Phase 8�o�[�W�����B<BR>
-  # KIS������؂邽�߂̃Z�~�R�������K�v�Ȃ��Ƃɒ���<BR>
-  # =kis �` =end�́A���@�I�ɂ�$( �` )�ƑS�����S�ɓ����ł��B<BR>
+  # Phase 8バージョン。<BR>
+  # KIS文を区切るためのセミコロンが必要なことに注意<BR>
+  # =kis ～ =endは、文法的には$( ～ )と全く完全に同じです。<BR>
   =kis<BR>
-  # �����̃��[�h<BR>
+  # 辞書のロード<BR>
   load dict-dms.txt;<BR>
-  # �S�Ď����t�@�C���Ȃ̂ŁAload�R�}���h�݂̂ł��B<BR>
+  # 全て辞書ファイルなので、loadコマンドのみです。<BR>
   load keeps.ini;<BR>
-  # ���̒ǉ�<BR>
-  adddict author �UMeister;<BR>
-  # ���̃Z�b�g<BR>
-  set myname ��t���l��;<BR>
-  # �e�L�X�g�t�@�C���̓ǂݍ���(<EM>�]����textload�ƈ����̏������t�ɂȂ��Ă��܂�!</EM>)<BR>
+  # 文の追加<BR>
+  adddict author 偽Meister;<BR>
+  # 文のセット<BR>
+  set myname 二葉亭四迷;<BR>
+  # テキストファイルの読み込み(<EM>従来のtextloadと引数の順序が逆になっています!</EM>)<BR>
   textload spell necronomicon.txt;<BR>
-  # ���O���t�@�C���ɏ����o���܂�<BR>
+  # ログをファイルに書き出します<BR>
   logfile kawari.log;<BR>
-  ## �ȉ��̂悤�ɂ���ƁA�N�������t���̃t�@�C���ɏ����o���܂�<BR>
+  ## 以下のようにすると、起動時日付つきのファイルに書き出します<BR>
   # logfile kawari-$(date %Y%m%d%H%M%S).log;<BR>
-  # ���O�Ɏ��ׂ��C�x���g����̎�ނ��w�肵�܂�<BR>
+  # ログに取るべきイベントや情報の種類を指定します<BR>
   loglevel error warning info baseevents;<BR>
-  # �����̎�̎w��<BR>
+  # 乱数の種の指定<BR>
   srand 100;<BR>
-  # �Z�L�����e�B���x���̎w��(�ʏ�͕K�v����܂���)<BR>
+  # セキュリティレベルの指定(通常は必要ありません)<BR>
   securitylevel low;<BR>
   =end
 </DIV>
 
 <A name="c2"></A>
-<H2>2. �V�X�e���G���g������/�C�x���g�G���g������</H2>
+<H2>2. システムエントリ整理/イベントエントリ統合</H2>
 
 <P>
- �V�X�e���G���g���̍\�����啝�ɕύX����܂����B
- <SPAN id="type">event.�C�x���g��</SPAN>��A
- <SPAN id="type">system.OnXXXXX</SPAN>�`���̃G���g����<EM>�����I�ɂ͌Ă΂�܂���B</EM>
- �C�x���g�������[�`�������͂ŊJ�����Ă������͒��ӂ��Ă��������B
+ システムエントリの構成が大幅に変更されました。
+ <SPAN id="type">event.イベント名</SPAN>や、
+ <SPAN id="type">system.OnXXXXX</SPAN>形式のエントリは<EM>自動的には呼ばれません。</EM>
+ イベント処理ルーチンを自力で開発していた方は注意してください。
 </P><P>
- �]���ؘa�����s���Ă�����Ƃɂ��Ă��AKIS�ŏ����悤�ɂȂ��Ă��܂��B
- �t�Ɍ����΁A�ύX����ɂؘ͉a���̃o�C�i��������������ȊO�Ȃ����������܂ŁA
- KIS�ŏC�����\�ł��B
+ 従来華和梨が行っていた作業についても、KISで書くようになっています。
+ 逆に言えば、変更するには華和梨のバイナリを書き換える以外なかった部分まで、
+ KISで修正が可能です。
 </P><P>
- �ڍׂ�<A href="users.html">���[�U�[�Y�}�j���A��</A>���Q�Ƃ��Ă��������B
+ 詳細は<A href="users.html">ユーザーズマニュアル</A>を参照してください。
 </P>
 
 <A name="c3"></A>
-<H2>3. �}�b�`�G���g������</H2>
+<H2>3. マッチエントリ消滅</H2>
 
 <P>
- �}�b�`�G���g��(�R�~���j�P�[�g�ɗp���܂���)�@�\���폜����܂����B
- �]���̃}�b�`�G���g���ɂ́A�S�[�X�g����V�`���G�[�V�����Ɉˑ����ď�����؂蕪���邱�Ƃ��ł��Ȃ��Ƃ������_������܂����B
+ マッチエントリ(コミュニケートに用いました)機能が削除されました。
+ 従来のマッチエントリには、ゴースト名やシチュエーションに依存して処理を切り分けることができないという欠点がありました。
 </P><P>
- Phase 8�ł́A������R�~���j�P�[�g�C�x���g�́A�قƂ��SHIORI�d�l�ɒ��������`�ɂȂ��Ă���A�ؘa���V�X�e�����傫�ȃT�|�[�g�����邱�Ƃ͂���܂���B
- ���̑���A�R�~���j�P�[�g�x���̂��߂�KIS�R�}���h������ǉ�����A
- �R�~���j�P�[�g�@�\��������KIS�p�b�P�[�W���쐬�ł���悤�ɂȂ��Ă��܂��B
- ���������p�b�P�[�W��T���ė��p����̂��ǂ��ł��傤�B
+ Phase 8では、いわゆるコミュニケートイベントは、ほとんどSHIORI仕様に直結した形になっており、華和梨システムが大きなサポートをすることはありません。
+ その代わり、コミュニケート支援のためのKISコマンドが幾つか追加され、
+ コミュニケート機能を助けるKISパッケージを作成できるようになっています。
+ そうしたパッケージを探して利用するのが良いでしょう。
 </P>
 
 <A name="c4"></A>
-<H2>4. ����piro����</H2>
+<H2>4. 内蔵piro消滅</H2>
 
 <P>
- �폜���܂����B
- �ؘa�������`���ŏ����Ă��������B
+ 削除しました。
+ 華和梨辞書形式で書いてください。
 </P>
 
 <A name="c5"></A>
-<H2>5. �����Q�ƃ��[�������ύX</H2>
+<H2>5. 履歴参照ルールが小変更</H2>
 
 <P>
-  �]���́u�����Q�Ƃɂ��u���͗����Q�Ƃɒǉ�����Ȃ��v
-  �u�G���g���Ăяo���ȊO�͗����Q�Ƃɒǉ�����Ȃ��v�ł������A
-  Phase 8�ł́A
-  �u<SPAN id="type">$</SPAN>�Ŏn�܂���̂͑S�ė����Q�Ƃɓ���v
-  �ɕύX����܂����B
+  従来は「履歴参照による置換は履歴参照に追加されない」
+  「エントリ呼び出し以外は履歴参照に追加されない」でしたが、
+  Phase 8では、
+  「<SPAN id="type">$</SPAN>で始まるものは全て履歴参照に入る」
+  に変更されました。
 </P>
 
 <A name="c6"></A>
-<H2>6. expr, test����</H2>
+<H2>6. expr, test消滅</H2>
 
 <P>
-  expr�R�}���h�Atest�R�}���h�͍폜����A
-  �V���Ɂu���Z���v��������悤�ɂȂ�܂����B
-  ���Z����<SPAN id="type">$[ �` ]</SPAN>�Ƃ��������ɂȂ�܂��B
-  ��{�I�ɂ�expr�̋@�\�������p�������̂ł��B
+  exprコマンド、testコマンドは削除され、
+  新たに「演算式」が書けるようになりました。
+  演算式は<SPAN id="type">$[ ～ ]</SPAN>という書式になります。
+  基本的にはexprの機能を引き継いだものです。
 </P>
 
 <P>
- �K���̕\�L�ŉ��Z���������������܂��F
+ 幸水の表記で演算式をいくつか示します：
 </P>
 
 <DIV class="sample">
  echo-mode &gt; $[4*(10+2)]<BR>
  48<BR>
  echo-mode &gt; $[${npw.special}||${npw}]<BR>
- �����Y<BR>
- echo-mode &gt; $["�f��"=~"����"]<BR>
+ 龍太郎<BR>
+ echo-mode &gt; $["伺か"=~"何か"]<BR>
  false
 </DIV>
 
 <P>
-  ���Z�����ł́A�ȑO��expr��test�������Ă����S�Ẳ��Z�L���Ɍ��炸�A
-  �펯�I�ȉ��Z�L���͑S�Ďg���܂��B
-  test�̎����Ă����A-gt��-lt�ƌ��������Z�q�͂Ȃ��Ȃ�A
-  expr�̂悤�ɕ�����Ɛ��l�͎������ʂ����悤�ɂȂ�܂����B
+  演算式中では、以前のexprやtestが持っていた全ての演算記号に限らず、
+  常識的な演算記号は全て使えます。
+  testの持っていた、-gtや-ltと言った演算子はなくなり、
+  exprのように文字列と数値は自動判別されるようになりました。
 </P>
 
 <DIV class="sample">
-  # �]��<BR>
+  # 従来<BR>
   event.OnMusicPlay: $(if $([ ${freeze} -eq 0 ]) ${OnMusicPlay1})<BR>
   <BR>
   # Phase 8<BR>
   event.OnMusicPlay: $(if <EM>$[</EM>${freeze}==0<EM>]</EM> ${OnMusicPlay1})<BR>
-  # �����������Ƃ��ł��܂�<BR>
+  # こう書くこともできます<BR>
   event.OnMusicPlay: $(if $[<EM>!</EM>${freeze}] ${OnMusicPlay1})<BR>
 </DIV>
 
 <P>
- <SPAN id="type">$[ �` ]</SPAN>�̒��ł͎��R�ɋ󔒁E���s�������܂��B
- �󔒂��S�������Ă����܂��܂���B
+ <SPAN id="type">$[ ～ ]</SPAN>の中では自由に空白・改行を入れられます。
+ 空白が全く無くてもかまいません。
 </P><P>
- <SPAN id="type">( �` )</SPAN>�ɂ��O���[�s���O���ł��܂��B
- expr�ł́A���������̂݃N�H�[�g���K�{�Ƃ����d�l�ł������A
- ���Z���ł͕��ʂɎ��������܂��B
+ <SPAN id="type">( ～ )</SPAN>によるグルーピングができます。
+ exprでは、閉じかっこのみクォートが必須という仕様でしたが、
+ 演算式では普通に式が書けます。
 </P><P>
- �������Aexpr��<SPAN id="type">'|'�A'&amp;'</SPAN>�́A���ꂼ��A
- <SPAN id="type">'||'�A'&amp;&amp;'</SPAN>�ɂȂ�܂����B
- ��r�Ȃǂ�
- <STRONG>��������g���ꍇ�́A�K���N�H�[�g���Ȃ���΂Ȃ�Ȃ��Ȃ�܂����B</STRONG>
- expr�̎����Ă���substr, length�Ȃǂ̉��Z�@�\(�T�u�R�}���h)�́A
- �Ɨ�����KIS�R�}���h�Ƃ��čĒ�`����܂����B
+ ただし、exprの<SPAN id="type">'|'、'&amp;'</SPAN>は、それぞれ、
+ <SPAN id="type">'||'、'&amp;&amp;'</SPAN>になりました。
+ 比較などに
+ <STRONG>文字列を使う場合は、必ずクォートしなければならなくなりました。</STRONG>
+ exprの持っていたsubstr, lengthなどの演算機能(サブコマンド)は、
+ 独立したKISコマンドとして再定義されました。
 </P><P>
- ���l�ɂ��Ă�expr, test�Ɠ��l�A<STRONG>���������g���܂���B</STRONG>
- �܂��A<STRONG>���l�ƌ��Ȃ�����̂͋����I�ɐ��l�����ɂȂ�܂��B</STRONG>
- �ǂ����Ă�������Ƃ��Ĕ�r���s�������ꍇ�́A
- KIS��compare�R�}���h���g���Ă��������B
+ 数値についてはexpr, testと同様、<STRONG>整数しか使えません。</STRONG>
+ また、<STRONG>数値と見なせるものは強制的に数値扱いになります。</STRONG>
+ どうしても文字列として比較を行いたい場合は、
+ KISのcompareコマンドを使ってください。
 </P>
 <DIV class="sample">
-  # �]��<BR>
+  # 従来<BR>
   OnMusicPlay1: $(if $([ $(expr substr ${system.Reference0} 2 6) != "Buffer" ]) ${OnMusicPlay2}) <BR>
   <BR>
   # Phase 8<BR>
@@ -229,134 +229,134 @@
 </DIV>
 
 <A name="c7"></A>
-<H2>7. if���̕��@�ύX</H2>
+<H2>7. if文の文法変更</H2>
 
 <P>
- �ȉ��̂悤�ɂȂ�܂����B
+ 以下のようになりました。
 </P>
 <DIV class="sample">
-  # �]��<BR>
-  if &lt;����&gt; &lt;�������������Ƃ��̒P��&gt;;<BR>
-  if &lt;����&gt; &lt;�������������Ƃ��̒P��&gt; &lt;�������������Ȃ��Ƃ��̒P��&gt;;<BR>
+  # 従来<BR>
+  if &lt;条件&gt; &lt;条件が正しいときの単語&gt;;<BR>
+  if &lt;条件&gt; &lt;条件が正しいときの単語&gt; &lt;条件が正しくないときの単語&gt;;<BR>
   <BR>
   # Phase 8<BR>
-  if &lt;����&gt; &lt;�������������Ƃ��̒P��&gt;;<BR>
-  if &lt;����&gt; &lt;�������������Ƃ��̒P��&gt; <EM>else</EM> &lt;�������������Ȃ��Ƃ��̒P��&gt;;<BR>
-  if &lt;����&gt; &lt;�������������Ƃ��̒P��&gt; <EM>else if</EM> &lt;��������2&gt; &lt;��������2���������Ƃ��̒P��&gt;;<BR>
-  if &lt;����&gt; &lt;�������������Ƃ��̒P��&gt; <EM>else if</EM> &lt;��������2&gt; &lt;��������2���������Ƃ��̒P��&gt; <EM>else</EM> &lt;�������S�Đ������Ȃ��Ƃ��̒P��&gt;;<BR>
+  if &lt;条件&gt; &lt;条件が正しいときの単語&gt;;<BR>
+  if &lt;条件&gt; &lt;条件が正しいときの単語&gt; <EM>else</EM> &lt;条件が正しくないときの単語&gt;;<BR>
+  if &lt;条件&gt; &lt;条件が正しいときの単語&gt; <EM>else if</EM> &lt;条件その2&gt; &lt;条件その2が正しいときの単語&gt;;<BR>
+  if &lt;条件&gt; &lt;条件が正しいときの単語&gt; <EM>else if</EM> &lt;条件その2&gt; &lt;条件その2が正しいときの単語&gt; <EM>else</EM> &lt;条件が全て正しくないときの単語&gt;;<BR>
 </DIV>
 <P>
  <STRONG>
-  else �� if �ƁA���̒��O����̒P��Ƃ̊ԁA�܂��A�����Ǝ��s�P��̊Ԃɂ́A
-  �K���󔒂����s���K�v�ł��B
+  else や if と、その直前直後の単語との間、また、条件と実行単語の間には、
+  必ず空白か改行が必要です。
  </STRONG>
- �A�����ď����Ă͂����܂���B
+ 連続して書いてはいけません。
 </P>
 <DIV class="sample">
- �~ if $[${����}=~"�U�t��"] $(echo ���̖��ŌĂԂȁI)else$(echo ���ł���);<BR>
- �� if $[${����}=~"�U�t��"] $(echo ���̖��ŌĂԂȁI) else $(echo ���ł���);<BR>
- # ���if���̏ꍇ�́A���̂悤�ɏ����̂�����<BR>
- �� if $[${����}=~"�U�t��"] ���̖��ŌĂԂȁI else ���ł���;
+ × if $[${入力}=~"偽春菜"] $(echo その名で呼ぶな！)else$(echo 何ですか);<BR>
+ ○ if $[${入力}=~"偽春菜"] $(echo その名で呼ぶな！) else $(echo 何ですか);<BR>
+ # 上のif文の場合は、下のように書くのが普通<BR>
+ ○ if $[${入力}=~"偽春菜"] その名で呼ぶな！ else 何ですか;
 </DIV>
 <P>
- �����͂�����ł����ׂ邱�Ƃ��ł��܂��B
- KIS��������ꏊ�͕K�������s�ɕ����ď����邽�߁A
- �ȉ��̂悤�Ɍ��₷�����ׂ邱�Ƃ��ł��܂��B
+ 条件はいくらでも並べることができます。
+ KISが書ける場所は必ず複数行に分けて書けるため、
+ 以下のように見やすく並べることができます。
 </P>
 <DIV class="sample">
- if $[${date}&lt;7] �ŏ��̈�T��<BR>
- else if $[${date}&lt;14] ���̈�T��<BR>
- else if $[${date}&lt;21] �O�T��<BR>
- else if $[${date}&lt;28] �l�T��<BR>
- else �Ō�̏T ;
+ if $[${date}&lt;7] 最初の一週間<BR>
+ else if $[${date}&lt;14] 次の一週間<BR>
+ else if $[${date}&lt;21] 三週目<BR>
+ else if $[${date}&lt;28] 四週目<BR>
+ else 最後の週 ;
 </DIV>
 <P>
- �����s�Ή��̕���p�Ƃ��āA
- <SPAN id="type">$( �` )</SPAN>�̍Ō�ȊO�ł́A
+ 複数行対応の副作用として、
+ <SPAN id="type">$( ～ )</SPAN>の最後以外では、
  <STRONG>
-  �\���R�}���h�ɂ����Ă��A�����ɃZ�~�R����(<SPAN id="type">';'</SPAN>)���K�v
+  構文コマンドにおいても、末尾にセミコロン(<SPAN id="type">';'</SPAN>)が必要
  </STRONG>
- �Ƃ����_�����߂�����₷���Ȃ��Ă��܂��܂����B
- �C��t���Ă��������B
- ��{�I�ɃZ�~�R������t����K���ɂ���Ɨǂ��ł��傤�B
- if���́Aelse��else if�߂̑S�Ă��܂߂Ĉ�̃C�����C���X�N���v�g���ɂȂ邽�߁A
- �S�̂̍Ō�ɂ̂݃Z�~�R�������K�v�ł���A����͕K�{�ł��B
+ という点が見過ごされやすくなってしまいました。
+ 気を付けてください。
+ 基本的にセミコロンを付ける習慣にすると良いでしょう。
+ if文は、elseやelse if節の全てを含めて一つのインラインスクリプト文になるため、
+ 全体の最後にのみセミコロンが必要であり、それは必須です。
 </P>
 
 <A name="c8"></A>
-<H2>8. enumerate����</H2>
+<H2>8. enumerate消滅</H2>
 
 <P>
- �ɂ߂ė�O�I�ȓ�����s���Ă���enumerate�R�}���h�͍폜����܂����B
- getcode��loop�R�}���h���g���Ă��������B
+ 極めて例外的な動作を行っていたenumerateコマンドは削除されました。
+ getcodeやloopコマンドを使ってください。
 </P>
 
 <A name="c9"></A>
-<H2>9. get/set�̓���ύX</H2>
+<H2>9. get/setの動作変更</H2>
 
 <P>
- �����A�N�Z�X�R�}���h�͊��S�ɍ��V����܂����B
+ 辞書アクセスコマンドは完全に刷新されました。
 </P><P>
- �]���̓G���g�����̒P��̏����͔�ۏ�(�������ۂ����Ƃ͌���Ȃ�)�ł������A
- Phase 8�ł̓G���g�����̒P��̏������ۏ؂����悤�ɂȂ������߁A
- �u����G���g����x�Ԗڂ̒P������o���v
- �Ƃ��������������ɂł���悤�ɂȂ�܂����B
+ 従来はエントリ中の単語の順序は非保証(順序が保たれるとは限らない)でしたが、
+ Phase 8ではエントリ中の単語の順序が保証されるようになったため、
+ 「あるエントリのx番目の単語を取り出す」
+ という処理が正式にできるようになりました。
 </P><P>
- ����ɏ]���Aget/set�n�R�}���h�ɂ��ẮA
- <SPAN id="type"> get ���X�g�G���g��[2] </SPAN>�̂悤�ɁA
- �G���g�����ɓY����ꂽ<SPAN id="type">[ ]</SPAN>�ɂ���āA
- �G���g���̉��Ԗڂ����w��ł���悤�ɂȂ�܂����B
- ���̏�������get/set�V���[�Y�A�����insert/clear�R�}���h�ɂ����ėL���ł��B
+ それに従い、get/set系コマンドについては、
+ <SPAN id="type"> get リストエントリ[2] </SPAN>のように、
+ エントリ名に添えられた<SPAN id="type">[ ]</SPAN>によって、
+ エントリの何番目かを指定できるようになりました。
+ この書き方はget/setシリーズ、およびinsert/clearコマンドにおいて有効です。
 </P><P>
- �܂��A
- <SPAN id="type">get</SPAN>�R�}���h���]���ǂ����
- <SPAN id="type"> get �G���g���� </SPAN>
- �ƌĂԂƁA<EM>�G���g���ɑ��݂���S�Ă̒P������s����</EM>
- �悤�ɂȂ�܂����B���ӂ��Ă��������B
- <SPAN id="type">get �G���g����[0]</SPAN>�Ƃ��邩�A
- <SPAN id="type">getrandom �G���g����</SPAN>�A��������
- <SPAN id="type">entry �G���g����</SPAN> �Ƃ���Ɨǂ��ł��傤�B
+ また、
+ <SPAN id="type">get</SPAN>コマンドを従来どおりに
+ <SPAN id="type"> get エントリ名 </SPAN>
+ と呼ぶと、<EM>エントリに存在する全ての単語を実行する</EM>
+ ようになりました。注意してください。
+ <SPAN id="type">get エントリ名[0]</SPAN>とするか、
+ <SPAN id="type">getrandom エントリ名</SPAN>、もしくは
+ <SPAN id="type">entry エントリ名</SPAN> とすると良いでしょう。
 </P><P>
- setstr/pushstr/adddictstr�R�}���h���ǉ�����܂����B
- �������u�K��������Ƃ��Ĉ����悤�Ɂv�ǉ�����R�}���h�ł��B
- �ʏ�̎g�p�ł́A�ق�xxxstr�n���g���`���œK�̂͂��ł��̂ŁA
- �ł��邾�������𗘗p����悤�ɂ��Ă��������B
+ setstr/pushstr/adddictstrコマンドが追加されました。
+ 引数を「必ず文字列として扱うように」追加するコマンドです。
+ 通常の使用では、ほぼxxxstr系を使う形が最適のはずですので、
+ できるだけこれらを利用するようにしてください。
 </P>
 
 <A name="c10"></A>
-<H2>10. ���̑���KIS�R�}���h�̕ύX</H2>
+<H2>10. その他のKISコマンドの変更</H2>
 
 <P>
- textload/readdir�̈��������A����
+ textload/readdirの引数順が、共に
 </P>
 <DIV class="sample">
- �R�}���h�� �Ώ� �i�[�G���g����
+ コマンド名 対象 格納エントリ名
 </DIV>
 <P>
- ���������̂��A
+ だったものが、
 </P>
 <DIV class="sample">
- �R�}���h�� �i�[�G���g���� �Ώ�
+ コマンド名 格納エントリ名 対象
 </DIV>
 <P>
- �ɕύX����܂����B
+ に変更されました。
 </P>
 
 <P>
- textload/split�́A�o�͂��u�G���g����.1�v�u�G���g����.2�v...
- �Ƃ������ɕʃG���g���Ɋi�[����Ă������̂��A
- �P���ɁA��̃G���g����0�Ԗڂ̕��A1�Ԗڂ̕��A...
- �Ƃ������Ɉ�̃G���g���̕ʂ̕��Ƃ��Ċi�[�����悤�ɂȂ�܂����B
+ textload/splitは、出力が「エントリ名.1」「エントリ名.2」...
+ という風に別エントリに格納されていたものが、
+ 単純に、一つのエントリの0番目の文、1番目の文、...
+ という風に一つのエントリの別の文として格納されるようになりました。
 </P>
 
 <A name="c11"></A>
-<H2>11. �����s�Ή�</H2>
+<H2>11. 複数行対応</H2>
 
 <P>
- �������̊���̏ꏊ���A�����s�ɓW�J���ď�����悤�ɂȂ�܂����B
- �����́A
- <EM>�]����s�ɏ����Ȃ���΂Ȃ�Ȃ��������̂��A�r���ŉ��s�ł���悤�ɂ���</EM>
- ���̂Ȃ̂ŁA�]���ʂ��s�ɏ����Ă���肠��܂���B
+ 辞書中の幾つかの場所を、複数行に展開して書けるようになりました。
+ これらは、
+ <EM>従来一行に書かなければならなかったものを、途中で改行できるようにした</EM>
+ ものなので、従来通り一行に書いても問題ありません。
 </P>
 
 </BODY>

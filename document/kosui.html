@@ -2,11 +2,11 @@
   "http://www.w3.org/TR/html4/loose.dtd">
 <HTML lang="ja">
 <HEAD>
- <META http-equiv="Content-Type" content="text/html; charset=SHIFT_JIS">
+ <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <META http-equiv="Content-Script-Type" content="text/javascript">
  <META http-equiv="Content-Style-Type" content="text/css">
  <LINK rel="stylesheet" type="text/css" href="kawari.css">
- <TITLE>�ؘa�� �K���}�j���A��</TITLE>
+ <TITLE>華和梨 幸水マニュアル</TITLE>
 <STYLE type="text/css">
   <!--
 TR.gb{ background: lightgrey; }
@@ -15,294 +15,294 @@ TR.gb{ background: lightgrey; }
 </HEAD>
 <BODY>
 
-<H1>�v���O���}�u����AI���W���[�� "�ؘa��" �K���}�j���A��</H1>
+<H1>プログラマブル準AIモジュール "華和梨" 幸水マニュアル</H1>
 
 <DIV align="right">
   <P>
     2008/01/26<BR>
     Phase 8.2.5
   </P><P>
-    �ؘa���J���`�[�� :<BR>
-    NAKAUE.T (Meister), �UMeister (���T), ���Ɓ[, ����, ������̂ɂ�
+    華和梨開発チーム :<BR>
+    NAKAUE.T (Meister), 偽Meister (夢乃), さとー, 酔狂, さくらのにえ
   </P>
 </DIV>
 
 <H2>Index</H2>
 
-<A href="index.html" class="toindex">�� back</A>
+<A href="index.html" class="toindex">← back</A>
 <BR>
 
 <BLOCKQUOTE>
-<A href="#youto">1. �p�r</A><BR>
-<A href="#howtoboot">2. �N�����@</A><BR>
-�@<A href="#options">2.1. �R�}���h���C���I�v�V����</A><BR>
-�@<A href="#interpretermode">2.2. �C���^�[�v���^���[�h</A><BR>
-�@<A href="#debuggermode">2.3. �f�o�b�K���[�h</A><BR>
-�@<A href="#quietmode">2.4. quiet���[�h</A><BR>
-<A href="#operation">3. ������@</A><BR>
-�@<A href="#echomode">3.1. echo���[�h</A><BR>
-�@<A href="#commandmode">3.2. command���[�h</A><BR>
-<A href="#quit">4. �I�����@</A><BR>
-<A href="#howtouse">5. �K�����g�����f�o�b�O�̎w�j</A><BR>
-�@<A href="#grammer">5.1. ���@�G���[�̃f�o�b�O</A><BR>
-�@<A href="#runtime">5.2. ���s���G���[�̃f�o�b�O</A><BR>
-�@<A href="#algorithm">5.3. �A���S���Y���̃f�o�b�O</A><BR>
+<A href="#youto">1. 用途</A><BR>
+<A href="#howtoboot">2. 起動方法</A><BR>
+　<A href="#options">2.1. コマンドラインオプション</A><BR>
+　<A href="#interpretermode">2.2. インタープリタモード</A><BR>
+　<A href="#debuggermode">2.3. デバッガモード</A><BR>
+　<A href="#quietmode">2.4. quietモード</A><BR>
+<A href="#operation">3. 操作方法</A><BR>
+　<A href="#echomode">3.1. echoモード</A><BR>
+　<A href="#commandmode">3.2. commandモード</A><BR>
+<A href="#quit">4. 終了方法</A><BR>
+<A href="#howtouse">5. 幸水を使ったデバッグの指針</A><BR>
+　<A href="#grammer">5.1. 文法エラーのデバッグ</A><BR>
+　<A href="#runtime">5.2. 実行時エラーのデバッグ</A><BR>
+　<A href="#algorithm">5.3. アルゴリズムのデバッグ</A><BR>
 </BLOCKQUOTE>
 
 <A name="youto"></A>
-<H2>1. �p�r</H2>
+<H2>1. 用途</H2>
 
 <P>
-"�K��(��������)"�̓R���\�[���œ��삷��ؘa���C���^�[�v���^�ł��B
-�ғ����̃S�[�X�g�ؘ̉a���Ɛڑ����A�f�o�b�O��Ƃ��s�����Ƃ��o���܂��B
+"幸水(こうすい)"はコンソールで動作する華和梨インタープリタです。
+稼動中のゴーストの華和梨と接続し、デバッグ作業を行うことも出来ます。
 </P>
 
 
 <A name="howtoboot"></A>
-<H2>2. �N�����@</H2>
+<H2>2. 起動方法</H2>
 
 <P>
- <SPAN id="type">"kosui.exe"</SPAN>���_�u���N���b�N���邩�A
- <SPAN id="type">"kosui.exe"</SPAN>�̑��݂���t�H���_��
- �R���\�[�����J���A<SPAN id="type">"kosui.exe"</SPAN>�Ɠ��͂���ƋN�����܂��B
+ <SPAN id="type">"kosui.exe"</SPAN>をダブルクリックするか、
+ <SPAN id="type">"kosui.exe"</SPAN>の存在するフォルダで
+ コンソールを開き、<SPAN id="type">"kosui.exe"</SPAN>と入力すると起動します。
 </P>
 
 <P>
-���̎��A�ғ����̃S�[�X�g�����邩�ǂ����ɂ���āA
-�K���̓���͑傫���u�C���^�[�v���^���[�h�v�ƁA
-�u�f�o�b�K���[�h�v�̓�ɕ�����܂��B
+この時、稼動中のゴーストがあるかどうかによって、
+幸水の動作は大きく「インタープリタモード」と、
+「デバッガモード」の二つに分かれます。
 </P>
 
 
 <A name="options"></A>
-<H3>2.1. �R�}���h���C���I�v�V����</H3>
+<H3>2.1. コマンドラインオプション</H3>
 
 <P>
- �K���͈ȉ��̃R�}���h���C���I�v�V�������󂯕t���܂��B
- DOS������̋N�����ȂǂɎw�肵�Ă��������B
+ 幸水は以下のコマンドラインオプションを受け付けます。
+ DOS窓からの起動時などに指定してください。
 </P>
 
 <DIV class="syntax">
- kosui [--event|-e �C�x���g��] [--norc] [--quiet] [&lt;rcfile&gt;]
+ kosui [--event|-e イベント名] [--norc] [--quiet] [&lt;rcfile&gt;]
 </DIV>
 
 <DIV style="margin: 1ex 10% 1ex 10%;">
  <TABLE border="0" cellpadding="0" cellspacing="0">
   <TR>
-   <TD style="width: 12em">--event / -e �C�x���g��</TD>
-   <TD>�f�o�b�K���[�h�ŁA�S�[�X�g�֒ʒm����ۂ̃C�x���g��ύX����B</TD>
+   <TD style="width: 12em">--event / -e イベント名</TD>
+   <TD>デバッガモードで、ゴーストへ通知する際のイベントを変更する。</TD>
   </TR>
   <TR>
    <TD>--norc</TD>
-   <TD>kawarirc.kis��ǂݍ��܂Ȃ��B</TD>
+   <TD>kawarirc.kisを読み込まない。</TD>
   </TR>
   <TR>
    <TD>--quiet</TD>
-   <TD>quiet���[�h�ŁA�������t�@�C����ǂݍ��񂾌�ɒ����ɏI������B</TD>
+   <TD>quietモードで、初期化ファイルを読み込んだ後に直ちに終了する。</TD>
   </TR>
   <TR>
    <TD>&lt;rcfile&gt;</TD>
    <TD>
-    �t�@�C�������w�肷�邱�Ƃɂ��A
-    kawarirc.kis�̑���ɂ��̃t�@�C�����������t�@�C���Ƃ��ēǂݍ��ށB
+    ファイル名を指定することにより、
+    kawarirc.kisの代わりにそのファイルを初期化ファイルとして読み込む。
    </TD>
   </TR>
  </TABLE>
 </DIV>
 
 <A name="interpretermode"></A>
-<H3>2.2. �C���^�[�v���^���[�h</H3>
+<H3>2.2. インタープリタモード</H3>
 
 <P>
- �ғ����̃S�[�X�g��������Ȃ��ꍇ�A�K���̓C���^�[�v���^���[�h�ŋN�����܂��B
- �C���^�[�v���^���[�h�ł́A�K���ɓ������ꂽ�ؘa�����W���[�����g�p���܂��B
- �܂��A�ғ����̃S�[�X�g������ꍇ�ł��A
- �N����ɐڑ�����S�[�X�g�Ƃ���0�Ԃ�I�ԂƃC���^�[�v���^���[�h�ŋN�����܂��B
+ 稼動中のゴーストが見つからない場合、幸水はインタープリタモードで起動します。
+ インタープリタモードでは、幸水に内蔵された華和梨モジュールを使用します。
+ また、稼動中のゴーストがある場合でも、
+ 起動後に接続するゴーストとして0番を選ぶとインタープリタモードで起動します。
 </P>
 
 <P>
- �C���^�[�v���^���[�h�ŋN������ƁA
- �K����<SPAN id="type">"kosui.exe"</SPAN>�����݂���t�H���_��
- <SPAN id="type">kawarirc.kis</SPAN>��ʏ�ʂ�ɓǂݍ��񂾌�A
- �L�[���͂��󂯕t�����ԂɂȂ�܂��B
+ インタープリタモードで起動すると、
+ 幸水は<SPAN id="type">"kosui.exe"</SPAN>が存在するフォルダの
+ <SPAN id="type">kawarirc.kis</SPAN>を通常通りに読み込んだ後、
+ キー入力を受け付ける状態になります。
 </P>
 
 <A name="debuggermode"></A>
-<H3>2.3. �f�o�b�K���[�h</H3>
+<H3>2.3. デバッガモード</H3>
 
 <P>
- �ғ����̃S�[�X�g������ꍇ�A�K���̓f�o�b�K���[�h�ŋN�����܂��B
- �f�o�b�K���[�h�ł́A
-�K���̓S�[�X�g�ɑ΂���Direct SSTP���g�����C�x���g�ʒm�ɂ���ĕ��͂𑗂�܂��B
- �f�t�H���g�Œʒm�ł���C�x���g�́uShioriEcho�v�ł����A
- �N�����̃I�v�V�����Ɂu<SPAN id="tt">kosui -e �C�x���g��</SPAN>�v�A
-�������́u<SPAN id="tt">kosui --event �C�x���g��</SPAN>�v�Ƃ��邱�Ƃɂ��A
- �C�ӂ̃C�x���g���Œʒm���邱�Ƃ��ł��܂��B
+ 稼動中のゴーストがある場合、幸水はデバッガモードで起動します。
+ デバッガモードでは、
+幸水はゴーストに対してDirect SSTPを使ったイベント通知によって文章を送ります。
+ デフォルトで通知できるイベントは「ShioriEcho」ですが、
+ 起動時のオプションに「<SPAN id="tt">kosui -e イベント名</SPAN>」、
+もしくは「<SPAN id="tt">kosui --event イベント名</SPAN>」とすることにより、
+ 任意のイベント名で通知することができます。
 </P>
 
 <P>
- �ғ����̃S�[�X�g���ؘa���S�[�X�g�ŁA
- �udebugger on�v�����s����Ă���ꍇ�A�K���͏�L�̃C�x���g�𗘗p���āA
- ���̃S�[�X�g�ؘ̉a�����W���[���Ɛڑ����܂��B
- �ڑ�����ƁA�K���͉ғ����̃S�[�X�g�𑀍삷�邱�Ƃ��o���܂��B
+ 稼動中のゴーストが華和梨ゴーストで、
+ 「debugger on」が実行されている場合、幸水は上記のイベントを利用して、
+ そのゴーストの華和梨モジュールと接続します。
+ 接続すると、幸水は稼動中のゴーストを操作することが出来ます。
 </P><P>
- �f�t�H���g�́uShioriEcho�v���g���Ă���ꍇ�A
- ShioriEcho�C�x���g�ɑΉ�����G���g�����L�q����K�v�͂���܂���B
- ���̑��̃C�x���g����p���Ă���ꍇ�́A�Ή�����G���g�����L�q���Ă��������B
+ デフォルトの「ShioriEcho」が使われている場合、
+ ShioriEchoイベントに対応するエントリを記述する必要はありません。
+ その他のイベント名を用いている場合は、対応するエントリを記述してください。
 </P>
 
 <A name="quietmode"></A>
-<H3>2.4. quiet���[�h</H3>
+<H3>2.4. quietモード</H3>
 
 <P>
- ���̃��[�h�͓���ȃ��[�h�ł��B �R�}���h���C���I�v�V�����ŁA
- �u<SPAN id="tt">kosui --quiet</SPAN>�v�Ǝw�肷�邱�Ƃł��̃��[�h�ɓ���܂��B
+ このモードは特殊なモードです。 コマンドラインオプションで、
+ 「<SPAN id="tt">kosui --quiet</SPAN>」と指定することでこのモードに入ります。
 </P>
 
 <P>
- quiet���[�h�́A�C���^�v���^���[�h�Ɠ����悤��
- �K���ɓ������ꂽ�ؘa�����W���[�����g�p���ċN�����܂��B
- �������t�@�C��(�W���ł�<SPAN id="type">kawarirc.kis</SPAN>)��ǂݍ��񂾌�A
- �����ɏI�����܂��B�ؘa����SAORI Basic�Ƃ��Ďg�p�������ꍇ��A
- CGI�Ƃ��Ďg�p�������ꍇ�Ɏg���܂��B
+ quietモードは、インタプリタモードと同じように
+ 幸水に内蔵された華和梨モジュールを使用して起動します。
+ 初期化ファイル(標準では<SPAN id="type">kawarirc.kis</SPAN>)を読み込んだ後、
+ 直ちに終了します。華和梨をSAORI Basicとして使用したい場合や、
+ CGIとして使用したい場合に使います。
 </P>
 
 <A name="operation"></A>
-<H2>3. ������@</H2>
+<H2>3. 操作方法</H2>
 
 <P>
-�C���^�[�v���^���[�h�A�f�o�b�K���[�h�̂ǂ���ł��A�K���̑�����@�͋��ʂł��B
-�L�[�{�[�h���當�͂���͂��A�Ō��ENTER�L�[�������Ɠ��͂������͂�]�����܂��B
-���͂�]���������ʂ́A�C���^�[�v���^���[�h�̏ꍇ�̓R���\�[���ɁA
-�f�o�b�K���[�h�̏ꍇ�̓S�[�X�g�̃o���[���ɕ\�����܂��B
+インタープリタモード、デバッガモードのどちらでも、幸水の操作方法は共通です。
+キーボードから文章を入力し、最後にENTERキーを押すと入力した文章を評価します。
+入力を評価した結果は、インタープリタモードの場合はコンソールに、
+デバッガモードの場合はゴーストのバルーンに表示します。
 </P>
 
 <P>
-�u.[ENTER]�v�Ɠ��͂���ƁA�K���͓��̓��[�h��؂�ւ��܂��B���̓��[�h��2��ނ���A
-�uecho���[�h�v�Ɓucommand���[�h�v������܂��B�R���\�[���̈�ԉ��̕\���s��
+「.[ENTER]」と入力すると、幸水は入力モードを切り替えます。入力モードは2種類あり、
+「echoモード」と「commandモード」があります。コンソールの一番下の表示行が
 </P>
 <DIV class="sample">
   echo-mode &gt;
 </DIV>
 <P>
- �̏ꍇ��echo���[�h�A
+ の場合がechoモード、
 </P>
 <DIV class="sample">
   command-mode &gt;
 </DIV>
 <P>
- �̏ꍇ��command���[�h�ł��B�N������̃��[�h��echo���[�h�ł��B
+ の場合がcommandモードです。起動直後のモードはechoモードです。
 </P>
 
 
 <A name="echomode"></A>
-<H3>echo���[�h</H3>
+<H3>echoモード</H3>
 
 <P>
-echo���[�h�ł́A�K���͓��͂��ꂽ���͂����̂܂ܕ]�����܂��B
-���͒���${npw}���̃G���g���Ăяo���A
-$(set A "TEST")���̃C�����C���X�N���v�g������ꍇ�A��������߂��܂��B
+echoモードでは、幸水は入力された文章をそのまま評価します。
+文章中に${npw}等のエントリ呼び出し、
+$(set A "TEST")等のインラインスクリプトがある場合、これも解釈します。
 </P>
 <DIV class="sample">
-  echo-mode &gt; \0${���A}�A����${myname}�ł��B\1��낵���ȁB\e$(set Boot 1)
+  echo-mode &gt; \0${挨拶}、私は${myname}です。\1よろしくな。\e$(set Boot 1)
 </DIV>
 
 
 <A name="commandmode"></A>
-<H3>command���[�h</H3>
+<H3>commandモード</H3>
 
 <P>
-command���[�h�̓C�����C���X�N���v�g�̕]���ɓ����������[�h�ł��B
-�K���͓��͂��ꂽ���͂̑O��ɁA"$("��")"��t�����Ă���]�����܂��B�Ⴆ�΁A
+commandモードはインラインスクリプトの評価に特化したモードです。
+幸水は入力された文章の前後に、"$("と")"を付加してから評価します。例えば、
 <DIV class="sample">
-  command-mode &gt; adddict npw "�܂��"
+  command-mode &gt; adddict npw "まゆら"
 </DIV>
-�Ɠ��͂���ƁA�u$(adddict npw "�܂��")�v�Ƃ�������]�����܂��B
+と入力すると、「$(adddict npw "まゆら")」という文を評価します。
 </P>
 
 
 <A name="quit"></A>
-<H2>4. �I�����@</H2>
+<H2>4. 終了方法</H2>
 
 <P>
-echo���[�h�Acommand���[�h�̂ǂ���ł��A
-�uexit[ENTER]�v�Ɠ��͂���ƍK�����I�����邱�Ƃ��o���܂��B
+echoモード、commandモードのどちらでも、
+「exit[ENTER]」と入力すると幸水を終了することが出来ます。
 </P>
 
 <A name="howtouse"></A>
-<H2>5. �K�����g�����f�o�b�O�̎w�j</H2>
+<H2>5. 幸水を使ったデバッグの指針</H2>
 
 <P>
-�K����p�����f�o�b�O�́A�傫��3�i�K�ɕ�����܂��B
-�K���������̎菇�ɏ]���K�v�͂���܂��񂪁A�����I�菇���ƍl���܂��B
-�Q�l�ɂ��Ă�������
+幸水を用いたデバッグは、大きく3段階に分かれます。
+必ずしもこの手順に従う必要はありませんが、合理的手順だと考えます。
+参考にしてください
 </P>
 
 <OL>
-<LI><A href="#grammer">���@�G���[�f�o�b�O�̒i�K</A></LI>
-<LI><A href="#runtime">���s���G���[�f�o�b�O�̒i�K</A></LI>
-<LI><A href="#algorithm">�A���S���Y���f�o�b�O�̒i�K</A></LI>
+<LI><A href="#grammer">文法エラーデバッグの段階</A></LI>
+<LI><A href="#runtime">実行時エラーデバッグの段階</A></LI>
+<LI><A href="#algorithm">アルゴリズムデバッグの段階</A></LI>
 </OL>
 
 <P>
-����ł́A�e�i�K�ł̃f�o�b�O�菇���Љ�܂��B
+それでは、各段階でのデバッグ手順を紹介します。
 </P>
 
 <A name="grammer"></A>
-<H3>5.1. ���@�G���[�̃f�o�b�O</H3>
+<H3>5.1. 文法エラーのデバッグ</H3>
 
 <P>
-�܂��A���@�I�G���[�̌��o���s���܂��B
-��Ƃ��āA���̂悤�ȃt�@�C���̃f�o�b�O���s���܂��B
-���ɁA�t�@�C�����́u<SPAN class="tt">test.kis</SPAN>�v�Ƃ��Ęb��i�߂܂��B
+まず、文法的エラーの検出を行います。
+例として、次のようなファイルのデバッグを行います。
+仮に、ファイル名は「<SPAN class="tt">test.kis</SPAN>」として話を進めます。
 </P>
 
 <DIV class="sample">
   # test.kis<BR>
   <BR>
-  ���{�ꈥ�A : ����ɂ���<BR>
-  �p�ꈥ�A : Hello.<BR>
-  npw : ���ߎI�l,�Քn�i��,���V��<BR>
+  日本語挨拶 : こんにちは<BR>
+  英語挨拶 : Hello.<BR>
+  npw : 黒衣鯖人,閑馬永空,川上新夜<BR>
   <BR>
-  # ���݂��Ȃ��R�}���h������Ďg������<BR>
+  # 存在しないコマンドを誤って使った例<BR>
   test1 : $(<EM>copu</EM> npw npw.backup)<BR>
   <BR>
-  # �������[�h���Ⴄ��<BR>
+  # 辞書モードが違う例<BR>
   <EM>get npw;</EM><BR>
   <BR>
-  # ���ʂ̑Ή�������������<BR>
-  test2 : �p��ł́A�u${���{�ꈥ�A}�v�́u${�p�ꈥ�A<EM>)</EM>�v�ł��B<BR>
+  # 括弧の対応がおかしい例<BR>
+  test2 : 英語では、「${日本語挨拶}」は「${英語挨拶<EM>)</EM>」です。<BR>
   <BR>
   =kis<BR>
-  # ���ʂ̑Ή�������āA�������ȏ��ŃG���[���o���<BR>
+  # 括弧の対応がずれて、おかしな所でエラーが出る例<BR>
   function test3 $(<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;if $[ ${today} != ${birthday} ] $(<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if $[ ${bootcount} &gt;= 10 ] $(<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo \0\s[5]��a�����A���߂łƂ��������܂��I;<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo \0\s[5]非誕生日、おめでとうございます！;<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<EM>#)</EM><BR>
   &nbsp;&nbsp;&nbsp;&nbsp;) else $(<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo \0\s[4]�c�a���������A���܂ɂ͂��ĂȂ����������B\e;<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo \0\s[4]…誕生日かい、たまにはついてない日もあるよ。\e;<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;)<BR>
   );<BR>
   =end<BR>
 </DIV>
 
 <P>
-���̃t�@�C�����K���œǂݍ��݂܂��B
-���̍ہA���O���x�����uerror�v�Ɓuwarning�v�ɐݒ肵�܂��B
-OS��Win9x�n�Ń��O������č���ꍇ�́A�K���ȃ��O�t�@�C���ɏo�͂��܂��B
+このファイルを幸水で読み込みます。
+この際、ログレベルを「error」と「warning」に設定します。
+OSがWin9x系でログが流れて困る場合は、適当なログファイルに出力します。
 </P>
 
 <DIV class="sample">
-  �R�}���h���C���ł̓���:<BR>
+  コマンドラインでの入力:<BR>
   command-mode &gt; loglevel error warning<BR>
   command-mode &gt; logfile debug.log<BR>
   command-mode &gt; load test.kis<BR>
 </DIV>
 
 <P>
-����ƁA���O�t�@�C��<SPAN class="tt">debug.log</SPAN>�ɁA
-���̂悤�ȓ��e���o�͂���Ă���Ǝv���܂��B
+すると、ログファイル<SPAN class="tt">debug.log</SPAN>に、
+次のような内容が出力されていると思います。
 </P>
 
 <DIV class="sample">
@@ -316,12 +316,12 @@ OS��Win9x�n�Ń��O������č���ꍇ�́A�K���ȃ��O�t�@�C���ɏo�͂��܂��B
 </DIV>
 
 <P>
-�G���[�̓��e�����Ă݂܂��傤�B
-<A href="errormes.html">�G���[���b�Z�[�W�ꗗ</A>���Q�Ƃ��Ȃ��猩�ĉ������B
-�܂��A9�s�ڂŁu":"�������v�A�u�G���g�����������v�Ƃ����G���[���o�Ă��܂��B
-9�s�ڂ�����ƁA�{���Ȃ�X�N���v�g�L�q�]�[���ŏ����ׂ��R�}���h���A
-�����L�q�]�[���ŏ����Ă��܂��B���̂��߁A�R�}���h���G���g�����ƌ�����āA
-�u":"�������v�Ƃ����G���[���o���Ă��܂��B�ł�����A9�s�ڂ�
+エラーの内容を見てみましょう。
+<A href="errormes.html">エラーメッセージ一覧</A>を参照しながら見て下さい。
+まず、9行目で「":"が無い」、「エントリ名が無い」というエラーが出ています。
+9行目を見ると、本来ならスクリプト記述ゾーンで書くべきコマンドを、
+辞書記述ゾーンで書いています。このため、コマンドをエントリ名と誤解して、
+「":"が無い」というエラーを出しています。ですから、9行目を
 </P>
 
 <DIV class="sample">
@@ -331,91 +331,91 @@ OS��Win9x�n�Ń��O������č���ꍇ�́A�K���ȃ��O�t�@�C���ɏo�͂��܂��B
 </DIV>
 
 <P>
-���̂悤�ɏ���������ƁA9�s�ڂ̃G���[�͉������܂��B
+このように書き換えると、9行目のエラーは解消します。
 </P>
 
 <P>
-���ɁA12�s�ڂ̃G���[���b�Z�[�W�����܂��B
-�u"}"�������v����ȃG���[�ł��B�悭����ƁA
-12�s�ڂ́u<SPAN class="tt">${�p�ꈥ�A}</SPAN>�v�Ƃ���ׂ��������A
-�u<SPAN class="tt">${�p�ꈥ�A)</SPAN>�v�ƁA�Ԉ�������ʂ������Ă���܂��B
-������C�������12�s�ڂ̃G���[�͉����ł��B
+次に、12行目のエラーメッセージを見ます。
+「"}"が無い」が主なエラーです。よく見ると、
+12行目は「<SPAN class="tt">${英語挨拶}</SPAN>」とあるべき部分が、
+「<SPAN class="tt">${英語挨拶)</SPAN>」と、間違った括弧が書いてあります。
+これを修正すれば12行目のエラーは解決です。
 </P>
 
-<P>�Ō�ɁA25�s�ڂ̃G���[�����܂��B
-�u")"�����������v�Ƃ����G���[�ł��B�������A25�s�ڂ�����Ɗ��ʂ͂���܂��B
-�������悭����ƁA21�s�ڂł킴�Ɗ��ʂ��R�����g�A�E�g���Ă��܂��B
-���̂��߁A���ʂ̑Ή����Ƃꂸ�A��ԍŌ�̊��ʂŃG���[���o�Ă�����ł��B
+<P>最後に、25行目のエラーを見ます。
+「")"を見失った」というエラーです。しかし、25行目を見ると括弧はあります。
+しかしよく見ると、21行目でわざと括弧をコメントアウトしています。
+このため、括弧の対応がとれず、一番最後の括弧でエラーが出ていた訳です。
 </P><P>
-���̂悤�ɁA���ʂ̑Ή��G���[�́A�L�q�ԈႢ�̂��������Ƃ͈Ⴄ������
-�G���[���o�邱�Ƃ�����܂��B
-���ʂ̑Ή����A�G���[�̏o���ӏ����O�ɑk���Ċm���߂Ă��������B
-����������Ƃ́A�������ł͂Ȃ��G�f�B�^���g�����Ƃ����E�߂��܂��B
-���A�v���O�������������[�h������A���ʂ̑Ή����G�f�B�^���m���߂Ă���܂��B
+このように、括弧の対応エラーは、記述間違いのあった所とは違う部分で
+エラーが出ることがあります。
+括弧の対応を、エラーの出た箇所より前に遡って確かめてください。
+こうした作業は、メモ帳ではなくエディタを使うことをお薦めします。
+大抵、プログラムを書くモードがあり、括弧の対応をエディタが確かめてくれます。
 </P>
 
 <P>
-�ȏ�܂łŕ��@�f�o�b�O�̏I������X�N���v�g���f�ڂ��܂��B
-�������A���̃X�N���v�g�́A�܂����s���G���[���c���Ă��܂��B
-���s���G���[�̃f�o�b�O�́A���̐߂ŉ�����܂��B
+以上までで文法デバッグの終わったスクリプトを掲載します。
+しかし、このスクリプトは、まだ実行時エラーが残っています。
+実行時エラーのデバッグは、次の節で解説します。
 </P>
 
 <DIV class="sample">
-  # test.kis(���@�G���[�C����)<BR>
+  # test.kis(文法エラー修正後)<BR>
   <BR>
-  ���{�ꈥ�A : ����ɂ���<BR>
-  �p�ꈥ�A : Hello.<BR>
-  npw : ���ߎI�l,�Քn�i��,���V��<BR>
+  日本語挨拶 : こんにちは<BR>
+  英語挨拶 : Hello.<BR>
+  npw : 黒衣鯖人,閑馬永空,川上新夜<BR>
   <BR>
-  # ���݂��Ȃ��R�}���h������Ďg������<BR>
+  # 存在しないコマンドを誤って使った例<BR>
   test1 : $(<EM>copu</EM> npw npw.backup)<BR>
   <BR>
-  # �������[�h���Ⴄ��<BR>
+  # 辞書モードが違う例<BR>
   <EM>=kis</EM><BR>
   get npw;<BR>
   <EM>=end</EM><BR>
   <BR>
-  # ���ʂ̑Ή�������������<BR>
-  test2 : �p��ł́A�u${���{�ꈥ�A}�v�́u${�p�ꈥ�A<EM>}</EM>�v�ł��B<BR>
+  # 括弧の対応がおかしい例<BR>
+  test2 : 英語では、「${日本語挨拶}」は「${英語挨拶<EM>}</EM>」です。<BR>
   <BR>
   =kis<BR>
-  # ���ʂ̑Ή�������āA�������ȏ��ŃG���[���o���<BR>
+  # 括弧の対応がずれて、おかしな所でエラーが出る例<BR>
   function test3 $(<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;if $[ ${today} != ${birthday} ] $(<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if $[ ${bootcount} &gt;= 10 ] $(<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo \0\s[5]��a�����A���߂łƂ��������܂��I;<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo \0\s[5]非誕生日、おめでとうございます！;<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<EM>)</EM><BR>
   &nbsp;&nbsp;&nbsp;&nbsp;) else $(<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo \0\s[4]�c�a���������A���܂ɂ͂��ĂȂ����������B\e;<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo \0\s[4]…誕生日かい、たまにはついてない日もあるよ。\e;<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;)<BR>
   );<BR>
   =end<BR>
 </DIV>
 
 <P>
-���@�G���[�f�o�b�O�̐߂̏I���ɁA��A�h�o�C�X������܂��B
-�G���[�ӏ�����C��������A���̓s�x�t�@�C���ɕۑ����čK���Ń`�F�b�N���ĉ������B
-��G���[�ӏ��𒼂��ƁA���̂��Ƃ̃G���[�\�������I�ɏ����邱�Ƃ��悭����܂��B
+文法エラーデバッグの節の終わりに、一つアドバイスがあります。
+エラー箇所を一つ修正したら、その都度ファイルに保存して幸水でチェックして下さい。
+一つエラー箇所を直すと、そのあとのエラー表示が劇的に消えることがよくあります。
 </P><P>
-����́A�ؘa�����t�@�C����ǂݍ��ލہA�t�@�C���̐擪����ǂݍ��ނ��߁A
-��ӏ����͂̉��߂ł܂Â��ƁA���̂��Ƃ̉��߂͂��ׂĂ��̌�����������ׂł��B
-����́A�p��̖|��ő㖼�����w���l�����ԈႦ��ƁA
-���̂��Ƃ̕��͂��Œ��ꒃ�ȉ��߂ɂȂ�̂Ɠ������Ƃł��B
+これは、華和梨がファイルを読み込む際、ファイルの先頭から読み込むため、
+一箇所文章の解釈でつまづくと、そのあとの解釈はすべてその誤りを引きずる為です。
+これは、英語の翻訳で代名詞が指す人物を間違えると、
+そのあとの文章が滅茶苦茶な解釈になるのと同じことです。
 </P><P>
-�܂��A�^�킵�������S�̂���x�R�����g�A�E�g���A
-���X�ɃR�����g�A�E�g�͈̔͂�ς��āA
-�ǂ��ŃG���[���������邩���i�荞�ޕ��@���L���ł��B
+また、疑わしい部分全体を一度コメントアウトし、
+徐々にコメントアウトの範囲を変えて、
+どこでエラーが発生するかを絞り込む方法も有効です。
 </P><P>
-�ؘa���͐l�ԂƔ�ׂĔ��ɋ𒼂ŁA�u���͂�ǂ��Ɍv�炤�v���Ƃ��o���܂���B
-���C�悭�G���[�𒼂��Ă��������B
+華和梨は人間と比べて非常に愚直で、「文章を良きに計らう」ことが出来ません。
+根気よくエラーを直してください。
 </P>
 
 <A name="runtime"></A>
-<H3>5.2. ���s���G���[�̃f�o�b�O</H3>
+<H3>5.2. 実行時エラーのデバッグ</H3>
 
 <P>
-�����āA���s���G���[�̃f�o�b�O�Ɉڂ�܂��B
-�G�R�[���[�h�ŁA���̂悤�ɓ��͂��ĉ������B
+続いて、実行時エラーのデバッグに移ります。
+エコーモードで、次のように入力して下さい。
 </P>
 
 <DIV class="sample">
@@ -423,8 +423,8 @@ OS��Win9x�n�Ń��O������č���ꍇ�́A�K���ȃ��O�t�@�C���ɏo�͂��܂��B
 </DIV>
 
 <P>
-����́Atest1�G���g�����Ăяo���Ă��܂��B
-����ƁA���̂悤�ȃG���[���b�Z�[�W���o�锤�ł��B
+これは、test1エントリを呼び出しています。
+すると、次のようなエラーメッセージが出る筈です。
 </P>
 
 <DIV class="sample">
@@ -432,19 +432,19 @@ OS��Win9x�n�Ń��O������č���ꍇ�́A�K���ȃ��O�t�@�C���ɏo�͂��܂��B
 </DIV>
 
 <P>
-�u"copu"�Ƃ�����`���Ă��Ȃ��֐����Ă΂ꂽ�v�ƌ����Ă��܂��B
-�m����test1�G���g��������ƁA
-<SPAN class="tt">copu</SPAN>�Ƃ����R�}���h���Ă�ł��܂��B
-�����Œ�`���Ȃ�����A���̃R�}���h�͑��݂��܂���B
+「"copu"という定義していない関数が呼ばれた」と言っています。
+確かにtest1エントリを見ると、
+<SPAN class="tt">copu</SPAN>というコマンドを呼んでいます。
+自分で定義しない限り、このコマンドは存在しません。
 </P><P>
-���̂悤�ɁA�R�}���h���̃^�C�v�~�X���́A
-���ۂɓ������Ă݂Ȃ��ƁA�G���[�𔭌��ł��Ȃ��ꍇ������܂��B
-���@�f�o�b�O������������A��v�ȃG���g���E���[�U��`�R�}���h��
-���ۂɌĂ�ł݂āA���s���G���[���N���Ȃ����m���߂܂��B
+このように、コマンド名のタイプミス等は、
+実際に動かしてみないと、エラーを発見できない場合があります。
+文法デバッグが完了したら、主要なエントリ・ユーザ定義コマンドを
+実際に呼んでみて、実行時エラーが起きないか確かめます。
 </P><P>
-����ɁA�G���g�����̃^�C�v�~�X�ŁA
-���ۂɂ͑��݂��Ȃ��G���g�����Ă�ł���ꍇ���悭����܂��B
-��������m����ׂɂ́A
+さらに、エントリ名のタイプミスで、
+実際には存在しないエントリを呼んでいる場合もよくあります。
+これを検知する為には、
 </P>
 
 <DIV class="sample">
@@ -452,9 +452,9 @@ OS��Win9x�n�Ń��O������č���ꍇ�́A�K���ȃ��O�t�@�C���ɏo�͂��܂��B
 </DIV>
 
 <P>
-���̂悤�ɁA
-���O���x���ݒ�Ɂu<SPAN class="tt">decl</SPAN>�v��ǉ����܂��B
-���̏�ԂŁA��`����Ă��Ȃ��G���g���uhoge�v���G���g���Ăяo������ƁA
+このように、
+ログレベル設定に「<SPAN class="tt">decl</SPAN>」を追加します。
+この状態で、定義されていないエントリ「hoge」をエントリ呼び出しすると、
 </P>
 
 <DIV class="sample">
@@ -462,50 +462,50 @@ OS��Win9x�n�Ń��O������č���ꍇ�́A�K���ȃ��O�t�@�C���ɏo�͂��܂��B
 </DIV>
 
 <P>
-���̂悤�ɁA�u��̃G���g�����Ăяo�����v�ƒʒm���Ă��܂��B
-�Ȃ��A<SPAN class="tt">entry</SPAN>�R�}���h�ŋ�̃G���g�����Ă񂾏ꍇ�A
-�ʒm���Ȃ��̂Œ��ӂ��Ă��������B
+このように、「空のエントリを呼び出した」と通知してきます。
+なお、<SPAN class="tt">entry</SPAN>コマンドで空のエントリを呼んだ場合、
+通知しないので注意してください。
 </P>
 
 <P>
-�ȏ�̍�Ƃ��J��Ԃ��ăG���[�\�����o�Ȃ��Ȃ�΁A
-���s���G���[��Ǖ��ł������ƂɂȂ�܂��B
+以上の作業を繰り返してエラー表示が出なくなれば、
+実行時エラーを追放できたことになります。
 </P>
 
 <A name="algorithm"></A>
-<H3>5.3. �A���S���Y���̃f�o�b�O</H3>
+<H3>5.3. アルゴリズムのデバッグ</H3>
 
 <P>
-���́A���ꂩ�炪�{���̈Ӗ��ł̃f�o�b�O�ł��B
-���ʂ̌��t�ł��A���@�I���͖����̂ɁA�؂̒ʂ�Ȃ����͂͊��ł�����܂��B
-�܂��A���e�͐������Ă��A���ۂɋN����Ȃ���Ԃ�O��Ƃ��Ă��邽�߁A
-�����I�ɈӖ����Ȃ��Ȃ����͂��ǂ�����܂��B
-�X�N���v�g�ɂ��܂������������Ƃ������܂��B
+実は、これからが本当の意味でのデバッグです。
+普通の言葉でも、文法的誤りは無いのに、筋の通らない文章は幾らでもあります。
+また、内容は正しくても、実際に起こらない状態を前提としているため、
+実質的に意味をなさない文章も良くあります。
+スクリプトにもまったく同じことが言えます。
 </P><P>
-�v���O�����̐��E�ł́A�v���O�����̗���̍��i���u�A���S���Y���v�ƌĂт܂��B
-�S�[�X�g�̃f�o�b�O�ł��A�Ō�͂��������A���S���Y���̃f�o�b�O���K�v�ł��B
-�Ⴆ�΁A
-<SPAN class="tt">Reference</SPAN>���K��3���邱�Ƃ�z�肵���R�}���h�́A
-4�ڂ�<SPAN class="tt">Reference</SPAN>���������ꍇ�A
-������肱�ڂ���������܂���B
-�܂��A
-�����̑召��r�Łu&lt;�v�Ɓu&gt;�v�������ԈႦ�Ă��A
-���@�I�ɂ͂܂������������X�N���v�g�ł��B
+プログラムの世界では、プログラムの流れの骨格を「アルゴリズム」と呼びます。
+ゴーストのデバッグでも、最後はこうしたアルゴリズムのデバッグが必要です。
+例えば、
+<SPAN class="tt">Reference</SPAN>が必ず3個あることを想定したコマンドは、
+4個目の<SPAN class="tt">Reference</SPAN>があった場合、
+情報を取りこぼすかもしれません。
+また、
+数字の大小比較で「&lt;」と「&gt;」を書き間違えても、
+文法的にはまったく正しいスクリプトです。
 </P><P>
-���������A���S���Y���̃f�o�b�O�ŗL���ȕ��@���A2�Љ�܂��B
-�ǂ�������ʂ̃v���O��������̃f�o�b�O�ŁA��ʓI�ȕ��@�ł��B
+こうしたアルゴリズムのデバッグで有効な方法を、2つ紹介します。
+どちらも普通のプログラム言語のデバッグで、一般的な方法です。
 </P>
 
-<H4>printf�f�o�b�O</H4>
+<H4>printfデバッグ</H4>
 
 <P>
-���̕��@�́A
-�X�N���v�g�̐�����<SPAN class="tt">logprint</SPAN>��}�����A
-�X�N���v�g�̗���̃L�[�ƂȂ�G���g���̓��e���A���O�ɋL�^������@�ł��B
-C�����<SPAN class="tt">printf</SPAN>�֐���p���Ă悭�s�����Ƃ���A
-���̖��O������܂��B
+この方法は、
+スクリプトの随所に<SPAN class="tt">logprint</SPAN>を挿入し、
+スクリプトの流れのキーとなるエントリの内容を、ログに記録する方法です。
+C言語で<SPAN class="tt">printf</SPAN>関数を用いてよく行うことから、
+この名前があります。
 </P><P>
-�Ⴆ�΁A
+例えば、
 </P>
 
 <DIV class="sample">
@@ -517,13 +517,13 @@ C�����<SPAN class="tt">printf</SPAN>�֐���p���Ă悭�s�����Ƃ���A
 </DIV>
 
 <P>
-���̂悤�ȃX�N���v�g���l���܂��B
-���̃X�N���v�g�͎w�莞���ɂȂ����甭�b���邱�Ƃ��Ӑ}���Ă��܂����A
-���鎞�����w�肵���ꍇ�A���b���Ȃ������Ƃ��܂��B
-�����<SPAN class="tt">printf</SPAN>�f�o�b�O���邽�߁A
-���̂悤�ɏ��������܂��B
-�l���u#�v�ŋ���ł��܂����A
-����̓��O���ŋ������邽�߂ŁA���ɋL���ɈӖ��͂���܂���B
+このようなスクリプトを考えます。
+このスクリプトは指定時刻になったら発話することを意図していますが、
+ある時刻を指定した場合、発話しなかったとします。
+これを<SPAN class="tt">printf</SPAN>デバッグするため、
+次のように書き換えます。
+値を「#」で挟んでいますが、
+これはログ中で強調するためで、特に記号に意味はありません。
 </P>
 
 <DIV class="sample">
@@ -541,37 +541,37 @@ C�����<SPAN class="tt">printf</SPAN>�֐���p���Ă悭�s�����Ƃ���A
 </DIV>
 
 <P>
-���̃X�N���v�g�̏ꍇ�A
+このスクリプトの場合、
 </P>
 <UL>
-  <LI>����������������</LI>
-  <LI>���b������e����������</LI>
+  <LI>条件式がおかしい</LI>
+  <LI>発話する内容がおかしい</LI>
 </UL>
 <P>
-��2�ʂ�̌������l�����܂��B
-�����ŁA�������ƃG���g���̗��������O�ɏo�͂��Ă��܂��B
-�܂��A
-<SPAN class="tt">sentence.timer</SPAN>�G���g���𕡐���Ă�ŏ�Ԃ�ς��Ȃ��悤�A
-��x<SPAN class="tt">@temp</SPAN>�G���g����<SPAN class="tt">setstr</SPAN>�ő�����A
-���ꂩ�烍�O�ɏo�́A�߂�l�Ƃ��ďo�͂��s���Ă��܂��B
+の2通りの原因が考えられます。
+そこで、条件式とエントリの両方をログに出力しています。
+また、
+<SPAN class="tt">sentence.timer</SPAN>エントリを複数回呼んで状態を変えないよう、
+一度<SPAN class="tt">@temp</SPAN>エントリに<SPAN class="tt">setstr</SPAN>で代入し、
+それからログに出力、戻り値として出力を行っています。
 </P><P>
-<SPAN class="tt">printf</SPAN>�f�o�b�O�͔�r�I�ώG�ł����A
-�G���g���̓��������m���ɓ����܂��B
-�������A������Ԃ𓾂邱�Ƃŏ�Ԃ�ς��Ă��܂�Ȃ��悤�A
-���ӂ���K�v������܂��B
-�܂��A�f�o�b�O�R�[�h���c���Ă���ƁA�t�@�C���T�C�Y���������܂��B
-�S�[�X�g�̃����[�X�̍ہA
-�l�b�g���[�N�X�V��f��������ׁA�m���Ƀf�o�b�O�R�[�h�������悤�A
-���ӂ𕥂��K�v������܂��B
+<SPAN class="tt">printf</SPAN>デバッグは比較的煩雑ですが、
+エントリの内部情報を確実に得られます。
+しかし、内部状態を得ることで状態を変えてしまわないよう、
+注意する必要があります。
+また、デバッグコードが残っていると、ファイルサイズが増加します。
+ゴーストのリリースの際、
+ネットワーク更新を素早くする為、確実にデバッグコードを消すよう、
+注意を払う必要があります。
 </P>
 
-<H4>�f�o�b�K�ɂ��f�o�b�O</H4>
+<H4>デバッガによるデバッグ</H4>
 
 <P>
-���̃f�o�b�O���@�́A�K�����f�o�b�K���[�h�ŋN�����āA
-���ۂɃS�[�X�g�������Ă����Ԃōs���܂��B
-��قǂ̃X�N���v�g���f�o�b�O���邱�Ƃ��l����ƁA
-echo���[�h��
+このデバッグ方法は、幸水をデバッガモードで起動して、
+実際にゴーストが動いている状態で行います。
+先ほどのスクリプトをデバッグすることを考えると、
+echoモードで
 </P>
 
 <DIV class="sample">
@@ -579,13 +579,13 @@ echo���[�h��
 </DIV>
 
 <P>
-�ȂǁA
-��قǂ�<SPAN class="tt">printf</SPAN>�f�o�b�O�Ń��O�ɏo�͂������e���A
-�o���[���ɏo�͂�������@�ł��B
+など、
+先ほどの<SPAN class="tt">printf</SPAN>デバッグでログに出力した内容を、
+バルーンに出力させる方法です。
 </P><P>
-���̕��@�́A�X�N���v�g������������K�v�������_���傫�ȃ����b�g�ł��B
-���ʁA���ԂɈˑ�������̃f�o�b�O�ł́A
-���傤�ǂ����u�ԂɃG���g���̓��e�𒲂ׂ邱�Ƃ��A������̂���_�ł��B
+この方法は、スクリプトを書き換える必要が無い点が大きなメリットです。
+反面、時間に依存する情報のデバッグでは、
+ちょうどいい瞬間にエントリの内容を調べることが、やや難しいのが難点です。
 </P>
 
 </BODY>

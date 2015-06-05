@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/loose.dtd">
 <HTML>
 <HEAD>
- <META http-equiv="Content-Type" content="text/html; charset=SHIFT_JIS">
+ <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <META http-equiv="Content-Script-Type" content="text/javascript">
  <META http-equiv="Content-Style-Type" content="text/css">
  <LINK rel="stylesheet" type="text/css" href="kawari.css">
@@ -16,144 +16,144 @@
     <A href="programming_3.html">3</A>
   </DIV>
 
-<H2>2. �ؘa������d�l</H2>
+<H2>2. 華和梨言語仕様</H2>
 
 <BLOCKQUOTE>
   <P>
-    �ȉ���KIS����̎d�l�������B
-    �n�߂Ɍ���̓�����q�ׁA���͂Ɏ����L�q��̕��@���ڍׂɉ������B
-    �s��������΁A����z�z�T�C�g�܂ň��肢�����B
+    以下にKIS言語の仕様を示す。
+    始めに言語の動作を述べ、次章に辞書記述上の文法を詳細に解説する。
+    不備があれば、是非配布サイトまで一報願いたい。
   </P>
 </BLOCKQUOTE>
 
-<H4>�p����</H4>
+<H4>用語解説</H4>
 
 <DL>
-  <DT>�]��</DT>
-  <DD>�����悻�A���̂悤�ȈӖ��F�v�f�����s���邱�ƁB���삳���邱�ƁB</DD>
-  <DT>�I���W��</DT>
+  <DT>評価</DT>
+  <DD>おおよそ、次のような意味：要素を実行すること。動作させること。</DD>
+  <DT>オリジン</DT>
   <DD>
-    ��������̐������琔���n�߂邱�Ƃ�\���B
-    0�I���W���Ȃ��0����A1�I���W���Ȃ��1���琔���n�߂�B
+    序列をその数字から数え始めることを表す。
+    0オリジンならば0から、1オリジンならば1から数え始める。
   </DD>
-  <DT>�󕶎���</DT>
+  <DT>空文字列</DT>
   <DD>
-    ���e�̂Ȃ���������w���B
-    �u�󕶎��񂪏o�͂����v�Ƃ́A�����I�ɂ́u�����o�͂���Ȃ��v�Ɠ��`�ł���B
+    内容のない文字列を指す。
+    「空文字列が出力される」とは、実質的には「何も出力されない」と同義である。
   </DD>
-  <DT>�^�U�l</DT>
+  <DT>真偽値</DT>
   <DD>
-    if���Ȃǂŗp������l�B
-    ������������������(�������͐�����)���Ƃ��u�^�ł���v�A
-    ��������Ȃ�(�������͊Ԉ���Ă���)���Ƃ��u�U�ł���v�ƌ����B
-    �u<SPAN class="tt">"�����B"=="�f���B"</SPAN>�v�͋U�ł���A
-    �u<SPAN class="tt">100&gt;=10</SPAN>�v�͐^�ł���B
+    if文などで用いられる値。
+    ある条件が満たされる(もしくは正しい)ことを「真である」、
+    満たされない(もしくは間違っている)ことを「偽である」と言う。
+    「<SPAN class="tt">"何か。"=="伺か。"</SPAN>」は偽であり、
+    「<SPAN class="tt">100&gt;=10</SPAN>」は真である。
   </DD>
 </DL>
 
-<H4>�ؘa���������l�ɂ���</H4>
+<H4>華和梨が扱う値について</H4>
 
 <BLOCKQUOTE>
   <P>
-    �ؘa���͕����񃂃m�^�C�v����ł���B
-    �����A<STRONG>�S�Ă̒l�𕶎���\���ŕێ����Ă���</STRONG>
-    (���Ȃ��Ƃ��A���������邱�Ƃ�v�������)�B
+    華和梨は文字列モノタイプ言語である。
+    即ち、<STRONG>全ての値を文字列表現で保持している</STRONG>
+    (少なくとも、そう見えることを要求される)。
   </P><P>
-    ���̂��߁A����l���ǂ����߂���邩�́A
-    ��������߂��鑤(�I�y���[�^)�̓����Ɉˑ�����B
-    <SPAN class="tt">&quot;true&quot;</SPAN>�́A
-    if���̏����߂ɗp����ꂽ�ꍇ�͐^�U�l�ł��邪�A
-    �P���ɕ�����Ƃ��ĉ��H���A�o�͂��邱�Ƃ��ł���B
-    <SPAN class="tt">&quot;10&quot;</SPAN>�Ȃǂ̐��l�͂���ɕ��G�ŁA
-    ���Z���̒��ł͐��l�Ƃ��Ĉ������Ƃ��ł��A
-    �����߂ł͐^�U�l�Ƃ��Ĉ����A
-    �܂�������Ƃ��ďo�͂��邱�Ƃ��ł���B
+    そのため、ある値がどう解釈されるかは、
+    それを解釈する側(オペレータ)の特性に依存する。
+    <SPAN class="tt">&quot;true&quot;</SPAN>は、
+    if文の条件節に用いられた場合は真偽値であるが、
+    単純に文字列として加工し、出力することもできる。
+    <SPAN class="tt">&quot;10&quot;</SPAN>などの数値はさらに複雑で、
+    演算式の中では数値として扱うことができ、
+    条件節では真偽値として扱われ、
+    また文字列として出力することもできる。
   </P><P>
-    �Ȃ��A�ؘa���ł̐^�U�l�͈ȉ��̂悤�ɔ��肳���B
+    なお、華和梨での真偽値は以下のように判定される。
   </P>
   <DIV class="sample">
-    "false"(�_���Ƃ��Ă̋U), "0"(���l�Ƃ��Ă̋U), ""(������Ƃ��Ă̋U)
-    �ȊO�́A�S�Ă�^�Ƃ���B
+    "false"(論理としての偽), "0"(数値としての偽), ""(文字列としての偽)
+    以外は、全てを真とする。
   </DIV>
 </BLOCKQUOTE>
 
 <A name="prg2_1"></A>
-<H3>2.1. �����ƃG���g��</H3>
+<H3>2.1. 辞書とエントリ</H3>
 
 <BLOCKQUOTE>
   <P>
-    �ؘa���͈�́u�����v�B
-    �����́u�G���g���v�̏W���B
-    �G���g���́u���v�̏����t�����X�g�B
+    華和梨は一つの「辞書」。
+    辞書は「エントリ」の集合。
+    エントリは「文」の順序付きリスト。
   </P><P>
-    �S�ẴG���g���́A<SPAN class="tt">'.'</SPAN>�ŋ�؂�ꂽ������ō\�����ꂽ���O
-    (�G���g����)�����B
-    �G���g�����Ɏg���镶���́A���p�p������, ���o�C�g����(������S�p����),
-    <SPAN class="tt">'.', '_', '?', '@'</SPAN>�ł���B
-    �������A�����݂̂̃G���g�����̓A�N�Z�X�s�\�Ȃ̂ŗL���łȂ��B
-    <SPAN class="tt">'@'</SPAN>�Ŏn�܂�G���g�����͈ꎞ�G���g��(��q)�ł���B
-    �G���g�����́A�Ⴆ�Έȉ��̂悤�Ȃ��̂ł���B
+    全てのエントリは、<SPAN class="tt">'.'</SPAN>で区切られた文字列で構成された名前
+    (エントリ名)を持つ。
+    エントリ名に使える文字は、半角英数文字, 多バイト文字(いわゆる全角文字),
+    <SPAN class="tt">'.', '_', '?', '@'</SPAN>である。
+    ただし、数字のみのエントリ名はアクセス不可能なので有効でない。
+    <SPAN class="tt">'@'</SPAN>で始まるエントリ名は一時エントリ(後述)である。
+    エントリ名は、例えば以下のようなものである。
   </P>
   <DIV class="sample">
     System.Callback.OnEvent<BR>
     event.OnSecondChange.handler<BR>
     @arg<BR>
-    ����.������
+    反応.さくら
   </DIV>
 </BLOCKQUOTE>
 
 <A name="prg2_2"></A>
-<H3>2.2. ��</H3>
+<H3>2.2. 文</H3>
 
 <BLOCKQUOTE>
   <P>
-    ���́u�P��v�̘A�Ȃ�ł���A
-    �]��(���s)����邱�Ƃɂ���ĕ�������o�͂���B
-    �P��́u������v�u�u���q�v�̂����ꂩ�̘A�Ȃ�ł���B
-    �ؘa���̑S�Ẵf�[�^�͕��\���ŕێ�����A
-    �G���g���ɃO���[�v��������Ċi�[����Ă���B
+    文は「単語」の連なりであり、
+    評価(実行)されることによって文字列を出力する。
+    単語は「文字列」「置換子」のいずれかの連なりである。
+    華和梨の全てのデータは文表現で保持され、
+    エントリにグループ分けされて格納されている。
   </P><P>
-    ������͎��s�����ƁA���̂܂܂̒l���o�͂�����̂ł���A
-    ���̓���͎��s���ɂ͕ύX����Ȃ�(�ÓI)�B
-    ������͂���ɁA�u�x�A(�v���[��)������v�A�u�N�H�[�g������v�ɕ������邪�A
-    ���̂Q�̍��ق̓\�[�X�\�L��̂��̂ł���B
-    �ȉ��́A������̗�ł���B
+    文字列は実行されると、そのままの値を出力するものであり、
+    その動作は実行時には変更されない(静的)。
+    文字列はさらに、「ベア(プレーン)文字列」、「クォート文字列」に分けられるが、
+    この２つの差異はソース表記上のものである。
+    以下は、文字列の例である。
   </P>
   <DIV class="sample">
-    \0\s[0]����̓x�A������ł��B\1\s[10]���ʂ͂�����X�N���v�g��ȁB\e<BR>
-    "\0\s[0]���ꂪ�N�H�[�g������B&nbsp;&nbsp;&nbsp;&nbsp;'��'����ꂽ��A
-    ${\"����\"�͎g���Ȃ��������g������}�ł��܂��B\e"<BR>
+    \0\s[0]これはベア文字列です。\1\s[10]普通はさくらスクリプトやな。\e<BR>
+    "\0\s[0]これがクォート文字列。&nbsp;&nbsp;&nbsp;&nbsp;'空白'を入れたり、
+    ${\"普通\"は使えない文字を使ったり}できます。\e"<BR>
   </DIV>
   <P>
-    �u���q�́A�L�q��<SPAN class="tt">'$'</SPAN>�Ŏn�܂�A
-    �u�G���g���Ăяo���v�u�G���g���z��Ăяo���v
-    �u�C�����C���X�N���v�g�v�u���Z��(�ȑO��expr)�v
-    �̂����ꂩ�ł���A���̎��s���ɒu�����e��]�����A���̒l���o�͂���
-    (�L�q��A�u���q�ƒu�������Ă���悤�Ɍ�����)�B
-    �܂��u���̍ہA�u�����e�������Q�ƃ��X�g�ɒǉ������B
+    置換子は、記述上<SPAN class="tt">'$'</SPAN>で始まる、
+    「エントリ呼び出し」「エントリ配列呼び出し」
+    「インラインスクリプト」「演算式(以前のexpr)」
+    のいずれかであり、文の実行時に置換内容を評価し、その値を出力する
+    (記述上、置換子と置き換えているように見える)。
+    また置換の際、置換内容が履歴参照リストに追加される。
   </P>
   <DIV class="sample">
-    ${�G���g���Ăяo��}<BR>
-    $�G���g���z��Ăяo��[10]<BR>
-    $(echo �C�����C���X�N���v�g)<BR>
-    $["���Z��" != "expr"]
+    ${エントリ呼び出し}<BR>
+    $エントリ配列呼び出し[10]<BR>
+    $(echo インラインスクリプト)<BR>
+    $["演算式" != "expr"]
   </DIV>
 </BLOCKQUOTE>
 
-<H4>���̓��l�֌W</H4>
+<H4>文の同値関係</H4>
 
 <BLOCKQUOTE>
   <P>
-    �ؘa���ɂ����āA�����I�ȓ��l���͏d�v�ł���B
-    �\�����ߓI�ɓ������̂Ɖ��߂ł�����̂́A�����œ���ƌ��Ȃ����B
-    �܂����ʂȏꍇ�Ƃ��āA
+    華和梨において、内部的な同値性は重要である。
+    構文解釈的に同じものと解釈できるものは、内部で同一と見なされる。
+    また特別な場合として、
     <STRONG>
-      ����P����ŘA�����ċL�q���ꂽ������́A
-      �����I�ɒP��̕�����ɒu����������B
+      同一単語内で連続して記述された文字列は、
+      内部的に単一の文字列に置き換えられる。
     </STRONG>
-    �������A�u���b�N�Ȃǂŕ�������Ă���ꍇ�͏����B
+    ただし、ブロックなどで分割されている場合は除く。
   </P><P>
-    ���̓��l�֌W�̓G���g���W�����Z���ɖ��ƂȂ�B
+    文の同値関係はエントリ集合演算時に問題となる。
   </P>
 
   <DIV class="sample">
@@ -166,15 +166,15 @@
 </BLOCKQUOTE>
 
 <A name="prg2_3"></A>
-<H3>2.3. �G���g���Ăяo��</H3>
+<H3>2.3. エントリ呼び出し</H3>
 
 <BLOCKQUOTE>
   <P>
-    �ʏ�̃G���g���Ăяo���́A�Ăяo���ׂ��G���g������1�������B
-    ���s�����ƁA
-    �w�肳�ꂽ�G���g���ɑ�����S�Ă̕��̒�����1�������_���őI�сA
-    ���̕���]���������ʂ��o�͂���B
-    �ȉ��ɂ��̗���������A�]�����ʂ̓����_���ł���B
+    通常のエントリ呼び出しは、呼び出すべきエントリ名を1つだけ持つ。
+    実行されると、
+    指定されたエントリに属する全ての文の中から1つをランダムで選び、
+    その文を評価した結果を出力する。
+    以下にその例を示すが、評価結果はランダムである。
   </P>
   <DIV class="sample">
     a : foo, bar<BR>
@@ -187,42 +187,42 @@
     bar
   </DIV>
   <P>
-    �Ȃ��A�G���g����1��ΏۂƂ����G���g���Ăяo��1�����̕����G���g���ɑ������ꍇ�A
-    ���ŏq�ׂ�G���g���W�����Z���ɓ���Ȉ������󂯂�
-    �u�������z�P��(�{���͕��B���j�I�o�܂ɂ��P��)�v�ƂȂ�B
-    �G���g���Ăяo�����̋@�\�͕ς��Ȃ��B
+    なお、エントリ名1つを対象としたエントリ呼び出し1つだけの文がエントリに属した場合、
+    次で述べるエントリ集合演算時に特殊な扱いを受ける
+    「純粋仮想単語(本来は文。歴史的経緯により単語)」となる。
+    エントリ呼び出し時の機能は変わらない。
   </P>
 </BLOCKQUOTE>
 
-<H4>�G���g���W�����Z�Ăяo��</H4>
+<H4>エントリ集合演算呼び出し</H4>
 
 <BLOCKQUOTE>
   <P>
-    �G���g���W�����Z�Ăяo���ł́A
-    �G���g���̎����̏W�����g���ďW�����Z���s���A
-    ���ʂƂ��Ďc���������烉���_����1��I�сA
-    ���̕���]���������ʂ��o�͂���B
-    �Ȃ��A�G���g���̎����ɑO�q�́u�������z�P��v�����݂����ꍇ�A
-    ���̃G���g���Ăяo�����w�肷���̃G���g�������킹�ēW�J����B
+    エントリ集合演算呼び出しでは、
+    エントリの持つ文の集合を使って集合演算を行い、
+    結果として残った文からランダムで1つを選び、
+    その文を評価した結果を出力する。
+    なお、エントリの持つ文に前述の「純粋仮想単語」が存在した場合、
+    そのエントリ呼び出しが指定する先のエントリも合わせて展開する。
   </P><P>
-    �W�����Z�Ɏg���鉉�Z�q���ȉ��Ɏ����B
-    �D��x�͐ς������A�a�ƍ��͓����ł���B
-    �܂��A'('�`')'�ɂ��D��x���삪�\�ł���B
-<!--    �W�����Z���̕��̏����ۑ��͕ۏ؂���Ȃ�
-    (�u����\�[�g�ł͂Ȃ��v�ł͂Ȃ��A�܂������ۑ�����Ȃ�)�B -->
+    集合演算に使える演算子を以下に示す。
+    優先度は積が高く、和と差は同等である。
+    また、'('～')'による優先度操作が可能である。
+<!--    集合演算時の文の順序保存は保証されない
+    (「安定ソートではない」ではなく、まったく保存されない)。 -->
   </P>
   <DIV align="center">
     <TABLE border="0" cellpadding-"0" cellspacing="2" style="border-style: solid; border-width: 1px; border-color: black;">
       <THEAD style="background: lightgrey;">
-	<TR><TD>���Z�q</TD><TD>�Ӗ�: �I�΂��v�f</TD></TR>
+	<TR><TD>演算子</TD><TD>意味: 選ばれる要素</TD></TR>
       </THEAD>
-      <TR><TD>&amp;</TD><TD>�ϏW��: 2�̏W���̑o���Ɋ܂܂��v�f</TD></TR>
-      <TR><TD>+</TD><TD>�a�W��: 2�̏W���̂ǂ��炩�Ɋ܂܂��v�f</TD></TR>
-      <TR><TD>-</TD><TD>���W��: ���ӂ̏W���Ɋ܂܂�A�E�ӂ̏W���Ɋ܂܂�Ȃ��v�f</TD></TR>
+      <TR><TD>&amp;</TD><TD>積集合: 2つの集合の双方に含まれる要素</TD></TR>
+      <TR><TD>+</TD><TD>和集合: 2つの集合のどちらかに含まれる要素</TD></TR>
+      <TR><TD>-</TD><TD>差集合: 左辺の集合に含まれ、右辺の集合に含まれない要素</TD></TR>
     </TABLE>
   </DIV>
   <P>
-    �ȉ��ɗ�������B
+    以下に例を示す。
   </P>
   <DIV class="sample">
     a : 1, 2<BR>
@@ -235,7 +235,7 @@
     echo-mode &gt; ${a-b}<BR>
     1<BR>
     echo-mode &gt; ${a+c}<BR>
-    3 # ���邢�� 1, 2<BR>
+    3 # あるいは 1, 2<BR>
     echo-mode &gt; ${a-b&amp;c}<BR>
     2<BR>
     echo-mode &gt; ${(a-b)&amp;c}<BR>
@@ -243,54 +243,54 @@
   </DIV>
 </BLOCKQUOTE>
 
-<H4>�����Q��</H4>
+<H4>履歴参照</H4>
 
 <BLOCKQUOTE>
   <P>
-    �����Q�Ƃ͐����݂̂̃G���g�����ɂ��G���g�����Ăяo���̌`�ŋL�q����A
-    ���̃R���e�L�X�g(��q)���ɂ�����A
-    �w�萔(0�I���W��)��ڂ̒u�����ʂ��Q�Ƃ��A�o�͂���B
-    �w�萔�l�����̏ꍇ�A�Ō�����琔����B
-    <STRONG>�����Q�ƌ��ʂ������ɓ���(�d�l�ύX)</STRONG>���Ƃɒ��ӁB
+    履歴参照は数字のみのエントリ名によるエントリ名呼び出しの形で記述され、
+    そのコンテキスト(後述)内における、
+    指定数(0オリジン)回目の置換結果を参照し、出力する。
+    指定数値が負の場合、最後尾から数える。
+    <STRONG>履歴参照結果も履歴に入る(仕様変更)</STRONG>ことに注意。
   </P>
   <DIV class="sample">
-    �n�� : �G���}���K���A�T���h�C�b�`��<BR>
-    �l�� : �}�L�R, ���l�I<BR>
+    地名 : エロマンガ島、サンドイッチ島<BR>
+    人名 : マキコ, ムネオ<BR>
     <BR>
-    echo-mode &gt; \0\s[0]${�l��}���ˁA���x${�n��}��${0}�n�E�X�����Ă�񂾂��āB\1\s[10]�Ȃ񂾂���${-2}�Ȃ񂩂Ɂc�c\e<BR>
-    �}�L�R���ˁA���x�G���}���K���Ƀ}�L�R�n�E�X�����Ă�񂾂��āB\1\s[10]�Ȃ񂾂��ăG���}���K���Ȃ񂩂Ɂc�c\e
+    echo-mode &gt; \0\s[0]${人名}がね、今度${地名}に${0}ハウスを建てるんだって。\1\s[10]なんだって${-2}なんかに……\e<BR>
+    マキコがね、今度エロマンガ島にマキコハウスを建てるんだって。\1\s[10]なんだってエロマンガ島なんかに……\e
   </DIV>
 </BLOCKQUOTE>
 
-<H4>�G���g���z��Ăяo��</H4>
+<H4>エントリ配列呼び出し</H4>
 
 <BLOCKQUOTE>
   <P>
-    Phase 8����G���g�����e�̏������ۏ؂����悤�ɂȂ�A
-    ������󂯂āA�G���g���ւ̔z��I�A�N�Z�X���������ꂽ�B
-    ���̈�Ƃ��āA�G���g���ւ̔z��Ăяo���\�����p�ӂ����B
+    Phase 8からエントリ内容の順序が保証されるようになり、
+    それを受けて、エントリへの配列的アクセスが強化された。
+    その一環として、エントリへの配列呼び出し構文が用意される。
   </P><P>
-    �G���g���z��Ăяo���́A�G���g�����ƃC���f�b�N�X�l�̎w��𔺂��B
-    �C���f�b�N�X���͉��Z���ł���A
-    �Ăяo�����Ɏ���]���������ʂ��C���f�b�N�X�l�ƂȂ�B
-    �]�����ɂ́A�w��G���g���ɑ����镶�̃��X�g�̓��A
-    �C���f�b�N�X�Ԗ�(0�I���W��)�̕���]�����A�o�͂���B
-    �w�萔�l�����̐��ł������ꍇ�́A�w��G���g���ɑ����镶�̐��Ɛ��l�𑫂��A
-    ���̐����C���f�b�N�X�Ƃ���B
-    �C���f�b�N�X�Ԗڂ̕������݂��Ȃ��ꍇ�A�󕶎�����o�͂���B
+    エントリ配列呼び出しは、エントリ名とインデックス値の指定を伴う。
+    インデックス部は演算式であり、
+    呼び出し時に式を評価した結果がインデックス値となる。
+    評価時には、指定エントリに属する文のリストの内、
+    インデックス番目(0オリジン)の文を評価し、出力する。
+    指定数値が負の数であった場合は、指定エントリに属する文の数と数値を足し、
+    その数をインデックスとする。
+    インデックス番目の文が存在しない場合、空文字列を出力する。
   </P>
   <DIV class="sample">
-    a : ��A��A��A�Q<BR>
+    a : 零、壱、弐、参<BR>
     base : 1<BR>
     <BR>
     echo-mode &gt; $a[0]<BR>
-    ��<BR>
+    零<BR>
     echo-mode &gt; $a[3]<BR>
-    �Q<BR>
+    参<BR>
     echo-mode &gt; $a[${base}+1]<BR>
-    ��<BR>
+    弐<BR>
     echo-mode &gt; $a[-1]<BR>
-    �Q<BR>
+    参<BR>
     echo-mode &gt; $a[5]<BR>
     <BR>
     echo-mode &gt; $a[-5]<BR>
@@ -299,295 +299,295 @@
 </BLOCKQUOTE>
 
 <A name="prg2_4"></A>
-<H3>2.4. �C�����C���X�N���v�g(KIS)</H3>
+<H3>2.4. インラインスクリプト(KIS)</H3>
 
 <BLOCKQUOTE>
   <P>
-    �C�����C���X�N���v�g�̓X�N���v�g���̘A�Ȃ�ł���A
-    ������S�ĕ]���������ʂ�A�����ďo�͂���B
-    �������A
-    <SPAN class="tt">break, return</SPAN>�\�������s���ꂽ�ꍇ�͂��̌���łȂ��A
-    �C�����C���X�N���v�g��A
-    �ꍇ�ɂ���Ă͕��S�̂̕]����r���ŏI������B
+    インラインスクリプトはスクリプト文の連なりであり、
+    それらを全て評価した結果を連結して出力する。
+    ただし、
+    <SPAN class="tt">break, return</SPAN>構文が実行された場合はこの限りでなく、
+    インラインスクリプトや、
+    場合によっては文全体の評価を途中で終了する。
   </P>
 </BLOCKQUOTE>
 
-<H4>�X�N���v�g��</H4>
+<H4>スクリプト文</H4>
 
 <BLOCKQUOTE>
   <P>
-    �X�N���v�g����
-    �u�\���R�}���h(��ʓI�ȃv���O���~���O����Ō�������\��)�v
-    �u�֐��R�}���h�v
-    �̂ǂ��炩�����s������̂ł���B
+    スクリプト文は
+    「構文コマンド(一般的なプログラミング言語で言う制御構造)」
+    「関数コマンド」
+    のどちらかを実行するものである。
   </P><P>
-    �\���R�}���h�ł��邩�ǂ����̔���́A�ÓI��(�ʏ�͓ǂݍ��ݎ���)�s����B
-    �X�N���v�g���̍ŏ��̒P��S�̂��x�A������(���ߎQ��)�ł���A
-    �����݂���\���R�}���h�ł���ꍇ�Ɍ���A
-    �X�N���v�g���͍\���Ƃ��Ĉ�����B
-    �ŏ��̒P�ꂪ�G���g���Ăяo���Ȃǂ̒u�����܂݁A
-    ���̕]�����ʂ�"if"��"while"�Ȃǂł����Ă��A
-    ����̓R�}���h�Ăяo���̃R�}���h���Ƃ��Ĉ�����B
+    構文コマンドであるかどうかの判定は、静的に(通常は読み込み時に)行われる。
+    スクリプト文の最初の単語全体がベア文字列(次節参照)であり、
+    かつ存在する構文コマンドである場合に限り、
+    スクリプト文は構文として扱われる。
+    最初の単語がエントリ呼び出しなどの置換を含み、
+    その評価結果が"if"や"while"などであっても、
+    それはコマンド呼び出しのコマンド名として扱われる。
   </P>
 </BLOCKQUOTE>
 
-<H4>�\��</H4>
+<H4>構文</H4>
 
 <BLOCKQUOTE>
   <P>
-    Phase 8�ŗp�ӂ����\���́A�ȉ��̒ʂ�ł���B
+    Phase 8で用意される構文は、以下の通りである。
   </P>
   <DL>
-    <DT>����</DT>
+    <DT>分岐</DT>
     <DD>
       <DL>
 	<DT><SPAN class="tt">if</SPAN></DT>
 	<DD>
 	  <P>
-	    ���@�F
+	    文法：
 	  </P>
 	  <DIV class="sample">
-	    if &lt;�����P��&gt; &lt;�^�̎��ɕ]�������P��&gt;<BR>
-	    [else if &lt;�����P��&gt; &lt;�^�̎��ɕ]�������P��&gt;
+	    if &lt;条件単語&gt; &lt;真の時に評価される単語&gt;<BR>
+	    [else if &lt;条件単語&gt; &lt;真の時に評価される単語&gt;
 	    [else if ... ] ]<BR>
-	    [else &lt;�S�Ă̏������U�̎��ɕ]�������P��&gt;] <BR>
+	    [else &lt;全ての条件が偽の時に評価される単語&gt;] <BR>
 	  </DIV>
 	  <P>
-	    ������]�����A�^�ł���ΑΉ�����P���]������B
-	    �����ɍ���Ȃ��P��͕]������Ȃ��B
-	    ���ׂĂ̏������U�̎��Aelse�߂�����΁A���̒P���]������B
+	    条件を評価し、真であれば対応する単語を評価する。
+	    条件に合わない単語は評価されない。
+	    すべての条件が偽の時、else節があれば、その単語を評価する。
 	  </P><P>
-	    �����P��A�����ɏ]���ĕ]�������P��́A
-	    KIS���ɏ�����P��ł���Ή��ł��ǂ��B
+	    条件単語、条件に従って評価される単語は、
+	    KIS中に書ける単語であれば何でも良い。
 	  </P><P>
-	    �e�]���߂̕]�����́A�����P��̕]�����ʂ͍ŐV�̗����ɓ���A
-	    ${-1}�Ŏ擾�\�B
-	    if���S�̂��I����A������if�����s���O�̏�Ԃɖ߂�A
-	    if���]�����ʂ��ǉ������B
+	    各評価節の評価中は、条件単語の評価結果は最新の履歴に入り、
+	    ${-1}で取得可能。
+	    if文全体を終了後、履歴はif文実行直前の状態に戻り、
+	    if文評価結果が追加される。
 	  </P>
 	</DD>
 	<DT><SPAN class="tt">?</SPAN></DT>
 	<DD>
 	  <P>
-	    ���@�F
+	    文法：
 	  </P>
 	  <DIV class="sample">
-	    ? &lt;�P��&gt; [&lt;�P��&gt; ...]
+	    ? &lt;単語&gt; [&lt;単語&gt; ...]
 	  </DIV>
 	  <P>
-	    �����̒����烉���_����1��I��ŕ]�����A���̒l���o�͂���B
-	    �I�΂�Ȃ����������͕]������Ȃ��B
+	    引数の中からランダムで1つを選んで評価し、その値を出力する。
+	    選ばれなかった引数は評価されない。
 	  </P><P>
-	    ?���S�̂��I����A������?�����s���O�̏�Ԃɖ߂�A
-	    ?���]�����ʂ��ǉ������B
+	    ?文全体を終了後、履歴は?文実行直前の状態に戻り、
+	    ?文評価結果が追加される。
 	  </P>
 	</DD>
       </DL>
     </DD>
-    <DT>�J��Ԃ�</DT>
+    <DT>繰り返し</DT>
     <DD>
       <DL>
 	<DT><SPAN class="tt">while</SPAN></DT>
 	<DD>
 	  <P>
-	    ���@�F
+	    文法：
 	  </P>
 	  <DIV class="sample">
-	    while &lt;�����P��&gt; &lt;���s�P��&gt;
+	    while &lt;条件単語&gt; &lt;実行単語&gt;
 	  </DIV>
 	  <P>
-	    �����P��̕]�����ʂ��^�ł���ԁA�J��Ԃ����s�P������s����B
-	    �����P��̕]�����U�ł���΁A�J��Ԃ����I�����A
-	    ����܂łɕ]���������s�P��̏o�͂�A�����ďo�͂���B
-	    �����[�v���Ƃɏ����P�ꂪ���s�����B
+	    条件単語の評価結果が真である間、繰り返し実行単語を実行する。
+	    条件単語の評価が偽であれば、繰り返しを終了し、
+	    それまでに評価した実行単語の出力を連結して出力する。
+	    毎ループごとに条件単語が実行される。
 	  </P><P>
-	    ���s�P���]�����A�����P��̕]�����ʂ͍ŐV�̗����ɓ���A
-	    ${-1}�Ŏ擾�\�B
-	    while���S�̂��I����A������while�����s���O�̏�Ԃɖ߂�A
-	    while���]�����ʂ��ǉ������B
+	    実行単語を評価中、条件単語の評価結果は最新の履歴に入り、
+	    ${-1}で取得可能。
+	    while文全体が終了後、履歴はwhile文実行直前の状態に戻り、
+	    while文評価結果が追加される。
 	  </P>
 	</DD>
 	<DT><SPAN class="tt">until</SPAN></DT>
 	<DD>
 	  <P>
-	    ���@�F
+	    文法：
 	  </P>
 	  <DIV class="sample">
-	    until &lt;�����P��&gt; &lt;���s�P��&gt;
+	    until &lt;条件単語&gt; &lt;実行単語&gt;
 	  </DIV>
 	  <P>
-	    while�̏������f���t�]���������́B
-	    �����P��̕]�����ʂ��U�ł���ԁA�J��Ԃ����s�P������s����B
-	    �����P��̕]�����^�ł���΁A�J��Ԃ����I�����A
-	    ����܂łɕ]���������s�P��̏o�͂�A�����ďo�͂���B
-	    �����[�v���Ƃɏ����P�ꂪ���s�����B
+	    whileの条件判断を逆転させたもの。
+	    条件単語の評価結果が偽である間、繰り返し実行単語を実行する。
+	    条件単語の評価が真であれば、繰り返しを終了し、
+	    それまでに評価した実行単語の出力を連結して出力する。
+	    毎ループごとに条件単語が実行される。
 	  </P><P>
-	    ���s�P���]�����A�����P��̕]�����ʂ͍ŐV�̗����ɓ���A
-	    ${-1}�Ŏ擾�\�B
-	    until���S�̂��I����A������until�����s���O�̏�Ԃɖ߂�A
-	    until���]�����ʂ��ǉ������B
+	    実行単語を評価中、条件単語の評価結果は最新の履歴に入り、
+	    ${-1}で取得可能。
+	    until文全体が終了後、履歴はuntil文実行直前の状態に戻り、
+	    until文評価結果が追加される。
 	  </P>
 	</DD>
 	<DT><SPAN class="tt">loop</SPAN></DT>
 	<DD>
 	  <P>
-	    ���@�F
+	    文法：
 	  </P>
 	  <DIV class="sample">
-	    loop &lt;��&gt; &lt;���s�P��&gt;
+	    loop &lt;回数&gt; &lt;実行単語&gt;
 	  </DIV>
 	  <P>
-	    ��x�����񐔒P���]�����A
-	    ���̏o�͂𐮐��Ƃ��Ĉ����A���[�v�񐔂Ƃ���B
-	    �񐔕��������s�P���]�����A���̌��ʂ�A�����ďo�͂Ƃ���B
+	    一度だけ回数単語を評価し、
+	    その出力を整数として扱い、ループ回数とする。
+	    回数分だけ実行単語を評価し、その結果を連結して出力とする。
 	  </P><P>
-	    ���s�P���]�����A���[�v���s��(0�I���W��)���ŐV�̗����ɓ���A
-	    ${-1}�Ŏ擾�\�B
-	    loop���S�̂��I����A������loop�����s���O�̏�Ԃɖ߂�A
-	    loop���]�����ʂ��ǉ������B
+	    実行単語を評価中、ループ実行回数(0オリジン)が最新の履歴に入り、
+	    ${-1}で取得可能。
+	    loop文全体が終了後、履歴はloop文実行直前の状態に戻り、
+	    loop文評価結果が追加される。
 	  </P>
 	</DD>
 	<DT><SPAN class="tt">foreach</SPAN></DT>
 	<DD>
 	  <P>
-	    ���@�F
+	    文法：
 	  </P>
 	  <DIV class="sample">
-	    foreach &lt;����G���g����&gt; &lt;�񋓑ΏۃG���g����&gt;
-	    &lt;���s�P��&gt;
+	    foreach &lt;代入エントリ名&gt; &lt;列挙対象エントリ名&gt;
+	    &lt;実行単語&gt;
 	  </DIV>
 	  <P>
-	    ����G���g�����P��Ɨ񋓑ΏۃG���g�����P�����x�����]�����A
-	    ���̏o�͂����p�G���g���Ɨ񋓑ΏۃG���g���Ƃ���B
-	    �񋓑ΏۃG���g���ɑ����镶�S�Ăɂ��āA
-	    ���̕]�����ʂ����p�G���g���̗B��̗v�f�Ƃ��A
-	    ���s�P���]������B
+	    代入エントリ名単語と列挙対象エントリ名単語を一度だけ評価し、
+	    その出力を代入用エントリと列挙対象エントリとする。
+	    列挙対象エントリに属する文全てについて、
+	    文の評価結果を代入用エントリの唯一の要素とし、
+	    実行単語を評価する。
 	  </P><P>
-	    foreach�ł́A���s�P��̕]�����̗��𑀍�͓��ɍs���Ȃ��B
-	    foreach���S�̂��I����A������foreach�����s���O�̏�Ԃɖ߂�A
-	    foreach���]�����ʂ��ǉ������B
+	    foreachでは、実行単語の評価中の履歴操作は特に行われない。
+	    foreach文全体が終了後、履歴はforeach文実行直前の状態に戻り、
+	    foreach文評価結果が追加される。
 	  </P>
 	</DD>
 	<DT><SPAN class="tt">break</SPAN></DT>
 	<DD>
 	  <P>
-	    ���@�F
+	    文法：
 	  </P>
 	  <DIV class="sample">
 	    break
 	  </DIV>
 	  <P>
-	    ���[�v�\���̎��s�P���]������break�\�������s����邱�Ƃɂ��A
-	    �S�Ă̒P��]�������~����A�œ����̃��[�v����E�o����B
-	    �E�o�����ۂ��r���܂ŕ]�����ꂽ���[�v�̎��s���ʂ͏o�͂����B
+	    ループ構文の実行単語を評価中にbreak構文が実行されることにより、
+	    全ての単語評価が中止され、最内側のループから脱出する。
+	    脱出した際も途中まで評価されたループの実行結果は出力される。
 <!--
-	    ���[�v���������Ȃ������ꍇ�́A
-	    ���̕��S�̂̕]����E�o�������_�ŗ�O������I����B
+	    ループが見つけられなかった場合は、
+	    その文全体の評価を脱出した時点で例外動作を終える。
 -->
-	    ���̍\���́A���[�v�\�����ł̂݋@�\����B
+	    この構文は、ループ構文中でのみ機能する。
 	  </P>
-	  <P>��F</P>
+	  <P>例：</P>
 	  <DIV class="sample">
-	    echo-mode &gt; $(loop 10 $(if $[${-1}&lt;=5] ${-2}"," else �E�o���܂��B$(break)))<BR>
-	    0,1,2,3,4,5,�E�o���܂��B<BR>
-	    echo-mode &gt; �P�Q�R�S�T$(break)�U�V�W�X<BR>
-	    �P�Q�R�S�T�U�V�W�X
+	    echo-mode &gt; $(loop 10 $(if $[${-1}&lt;=5] ${-2}"," else 脱出します。$(break)))<BR>
+	    0,1,2,3,4,5,脱出します。<BR>
+	    echo-mode &gt; １２３４５$(break)６７８９<BR>
+	    １２３４５６７８９
 	  </DIV>
 	</DD>
 	<DT><SPAN class="tt">continue</SPAN></DT>
 	<DD>
 	  <P>
-	    ���@�F
+	    文法：
 	  </P>
 	  <DIV class="sample">
 	    continue
 	  </DIV>
 	  <P>
-	    ���[�v�\���̎��s�P���]������continue�\�������s����邱�Ƃɂ��A
-	    ���݂̃��[�v�̒P��]���𒆎~���A���̃��[�v�����Ɉڂ�B
-	    ���~�����ۂ��r���܂ŕ]�����ꂽ���[�v�̎��s���ʂ͏o�͂����B
-	    ���̍\���́A���[�v�\�����ł̂݋@�\����B
+	    ループ構文の実行単語を評価中にcontinue構文が実行されることにより、
+	    現在のループの単語評価を中止し、次のループ処理に移る。
+	    中止した際も途中まで評価されたループの実行結果は出力される。
+	    この構文は、ループ構文中でのみ機能する。
 	  </P>
-	  <P>��F</P>
+	  <P>例：</P>
 	  <DIV class="sample">
-	    echo-mode &gt; �J�n$(loop 10 $(if $[${-1}&lt;=5] $(continue) else ","${-1}))<BR>
-	    �J�n,5,6,7,8,9<BR>
+	    echo-mode &gt; 開始$(loop 10 $(if $[${-1}&lt;=5] $(continue) else ","${-1}))<BR>
+	    開始,5,6,7,8,9<BR>
 	  </DIV>
 	</DD>
       </DL>
     </DD>
-    <DT>�֐�</DT>
+    <DT>関数</DT>
     <DD>
       <DL>
 	<DT><SPAN class="tt">function</SPAN></DT>
 	<DD>
-	  <P>���@�F</P>
+	  <P>文法：</P>
 	  <DIV class="sample">
-	    function &lt;�֐���&gt; &lt;�֐�&gt;<BR>
-	    function &lt;�֐���&gt;
+	    function &lt;関数名&gt; &lt;関数&gt;<BR>
+	    function &lt;関数名&gt;
 	  </DIV>
 	  <P>
-	    �֐����P���]�����A���̏o�͂��֐����A
-	    ������(���]��)����e�Ƃ��ă��[�U��`�֐����`����B
-	    ���������Ȃ��ꍇ�A
-	    �֐����P���]�����A���̏o�͂��֐����Ƃ��郆�[�U��`�֐��̓��e���A
-	    �]���O�`���ŕԂ��B
+	    関数名単語を評価し、その出力を関数名、
+	    第二引数(未評価)を内容としてユーザ定義関数を定義する。
+	    第二引数がない場合、
+	    関数名単語を評価し、その出力を関数名とするユーザ定義関数の内容を、
+	    評価前形式で返す。
 	  </P>
-	  <P>��F</P>
+	  <P>例：</P>
 	  <DIV class="sample">
-	    command-mode &gt; function �T���v���֐� $(echo "����͊֐��̃T���v���ł�")<BR>
-	    echo-mode &gt; $(�T���v���֐�)<BR>
-	    ����͊֐��̃T���v���ł�<BR>
-	    echo-mode &gt; $(function �T���v���֐�)<BR>
-	    $("echo" "����͊֐��̃T���v���ł�")
+	    command-mode &gt; function サンプル関数 $(echo "これは関数のサンプルです")<BR>
+	    echo-mode &gt; $(サンプル関数)<BR>
+	    これは関数のサンプルです<BR>
+	    echo-mode &gt; $(function サンプル関数)<BR>
+	    $("echo" "これは関数のサンプルです")
 	  </DIV>
 	  <P>
-	    ���t�@�����X�����ƂȂ�"KIU"�ł́A
-	    �֐��̎��̂�"System.Function.&lt;�֐���&gt;"�G���g����
-	    ���v�f�Ƃ��ēo�^����Ă���B
+	    リファレンス実装となる"KIU"では、
+	    関数の実体は"System.Function.&lt;関数名&gt;"エントリの
+	    第一要素として登録されている。
 	  </P>
 	</DD>
 	<DT><SPAN class="tt">rmfunc</SPAN></DT>
 	<DD>
-	  <P>���@�F</P>
+	  <P>文法：</P>
 	  <DIV class="sample">
-	    rmfunc &lt;�֐���&gt;
+	    rmfunc &lt;関数名&gt;
 	  </DIV>
 	  <P>
-	    �֐����P���]�����A���̏o�͌��ʂ̊֐����폜����B
+	    関数名単語を評価し、その出力結果の関数を削除する。
 	  </P><P>
-	    ���t�@�����X�����ƂȂ�"KIU"�ł́A
-	    "System.Function.&lt;�֐���&gt;"�G���g���̓��e���폜����B
+	    リファレンス実装となる"KIU"では、
+	    "System.Function.&lt;関数名&gt;"エントリの内容を削除する。
 	  </P>
 	</DD>
 <!--	<DT><SPAN class="tt">lambda</SPAN></DT>
 	<DD>
-	  <P>���@�F</P>
+	  <P>文法：</P>
 	  <DIV class="sample">
-	    lambda &lt;�֐�&gt;
+	    lambda &lt;関数&gt;
 	  </DIV>
 	  <P>
-	    �ی삳�ꂽ���O��ԂɃ����_���ɐ������ꂽ�֐����ɑ΂��A
-	    ����������e�Ƃ��āA�֐����`�B
-	    �֐�����Ԃ��B
+	    保護された名前空間にランダムに生成された関数名に対し、
+	    第一引数を内容として、関数を定義。
+	    関数名を返す。
 	  </P>
 	</DD>-->
       </DL>
     </DD>
-    <DT>���̑�</DT>
+    <DT>その他</DT>
     <DD>
       <DL>
 	<DT><SPAN class="tt">return</SPAN></DT>
 	<DD>
-	  <P>���@�F</P>
+	  <P>文法：</P>
 	  <DIV class="sample">
-	    return [ &lt;�߂�l&gt; ]
+	    return [ &lt;戻り値&gt; ]
 	  </DIV>
 	  <P>
-	    �֐��]�����I��(���~)����B
-	    �߂�l���w�肳�ꂽ�ꍇ�A
-	    ����܂ł̊֐��]�����ʂ��폜���A�w�肳�ꂽ�߂�l�Œu��������B
-	    �֐��ȊO�̏ꏊ�Ŏ��s���ꂽ�ꍇ�A���S�̂̕]�����I��(���~)����B
+	    関数評価を終了(中止)する。
+	    戻り値が指定された場合、
+	    それまでの関数評価結果を削除し、指定された戻り値で置き換える。
+	    関数以外の場所で実行された場合、文全体の評価を終了(中止)する。
 	  </P>
 	</DD>
       </DL>
@@ -595,248 +595,248 @@
   </DL>
 </BLOCKQUOTE>
 
-<H4>�R�}���h�Ăяo��</H4>
+<H4>コマンド呼び出し</H4>
 
 <BLOCKQUOTE>
   <P>
-    �\���łȂ��X�N���v�g���́A�S�ăR�}���h�Ăяo�����Ƃ��Ĉ�����B
-    �S�Ă̒P���]�����ĕ�����z��Ƃ�����A
-    �ŏ��̕�������R�}���h���Ƃ��A�z��S�̂������Ƃ��ăR�}���h���Ăяo���A
-    �R�}���h���s���ʂ��o�͂���B
+    構文でないスクリプト文は、全てコマンド呼び出し文として扱われる。
+    全ての単語を評価して文字列配列とした後、
+    最初の文字列をコマンド名とし、配列全体を引数としてコマンドを呼び出し、
+    コマンド実行結果を出力する。
   </P><P>
-    �R�}���h�ɂ́u�g�ݍ��݃R�}���h�v�Ɓu���[�U��`�֐��v������B
+    コマンドには「組み込みコマンド」と「ユーザ定義関数」がある。
   </P><P>
-    �g�ݍ��݃R�}���h�͌���d�l�Ɋ܂܂��W�����C�u�����ł���A
-    �����̓l�C�e�B�u�R�[�h�Ŏ�������A�ύX�s�\�ł���B
+    組み込みコマンドは言語仕様に含まれる標準ライブラリであり、
+    多くはネイティブコードで実装され、変更不可能である。
   </P><P>
-    ���[�U��`�֐���function�\���Ȃǂɂ�蓮�I�ɒ�`�����R�}���h�ł���A
-    KIS�ŋL�q����A�ύX�\�ł���B
-    ���[�U��`�֐����Ăяo���ꂽ�ꍇ�A
-    �S�Ă̈���(n��)��@arg[0]�`@arg[n-1]�Ɋi�[����ēn�����B
-    @arg[0]�̓R�}���h���ł���B
+    ユーザ定義関数はfunction構文などにより動的に定義されるコマンドであり、
+    KISで記述され、変更可能である。
+    ユーザ定義関数が呼び出された場合、
+    全ての引数(n個)は@arg[0]～@arg[n-1]に格納されて渡される。
+    @arg[0]はコマンド名である。
   </P>
 </BLOCKQUOTE>
 
 <A name="prg2_5"></A>
-<H3>2.5. ���Z��</H3>
+<H3>2.5. 演算式</H3>
 
 <BLOCKQUOTE>
   <P>
-    Phase 8�ł́A�ȑO��expr��test�R�}���h���ւ�����̂Ƃ��āA
-    ���Z���\���𓱓�����B
+    Phase 8では、以前のexprとtestコマンドを代替するものとして、
+    演算式構文を導入する。
   </P><P>
-    ���Z�q�͐ÓI��(���̕������)�L�q����Ȃ���΂Ȃ�Ȃ��B
+    演算子は静的に(平の文字列で)記述されなければならない。
   </P><P>
-    �^�U�l��"true"(�^)�A"false"(�U)�ŏo�͂����B
-    ���l�Ƃ��Ă�0��"0"���o�͂����B
+    真偽値は"true"(真)、"false"(偽)で出力される。
+    数値としての0は"0"が出力される。
   </P><P>
-    ��expr�������Ă�������̃R�}���h(substr�Ȃ�)�́A
-    �P�Ƃ�KIS�R�}���h�Ƃ��ĕW�����C�u�����ɍĒ�`���ꂽ�B
+    旧exprが持っていた幾つかのコマンド(substrなど)は、
+    単独のKISコマンドとして標準ライブラリに再定義された。
   </P><P>
-    ���Z�q�͌����D��x�̍������Ɉȉ��ł���B
-    �w�i�F�������O���[�v�͓����D��x�����B
-    �����D��x�̉��Z�q�͍����D��Ō��������B
-    �܂��A<SPAN class="tt">()</SPAN>
-    �ɂ��O���[�s���O�͑S�Ẳ��Z�q���������D��x�����B
+    演算子は結合優先度の高い順に以下である。
+    背景色が同じグループは同じ優先度を持つ。
+    同じ優先度の演算子は左側優先で結合される。
+    また、<SPAN class="tt">()</SPAN>
+    によるグルーピングは全ての演算子よりも高い優先度を持つ。
   </P>
   <TABLE border="0" cellpadding="2" cellspacing="2" style="width: 100%"
     style="margin: 0em;">
     <TR>
-      <TD style="width: 2em;">�L��</TD>
-      <TD style="width: 2em;">���l</TD>
-      <TD style="width: 2em;">������</TD>
-      <TD style="width: 8em;">����</TD>
-      <TD>��</TD>
+      <TD style="width: 2em;">記号</TD>
+      <TD style="width: 2em;">数値</TD>
+      <TD style="width: 2em;">文字列</TD>
+      <TD style="width: 8em;">動作</TD>
+      <TD>例</TD>
     </TR>
-    <TR><TD>**</TD><TD>��</TD><TD></TD><TD>�ݏ�</TD><TD class="tt">$[10**2] =&gt; 100</TD></TR>
-    <TR class="gb"><TD>-</TD><TD>��</TD><TD></TD><TD>�P���}�C�i�X</TD><TD class="tt">$[-10] =&gt; -10</TD></TR>
-    <TR class="gb"><TD>+</TD><TD>��</TD><TD></TD><TD>�P���v���X</TD><TD class="tt">$[+10] =&gt; 10</TD></TR>
-    <TR class="gb"><TD>!</TD><TD>��</TD><TD>��</TD><TD>(�P��)NOT</TD><TD class="tt">$[!1] =&gt; false, $[!"hoge"] =&gt; false, $[!""] =&gt; true</TD></TR>
-    <TR class="gb"><TD>~</TD><TD>��</TD><TD></TD><TD>(�P��)�␔</TD><TD class="tt">$[~-10] =&gt; 9</TD></TR>
-    <TR><TD>*</TD><TD>��</TD><TD></TD><TD>��Z</TD><TD class="tt">$[10*"2"] =&gt; 20, $["string"*10] =&gt; 0</TD></TR>
-    <TR><TD>/</TD><TD>��</TD><TD></TD><TD>���Z</TD><TD class="tt">$[10/2] =&gt; 5, $[10/0] =&gt; "" (�G���[���O:"devided by 0")</TD></TR>
-    <TR><TD>%</TD><TD>��</TD><TD></TD><TD>��]�Z</TD><TD class="tt">$[10%3] =&gt; 1</TD></TR>
-    <TR class="gb"><TD>+</TD><TD>��</TD><TD></TD><TD>���Z</TD><TD class="tt">$[-10+2] =&gt; -8, $[""+1] =&gt; 1</TD></TR>
-    <TR class="gb"><TD>-</TD><TD>��</TD><TD></TD><TD>���Z</TD><TD class="tt">$[10-3] =&gt; 7</TD></TR>
-    <TR><TD>&amp;</TD><TD>��</TD><TD></TD><TD>�r�b�gAND</TD><TD class="tt">$[1&amp;2] =&gt; 0</TD></TR>
-    <TR class="gb"><TD>|</TD><TD>��</TD><TD></TD><TD>�r�b�gOR</TD><TD class="tt">$[1|2] =&gt; 3</TD></TR>
-    <TR class="gb"><TD>^</TD><TD>��</TD><TD></TD><TD>�r�b�gXOR</TD><TD class="tt">$[1^2] =&gt; 3</TD></TR>
-    <TR><TD>&gt;</TD><TD>��</TD><TD></TD><TD>���傫��</TD><TD class="tt">$[10&gt;10] =&gt; false</TD></TR>
-    <TR><TD>&gt;=</TD><TD>��</TD><TD></TD><TD>�ȏ�</TD><TD class="tt">$[10&gt;=10] =&gt; true</TD></TR>
-    <TR><TD>&lt;</TD><TD>��</TD><TD></TD><TD>����</TD><TD class="tt">$[10&lt;10] =&gt; false</TD></TR>
-    <TR><TD>&lt;=</TD><TD>��</TD><TD></TD><TD>�ȉ�</TD><TD class="tt">$[10&lt;=10] =&gt; true</TD></TR>
-    <TR class="gb"><TD>=</TD><TD>��</TD><TD>��</TD><TD>������</TD><TD class="tt">$["string"="string"] =&gt; true</TD></TR>
-    <TR class="gb"><TD>==</TD><TD>��</TD><TD>��</TD><TD>������(����)</TD><TD class="tt">$["string"=="string"] =&gt; true, $[10==8] =&gt; false</TD></TR>
-    <TR class="gb"><TD>!=</TD><TD>��</TD><TD>��</TD><TD>�������Ȃ�</TD><TD class="tt">$["mac"!="mcdonalds"] =&gt; true</TD></TR>
-    <TR class="gb"><TD>=~</TD><TD></TD><TD>��</TD><TD>�}�b�`</TD><TD class="tt">$["substring"=~"string"] =&gt; true</TD></TR>
-    <TR class="gb"><TD>!~</TD><TD></TD><TD>��</TD><TD>��}�b�`</TD><TD class="tt">$["substring"!~"string"] =&gt; false</TD></TR>
-    <TR><TD>&amp;&amp;</TD><TD>��</TD><TD>��</TD><TD>�_��AND</TD><TD class="tt">$["str"&amp;&amp;10] =&gt; "str", $["false"&amp;&amp;10] =&gt; false, $[0&amp;&amp;10] =&gt; false</TD></TR>
-    <TR><TD>||</TD><TD>��</TD><TD>��</TD><TD>�_��OR</TD><TD class="tt">$["str"||0] =&gt; "str", $["false"||10] =&gt; 10</TD></TR>
+    <TR><TD>**</TD><TD>○</TD><TD></TD><TD>累乗</TD><TD class="tt">$[10**2] =&gt; 100</TD></TR>
+    <TR class="gb"><TD>-</TD><TD>○</TD><TD></TD><TD>単項マイナス</TD><TD class="tt">$[-10] =&gt; -10</TD></TR>
+    <TR class="gb"><TD>+</TD><TD>○</TD><TD></TD><TD>単項プラス</TD><TD class="tt">$[+10] =&gt; 10</TD></TR>
+    <TR class="gb"><TD>!</TD><TD>○</TD><TD>○</TD><TD>(単項)NOT</TD><TD class="tt">$[!1] =&gt; false, $[!"hoge"] =&gt; false, $[!""] =&gt; true</TD></TR>
+    <TR class="gb"><TD>~</TD><TD>○</TD><TD></TD><TD>(単項)補数</TD><TD class="tt">$[~-10] =&gt; 9</TD></TR>
+    <TR><TD>*</TD><TD>○</TD><TD></TD><TD>乗算</TD><TD class="tt">$[10*"2"] =&gt; 20, $["string"*10] =&gt; 0</TD></TR>
+    <TR><TD>/</TD><TD>○</TD><TD></TD><TD>除算</TD><TD class="tt">$[10/2] =&gt; 5, $[10/0] =&gt; "" (エラーログ:"devided by 0")</TD></TR>
+    <TR><TD>%</TD><TD>○</TD><TD></TD><TD>剰余算</TD><TD class="tt">$[10%3] =&gt; 1</TD></TR>
+    <TR class="gb"><TD>+</TD><TD>○</TD><TD></TD><TD>加算</TD><TD class="tt">$[-10+2] =&gt; -8, $[""+1] =&gt; 1</TD></TR>
+    <TR class="gb"><TD>-</TD><TD>○</TD><TD></TD><TD>減算</TD><TD class="tt">$[10-3] =&gt; 7</TD></TR>
+    <TR><TD>&amp;</TD><TD>○</TD><TD></TD><TD>ビットAND</TD><TD class="tt">$[1&amp;2] =&gt; 0</TD></TR>
+    <TR class="gb"><TD>|</TD><TD>○</TD><TD></TD><TD>ビットOR</TD><TD class="tt">$[1|2] =&gt; 3</TD></TR>
+    <TR class="gb"><TD>^</TD><TD>○</TD><TD></TD><TD>ビットXOR</TD><TD class="tt">$[1^2] =&gt; 3</TD></TR>
+    <TR><TD>&gt;</TD><TD>○</TD><TD></TD><TD>より大きい</TD><TD class="tt">$[10&gt;10] =&gt; false</TD></TR>
+    <TR><TD>&gt;=</TD><TD>○</TD><TD></TD><TD>以上</TD><TD class="tt">$[10&gt;=10] =&gt; true</TD></TR>
+    <TR><TD>&lt;</TD><TD>○</TD><TD></TD><TD>未満</TD><TD class="tt">$[10&lt;10] =&gt; false</TD></TR>
+    <TR><TD>&lt;=</TD><TD>○</TD><TD></TD><TD>以下</TD><TD class="tt">$[10&lt;=10] =&gt; true</TD></TR>
+    <TR class="gb"><TD>=</TD><TD>○</TD><TD>○</TD><TD>等しい</TD><TD class="tt">$["string"="string"] =&gt; true</TD></TR>
+    <TR class="gb"><TD>==</TD><TD>○</TD><TD>○</TD><TD>等しい(同上)</TD><TD class="tt">$["string"=="string"] =&gt; true, $[10==8] =&gt; false</TD></TR>
+    <TR class="gb"><TD>!=</TD><TD>○</TD><TD>○</TD><TD>等しくない</TD><TD class="tt">$["mac"!="mcdonalds"] =&gt; true</TD></TR>
+    <TR class="gb"><TD>=~</TD><TD></TD><TD>○</TD><TD>マッチ</TD><TD class="tt">$["substring"=~"string"] =&gt; true</TD></TR>
+    <TR class="gb"><TD>!~</TD><TD></TD><TD>○</TD><TD>非マッチ</TD><TD class="tt">$["substring"!~"string"] =&gt; false</TD></TR>
+    <TR><TD>&amp;&amp;</TD><TD>○</TD><TD>○</TD><TD>論理AND</TD><TD class="tt">$["str"&amp;&amp;10] =&gt; "str", $["false"&amp;&amp;10] =&gt; false, $[0&amp;&amp;10] =&gt; false</TD></TR>
+    <TR><TD>||</TD><TD>○</TD><TD>○</TD><TD>論理OR</TD><TD class="tt">$["str"||0] =&gt; "str", $["false"||10] =&gt; 10</TD></TR>
   </TABLE>
   <P>
-   �r�b�g���Z�́A��ʂ̃v���O���~���O����Ɠ�������ł���B
+   ビット演算は、一般のプログラミング言語と同じ動作である。
   </P><P>
-   ����̈�ʓI�łȂ����ʂ�Ԃ����Z�ɂ��ĕ⑫����B
+   幾つかの一般的でない結果を返す演算について補足する。
   </P><P>
-    (TODO: �_�����Z)
+    (TODO: 論理演算)
   </P><P>
-    (TODO: �}�b�`���Z)
+    (TODO: マッチ演算)
   </P>
 </BLOCKQUOTE>
 
 <A name="prg2_6"></A>
-<H3>2.6. �R���e�L�X�g�A�����Q�ƁA�ꎞ�G���g��</H3>
+<H3>2.6. コンテキスト、履歴参照、一時エントリ</H3>
 
 <BLOCKQUOTE>
   <P>
-    �ȑO���瑶�݂��������L����Ȃ������t�B�[�`���ɁA
-    �u�R���e�L�X�g�v������B
-    Phase 8�̓R���e�L�X�g���X�Ɋ��p���Ă��邽�߁A
-    ���̊T�O�𐳎��Ɏd�l�Ƃ���B
-    �������A�v���O���~���O����Ɋ���Ă��Ȃ��҂ɂ͏��X����T�O�ł���̂ŁA
-    ���̂悤�ȃ��[�U�͓��ɗ������Ȃ��Ă��ǂ��B
+    以前から存在したが明記されなかったフィーチャに、
+    「コンテキスト」がある。
+    Phase 8はコンテキストを更に活用しているため、
+    この概念を正式に仕様とする。
+    ただし、プログラミング言語に慣れていない者には少々難しい概念であるので、
+    そのようなユーザは特に理解しなくても良い。
   </P><P>
-    �u�R���e�L�X�g�v�Ƃ́A
-    �����̃G���g���Ăяo���̕]�����ɂ���ݒ肳���A
-    �����I�ňꎞ�I�ȁu�ꎞ�����v�ł���B
-    ���̎����́A�ؘa������Ɏ����Ă���A
-    �u�G���g�������G���g�����e(���̏W��)�v�̎����Ɠ����@�\�����B
-    �������A����̃R���e�L�X�g�𗘗p�\�ȗ̈�͂���߂ċ����A
-    �u����G���g�����e��v�ł���B
+    「コンテキスト」とは、
+    ある一つのエントリ呼び出しの評価中につき一つ設定される、
+    内部的で一時的な「一時辞書」である。
+    この辞書は、華和梨が常に持っている、
+    「エントリ名→エントリ内容(文の集合)」の辞書と同じ機能を持つ。
+    ただし、同一のコンテキストを利用可能な領域はきわめて狭く、
+    「あるエントリ内容一つ」である。
   </P><P>
-    ��\�I�Ȏg�p�Ⴊ�A�����Q�Ƃł���B
-    �����Q�Ƃ́A����̃G���g�����e��]�����A
-    �ߋ��ɋN�����u���̗������Q�Ƃ��邱�Ƃ��o����B
-    �Ăяo�������̃G���g���ɂ�����u����A
-    �������Ăяo�������̕��ɂ�����u���Ȃǂ��Q�Ƃ��邱�Ƃ͂ł��Ȃ��B
-    �R���e�L�X�g���Ⴄ�̂ł���B
+    代表的な使用例が、履歴参照である。
+    履歴参照は、同一のエントリ内容を評価中、
+    過去に起きた置換の履歴を参照することが出来る。
+    呼び出した他のエントリにおける置換や、
+    自分を呼び出した元の文における置換などを参照することはできない。
+    コンテキストが違うのである。
   </P>
   <DIV class="sample">
-    npw : ���l�I, �}�L�R, �W�����C�`���E<BR>
-    event : ${npw}�p�p��${0}�}�}�́A���Ō���􂤍R��<BR>
-    sentence : \0\s[30]${npw}��${event}�̂�����ł����l�ɂȂ������āB\1\s[10]�Ȃ�܂񂾂ԁc�c${0}��A�������Ă���B\e<BR>
+    npw : ムネオ, マキコ, ジュンイチロウ<BR>
+    event : ${npw}パパと${0}ママの、血で血を洗う抗争<BR>
+    sentence : \0\s[30]${npw}が${event}のあおりでお星様になったって。\1\s[10]なんまんだぶ……${0}よ、成仏してくれ。\e<BR>
     <BR>
     echo-mode &gt; ${sentence}<BR>
-    �}�L�R�����l�I�p�p�ƃ��l�I�}�}�́A���Ō���􂤍R���̂�����ł����l�ɂȂ������āB\1\s[10]�Ȃ�܂񂾂ԁc�c�}�L�R��A�������Ă���B\e
+    マキコがムネオパパとムネオママの、血で血を洗う抗争のあおりでお星様になったって。\1\s[10]なんまんだぶ……マキコよ、成仏してくれ。\e
   </DIV>
   <P>
-    ��L�̗�ɂ����āAsentence����Ăяo���ꂽevent�̕]�������A
-    sentence�̃R���e�L�X�g�����ł��Ă���킯�ł͂Ȃ����Ƃɒ��ӂ��Ăق����B
-    event�̕]�����I��������A
-    ${0}�ɂ����event�Ăяo���ȑO�̗������Q�Ƃ��Ă���B
-    �������Aevent��]�����́Asentence�]�����̗������Q�Ƃł��Ȃ��B
-    sentence����event�̗������Q�Ƃ��邱�Ƃ��A���R�ł��Ȃ��B
+    上記の例において、sentenceから呼び出されたeventの評価中も、
+    sentenceのコンテキストが消滅しているわけではないことに注意してほしい。
+    eventの評価が終了した後、
+    ${0}によってevent呼び出し以前の履歴を参照している。
+    しかし、eventを評価中は、sentence評価中の履歴を参照できない。
+    sentenceからeventの履歴を参照することも、当然できない。
   </P><P>
   </P>
   <P>
-    �ؘa�����ł���P�ꂪ�]������Ă���Ƃ��́A�K�����炩�̃R���e�L�X�g�����݂���B
-    �ʏ�A�G���g���Ăяo�����s����ƁA�V�����R���e�L�X�g���쐬����A�ݒ肳���B
-    ���̌Ăяo�����I���������_�ō쐬�����R���e�L�X�g�͔j������A
-    �ȑO�̃R���e�L�X�g�ɖ߂����B
-    �R���e�L�X�g�̓G���g���Ăяo���̘A���ɔ����ăX�^�b�N��ɐςݏd�˂��A
-    �G���g���Ăяo�����I������ǂɈ����菜�����B
-    ����R���e�L�X�g����ʂ̃R���e�L�X�g�ւ̃A�N�Z�X�͕s�\�ł���B
+    華和梨内である単語が評価されているときは、必ず何らかのコンテキストが存在する。
+    通常、エントリ呼び出しが行われると、新しいコンテキストが作成され、設定される。
+    その呼び出しが終了した時点で作成したコンテキストは破棄され、
+    以前のコンテキストに戻される。
+    コンテキストはエントリ呼び出しの連鎖に伴ってスタック状に積み重ねられ、
+    エントリ呼び出しが終了するつどに一つずつ取り除かれる。
+    あるコンテキストから別のコンテキストへのアクセスは不可能である。
   </P><P>
-    �Ȃ��A�����Ō����u�G���g���Ăяo���v�ɂ́A
-    �ؘa���O������̃A�N�Z�X�ɂ���Đ�����u�ŏ��́v�G���g���Ăяo�����܂�
-    (SHIORI���N�G�X�g�ɔ����ASystem.Callback.OnEvent�Ăяo���Ȃ�)�B
+    なお、ここで言う「エントリ呼び出し」には、
+    華和梨外部からのアクセスによって生じる「最初の」エントリ呼び出しも含む
+    (SHIORIリクエストに伴う、System.Callback.OnEvent呼び出しなど)。
   </P><P>
-    �܂��A�R���e�L�X�g�́A�G���g���Ăяo�����s���Ȃ�����؂�ւ��Ȃ��B
-    �����L�q��A�����Ƃ�����₷���\���Ƃ��Ă�
-    �u�ς��ƃG���g����`�����Č�����L�q�́A�S�ē���̃R���e�L�X�g��Ŏ��s�����v
-    �ł���B
+    また、コンテキストは、エントリ呼び出しが行われない限り切り替わらない。
+    辞書記述上、もっとも判りやすい表現としては
+    「ぱっとエントリ定義を見て見える記述は、全て同一のコンテキスト上で実行される」
+    である。
   </P><P>
-    �����Q�Ƃ̑��A�ꎞ�G���g���̋@�\���A�R���e�L�X�g�ɂ���Ď��������B
-    �ꎞ�G���g���́A
-    �u<SPAN class="tt">@</SPAN>�v�Ŏn�܂閼�������A
-    �R���e�L�X�g�Ɠ�������(�����A�G���g���Ăяo���ɂ���Ē�߂�ꂽ���E��)�����B
+    履歴参照の他、一時エントリの機能が、コンテキストによって実現される。
+    一時エントリは、
+    「<SPAN class="tt">@</SPAN>」で始まる名を持ち、
+    コンテキストと同じ寿命(即ち、エントリ呼び出しによって定められた境界内)を持つ。
   </P><P>
-    ���X��������A�ȉ��̂悤�ɁA
-    �Ⴆ�΃G���g���W�����Z���̏W�����Z���̕]�����͌��̃R���e�L�X�g�ł���B
-    �W�����Z���̕]�����I��������A�����_���ɑI�����ꂽ�P��̕]���́A
-    �V�����R���e�L�X�g��ƂȂ�B
+    少々難解だが、以下のように、
+    例えばエントリ集合演算時の集合演算式の評価中は元のコンテキストである。
+    集合演算式の評価が終了した後、ランダムに選択された単語の評価は、
+    新しいコンテキスト上となる。
   </P>
   <DIV class="sample">
-    $(addstr @��� entry1; addstr @��� entry2)${$@���[1]+$@���[2]}
+    $(addstr @候補 entry1; addstr @候補 entry2)${$@候補[1]+$@候補[2]}
   </DIV>
   <P>
-    ����A�R���e�L�X�g��̗����́A
-    �u�u���q�̈�(<SPAN class="tt">${�`}, $[�`], $..[�`], $(�`)</SPAN>)
-    ���o��ƒu���q�̕]���ȑO�̗����܂Ŋ����߂�A�u���q�̕]�����ʂ��ǉ������v
-    �Ƃ������������B
-    ������₷�������ƁA�ȉ��̃��[���ŕ\����B
+    一方、コンテキスト上の履歴は、
+    「置換子領域(<SPAN class="tt">${～}, $[～], $..[～], $(～)</SPAN>)
+    を出ると置換子の評価以前の履歴まで巻き戻り、置換子の評価結果が追加される」
+    という動作をする。
+    分かりやすく言うと、以下のルールで表せる。
   </P>
   <UL>
     <LI>
-      <SPAN class="tt">$</SPAN>�}�[�N�̐������A�����Q�Ƃ��ǉ������B
+      <SPAN class="tt">$</SPAN>マークの数だけ、履歴参照が追加される。
     </LI>
     <LI>
-      <SPAN class="tt">$</SPAN>�̈�̒�(�X�N���v�g��G���g���Ăяo��)�ł́A
-      <SPAN class="tt">$</SPAN>�̈�̊O�̗������Q�Ƃ��邱�Ƃ��o����B
+      <SPAN class="tt">$</SPAN>領域の中(スクリプトやエントリ呼び出し)では、
+      <SPAN class="tt">$</SPAN>領域の外の履歴を参照することも出来る。
     </LI>
     <LI>
       <STRONG>
-	���s���̓���ɂ�炸�A�L�q�i�K�ŗ����Q�Ƃ̔ԍ��ƎQ�Ɛ�͈�Έ�Ή��ƂȂ�B
+	実行時の動作によらず、記述段階で履歴参照の番号と参照先は一対一対応となる。
       </STRONG>
     </LI>
   </UL>
   <P>
-    �Ō�̃��[�����������邽�߂ɁA�C�����C���X�N���v�g���̍\���ɂ��ẮA
-    �e�\���Ǝ��̖@�����K�p�����B
-    �ȑO�ؘ̉a���ł́A
-    ����(�⃋�[�v)�̍ہA�ꍇ�ɂ���Ēǉ�����闚���̐����ω����Ă������A
-    Phase 8�ł͗����̐�������ɂ���ĕω����邱�Ƃ͂Ȃ��A
-    �����L�q���Ɋm���ɐ������������Q�Ƃ��邱�Ƃ��o����B
+    最後のルールを実現するために、インラインスクリプト中の構文については、
+    各構文独自の法則が適用される。
+    以前の華和梨では、
+    分岐(やループ)の際、場合によって追加される履歴の数が変化していたが、
+    Phase 8では履歴の数が分岐によって変化することはなく、
+    辞書記述時に確実に正しい履歴を参照することが出来る。
   </P>
   <DIV class="sample">
     a : A<BR>
     b : B<BR>
     <BR>
-    echo-mode &gt; ${a}|$(echo ${0}|; echo ${b}|; echo ${2}|)${3}|�u${1}�v<BR>
-    A|A|B|B||�uA|B|B|�v
+    echo-mode &gt; ${a}|$(echo ${0}|; echo ${b}|; echo ${2}|)${3}|「${1}」<BR>
+    A|A|B|B||「A|B|B|」
   </DIV>
 </BLOCKQUOTE>
 
 <A name="prg2_7"></A>
-<H3>2.7. �󕶎���</H3>
+<H3>2.7. 空文字列</H3>
 
 <BLOCKQUOTE>
   <P>
-    ��͂�ȑO����T�O��͑��݂��Ȃ���A
-    �]�薾�m�łȂ������t�B�[�`���Ƃ��āu�󕶎���v������B
+    やはり以前から概念上は存在しながら、
+    余り明確でなかったフィーチャとして「空文字列」がある。
   </P><P>
-    Phase 8�ȑO�ɂ́A������̓s���ɂ��A�󕶎���̋L�q�ɂ�
-    <SPAN class="tt">$(NULL)</SPAN>�Ƃ����\�L��p�����B
-    Phase 8�ł́A�ǂ̏ꏊ�ł�<SPAN class="tt">""</SPAN>�ɂ���āA
-    ����0�̕�����\�\�󕶎����錾���邱�Ƃ��o����B
+    Phase 8以前には、実装上の都合により、空文字列の記述には
+    <SPAN class="tt">$(NULL)</SPAN>という表記を用いた。
+    Phase 8では、どの場所でも<SPAN class="tt">""</SPAN>によって、
+    長さ0の文字列――空文字列を宣言することが出来る。
   </P><P>
-    �ꕔ�̃R�}���h�ɂ����Ă͋󕶎���͓��ʂȈӖ������B
-    �Ⴆ�Βu�����s��gsub�R�}���h�ɂ����āA
-    �����p�^�[���ɋ󕶎�����w�肵���ꍇ�A
-    �󕶎���́u�S�Ă̕����ԁv��\���B
-    ����͕����ƍŏ��̕����̊ԁA�Ō�̕����ƕ����̊Ԃ��܂ށB
+    一部のコマンドにおいては空文字列は特別な意味を持つ。
+    例えば置換を行うgsubコマンドにおいて、
+    検索パターンに空文字列を指定した場合、
+    空文字列は「全ての文字間」を表す。
+    これは文頭と最初の文字の間、最後の文字と文末の間も含む。
   </P>
   <DIV class="sample">
     echo-mode &gt; $(gsub abcde "" |)<BR>
     |a|b|c|d|e|
   </DIV>
   <P>
-    �}�b�`���Z�q�ł́A�󕶎���͂�����P��Ƀ}�b�`����B
+    マッチ演算子では、空文字列はあらゆる単語にマッチする。
   </P>
   <DIV class="sample">
     echo-mode &gt; $["hoge"=~""]<BR>
     true
   </DIV>
   <P>
-    �܂��A�G���g���Ăяo���ɂ����ẮA
-    �u�I���������̕]�����ʂ��󕶎���v�ł���P�[�X�ƁA
-    �u�G���g�������݂��Ȃ�(�G���g��������1���܂܂Ȃ�)���߁A�]�����ʂ��󕶎���v
-    �ł���P�[�X�𔻕ʂł��Ȃ��B
-    �]���āA�G���g����`�ɋ󕶎���݂̂̕����܂߂Ă������Ƃɂ��A
-    �G���g���̕]�����ʂ��Ӑ}�I�ɋ�ɂ��邱�Ƃ��ł���B
+    また、エントリ呼び出しにおいては、
+    「選択した文の評価結果が空文字列」であるケースと、
+    「エントリが存在しない(エントリが文を1つも含まない)ため、評価結果が空文字列」
+    であるケースを判別できない。
+    従って、エントリ定義に空文字列のみの文を含めておくことにより、
+    エントリの評価結果を意図的に空にすることができる。
   </P>
   <DIV class="sample">
-    entry : "", ������<BR>
+    entry : "", 当たり<BR>
     <BR>
     echo-mode &gt; ${entry}<BR>
     <BR>

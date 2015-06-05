@@ -2,217 +2,217 @@
   "http://www.w3.org/TR/html4/loose.dtd">
 <HTML lang="ja">
 <HEAD>
- <META http-equiv="Content-Type" content="text/html; charset=SHIFT_JIS">
+ <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <META http-equiv="Content-Script-Type" content="text/javascript">
  <META http-equiv="Content-Style-Type" content="text/css">
  <LINK rel="stylesheet" type="text/css" href="kawari.css">
- <TITLE>�ؘa�� ���[�U�[�Y�}�j���A��</TITLE>
+ <TITLE>華和梨 ユーザーズマニュアル</TITLE>
 </HEAD>
 <BODY>
 
-<H1>�v���O���}�u����AI���W���[�� "�ؘa��" ���[�U�[�Y�}�j���A��</H1>
+<H1>プログラマブル準AIモジュール "華和梨" ユーザーズマニュアル</H1>
 
 <DIV align="right">
   <P>
     2004/02/01<BR>
     Phase 8.2.0
   </P><P>
-    �ؘa���J���`�[�� :<BR>
-    NAKAUE.T (Meister), �UMeister (���T), ���Ɓ[, ����, ������̂ɂ�
+    華和梨開発チーム :<BR>
+    NAKAUE.T (Meister), 偽Meister (夢乃), さとー, 酔狂, さくらのにえ
   </P>
 </DIV>
 
 <H2>Index</H2>
 
-<A href="index.html" class="toindex">�� back</A>
+<A href="index.html" class="toindex">← back</A>
 <BR>
 
 <BLOCKQUOTE>
- <A href="#preface">1. �͂��߂�</A><BR>
- <A href="#dictionary">2. �����t�@�C��</A><BR>
- �@�@<A href="#comment">2.1. �R�����g</A><BR>
- �@�@<A href="#security">2.2. �Z�L�����e�B���x���ݒ�</A><BR>
- �@�@<A href="#crypt">2.3. �Í�������</A><BR>
- <A href="#entrydef">3. �G���g����`</A><BR>
- �@�@<A href="#string">3.1. ���ƕ�����</A><BR>
- �@�@<A href="#quote">3.2. �N�H�[�g������</A><BR>
- �@�@<A href="#block">3.3. �u���b�N</A><BR>
- �@�@<A href="#multiline">3.4. �����s�Ή�</A><BR>
- <A href="#subst">4. �u���ƃG���g���Ăяo���Ǝ��s</A><BR>
- �@�@<A href="#entrycall">4.1. �G���g���Ăяo��</A><BR>
- �@�@<A href="#execute">4.2. ���s</A><BR>
- �@�@<A href="#recursivesubst">4.3. �u���̓���q</A><BR>
- <A href="#entrycallvar">5. �G���g���Ăяo���̃o���G�[�V����</A><BR>
- �@�@<A href="#setexpr">5.1. �W�����Z��</A><BR>
- �@�@<A href="#entryarray">5.2. �G���g���z��Ăяo��</A><BR>
- �@�@<A href="#histryref">5.3. �����Q��(����)</A><BR>
- �@�@<A href="#tmpentry">5.4. �ꎞ�G���g��(�㋉)</A><BR>
- <A href="#expression">6. ���Z��</A><BR>
- �@�@<A href="#expr_comp">6.1. ��r���Z</A><BR>
- �@�@<A href="#expr_logic">6.2. �_�����Z</A><BR>
- �@�@<A href="#expr_bits">6.3. �r�b�g���Z</A><BR>
- �@�@<A href="#expr_nums">6.4. ���l�ƕ�����̈���</A><BR>
- <A href="#kis">7. �C�����C���X�N���v�g(����)</A><BR>
-  �@�@<A href="#statement">7.1. �\���R�}���h�Ɗ֐��R�}���h</A><BR>
-  �@�@<A href="#if">7.2. if</A><BR>
-  �@�@<A href="#function">7.3. �g�ݍ��݃R�}���h�ƃ��[�U��`�R�}���h</A><BR>
- <A href="#shiorisaori">8. SHIORI/SAORI�C���^�[�t�F�[�X</A><BR>
- �@�@<A href="#callback">8.1. �R�[���o�b�N</A><BR>
- �@�@<A href="#systementry">8.2. ���̑��̃V�X�e���G���g��</A><BR>
- �@�@<A href="#beshiori">8.3. �x�Ƃ��Ẳؘa��</A><BR>
- �@�@<A href="#besaori">8.4. SAORI���W���[���Ƃ��Ẳؘa��</A><BR>
- �@�@<A href="#declaresaori">8.5. SAORI���W���[���̎g�p�錾</A><BR>
- �@�@<A href="#callsaori">8.6 SAORI���W���[���Ăяo��</A><BR>
- <A href="#extension">9. ���p��</A><BR>
- �@�@<A href="#event">9.1. �C�x���g����</A><BR>
- �@�@<A href="#communicate">9.2. �R�~���j�P�[�g</A><BR>
- �@�@<A href="#randomtalk">9.3. �����g�[�N</A><BR>
+ <A href="#preface">1. はじめに</A><BR>
+ <A href="#dictionary">2. 辞書ファイル</A><BR>
+ 　　<A href="#comment">2.1. コメント</A><BR>
+ 　　<A href="#security">2.2. セキュリティレベル設定</A><BR>
+ 　　<A href="#crypt">2.3. 暗号化辞書</A><BR>
+ <A href="#entrydef">3. エントリ定義</A><BR>
+ 　　<A href="#string">3.1. 文と文字列</A><BR>
+ 　　<A href="#quote">3.2. クォート文字列</A><BR>
+ 　　<A href="#block">3.3. ブロック</A><BR>
+ 　　<A href="#multiline">3.4. 複数行対応</A><BR>
+ <A href="#subst">4. 置換とエントリ呼び出しと実行</A><BR>
+ 　　<A href="#entrycall">4.1. エントリ呼び出し</A><BR>
+ 　　<A href="#execute">4.2. 実行</A><BR>
+ 　　<A href="#recursivesubst">4.3. 置換の入れ子</A><BR>
+ <A href="#entrycallvar">5. エントリ呼び出しのバリエーション</A><BR>
+ 　　<A href="#setexpr">5.1. 集合演算式</A><BR>
+ 　　<A href="#entryarray">5.2. エントリ配列呼び出し</A><BR>
+ 　　<A href="#histryref">5.3. 履歴参照(中級)</A><BR>
+ 　　<A href="#tmpentry">5.4. 一時エントリ(上級)</A><BR>
+ <A href="#expression">6. 演算式</A><BR>
+ 　　<A href="#expr_comp">6.1. 比較演算</A><BR>
+ 　　<A href="#expr_logic">6.2. 論理演算</A><BR>
+ 　　<A href="#expr_bits">6.3. ビット演算</A><BR>
+ 　　<A href="#expr_nums">6.4. 数値と文字列の扱い</A><BR>
+ <A href="#kis">7. インラインスクリプト(中級)</A><BR>
+  　　<A href="#statement">7.1. 構文コマンドと関数コマンド</A><BR>
+  　　<A href="#if">7.2. if</A><BR>
+  　　<A href="#function">7.3. 組み込みコマンドとユーザ定義コマンド</A><BR>
+ <A href="#shiorisaori">8. SHIORI/SAORIインターフェース</A><BR>
+ 　　<A href="#callback">8.1. コールバック</A><BR>
+ 　　<A href="#systementry">8.2. その他のシステムエントリ</A><BR>
+ 　　<A href="#beshiori">8.3. 栞としての華和梨</A><BR>
+ 　　<A href="#besaori">8.4. SAORIモジュールとしての華和梨</A><BR>
+ 　　<A href="#declaresaori">8.5. SAORIモジュールの使用宣言</A><BR>
+ 　　<A href="#callsaori">8.6 SAORIモジュール呼び出し</A><BR>
+ <A href="#extension">9. 応用編</A><BR>
+ 　　<A href="#event">9.1. イベント反応</A><BR>
+ 　　<A href="#communicate">9.2. コミュニケート</A><BR>
+ 　　<A href="#randomtalk">9.3. 自発トーク</A><BR>
 </BLOCKQUOTE>
 
 <A name="preface"></A>
-<H2>1. �͂��߂�</H2>
+<H2>1. はじめに</H2>
 
 <P>
- ���[�U�[�Y�}�j���A���ł́A�ؘa���̂قڑS�Ă̕��@�Ƌ@�\���Љ�܂��B
- �����<A href="kis_reference.html">KIS���t�@�����X</A>�ŁA
- ��ʂ�̋@�\���g����悤�ɂȂ�܂��B
+ ユーザーズマニュアルでは、華和梨のほぼ全ての文法と機能を紹介します。
+ これと<A href="kis_reference.html">KISリファレンス</A>で、
+ 一通りの機能が使えるようになります。
 </P><P>
- ���߂ĉؘa�����g�����́A
- ���[�U�[�Y�}�j���A�������<A href="start.html">Getting Started</A>
- ��ǂ݁A�C���[�W��͂�ł��������B
+ 初めて華和梨を使う方は、
+ ユーザーズマニュアルより先に<A href="start.html">Getting Started</A>
+ を読み、イメージを掴んでください。
 </P><P>
- �����Ȃ��Ƃ��납��S�[�X�g�����̂͑�ώ�Ԃ�������܂��B
- �ȒP�ɉؘa���̓�����m�F���Ă������߂ɂ́A
- �R���\�[��UI�ŃA�v���P�[�V�����w<A href="kosui.html">�K��</A>�x
- ���g���Ă��������B�K���Ȃ��ؘ̉a���C���́A�܂��l�����܂���B
+ 何もないところからゴーストを作るのは大変手間がかかります。
+ 簡単に華和梨の動作を確認していくためには、
+ コンソールUI版アプリケーション『<A href="kosui.html">幸水</A>』
+ を使ってください。幸水なしの華和梨修得は、まず考えられません。
 </P>
 
 <A name="dictionary"></A>
-<H2>2. �����t�@�C��</H2>
+<H2>2. 辞書ファイル</H2>
 
 <BLOCKQUOTE>
   <P>
-    �����t�@�C���Ƃ́A
-    �ؘa���ɑ΂��āA���͂��b�⓮��p�^�[�����w�����邽�߂̃t�@�C���ł��B
-    �����t�@�C�����A���Ȃ��̃S�[�X�g���L�q����S�Ăł��B
+    辞書ファイルとは、
+    華和梨に対して、文章や語彙や動作パターンを指示するためのファイルです。
+    辞書ファイルが、あなたのゴーストを記述する全てです。
   </P>
 </BLOCKQUOTE>
 
 <P>
-  <STRONG>�ؘa�����ŏ��ɓǂގ����t�@�C����&quot;kawarirc.kis&quot;�ł��B</STRONG>
+  <STRONG>華和梨が最初に読む辞書ファイルは&quot;kawarirc.kis&quot;です。</STRONG>
 </P><P>
-  �����t�@�C���́A<SPAN id="type">'='</SPAN>�Ŏn�܂�s�ɂ���āA
-  ������`�]�[���ƁA�X�N���v�g�L�q�]�[���̓�̃]�[���ɕ�����܂��B
+  辞書ファイルは、<SPAN id="type">'='</SPAN>で始まる行によって、
+  辞書定義ゾーンと、スクリプト記述ゾーンの二つのゾーンに分かれます。
 </P><P>
-  ������`�]�[���͎�����`�������̈�ł���A
-  �X�N���v�g�L�q�]�[����KIS�𒼐ڏ����A���̏�Ŏ��s����̈�ł��B
+  辞書定義ゾーンは辞書定義を書く領域であり、
+  スクリプト記述ゾーンはKISを直接書き、その場で実行する領域です。
 </P><P>
-  �������(�����t�@�C����ǂݎn�߂����)�ł͎�����`�]�[���ŁA
-  <SPAN id="type">=kis</SPAN>�Ŏn�܂�s����
-  <SPAN id="type">=end</SPAN>�Ŏn�܂�s�܂ł��X�N���v�g�L�q�]�[���ł��B
+  初期状態(辞書ファイルを読み始めた状態)では辞書定義ゾーンで、
+  <SPAN id="type">=kis</SPAN>で始まる行から
+  <SPAN id="type">=end</SPAN>で始まる行までがスクリプト記述ゾーンです。
 </P>
 
 <DIV class="sample">
- # �����͎����L�q�]�[��<BR>
- sentence : \0\s[7]${�n��}��A���͋A���Ă����I\1\s[10]�c�c�B\e<BR>
- sentence : \0\s[7]${�V��}�͎��񂾁I�@���̂��I�H\e<BR>
+ # ここは辞書記述ゾーン<BR>
+ sentence : \0\s[7]${地名}よ、私は帰ってきた！\1\s[10]……。\e<BR>
+ sentence : \0\s[7]${坊や}は死んだ！　何故か！？\e<BR>
  <SPAN id="red">=kis</SPAN><BR>
- # �����̓X�N���v�g�L�q�]�[��<BR>
+ # ここはスクリプト記述ゾーン<BR>
  load dict-gundam.txt;<BR>
- logprint �K���_�������̂�[�ǁB;<BR>
+ logprint ガンダム辞書のろーど。;<BR>
  <SPAN id="red">=end</SPAN><BR>
- # �Ăю����L�q�]�[��<BR>
- �n�� : �T���V���C��60,���C,����,�L��<BR>
+ # 再び辞書記述ゾーン<BR>
+ 地名 : サンシャイン60,晴海,幕張,有明<BR>
 </DIV>
 
 <P>
-  �X�N���v�g�L�q�]�[���ɂ����镶�@�́A
-  <SPAN id="type">'$(' �` ')'</SPAN>
-  �̊Ԃ̕��@�Ɗ��S�ɓ���ł��̂ŁA�����ł͏ȗ����܂��B
+  スクリプト記述ゾーンにおける文法は、
+  <SPAN id="type">'$(' ～ ')'</SPAN>
+  の間の文法と完全に同一ですので、ここでは省略します。
   <EM>
-    �X�N���v�g�L�q�]�[���ŏ������X�N���v�g�́A
-    ���̃X�N���v�g���ǂݍ��܂ꂽ�u�ԂɎ��s�����
+    スクリプト記述ゾーンで書いたスクリプトは、
+    そのスクリプトが読み込まれた瞬間に実行される
   </EM>
-  �Ƃ������Ƃ������ӂ��Ă��������B
+  ということだけ注意してください。
 </P><P>
-  ������`�]�[���ɂ����镶�@��3�͈ȉ��ŏڂ����q�ׂ܂��B
+  辞書定義ゾーンにおける文法は3章以下で詳しく述べます。
 </P>
 
 <A name="comment"></A>
-<H3>2.1. �R�����g</H3>
+<H3>2.1. コメント</H3>
 
 <P>
-  �s���A<EM>�󔒋L���ȊO�̍ŏ��̕���</EM>���V���[�v<SPAN id="type">'#'</SPAN>
-  �������ꍇ�A���̍s�S�̂̓R�����g�ƌ��Ȃ���A��������܂��B
+  行頭、<EM>空白記号以外の最初の文字</EM>がシャープ<SPAN id="type">'#'</SPAN>
+  だった場合、その行全体はコメントと見なされ、無視されます。
 </P><P>
-  �܂��A<SPAN id="type">':rem'</SPAN>�݂̂̍s����
-  <SPAN id="type">':endrem'</SPAN>�݂̂̍s�܂ł̗̈�S�̂��R�����g�ƌ��Ȃ���A
-  ��������܂��B
+  また、<SPAN id="type">':rem'</SPAN>のみの行から
+  <SPAN id="type">':endrem'</SPAN>のみの行までの領域全体もコメントと見なされ、
+  無視されます。
 </P><P>
-  ���҂Ƃ��A��q�̑S�Ă̕��@�ɗD�悵�ď�������܂��B
-  �����s�ɕ������L�q�̏ꍇ�A�s�̐擪�̕�����<SPAN id="type">'#'</SPAN>
-  �����Ȃ��悤�ɒ��ӂ��Ă��������B
-  ���̏ꍇ�̓N�H�[�g������ɂ���Ȃǂ��ē����邱�Ƃ��ł��܂��B
+  両者とも、後述の全ての文法に優先して処理されます。
+  複数行に分けた記述の場合、行の先頭の文字に<SPAN id="type">'#'</SPAN>
+  が来ないように注意してください。
+  その場合はクォート文字列にするなどして逃げることができます。
 </P>
 
 <DIV class="sample">
   <SPAN id="red">:rem<BR>
   =======================================================<BR>
-  ���s���R�����g�������Ƃ���<BR>
-  ����ȕ��ɂ��邱�Ƃ��ł��܂���<BR>
-  �ނ���A����G���A���ꊇ���ăR�����g�A�E�g�������Ƃ��̕���<BR>
-  �֗��ł��傤<BR>
+  何行もコメントを書くときは<BR>
+  こんな風にすることもできますが<BR>
+  むしろ、あるエリアを一括してコメントアウトしたいときの方が<BR>
+  便利でしょう<BR>
    =======================================================<BR>
   :endrem</SPAN><BR>
   function checker $(<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if $[$@arg[0]=~"OK"] $(<BR>
-  <SPAN id="red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# OK�̏ꍇ</SPAN><BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo �I�b�P�[;<BR>
+  <SPAN id="red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# OKの場合</SPAN><BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo オッケー;<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) else $(<BR>
-  <SPAN id="red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# ���s(?)�̏ꍇ</SPAN><BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo �V�e�I�N;<BR>
+  <SPAN id="red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 失敗(?)の場合</SPAN><BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo シテオク;<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<BR>
   )
 </DIV>
 
 
 <A name="security"></A>
-<H3>2.2. �Z�L�����e�B���x���̎w��</H3>
+<H3>2.2. セキュリティレベルの指定</H3>
 
 <P>
- �u�����B�v���瑗���Ă���C�x���g�̒��ɂ́A
- ���[�J���}�V��(�S�[�X�g�̓��삵�Ă���R���s���[�^)�ȊO�̏ꏊ����
- SSTP�Ȃǂ�ʂ��đ����Ă�����̂�����܂��B
- ���̂悤�ȃC�x���g��r�����邽�߂�
- �ȉ��̋L�q�ɂ���ăZ�L�����e�B���x����ݒ肷�邱�Ƃ��o���܂��B
+ 「何か。」から送られてくるイベントの中には、
+ ローカルマシン(ゴーストの動作しているコンピュータ)以外の場所から
+ SSTPなどを通じて送られてくるものがあります。
+ このようなイベントを排除するために
+ 以下の記述によってセキュリティレベルを設定することが出来ます。
 </P><P>
- <STRONG>���������Ȃ������ꍇ�A�����I�Ɉ��S�Ȑݒ�(high)�ɂȂ�</STRONG>�̂ŁA
- ���ʂ͋L�q����K�v�͂���܂���B
+ <STRONG>何も書かなかった場合、自動的に安全な設定(high)になる</STRONG>ので、
+ 普通は記述する必要はありません。
 </P><P>
- �L�q����ۂɂ͕K�����������ɓǂݍ��܂��t�@�C���ɏ����ĉ������B
- kawarirc.kis�ɏ����̂��m���ł��B
- �S�[�X�g�����삵�n�߂Ă���̓Z�L�����e�B���x����ύX���邱�Ƃ͂ł��܂���B
+ 記述する際には必ず初期化時に読み込まれるファイルに書いて下さい。
+ kawarirc.kisに書くのが確実です。
+ ゴーストが動作し始めてからはセキュリティレベルを変更することはできません。
 </P>
 
 <DL>
   <DT class="tt">securitylevel level ;</DT>
   <DD>
-    �Z�L�����e�B���x����level�ɐݒ肷��B
-    level�ɏ�����͈̂ȉ��B
+    セキュリティレベルをlevelに設定する。
+    levelに書けるのは以下。
     <TABLE border="0" cellpadding="2" cellspacing="0">
-      <TR><TD>0 / low</TD><TD> �S�ẴC�x���g��������B</TD></TR>
-      <TR><TD>1 / middle</TD><TD> �O���������Ă����C�x���g���֎~�B</TD></TR>
-      <TR><TD>2 / high</TD><TD> ���ʂ�1(middle)�Ɠ����B</TD></TR>
+      <TR><TD>0 / low</TD><TD> 全てのイベントを許可する。</TD></TR>
+      <TR><TD>1 / middle</TD><TD> 外部からやってきたイベントを禁止。</TD></TR>
+      <TR><TD>2 / high</TD><TD> 当面は1(middle)と同じ。</TD></TR>
       <TR><TD>3 / ultrahigh</TD><TD>
-	���m�Ƀ��[�J���}�V�����s�ƋL���ꂽ�C�x���g�̂݋��B
+	明確にローカルマシン発行と記されたイベントのみ許可。
       </TD></TR>
     </TABLE>
   </DD>
 </DL>
 
 <DIV class="sample">
-# �w�肷��ꍇ�́Akawarirc.kis�̂ł��邾��<BR>
-# �擪�ɋ߂������������������܂��B<BR>
+# 指定する場合は、kawarirc.kisのできるだけ<BR>
+# 先頭に近い部分を強く推奨します。<BR>
 =kis<BR>
 securitylevel ultrahigh;<BR>
 <BR>
@@ -220,28 +220,28 @@ securitylevel ultrahigh;<BR>
 </DIV>
 
 <P>
-  �Ȃ��A�ؘa���̓��쒆�A
-  �Z�L�����e�B���x���͐��l�\��(0�`3)��
-  <SPAN id="type">&quot;System.SecurityLevel&quot;</SPAN>�Ɋi�[����Ă��܂��B
-  ���������邱�Ƃ͏o���܂���B
+  なお、華和梨の動作中、
+  セキュリティレベルは数値表現(0～3)で
+  <SPAN id="type">&quot;System.SecurityLevel&quot;</SPAN>に格納されています。
+  書き換えることは出来ません。
 </P>
 
 <A name="crypt"></A>
-<H3>2.3. �Í�������</H3>
+<H3>2.3. 暗号化辞書</H3>
 
 <P>
-  �l�^�����΂�ɂ������邽�߂ɁA�����t�@�C���ɊȒP�ȈÍ������{�����Ƃ��ł��܂��B
-  �Í����ɂ͕t����kawari_encode2.exe��p���܂��B
-  �g�p���@�́ADOS�v�����v�g�ňȉ��̂悤�ɓ��͂��܂��B
+  ネタをよりばれにくくするために、辞書ファイルに簡単な暗号化を施すことができます。
+  暗号化には付属のkawari_encode2.exeを用います。
+  使用方法は、DOSプロンプトで以下のように入力します。
 </P>
 
 <DIV class="syntax">
-  kawari_encode2 �����t�@�C����1 �����t�@�C����2 ...
+  kawari_encode2 辞書ファイル名1 辞書ファイル名2 ...
 </DIV>
 
 <P>
-  ��������ƁA�L�[���[�h�𕷂����̂ŁA�K���ȃL�[���[�h�����Ă��������B
-  �Í������ꂽ�t�@�C�����쐬����܂��B
+  そうすると、キーワードを聞かれるので、適当なキーワードを入れてください。
+  暗号化されたファイルが作成されます。
 </P>
 
 <DIV class="sample">
@@ -250,46 +250,46 @@ Input Keyword : this is test
 </DIV>
 
 <P>
-  �����t�@�C���̃t�@�C�����̊g���q���u.kaw�v�ɕς����t�@�C�����A
-  �Í������ꂽ�����t�@�C���ł��B
-  �����t�@�C�����A
- <SPAN id="type">&quot;:crypt&quot;</SPAN>�Ə����ꂽ�s����A
- <SPAN id="type">&quot;:endcrypt&quot;</SPAN>�Ə����ꂽ�s�܂ł��Í����̑ΏۂƂȂ�܂��B
-  ����ȊO�̍s�͌��̂܂܎c����܂��B
+  辞書ファイルのファイル名の拡張子を「.kaw」に変えたファイルが、
+  暗号化された辞書ファイルです。
+  辞書ファイル中、
+ <SPAN id="type">&quot;:crypt&quot;</SPAN>と書かれた行から、
+ <SPAN id="type">&quot;:endcrypt&quot;</SPAN>と書かれた行までが暗号化の対象となります。
+  それ以外の行は元のまま残されます。
 </P>
 
 <DIV class="sample">
-  �� dict-sample.txt<BR>
+  例 dict-sample.txt<BR>
 #############################<BR>
-# ���쌠�\���Ȃ�<BR>
+# 著作権表示など<BR>
 #############################<BR>
 <BR>
-# ��������Í���<BR>
+# ここから暗号化<BR>
  <SPAN id="red">:crypt</SPAN><BR>
-# ��b�f�[�^<BR>
-sentence : \h���${npw}��${npp}�ŋ��R����������B\e<BR>
-sentence : \h${npp}�ǂ��Ƃ���x�͂����ŁA�͂��[���傢�Ȃ��傢�ȁB\e<BR>
-# ����-�ŗL����-�l�� ( npw )<BR>
-npw : ��؈�Y , �R�{���Y<BR>
-# ����-�ŗL����-�n�� ( npp )<BR>
-npp : �񑊊��@ , �z���C�g�n�E�X<BR>
-npp : ${npw}�̉�<BR>
+# 会話データ<BR>
+sentence : \h昨日${npw}を${npp}で偶然見かけたよ。\e<BR>
+sentence : \h${npp}良いとこ一度はおいで、はぁーじょいなじょいな。\e<BR>
+# 名詞-固有名詞-人名 ( npw )<BR>
+npw : 鈴木一郎 , 山本太郎<BR>
+# 名詞-固有名詞-地名 ( npp )<BR>
+npp : 首相官邸 , ホワイトハウス<BR>
+npp : ${npw}の家<BR>
  <SPAN id="red">:endcrypt</SPAN><BR>
-# �����܂ňÍ���<BR>
+# ここまで暗号化<BR>
 </DIV>
 
 <P>
-���̃t�@�C�����Í�������ƁA���̂悤�ȃt�@�C������������܂��B
- (���₷���̂��߂Ɉꕔ�s��܂�Ԃ��Ă���܂�)
+このファイルを暗号化すると、次のようなファイルが生成されます。
+ (見やすさのために一部行を折り返してあります)
 </P>
 
 <DIV class="sample">
-  �� dict-sample.kaw<BR>
+  例 dict-sample.kaw<BR>
 #############################<BR>
-# ���쌠�\���Ȃ�<BR>
+# 著作権表示など<BR>
 #############################<BR>
 <BR>
-# ��������Í���<BR>
+# ここから暗号化<BR>
 !KAWA0001uJuYMVcg2jveOeM75g==<BR>
 !KAWA0001uMvd1szd1tvdmIKY5NA1SCtCnMPWyM/FOkicw9bIyMU6f<BR>
 TNMKeo0EToROhc6BTpeOfrk3Q==<BR>
@@ -300,26 +300,26 @@ ToQOho6fTn5OnU6JznjOg46XToaOnA6DjpdOho6cDn65N0=<BR>
 !KAWA0001uJuYLgQ2NJU0fS/0LgQ2NJUq1i4EmJCY1sjIm JE=<BR>
 !KAWA0001uNbIyJiCmDZJKTIyFyv4mJSYO8I7Nzv7O9871 jv9O+A=<BR>
 !KAWA0001uNbIyJiCmJzD1sjPxTp0MX4=<BR>
-# �����܂ňÍ���
+# ここまで暗号化
 </DIV>
 
 <P>
-  �������ꂽ�Í��������t�@�C���udict-*.kaw�v���Akawarirc.kis�Ŏw�肵�ĉ������B
-  �Í����t�@�C���̊g���q�́A.kaw�ȊO�ɕύX���Ă����v�ł��B
+  生成された暗号化辞書ファイル「dict-*.kaw」を、kawarirc.kisで指定して下さい。
+  暗号化ファイルの拡張子は、.kaw以外に変更しても大丈夫です。
 </P>
 
 <P>
-  �Í��������t�@�C�������ɖ߂������ꍇ�́A
-  kawari_decode2.exe���g���܂��B
+  暗号化したファイルを元に戻したい場合は、
+  kawari_decode2.exeを使います。
 </P>
 
 <DIV class="syntax">
-  kawari_encode2 �����t�@�C����1 �����t�@�C����2 ...
+  kawari_encode2 辞書ファイル名1 辞書ファイル名2 ...
 </DIV>
 
 <P>
-  ��͂�L�[���[�h�𕷂����̂ŁA
-  �Í����̎��ɓ��͂����L�[���[�h�����Ă��������B
+  やはりキーワードを聞かれるので、
+  暗号化の時に入力したキーワードを入れてください。
 </P>
 
 <DIV class="sample">
@@ -328,959 +328,959 @@ Input Keyword : this is test
 </DIV>
 
 <P>
-  ����ƁA�g���q���u.txt�v�́A���������ꂽ�����t�@�C�����쐬����܂��B
+  すると、拡張子が「.txt」の、復号化された辞書ファイルが作成されます。
 </P><P>
   <STRONG>
-    ���ӁF���łɓ����̃t�@�C���������Ă��㏑������Ă��܂��܂��I
+    注意：すでに同名のファイルがあっても上書きされてしまいます！
   </STRONG>
 </P>
 
 <A name="entrydef"></A>
-<H2>3. �G���g����`</H2>
+<H2>3. エントリ定義</H2>
 
 <P>
- �ؘa���́A�S�Ẵf�[�^���u�G���g���v�ɕ��ނ��ĕێ����Ă��܂��B
- ������`�Ƃ́A�G���g����`�s���R���ׂ����̂ł��B
- �G���g����`�͈ȉ��̏���('['�`']'�́A�����Ă��ǂ�����)�ŏ����Ă��������B
+ 華和梨は、全てのデータを「エントリ」に分類して保持しています。
+ 辞書定義とは、エントリ定義行を沢山並べたものです。
+ エントリ定義は以下の書式('['～']'は、無くても良い部分)で書いてください。
 </P>
 
 <DIV class="syntax">
- �G���g���� [ <SPAN id="type">,</SPAN> �G���g����<SPAN id="type">,</SPAN> �G���g���� ...  ] <SPAN id="type">:</SPAN> �� <SPAN id="type">,</SPAN> �� <SPAN id="type">,</SPAN> �� ... &lt;���s&gt;<BR>
- �G���g���� [ <SPAN id="type">,</SPAN> �G���g����<SPAN id="type">,</SPAN> �G���g���� ... ] <SPAN id="type">(</SPAN> �� <SPAN id="type">,</SPAN> �� <SPAN id="type">,</SPAN> �� ... <SPAN id="type">,</SPAN>&lt;���s&gt;<BR>
- </SPAN> �� <SPAN id="type">,</SPAN> �� <SPAN id="type">,</SPAN> �� ... &lt;���s&gt;<BR>
+ エントリ名 [ <SPAN id="type">,</SPAN> エントリ名<SPAN id="type">,</SPAN> エントリ名 ...  ] <SPAN id="type">:</SPAN> 文 <SPAN id="type">,</SPAN> 文 <SPAN id="type">,</SPAN> 文 ... &lt;改行&gt;<BR>
+ エントリ名 [ <SPAN id="type">,</SPAN> エントリ名<SPAN id="type">,</SPAN> エントリ名 ... ] <SPAN id="type">(</SPAN> 文 <SPAN id="type">,</SPAN> 文 <SPAN id="type">,</SPAN> 文 ... <SPAN id="type">,</SPAN>&lt;改行&gt;<BR>
+ </SPAN> 文 <SPAN id="type">,</SPAN> 文 <SPAN id="type">,</SPAN> 文 ... &lt;改行&gt;<BR>
  ...
  <SPAN id="type">)</SPAN>
  <BR>
 </DIV>
 
 <BLOCKQUOTE><I>
-  Phase 8�ł́A�ȑO�u�P��v�ƌĂ�ł������̂��A
-  �u���v�Ɓu�P��v�ɋ�ʂ��Ă��܂����A
-  ��ɍׂ������@��`��̖��ł��̂ŋC�ɂ��Ȃ��Č��\�ł��B
+  Phase 8では、以前「単語」と呼んでいたものを、
+  「文」と「単語」に区別していますが、
+  主に細かい文法定義上の問題ですので気にしなくて結構です。
 </I></BLOCKQUOTE>
 
 <P>
- �R����<SPAN id="type">":"</SPAN>��J���}<SPAN id="type">","</SPAN>��
- �O��ɂ͎��R�ɋ󔒂������܂��B
+ コロン<SPAN id="type">":"</SPAN>やカンマ<SPAN id="type">","</SPAN>の
+ 前後には自由に空白を入れられます。
 </P><P>
- �G���g���𕡐����ׂ�`���́A�������𕡐��̃G���g���ɓo�^����ꍇ�Ɏg���ĉ������B
- <SPAN id="type">'('�`')'</SPAN>�ň͂���҂̌`���́A
- �������s�ɂ������ĕ��ׂ����ꍇ�Ɏg���Ă��������B
- <SPAN id="type">'('�`')'</SPAN>�̊Ԃ͎��R�ɉ��s�ł��܂��B
- ����͂��̒��Ɋ���̕�����ׂ���_�ŁA
- ��q�́u�u���b�N�v�Ƃ͈قȂ�̂Œ��ӂ��Ă��������B
- ������Â炯��Ύg��Ȃ��Ă��\���܂���B
+ エントリを複数並べる形式は、同じ文を複数のエントリに登録する場合に使って下さい。
+ <SPAN id="type">'('～')'</SPAN>で囲う後者の形式は、
+ 文を何行にも分けて並べたい場合に使ってください。
+ <SPAN id="type">'('～')'</SPAN>の間は自由に改行できます。
+ これはその中に幾つもの文を並べられる点で、
+ 後述の「ブロック」とは異なるので注意してください。
+ 分かりづらければ使わなくても構いません。
 </P>
 
 <DIV class="sample">
- # �P��̓o�^<BR>
- �����̈��A : ���񂿂́B, ���[�����B, �ɂ�[�X�B,���, �S���@<BR>
- �G��, �R�X�v�� : ���C�h, �ዾ����, �`���C�i��<BR>
+ # 単語の登録<BR>
+ お昼の挨拶 : こんちは。, ちーっす。, にょース。,やっ, ゴルァ<BR>
+ 萌え, コスプレ : メイド, 眼鏡っ娘, チャイナ服<BR>
  <BR>
- # ���͂̓o�^�������ł�<BR>
- �����_����b.��X���� : \0\s[0]����ς�Β��ł���B\1\s[10]�c\w8�c\w8�́H\w8\0\s[3]�R�[�q�[���Β��̕����J�t�F�C���͑�����ˁB\1\s[10]����ȁB\w8\0������d���͑��������Ȃ̂ŁA�Β������������Ɓ\�\�\�\\1\s[11]�X�R�b�`\0\s[2]�c�c\w8\w8���H\1\s[11]�X�R�b�`\e<BR>
+ # 文章の登録も同じです<BR>
+ ランダム会話.夜更かし : \0\s[0]やっぱり緑茶でしょ。\1\s[10]…\w8…\w8は？\w8\0\s[3]コーヒーより緑茶の方がカフェインは多いよね。\1\s[10]そやな。\w8\0今夜も仕事は続きそうなので、緑茶を飲もうかと――――\1\s[11]スコッチ\0\s[2]……\w8\w8え？\1\s[11]スコッチ\e<BR>
  <BR>
- # �ǂ����I���̗͂�<BR>
- �����_����b.�d�g�n : �������́A���Ԃ�A${�n��}��${�n��}�ɂЂ��������${�l�Ԋ֌W}�́A�ŏ��̐��ゾ�B<BR>
+ # どこいつ的文章の例<BR>
+ ランダム会話.電波系 : 私たちは、たぶん、${地名}と${地名}にひきさかれる${人間関係}の、最初の世代だ。<BR>
  <BR>
- # �C�x���g�����X�N���v�g�Ȃ�(��q)������<BR>
- �C�x���g.OnCommunicate : $(if $[$(Reference 0)=="�܂��"] �c�c����͖��H�@����Ƃ��܂ڂ낵�H)
+ # イベント処理スクリプトなど(後述)も同じ<BR>
+ イベント.OnCommunicate : $(if $[$(Reference 0)=="まゆら"] ……これは夢？　それともまぼろし？)
 </DIV>
 
 <P>
- �G���g�����Ɏg���镶���͈ȉ��ł��B
- �������Ă�����̂́A�V���Ɏg����悤�ɂȂ������̂ł��B
+ エントリ名に使える文字は以下です。
+ 強調してあるものは、新たに使えるようになったものです。
 </P>
 
 <DIV class="syntax">
- �p����(<SPAN id="type">A�`Za�`z0�`9</SPAN>) / 
- <EM>�A�b�g�}�[�N</EM>(<SPAN id="type">'@'</SPAN>) /
- <EM>�N�G�X�`�����}�[�N</EM>(<SPAN id="type">'?'</SPAN>) /
- �s���I�h(<SPAN id="type">'.'</SPAN>) /
- �A���_�[�o�[(<SPAN id="type">'_'</SPAN>) /
- ������S�p����
+ 英数字(<SPAN id="type">A～Za～z0～9</SPAN>) / 
+ <EM>アットマーク</EM>(<SPAN id="type">'@'</SPAN>) /
+ <EM>クエスチョンマーク</EM>(<SPAN id="type">'?'</SPAN>) /
+ ピリオド(<SPAN id="type">'.'</SPAN>) /
+ アンダーバー(<SPAN id="type">'_'</SPAN>) /
+ いわゆる全角文字
 </DIV>
 
 <P>
- �������A�A�b�g�}�[�N<SPAN id="type">�u@�v</SPAN>
- ��<A href="#tmpentry">�ꎞ�G���g��</A>�ɗp����̂ŁA���i�͎g��Ȃ��ł��������B
- ����ɁA�G���g�����̐擪��<SPAN id="type">�u.�v</SPAN>�͎g���܂���B
- �܂��A�G���g��������<SPAN id="type">�u.�v</SPAN>���A�������ꍇ�A
- ��ɂ܂Ƃ߂��܂�(<SPAN id="type">npw.....special</SPAN> �� <SPAN id="type">npw.special</SPAN>)�B
- <SPAN id="type">'System.'</SPAN>�Ŏn�܂�G���g���́A
- �ؘa�������ʂɎg���G���g�����ł��̂ŏ���Ɏg���Ă��܂�Ȃ��悤�ɒ��ӂ��Ă��������B
+ ただし、アットマーク<SPAN id="type">「@」</SPAN>
+ は<A href="#tmpentry">一時エントリ</A>に用いるので、普段は使わないでください。
+ さらに、エントリ名の先頭に<SPAN id="type">「.」</SPAN>は使えません。
+ また、エントリ名中に<SPAN id="type">「.」</SPAN>が連続した場合、
+ 一つにまとめられます(<SPAN id="type">npw.....special</SPAN> → <SPAN id="type">npw.special</SPAN>)。
+ <SPAN id="type">'System.'</SPAN>で始まるエントリは、
+ 華和梨が特別に使うエントリ名ですので勝手に使ってしまわないように注意してください。
 </P><P>
- �ȏ�̌��܂莖��������A�G���g�����͎��R�Ɍ��߂��܂��B
- �����ɂƂ��ĕ�����₷�����O�ɂ��Ă��������B
- ������u�S�p�����v�����R�Ɏg����̂ŁA�ϋɓI�Ɏg���Ɨǂ��ł��傤
- (�^�C�v�͏����ʓ|��������܂��񂪁c�c)�B
+ 以上の決まり事を守る限り、エントリ名は自由に決められます。
+ 自分にとって分かりやすい名前にしてください。
+ いわゆる「全角文字」が自由に使えるので、積極的に使うと良いでしょう
+ (タイプは少し面倒かもしれませんが……)。
 </P>
 
 
 <A name="string"></A>
-<H3>3.1. ���ƕ�����</H3>
+<H3>3.1. 文と文字列</H3>
 
 <P>
-  ���́A�u������v�u�u���v�u�u���b�N�v���D���Ȃ������ׂ����̂ł��B
-  <A href="#subst">�u��</A>��<A href="#block">�u���b�N</A>�͌�q���܂��B
+  文は、「文字列」「置換」「ブロック」を好きなだけ並べたものです。
+  <A href="#subst">置換</A>と<A href="#block">ブロック</A>は後述します。
 </P><P>
-  ������́A�Ⴆ�Έȉ��̂悤�Ȃ��̂ł��B
+  文字列は、例えば以下のようなものです。
 </P>
 
 <DIV class="sample">
-  \0\s[3]���񂾃S�[�X�g�ɂ��Ă��邱�ƂȂ�Ė������B\1\s[10]�c�c�S�ɂ��Ȃ����Ƃ�\e
+  \0\s[3]死んだゴーストにしてやれることなんて無いさ。\1\s[10]……心にもないことを\e
 </DIV>
 
 <P>
- �قƂ�ǂ̕��͂́A���̂悤�ɒn�̕��Ƃ��Ă��̂܂܏������Ƃ��ł��܂��B
- �������A��������(�ȑO���������Ă��܂�)�Ȃ���A�g���Ȃ�����������܂��B
+ ほとんどの文章は、このように地の文としてそのまま書くことができます。
+ しかし、ごく少数(以前よりも減っています)ながら、使えない文字があります。
 </P><P>
- �܂��A�ȉ��̋L���́A<STRONG>�K��</STRONG>�g���܂���B
- ��q��<A href="#block">�u���b�N</A>�̒��ł́A����ȊO�̐����͂���܂���B
+ まず、以下の記号は、<STRONG>必ず</STRONG>使えません。
+ 後述の<A href="#block">ブロック</A>の中では、これ以外の制限はありません。
 </P>
 
 <DIV class="syntax">
- �N�H�[�g2�� <SPAN id="type">'&quot;' , '''</SPAN> /
- �h���}�[�N <SPAN id="type">'$'</SPAN> /
- �ۊ��� <SPAN id="type">'(' , ')'</SPAN></LI>
+ クォート2種 <SPAN id="type">'&quot;' , '''</SPAN> /
+ ドルマーク <SPAN id="type">'$'</SPAN> /
+ 丸括弧 <SPAN id="type">'(' , ')'</SPAN></LI>
 </DIV>
 
 <P>
- �G���g����`���Ƀx�^�ɏ����Ă���ꍇ�A
- ����ɃJ���}<SPAN id="type">','</SPAN>���g���܂���B
- �܂��A�C�����C���X�N���v�g���Ƀx�^�ɏ������ꍇ�A
- �Z�~�R����<SPAN id="type">';'</SPAN>���g���܂���B
- ���ꂼ��A���̏ꏊ�ŕ�����؂邽�߂Ɏg���邽�߁A�g���Ȃ����Ƃ͊��o�I�ɕ�����܂��B
- �����I�ɋC��t���Ȃ���΂Ȃ�Ȃ��͍̂ŏ��ɋ��������̂����ł��B
+ エントリ定義文にベタに書いている場合、
+ さらにカンマ<SPAN id="type">','</SPAN>が使えません。
+ また、インラインスクリプト中にベタに書いた場合、
+ セミコロン<SPAN id="type">';'</SPAN>が使えません。
+ それぞれ、その場所で文を区切るために使われるため、使えないことは感覚的に分かります。
+ 実質的に気を付けなければならないのは最初に挙げたものだけです。
 </P><P>
- �܂��A���̑O��A�y�эs�̐擪�����ɂ���x�^�̋󔒕���
- (���p�X�y�[�X�A�^�u�A���s�\�ȏꏊ�ł͉��s)�͖�������܂��B
- ���������ꏊ�ɋ󔒂������ɂ́A���̃N�H�[�g���g���Ă��������B
+ また、文の前後、及び行の先頭末尾にあるベタの空白文字
+ (半角スペース、タブ、改行可能な場所では改行)は無視されます。
+ こうした場所に空白を書くには、次のクォートを使ってください。
 </P>
 
 <DIV class="sample">
- �e�X�g������ : We are the champions ","my friends<BR>
+ テスト文字列 : We are the champions ","my friends<BR>
  <BR>
  =kis<BR>
- echo ${�e�X�g������}<BR>
- # �uWe are the champions ,my friends�v���Ԃ�<BR>
+ echo ${テスト文字列}<BR>
+ # 「We are the champions ,my friends」が返る<BR>
  =end<BR>
 </DIV>
 
 <A name="quote"></A>
-<H3>3.2. �N�H�[�g������</H3>
+<H3>3.2. クォート文字列</H3>
 
 <P>
- �O�q�̎g���Ȃ������╶�������̋󔒂𕶎���Ƃ��ĉؘa���̕��Ɋ܂߂�ɂ́A
- �N�H�[�g��������g���܂��B
+ 前述の使えない文字や文頭文末の空白を文字列として華和梨の文に含めるには、
+ クォート文字列を使います。
 </P>
 
 <DIV class="sample">
-  "&nbsp;&nbsp;&nbsp;&nbsp;�N�H�[�g������̒��ł͋󔒂�
-  ${�G���g��}�Ăяo���`�����A�J���}(,)�⊇�ʂ�A�Z�~�R����(;)�������܂�"
+  "&nbsp;&nbsp;&nbsp;&nbsp;クォート文字列の中では空白も
+  ${エントリ}呼び出し形式も、カンマ(,)や括弧や、セミコロン(;)も書けます"
 </DIV>
 
 <P>
-  ��̂悤�ɁA
-  �_�u���N�H�[�g<SPAN id="type">(")</SPAN>�������́A
-  (�V���O��)�N�H�[�g<SPAN id="type">(')</SPAN>
-  �ň͂܂ꂽ��������u�N�H�[�g������v�ƌĂт܂��B
-  �N�H�[�g������ł́A�قڑS�Ă̕������A�u�������܂܁v�̌`�ŏo�͂ł��܂��B
+  上のように、
+  ダブルクォート<SPAN id="type">(")</SPAN>もしくは、
+  (シングル)クォート<SPAN id="type">(')</SPAN>
+  で囲まれた文字列を「クォート文字列」と呼びます。
+  クォート文字列では、ほぼ全ての文字を、「書いたまま」の形で出力できます。
 </P><P>
-  �N�H�[�g������ł͏o�͂ł��Ȃ������͂���܂���B
-  ���A�L�q��A������ƕς���������������Ȃ��Ƃ����Ȃ����Ƃ�2��������܂��B
+  クォート文字列では出力できない文字はありません。
+  が、記述上、ちょっと変わった書き方をしないといけないことが2つだけあります。
 </P>
 
 <DL>
-  <DT>�u\"�v�������́u\'�v (�N�H�[�g�Ɏg���Ă��镶���̕�)</DT>
+  <DT>「\"」もしくは「\'」 (クォートに使っている文字の方)</DT>
   <DD>
-    �u"�v�������́u'�v���o�͂���܂��B
-    �N�H�[�g��������ŁA�N�H�[�g�Ɏg���Ă��镶�����o�͂��邽�߂Ɏg���܂��B
+    「"」もしくは「'」が出力されます。
+    クォート文字列内で、クォートに使っている文字を出力するために使います。
   </DD>
-  <DT>�u\\�v</DT>
+  <DT>「\\」</DT>
   <DD>
-    �u\�v���o�͂���܂��B
+    「\」が出力されます。
     <STRONG>
-      �u\�v�}�[�N���o�͂��邽�߂ɕK���u\\�v�������Ȃ���΂Ȃ�Ȃ��킯�ł͂Ȃ�
+      「\」マークを出力するために必ず「\\」を書かなければならないわけではない
     </STRONG>
-    ���Ƃɒ��ӂ��Ă��������B�ʏ�́A���̂܂�"\c"��"\s"�ȂǂƏ����Ă��������B
+    ことに注意してください。通常は、そのまま"\c"や"\s"などと書いてください。
   </DD>
 </DL>
 
 <P>
-  ���āA�ł́u�_�u���N�H�[�g���o�͂���v�ɂ͂ǂ�����΂����ł��傤���B
+  さて、では「ダブルクォートを出力する」にはどうすればいいでしょうか。
 </P>
 
 <DIV class="sample">
-  <SPAN style="color:red">"\""</SPAN>${�U��}<SPAN style="color:red">"\""</SPAN>���ČĂԂȁ[���I
+  <SPAN style="color:red">"\""</SPAN>${偽名}<SPAN style="color:red">"\""</SPAN>って呼ぶなーっ！
 </DIV>
 
 <P>
-  ���̂悤�ɂ���̂���̓����ł��B������́F
+  このようにするのが一つの答えです。もう一つは：
 </P>
 
 <DIV class="sample">
-  <SPAN style="color:red">'"'</SPAN>${�U��}<SPAN style="color:red">'"'</SPAN>���ČĂԂȁ[���I
+  <SPAN style="color:red">'"'</SPAN>${偽名}<SPAN style="color:red">'"'</SPAN>って呼ぶなーっ！
 </DIV>
 
 <P>
- ��������A�F���ς���Ă��镔�����N�H�[�g������ł��B
+ いずれも、色が変わっている部分がクォート文字列です。
 </P><P>
- ������B���N�H�[�g���O��\�}�[�N���o�͂���ɂ́F
+ もう一つ。閉じクォート直前に\マークを出力するには：
 </P>
 
 <DIV class="sample">
- echo-mode &gt; �ؘa���ł́A"����ȕ��Ɂ��u\\\"�v"�����ƁA�N�H�[�g���O��\�������܂��B<BR>
- �ؘa���ł́A����ȕ��Ɂ��u\"�v�����ƁA�N�H�[�g���O��\�������܂��B<BR>
+ echo-mode &gt; 華和梨では、"こんな風に→「\\\"」"書くと、クォート直前に\が書けます。<BR>
+ 華和梨では、こんな風に→「\"」書くと、クォート直前に\が書けます。<BR>
  <BR>
- echo-mode &gt; �ؘa���ł́A'����ȕ��Ɂ��u\"�v'�����ƁA�N�H�[�g���O��\�������܂��B<BR>
- �ؘa���ł́A����ȕ��Ɂ��u\"�v�����ƁA�N�H�[�g���O��\�������܂��B<BR>
+ echo-mode &gt; 華和梨では、'こんな風に→「\"」'書くと、クォート直前に\が書けます。<BR>
+ 華和梨では、こんな風に→「\"」書くと、クォート直前に\が書けます。<BR>
 </DIV>
 
 
 <A name="block"></A>
-<H3>3.3. �u���b�N</H3>
+<H3>3.3. ブロック</H3>
 
 <P>
-  �����A<SPAN id="type">'(' �` ')'</SPAN>�ň͂܂ꂽ������
-  �u�u���b�N�v�ƌĂт܂��B
-  <SPAN id="type">'<EM>$(</EM> ' �` ')'</SPAN>�́A
-  ��q�̃C�����C���X�N���v�g�ł��̂ŁA�ԈႦ�Ȃ��ł��������B
+  文中、<SPAN id="type">'(' ～ ')'</SPAN>で囲まれた部分を
+  「ブロック」と呼びます。
+  <SPAN id="type">'<EM>$(</EM> ' ～ ')'</SPAN>は、
+  後述のインラインスクリプトですので、間違えないでください。
 </P><P>
-  �u���b�N�̌��ʂ�2�����ł��B
+  ブロックの効果は2つだけです。
 </P>
 
 <UL>
-  <LI>�u���b�N�̒��������I�Ɉ�̒P��v�f�Ƃ݂Ȃ�����
-    (���̂��߁A<SPAN id="type">','</SPAN>��<SPAN id="type">';'</SPAN>�Ȃǂ́A
-    ������؂邽�߂̕������P��̈ꕔ�Ƃ��Ă݂Ȃ���܂�)</LI>
-  <LI>�u���b�N�̒��ł͉��s���������</LI>
+  <LI>ブロックの中を強制的に一つの単語要素とみなさせる
+    (そのため、<SPAN id="type">','</SPAN>や<SPAN id="type">';'</SPAN>などの、
+    文を区切るための文字が単語の一部としてみなされます)</LI>
+  <LI>ブロックの中では改行が許される</LI>
 </UL>
 
 <P>
-  �󔒕����͒ʏ�ʂ薳������܂��B
-  �u���̃��[���Ȃǂ��S�đ��̏ꏊ�Ɠ����ł��B
-  �܂��A�u���b�N�p�̊���<SPAN id="type">'(', ')'</SPAN>�́A
-  �������o�͂ɂ͌���܂���B
+  空白文字は通常通り無視されます。
+  置換のルールなども全て他の場所と同じです。
+  また、ブロック用の括弧<SPAN id="type">'(', ')'</SPAN>は、
+  もちろん出力には現れません。
 </P><P>
-  �u���b�N�́A��ɕ����s�ɕ����ĕ������������Ƃ��Ɏg���܂��B
+  ブロックは、主に複数行に分けて文を書きたいときに使われます。
 </P>
 
 <DIV class="sample">
- # �]��<BR>
- sentence.���C�����j���[ : \t\0\s[0]���j���[�����\n\n\q0[RandomTalk][�g�[�N]\q1[TestCommand][�e�X�g]\q2[Communicate][�R�~���j�P�[�g]\q3[PrefTalk][�g�[�N�ݒ�]\q4[Cancel][�L�����Z��]<BR>
+ # 従来<BR>
+ sentence.メインメニュー : \t\0\s[0]メニューだよん\n\n\q0[RandomTalk][トーク]\q1[TestCommand][テスト]\q2[Communicate][コミュニケート]\q3[PrefTalk][トーク設定]\q4[Cancel][キャンセル]<BR>
  <BR>
  # Phase 8<BR>
- sentence.���C�����j���[ : <SPAN id="red">(</SPAN><BR>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\t\0\s[0]���j���[�����\n<BR>
+ sentence.メインメニュー : <SPAN id="red">(</SPAN><BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\t\0\s[0]メニューだよん\n<BR>
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n<BR>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\q0[RandomTalk][�g�[�N]<BR>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\q1[TestCommand][�e�X�g]<BR>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\q2[Communicate][�R�~���j�P�[�g]<BR>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\q3[PrefTalk][�g�[�N�ݒ�]<BR>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\q4[Cancel][�L�����Z��]<BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\q0[RandomTalk][トーク]<BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\q1[TestCommand][テスト]<BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\q2[Communicate][コミュニケート]<BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\q3[PrefTalk][トーク設定]<BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\q4[Cancel][キャンセル]<BR>
  <SPAN id="red">)</SPAN>
 </DIV>
 
 <P>
- �u���b�N���g���ĕ����s�L�q�����Ă��Ă��A
- �G���g����`�̍Ō�ɂ͕K�����s���K�v�Ȃ��Ƃɒ��ӂ��Ă��������B
+ ブロックを使って複数行記述をしていても、
+ エントリ定義の最後には必ず改行が必要なことに注意してください。
 </P>
 <DIV class="sample">
-  ���� : (�C�s���邼�C�s���邼<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;�C�s���邼�C�s���邼<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;�C�s���邼�C�s���邼)
+  呪文 : (修行するぞ修行するぞ<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修行するぞ修行するぞ<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修行するぞ修行するぞ)
 </DIV>
 <P>
-  ��L�́A�����������܂��B
+  上記は、こうも書けます。
 </P>
 <DIV class="sample">
-  ���� : (<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;�C�s���邼�C�s���邼<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;�C�s���邼�C�s���邼<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;�C�s���邼�C�s���邼<BR>
+  呪文 : (<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修行するぞ修行するぞ<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修行するぞ修行するぞ<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修行するぞ修行するぞ<BR>
   )
 </DIV>
 <P>
-  �������A<EM>����͊ԈႢ�ł��B</EM>
+  しかし、<EM>これは間違いです。</EM>
 </P>
 <DIV class="sample">
-  ���� : <BR>
+  呪文 : <BR>
   (<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;�C�s���邼�C�s���邼<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;�C�s���邼�C�s���邼<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;�C�s���邼�C�s���邼<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修行するぞ修行するぞ<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修行するぞ修行するぞ<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修行するぞ修行するぞ<BR>
   )
 </DIV>
 <P>
-  �Ȃ��Ȃ�A<SPAN id="type">�u���� : �v</SPAN>�̂Ƃ���ŁA
-  �G���g����`�����I����Ă��܂��Ă��邩��ł��B
+  なぜなら、<SPAN id="type">「呪文 : 」</SPAN>のところで、
+  エントリ定義文が終わってしまっているからです。
 </P>
 
 <A name="multiline"></A>
-<H3>3.4. �����s�Ή�</H3>
+<H3>3.4. 複数行対応</H3>
 
 <P>
  <STRONG>
-  �u�J�����ʂɑΉ���������ʂ����Ȃ��Ԃ͉��s�������炠���Ă��悢�v
+  「開き括弧に対応する閉じ括弧が来ない間は改行がいくらあってもよい」
  </STRONG>
- �Ƃ����̂��APhase 8�̕����s�Ή��̍l�����ł��B
-  �u���b�N�A�G���g���Ăяo���A�G���g���z��Ăяo���̓Y�������A
- ���Z���A�C�����C���X�N���v�g�ȂǁA
- ���ʂɈ͂܂ꂽ�ꏊ���ׂĂɂ����āA
- ���@�I�ɋ󔒂��������ꏊ�Ȃ�΂ǂ��ɂł����s���������悤�ɂȂ�܂����B
- ���������ꏊ�ł͉��s�͋󔒕���(�X�y�[�X��^�u�Ɠ���)�ƌ��Ȃ���܂��B
+ というのが、Phase 8の複数行対応の考え方です。
+  ブロック、エントリ呼び出し、エントリ配列呼び出しの添え字部、
+ 演算式、インラインスクリプトなど、
+ 括弧に囲まれた場所すべてにおいて、
+ 文法的に空白が許される場所ならばどこにでも改行が入れられるようになりました。
+ そうした場所では改行は空白文字(スペースやタブと同じ)と見なされます。
 </P><P>
- �܂��A���ʏ����̃G���g����`(<SPAN id="type">�u�G���g���� '(' ')'�v</SPAN>�`��)�ɂ��A
- �G���g����`���ɑS�����R�ɕ����s�L�q���ł���悤�ɂȂ�܂����B
+ また、括弧書きのエントリ定義(<SPAN id="type">「エントリ名 '(' ')'」</SPAN>形式)により、
+ エントリ定義中に全く自由に複数行記述ができるようになりました。
 </P>
 
 <A name="subst"></A>
-<H2>4. �u���ƃG���g���Ăяo���Ǝ��s</H2>
+<H2>4. 置換とエントリ呼び出しと実行</H2>
 
 <BLOCKQUOTE>
  <EM>
-  �ł��d�v�ȏ͂ł��B
-  �^�₪�N�����тɂ����ɗ����߂�A�J��Ԃ��ǂ�ŗ������Ă��������B
+  最も重要な章です。
+  疑問が湧くたびにここに立ち戻り、繰り返し読んで理解してください。
  </EM>
 </BLOCKQUOTE>
 
 <P>
- ��L�܂łŁA�G���g�����Ăяo���ꂽ�Ƃ��A
- �ǂ�ȕ�����ł��o�͂ł���悤�ɂȂ�܂����B
- �������A�ؘa�����^�ɉؘa������m�I������s�����߂ɂ́A
- ���ɏq�ׂ�u���@�\�����������Ƃ��ł��܂���B
+ 上記までで、エントリが呼び出されたとき、
+ どんな文字列でも出力できるようになりました。
+ しかし、華和梨が真に華和梨たる知的動作を行うためには、
+ 次に述べる置換機能を欠かすことができません。
 </P>
 
 <P>
- <EM>�ؘa����4�̒u���@�\�������Ă��܂��B</EM>
- ���̂���������A<SPAN id="type">'$'</SPAN>�Ŏn�܂�A
- ���ʋL���ȂǂŌ��߂������͈̔͂������Ă��܂��B
+ <EM>華和梨は4つの置換機能を持っています。</EM>
+ そのいずれもが、<SPAN id="type">'$'</SPAN>で始まり、
+ 括弧記号などで決められる特定の範囲を持っています。
 </P>
 
 <DIV class="sample">
- # [1] �G���g���Ăяo��<BR>
- <SPAN id="green">${�G���g����}</SPAN><BR>
+ # [1] エントリ呼び出し<BR>
+ <SPAN id="green">${エントリ名}</SPAN><BR>
  <BR>
- # [2] �G���g���z��Ăяo��<BR>
- <SPAN id="green">$�G���g����[����]</SPAN><BR>
+ # [2] エントリ配列呼び出し<BR>
+ <SPAN id="green">$エントリ名[数字]</SPAN><BR>
  <BR>
- # [3] ���Z��<BR>
- <SPAN id="green">$[�� (1+2*3�Ƃ�)]</SPAN><BR>
+ # [3] 演算式<BR>
+ <SPAN id="green">$[式 (1+2*3とか)]</SPAN><BR>
  <BR>
- # [4] �C�����C���X�N���v�g<BR>
- <SPAN id="green">$(�X�N���v�g��; �X�N���v�g��; �X�N���v�g�� ... )</SPAN>
+ # [4] インラインスクリプト<BR>
+ <SPAN id="green">$(スクリプト文; スクリプト文; スクリプト文 ... )</SPAN>
 </DIV>
 
 <P>
- �����̏ڍׂɂ��Ă͏��Ԃɏڂ���������܂��B
- �����A������̋@�\�ɂ��Ă��A
+ これらの詳細については順番に詳しく解説します。
+ ただ、いずれの機能についても、
  <STRONG>
-  �u����(<SPAN id="type">'$'</SPAN>�Ŏn�܂�L�q)���A���̎��s���ʂŒu��������
+  置換部(<SPAN id="type">'$'</SPAN>で始まる記述)を、その実行結果で置き換える
  </STRONG>
- �Ƃ�����_�͋��ʂł��B
- ���ɂ͎��s���ʂ��������̂�����܂��B
- �����������̂́A�P�ɒu���L�q�������Ȃ��Ȃ邾��(�󕶎���Œu��������)�ƂȂ�܂��B
+ という一点は共通です。
+ 中には実行結果が無いものもあります。
+ そうしたものは、単に置換記述が見えなくなるだけ(空文字列で置き換えた)となります。
 </P><P>
- �܂��A�u���͂��̕������s����邽�тɋN���܂��B
- �ł�����A���Ƀ����_���ȓ��������G���g���Ăяo���Ȃǂ́A
- �������s���邽�тɈ�������ʂ�Ԃ��܂��B
+ また、置換はその文が実行されるたびに起きます。
+ ですから、特にランダムな動作をするエントリ呼び出しなどは、
+ 文を実行するたびに違った結果を返します。
 </P>
 
 <A name="entrycall"></A>
-<H3>4.1. �G���g���Ăяo��</H3>
+<H3>4.1. エントリ呼び出し</H3>
 
 <P>
- �G���g���ɓo�^���������Ăяo�����Ƃ��u�G���g���Ăяo���v�ƌ����܂��B
- �Ⴆ�΁A�u�l���v�Ƃ������O�̃G���g�����Ăяo���ɂ́A�ȉ��̂悤�ɏ����܂��B
+ エントリに登録した文を呼び出すことを「エントリ呼び出し」と言います。
+ 例えば、「人名」という名前のエントリを呼び出すには、以下のように書きます。
 </P>
 
 <DIV class="sample">
- # �l���G���g���Ɋ���̐l����o�^<BR>
- �l�� : �T�U�G, �J�c�I, ���J��, �^��, �t�O�^<BR>
+ # 人名エントリに幾つかの人名を登録<BR>
+ 人名 : サザエ, カツオ, ワカメ, タラ, フグタ<BR>
  <BR>
- # �l���G���g�����Ăяo���Ƃ��́A���̂悤�ɏ���<BR>
- ${�l��}
+ # 人名エントリを呼び出すときは、このように書く<BR>
+ ${人名}
 </DIV>
 
 <P>
- �G���g���Ăяo���̂��邱�Ƃ�2�ł��B
+ エントリ呼び出しのすることは2つです。
 </P>
 
 <OL>
-  <LI>�G���g���ɓo�^����Ă��镶�̒������������_���őI��</LI>
-  <LI><STRONG>�I�񂾕������s����</STRONG></LI>
+  <LI>エントリに登録されている文の中から一つをランダムで選ぶ</LI>
+  <LI><STRONG>選んだ文を実行する</STRONG></LI>
 </OL>
 
 <P>
- 2�Ԗڂ́u���s����v���Ƃ��d�v�Ȃ̂ŁA�o���Ă��������B
- �ꍇ�ɂ���āu�]������v�u�]�������v�ȂǂƂ��Ă΂�܂��B
+ 2番目の「実行する」ことが重要なので、覚えてください。
+ 場合によって「評価する」「評価される」などとも呼ばれます。
 </P><P>
- ���߂ɑ����܂��B
+ 次節に続きます。
 </P>
 
 <A name="execute"></A>
-<H3>4.2. ���s</H3>
+<H3>4.2. 実行</H3>
 
 <P>
-  �ؘa�������ŃG���g���ɓo�^����Ƃ��̕��́A
-  �����Ă��̂܂܁u�����B�v�Ȃǂɑ�����`�ł͂���܂���B
+  華和梨辞書でエントリに登録するときの文は、
+  決してそのまま「何か。」などに送られる形ではありません。
 </P>
 
 <DIV class="sample">
-  \0\s[0]����<SPAN id="red">${�Ȃ܂�}</SPAN>�B<SPAN id="red">${���傭���傤}</SPAN>����Ă܂��B������<SPAN id="red">${�Ƃ�����}</SPAN>����B\e
+  \0\s[0]私は<SPAN id="red">${なまえ}</SPAN>。<SPAN id="red">${しょくぎょう}</SPAN>やってます。相方は<SPAN id="red">${ともだち}</SPAN>だよ。\e
 </DIV>
 
 <P>
-  ��̗�́A${�Ȃ܂�}�A${���傭���傤}�A${�Ƃ�����}
-  �̂��ꂼ�ꂪ������������ɒu������邱�Ƃ��Ӑ}���Ă��܂��B
+  上の例は、${なまえ}、${しょくぎょう}、${ともだち}
+  のそれぞれが正しい文字列に置き換わることを意図しています。
 </P>
 
 <DIV class="sample">
-  # �G���g����`<BR>
-  �Ȃ܂� : ������<BR>
-  ���傭���傤 : �S�[�X�g<BR>
-  �Ƃ����� : ���ɂイ
+  # エントリ定義<BR>
+  なまえ : さくら<BR>
+  しょくぎょう : ゴースト<BR>
+  ともだち : うにゅう
 </DIV>
 
 <P>
-  ���̂悤�Ȏ������������ꍇ�A��قǂ̗��<STRONG>���s</STRONG>����Ɛ�����������ɂȂ�ł��傤�B
+  このような辞書があった場合、先ほどの例を<STRONG>実行</STRONG>すると正しい文字列になるでしょう。
 </P>
 
 <DIV class="sample">
-  \0\s[0]����<SPAN id="red">������</SPAN>�B<SPAN id="red">�S�[�X�g</SPAN>����Ă܂��B������<SPAN id="red">���ɂイ</SPAN>����B\e
+  \0\s[0]私は<SPAN id="red">さくら</SPAN>。<SPAN id="red">ゴースト</SPAN>やってます。相方は<SPAN id="red">うにゅう</SPAN>だよ。\e
 </DIV>
 
 <P>
-  �܂�A
+  つまり、
 </P>
 <P>
-  <STRONG>�u���s�v���u�u�������ۂɍs�����Ɓv</STRONG>
+  <STRONG>「実行」＝「置換を実際に行うこと」</STRONG>
 </P>
 <P>
-  �Ɗo���Ă��������B
-  �ؘa�����g������ł����ƁA
-  �u�����s����^�C�~���O��m�邱�Ƃ��ǂ����Ă��K�v�ƂȂ�܂��B
-  ���ݓ��������������č������Ă��܂����Ƃ��A
-  �u���s(���邢�͕]��)�v���s����̂����Ȃ̂��A
-  ����ɒ��ӂ���悤�ɂ��Ă��������B
+  と覚えてください。
+  華和梨を使い込んでいくと、
+  置換が行われるタイミングを知ることがどうしても必要となります。
+  込み入った文を書いて混乱してしまったとき、
+  「実行(あるいは評価)」が行われるのがいつなのか、
+  それに注意するようにしてください。
 </P><P>
-  ���̃��[����m��΁A�N�H�[�g������̈����ƒu�����قȂ邱�Ƃ������ł���Ǝv���܂��B
-  �N�H�[�g������ɂ�����u�G�X�P�[�v�v(<SPAN id="type">\&quot;</SPAN>�Ȃ�)�́A
-  ���s����邽�тɌ��ʂ��ς��K�v�͂���܂���B
-  �����ŁA�ǂݍ��܂ꂽ�i�K�Ŋ��ɃG�X�P�[�v�̏����͍s���Ă��܂��B
+  このルールを知れば、クォート文字列の扱いと置換が異なることも理解できると思います。
+  クォート文字列における「エスケープ」(<SPAN id="type">\&quot;</SPAN>など)は、
+  実行されるたびに結果が変わる必要はありません。
+  そこで、読み込まれた段階で既にエスケープの処理は行われています。
 </P>
 <!--
 <P>
-  ���ہA�����ǂݍ��݃v���Z�X���I���ĉؘa�������ɕێ�����Ă���f�[�^�Ƃ��ẮA
-  �N�H�[�g������ƒn�̕��̋�ʂ͂���܂���B
-  ����A�u���@�\���́A�����̕�����Ƃ͕ʂ̂��̂Ƃ��Ċ��ɔF������Ă��܂��B
-  �ł�����A�N�H�[�g���O�������ʁA
-  <SPAN id="type">'${'�`'}'</SPAN>
-  �Ȃǂ̕����񂪌��ꂽ�Ƃ��Ă��A���ꂪ�u���Ƃ��ċ@�\���邱�Ƃ͂���܂���B
-  �����������x�u�ǂݒ����v���߂ɂ́A
-  <SPAN id="type">eval</SPAN>�Ƃ��������KIS�R�}���h���g���K�v������܂��B
+  実際、辞書読み込みプロセスを終えて華和梨内部に保持されているデータとしては、
+  クォート文字列と地の文の区別はありません。
+  一方、置換機能部は、ただの文字列とは別のものとして既に認識されています。
+  ですから、クォートを外した結果、
+  <SPAN id="type">'${'～'}'</SPAN>
+  などの文字列が現れたとしても、それが置換として機能することはありません。
+  これをもう一度「読み直す」ためには、
+  <SPAN id="type">eval</SPAN>という特殊なKISコマンドを使う必要があります。
 </P>
 -->
 <BR>
 
 <P>
- ���āA���ꎩ�̂��u���@�\�ł���G���g���Ăяo�����A
- �I�яo�������ɑ΂��Ă���Ɏ��s���s�����߁A
- �K�R�I�ɃG���g���Ăяo���͉��x���s���邱�ƂɂȂ�܂��B
+ さて、それ自体が置換機能であるエントリ呼び出しが、
+ 選び出した文に対してさらに実行を行うため、
+ 必然的にエントリ呼び出しは何度も行われることになります。
 </P>
 
 <DIV class="sample">
-  �Ȃ܂� : ������ , �ӂ���<BR>
-  ���傭���傤 : �S�[�X�g , �f�X�N�g�b�v�}�X�R�b�g<BR>
-  �Ƃ����� : ���ɂイ , ������������<BR>
-  ��] : �����猾�킹���${�Ȃ܂�}���āA${���傭���傤}����Ă�ꍇ����Ȃ��Ǝv���́B<BR>
-  ��] : ���A${�Ȃ܂�}�͌���������${�Ƃ�����}���čD�����ȁB<BR>
+  なまえ : さくら , ふたば<BR>
+  しょくぎょう : ゴースト , デスクトップマスコット<BR>
+  ともだち : うにゅう , ただきちさん<BR>
+  批評 : 私から言わせれば${なまえ}って、${しょくぎょう}やってる場合じゃないと思うの。<BR>
+  批評 : 私、${なまえ}は嫌いだけど${ともだち}って好きだな。<BR>
  <BR>
-  # ������Bsentence�Ƃ����G���g�����͗��j�I���R�ɂ��B<BR>
-  sentence : ${��]}
+  # 入り口。sentenceというエントリ名は歴史的理由による。<BR>
+  sentence : ${批評}
 </DIV>
 
 <P>
-  �����ŁA<SPAN id="type">${sentence}</SPAN>��<STRONG>���s</STRONG>���܂��B
+  ここで、<SPAN id="type">${sentence}</SPAN>を<STRONG>実行</STRONG>します。
 </P>
 
 <OL>
-  <LI>�o�^���ꂽ�B��̕��ł���u<SPAN id="type">${��]}</SPAN>�v���I�������B</LI>
+  <LI>登録された唯一の文である「<SPAN id="type">${批評}</SPAN>」が選択される。</LI>
   <LI>
-    ���s����B�u��]�v���w�肵���G���g���Ăяo�����N����B
+    実行する。「批評」を指定したエントリ呼び出しが起きる。
     <OL>
       <LI>
-	(�Ⴆ��)�u<SPAN id="type">�����猾�킹���${�Ȃ܂�}���āA${���傭���傤}����Ă�ꍇ����Ȃ��Ǝv���́B</SPAN>�v���I�������B
+	(例えば)「<SPAN id="type">私から言わせれば${なまえ}って、${しょくぎょう}やってる場合じゃないと思うの。</SPAN>」が選択される。
       </LI>
       <LI>
-	��������s����B�܂��A�u�Ȃ܂��v�̃G���g���Ăяo���B
+	これも実行する。まず、「なまえ」のエントリ呼び出し。
 	<OL>
-	  <LI>�u������v���I�������B</LI>
-	  <LI>���s����B�u���q�������̂ŁA�ω�����</LI>
+	  <LI>「さくら」が選択される。</LI>
+	  <LI>実行する。置換子が無いので、変化無し</LI>
 	</OL>
-	�u${�Ȃ܂�}�v���u������v�ƒu����������B<BR>
-	�u���傭���傤�v�̃G���g���Ăяo���B
+	「${なまえ}」が「さくら」と置き換えられる。<BR>
+	「しょくぎょう」のエントリ呼び出し。
 	<OL>
-	  <LI>�u�f�X�N�g�b�v�}�X�R�b�g�v���I�������B</LI>
-	  <LI>���s����B�u���q�������̂ŁA�ω�����</LI>
+	  <LI>「デスクトップマスコット」が選択される。</LI>
+	  <LI>実行する。置換子が無いので、変化無し</LI>
 	</OL>
-	�u${���傭���傤}�v���u�f�X�N�g�b�v�}�X�R�b�g�v�ƒu����������B
+	「${しょくぎょう}」が「デスクトップマスコット」と置き換えられる。
       </LI>
     </OL>
-    �u${��]}�v���u�����猾�킹��΂�������āA�f�X�N�g�b�v�}�X�R�b�g����Ă�ꍇ����Ȃ��Ǝv���́B�v�ƒu����������B
+    「${批評}」が「私から言わせればさくらって、デスクトップマスコットやってる場合じゃないと思うの。」と置き換えられる。
   </LI>
 </OL>
 
 <P>
-  ���̂悤�ɁA�G���g���Ăяo���́A�u���q�������Ȃ�܂őS�Ă̒u�������s���܂��B
+  このように、エントリ呼び出しは、置換子が無くなるまで全ての置換を実行します。
 </P>
 
 <A name="recursivesubst"></A>
-<H3>4.3. �u���̓���q</H3>
+<H3>4.3. 置換の入れ子</H3>
 
 <P>
- �u���́A���݂��ɓ���q��ɂ��邱�Ƃ��ł��܂��B
- �u���̎�ނ͖₢�܂���B����q�̐[���ɂ������͂���܂���B
+ 置換は、お互いに入れ子状にすることができます。
+ 置換の種類は問いません。入れ子の深さにも制限はありません。
 </P>
 
 <DIV class="sample">
- $(set ���̘b�� ${���̘b��})<BR>
- $[ ${��} * ${����} ]<BR>
- ${ �ʕ��̃��X�g.${�J�E���^} }<BR>
- $�ʕ��̃G���g��[ ${�J�E���^} ]<BR>
- ������10�N����Č����ƁA����$[ $(date %Y) + 10 ]�N���ˁB<BR>
+ $(set あの話題 ${この話題})<BR>
+ $[ ${幅} * ${高さ} ]<BR>
+ ${ 駄文のリスト.${カウンタ} }<BR>
+ $駄文のエントリ[ ${カウンタ} ]<BR>
+ 今から10年後って言うと、西暦$[ $(date %Y) + 10 ]年だね。<BR>
  <BR>
- # ������ɂ����ł����A����ł������Ɠ����܂�<BR>
- $${�ԐڎQ��}[$[${�x�[�X}+${�|�C���^}]]<BR>
+ # 分かりにくいですが、これでもちゃんと動きます<BR>
+ $${間接参照}[$[${ベース}+${ポインタ}]]<BR>
 </DIV>
 
 <P>
- ����q�ɂȂ����u����<EM>�K����������u������܂�</EM>�B
- �Ⴆ�΁F
+ 入れ子になった置換は<EM>必ず内側から置換されます</EM>。
+ 例えば：
 </P>
 
 <OL>
- <LI><SPAN id="type">������10�N����Č����ƁA����$[ $(date %Y) + 10 ]�N���ˁB</SPAN></LI>
- <LI><SPAN id="type">������10�N����Č����ƁA����$[ 2002 + 10 ]�N���ˁB</SPAN></LI>
- <LI><SPAN id="type">������10�N����Č����ƁA����2012�N���ˁB</SPAN></LI>
+ <LI><SPAN id="type">今から10年後って言うと、西暦$[ $(date %Y) + 10 ]年だね。</SPAN></LI>
+ <LI><SPAN id="type">今から10年後って言うと、西暦$[ 2002 + 10 ]年だね。</SPAN></LI>
+ <LI><SPAN id="type">今から10年後って言うと、西暦2012年だね。</SPAN></LI>
 </OL>
 
-<P>���邢��</P>
+<P>あるいは</P>
 
 <OL>
- <LI><SPAN id="type">$[ ${��} * ${����} ]</SPAN></LI> 
+ <LI><SPAN id="type">$[ ${幅} * ${高さ} ]</SPAN></LI> 
  <LI><SPAN id="type">$[ 1600 * 1200 ]</SPAN></LI> 
  <LI><SPAN id="type">1920000</SPAN></LI> 
 </OL>
 
 <P>
- �Ƃ�����ł��B
+ という具合です。
 </P><P>
- Phase 7���[�U�́A
- �ȑO�͂ł��Ȃ�����(entry/eval�R�}���h�Ŏ������Ă���)
+ Phase 7ユーザは、
+ 以前はできなかった(entry/evalコマンドで実現していた)
  <SPAN id="type">${ ${ } }</SPAN>
- �Ƃ�������q���ł���悤�ɂȂ��Ă��邱�Ƃɒ��ӂ��Ă��������B
+ という入れ子ができるようになっていることに注意してください。
 </P>
 
 <DIV class="sample">
- # �u�����B�v�����GET���N�G�X�g�ɑ΂��A�uevent.&lt;�C�x���g��&gt;�v���Ă�<BR>
+ # 「何か。」からのGETリクエストに対し、「event.&lt;イベント名&gt;」を呼ぶ<BR>
  System.Callback.OnGET : ${event.${System.Request.ID}}
 </DIV>
 
 <P>
- �Ȃ��A�ȉ��̕��������͗�O�I�ɒu���ɂł��܂���B���ӂ��Ă��������B
+ なお、以下の部分だけは例外的に置換にできません。注意してください。
 </P>
 
 <UL>
- <LI>���Z���̉��Z�q</LI>
- <LI>�\���R�}���h�̃R�}���h�� (�֐��R�}���h�͉�)</LI>
- <LI>�W�����Z���̉��Z�q</LI>
+ <LI>演算式の演算子</LI>
+ <LI>構文コマンドのコマンド名 (関数コマンドは可)</LI>
+ <LI>集合演算式の演算子</LI>
 </UL>
 
 <P>
- �Ⴆ�Έȉ���<EM>�G���[</EM>�ł��B
+ 例えば以下は<EM>エラー</EM>です。
 </P>
 
 <DIV class="sample">
- # ��������������肵����<BR>
+ # 足したり引いたりしたい<BR>
  $[ 100 ${plus_or_minus} 10 ]<BR>
  <BR>
- # �ꍇ�ɂ����until��while���g����������<BR>
- $(${until_or_while} ${����} $(���s�� ) )<BR>
+ # 場合によってuntilとwhileを使い分けたい<BR>
+ $(${until_or_while} ${条件} $(実行文 ) )<BR>
  <BR>
- # ���ʒP����Ăт���<BR>
+ # 共通単語を呼びたい<BR>
  ${x${and}y}}
 </DIV>
 
 
 <A name="entrycallvar"></A>
-<H2>5. �G���g���Ăяo���̃o���G�[�V����</H2>
+<H2>5. エントリ呼び出しのバリエーション</H2>
 
 <A name="setexpr"></A>
-<H3>5.1. �W�����Z��</H3>
+<H3>5.1. 集合演算式</H3>
 
 <P>
-  �G���g���Ăяo���̒��g(<SPAN id="type">'${'�`'}'</SPAN>�̊�)�ɂ́A
-  �ȉ��̂悤�Ȃ��Ƃ������܂��B
+  エントリ呼び出しの中身(<SPAN id="type">'${'～'}'</SPAN>の間)には、
+  以下のようなことも書けます。
 </P>
 
 <DIV class="sample">
-  ${ ��� & ���� }<BR>
-  ${ �S�[�X�g & �A�� }<BR>
-  ${ �j�� + ���� }<BR>
-  ${ �S�[�X�g - �F�B }
+  ${ 作家 & 女性 }<BR>
+  ${ ゴースト & 植物 }<BR>
+  ${ 男性 + 女性 }<BR>
+  ${ ゴースト - 友達 }
 </DIV>
 
 <P>
-  ��s�ڂ́u�u��Ɓv�G���g���Ɓu�����v�G���g���̗����ɓ����Ă��镶�̒�������I�ԁv
-  (�������I�񂾌�Ɏ��s���܂�)�A
-  ��s�ڂ́u�u�S�[�X�g�v�G���g���Ɓu�A���v�G���g���̗����ɓ����Ă��镶�̒�������I�ԁv�A
-  ���l�ɁA
-  �O�s�ڂ́u�u�j���v�G���g���Ɓu�����v�G���g����<EM>�ǂ��炩</EM>�v�A
-  �l�s�ڂ́u�u�S�[�X�g�v�G���g���ɓ����Ă��āu�F�B�v�G���g����<EM>�����Ă��Ȃ�</EM>�v
-  ��������I�т܂��B
+  一行目は「「作家」エントリと「女性」エントリの両方に入っている文の中から一つを選ぶ」
+  (もちろん選んだ後に実行します)、
+  二行目は「「ゴースト」エントリと「植物」エントリの両方に入っている文の中から一つを選ぶ」、
+  同様に、
+  三行目は「「男性」エントリと「女性」エントリの<EM>どちらか</EM>」、
+  四行目は「「ゴースト」エントリに入っていて「友達」エントリに<EM>入っていない</EM>」
+  文から一つを選びます。
 </P><P>
-  �����͊��ł����ׂ��܂��B
+  これらは幾らでも並べられます。
 </P>
 
 <P>
-�D��x�ɂ��āF
+優先度について：
 </P>
 <P>
-  �����ł�<SPAN id="type">'*'</SPAN>��<SPAN id="type">'/'</SPAN>���A
-  <SPAN id="type">'+'</SPAN>��<SPAN id="type">'-'</SPAN>����
-  �u�D��v����܂��B
-  �Ⴆ��
+  数式では<SPAN id="type">'*'</SPAN>や<SPAN id="type">'/'</SPAN>が、
+  <SPAN id="type">'+'</SPAN>や<SPAN id="type">'-'</SPAN>よりも
+  「優先」されます。
+  例えば
 </P>
 <DIV class="sample">
   100 - 10 * 2 = 80
 </DIV>
 <P>
-  �ȂǁB
+  など。
 </P><P>
-  ���l�ɉؘa���̏W�����Z���ł�<SPAN id="type">'&'</SPAN>���A
-  ����2�̉��Z�q�����u�D��v����܂��B
+  同様に華和梨の集合演算式では<SPAN id="type">'&'</SPAN>が、
+  他の2つの演算子よりも「優先」されます。
 </P>
 <DIV class="sample">
-  ${ �j�� + ���� & ��� }
+  ${ 男性 + 女性 & 作家 }
 </DIV>
 <P>
-  �Ə����ƁA�u�w�j���x�A�������́w��������Ɓx�v���I�΂�܂��B
-  ������u�j���������A����Ɓv�ɕς���ɂ́A�����Ɠ��l�A���������܂��B
+  と書くと、「『男性』、もしくは『女性かつ作家』」が選ばれます。
+  これを「男性か女性、かつ作家」に変えるには、数式と同様、こう書きます。
 </P>
 <DIV class="sample">
-  ${ (�j�� + ����) & ��� }
+  ${ (男性 + 女性) & 作家 }
 </DIV>
 
 <P>
- �Ȃ��A�W���������������₷�����邽�߂ɁA
- <SPAN id="type">${�G���g����}</SPAN>�݂̂̕��́A
- ���̐�̃G���g���̎����܂Ō��ɓ���܂��B
+ なお、ジャンル分けをやりやすくするために、
+ <SPAN id="type">${エントリ名}</SPAN>のみの文は、
+ その先のエントリの持つ文まで候補に入れます。
 </P>
 
 <DIV class="sample">
- ��� : ${SF���}, ${�t�@���^�W�[���}, ${�~�X�e�����}, ${�ǂ��킩��Ȃ����}<BR>
- SF��� : �e�B�v�g��Jr.<BR>
- �t�@���^�W�[��� : �g�[���L��<BR>
- �~�X�e����� : �N���X�e�B<BR>
- �ǂ��킩��Ȃ���� : �L���O<BR>
- �j�� : �A�V���t, �g�[���L��, �|�I, �L���O<BR>
+ 作家 : ${SF作家}, ${ファンタジー作家}, ${ミステリ作家}, ${良くわかんない作家}<BR>
+ SF作家 : ティプトリJr.<BR>
+ ファンタジー作家 : トールキン<BR>
+ ミステリ作家 : クリスティ<BR>
+ 良くわかんない作家 : キング<BR>
+ 男性 : アシモフ, トールキン, ポオ, キング<BR>
  <BR>
  =kis<BR>
- echo ${�j�� & ���}<BR>
- # �u�g�[���L���v�������́u�L���O�v<BR>
+ echo ${男性 & 作家}<BR>
+ # 「トールキン」もしくは「キング」<BR>
  =end
 </DIV>
 
 <A name="entryarray"></A>
-<H3>5.2. �G���g���z��Ăяo��</H3>
+<H3>5.2. エントリ配列呼び出し</H3>
 
 <P>
-  �G���g���ɓo�^���ꂽ���̓��A�������̈ʒu�̕���I�Ԏ��Ɏg���܂��B
+  エントリに登録された文の内、ある特定の位置の文を選ぶ時に使います。
 </P>
 
 <DIV class="sample">
-  # �T���v��<BR>
+  # サンプル<BR>
   $sentence[0]<BR>
-  $�l��[2]<BR>
-  $����[${�Ō�ɒ���������}+1]
+  $人名[2]<BR>
+  $演説[${最後に喋った演説}+1]
 </DIV>
 
 <P>
-  ��L�̂悤�Ɂu<SPAN id="type">'$' + �G���g���� + '[' + ���Z�� + ']'</SPAN>�v
-  �Ƃ����`���ɂȂ�܂��B
-  ���Z���ɂ��Ă�<A href="#expression">��q</A>���܂��B
+  上記のように「<SPAN id="type">'$' + エントリ名 + '[' + 演算式 + ']'</SPAN>」
+  という形式になります。
+  演算式については<A href="#expression">後述</A>します。
 </P><P>
-  �G���g���z��Ăяo�������s����ƁA
-  �w��G���g���́A�w��Ԗ�(������C���f�b�N�X�ƌ����܂�)�̕���I�����A���s���܂��B
-  �C���f�b�N�X��0���琔���n�߂܂��B
-  ���ʁu��Ԗځv�ƌĂԂ��̂́A�u0�v�Ԗڂł��̂ŋC��t���Ă��������B
-  �܂��A�C���f�b�N�X�ɕ��̒l����ꂽ�ꍇ�́A��납�琔���n�߂܂��B
+  エントリ配列呼び出しを実行すると、
+  指定エントリの、指定番目(これをインデックスと言います)の文を選択し、実行します。
+  インデックスは0から数え始めます。
+  普通「一番目」と呼ぶものは、「0」番目ですので気を付けてください。
+  また、インデックスに負の値を入れた場合は、後ろから数え始めます。
 </P><P>
-  �w��Ԗڂ̕������݂��Ȃ������ꍇ�̌��ʂ͋󕶎���(<SPAN id="type">""</SPAN>)�ł��B
+  指定番目の文が存在しなかった場合の結果は空文字列(<SPAN id="type">""</SPAN>)です。
 </P><P>
-  �ȉ��A<A href="kosui.html">�K��</A>�̕\�L�œ���������܂��B
+  以下、<A href="kosui.html">幸水</A>の表記で動作を示します。
 </P>
 
 <DIV class="sample">
-  # �������e<BR>
-  a : ��, ��, ��, �Q<BR>
+  # 辞書内容<BR>
+  a : 零, 壱, 弐, 参<BR>
   <BR>
   echo-mode &gt; $a[0]<BR>
-  ��<BR>
+  零<BR>
   echo-mode &gt; $a[2]<BR>
-  ��<BR>
+  弐<BR>
   echo-mode &gt; $a[-1]<BR>
-  �Q
+  参
 </DIV>
 
 <A name="histref"></A>
-<H3>5.3. �����Q��(����)</H3>
+<H3>5.3. 履歴参照(中級)</H3>
 
 <P>
-  �u<SPAN id="type">${���l}</SPAN>�v
-  �Ƃ�������ȃG���g���Ăяo���𗚗��Q�ƂƌĂт܂��B
-  �����Q�Ƃ́A���������ōs��ꂽ�u�����ʂ��ēx�Q�Ƃ���Ƃ��Ɏg���܂��B
+  「<SPAN id="type">${数値}</SPAN>」
+  という特殊なエントリ呼び出しを履歴参照と呼びます。
+  履歴参照は、同じ文脈で行われた置換結果を再度参照するときに使います。
 </P>
 
 <DIV class="sample">
-  n : ��<BR>
-  food : ��<BR>
-  sentence : ${n}�̂悤��${food}�A${1}�̂悤��${0}�B
+  n : 石<BR>
+  food : 梨<BR>
+  sentence : ${n}のような${food}、${1}のような${0}。
 </DIV>
 
 <P>
-  ��L�̗�ł��ƁAsentence�̎��s���ʂ́u�΂̂悤�ȗ��A���̂悤�Ȑ΁B�v�ɂȂ�܂��B
+  上記の例ですと、sentenceの実行結果は「石のような梨、梨のような石。」になります。
 </P><P>
-  ���̐��l����͂�0���琔���n�߂܂��B
-  �܂��A���̐��l������ƌ�납�琔���n�߂܂��B
+  この数値もやはり0から数え始めます。
+  また、負の数値を入れると後ろから数え始めます。
 </P><P>
-  �����Q�Ƃ͏������ʈ����Ȃ̂ŁA
-  �W�����Z�Ɏg��(<SPAN id="type">${0 & entry}</SPAN>�Ȃ�)���Ƃ͂ł��܂���B
-  <SPAN id="type">${ ${�G���g�� } }</SPAN>�̂悤�ȏ������ŁA
-  �����̃G���g���Ăяo�����ʂ����l�ł��A�����Q�Ƃɂ͂Ȃ�܂���B
+  履歴参照は少し特別扱いなので、
+  集合演算に使う(<SPAN id="type">${0 & entry}</SPAN>など)ことはできません。
+  <SPAN id="type">${ ${エントリ } }</SPAN>のような書き方で、
+  内部のエントリ呼び出し結果が数値でも、履歴参照にはなりません。
 </P>
 
 <BR>
 
 <P>
-  ���������Phase 7.3.1�ȑO�Ƃ̈Ⴂ�ł��B
+  ここからはPhase 7.3.1以前との違いです。
 </P><P>
-  �܂��A�S�Ă̒u���L�q�������Q�Ƃɂ���ĎQ�Ɖ\�ɂȂ�܂����B
-  �܂�A�G���g���Ăяo���A�G���g���z��Ăяo���A���Z���A�C�����C���X�N���v�g�̂��Ƃł��B
-  ������₷�������΁A�u�S����<SPAN id="type">'$'</SPAN>���Q�Ɖ\�v�ł��B
+  まず、全ての置換記述が履歴参照によって参照可能になりました。
+  つまり、エントリ呼び出し、エントリ配列呼び出し、演算式、インラインスクリプトのことです。
+  分かりやすく言えば、「全部の<SPAN id="type">'$'</SPAN>を参照可能」です。
 </P><P>
-  �ł́A���̏ꍇ�͂ǂ��ł��傤���B
+  では、次の場合はどうでしょうか。
 </P>
 
 <DIV class="sample">
-  n : ��<BR>
-  food : ��<BR>
-  sentence : $(echo �u${n}�v)�̂悤��$(echo �u${food}�v)�A${1}�̂悤��${0}�B
+  n : 石<BR>
+  food : 梨<BR>
+  sentence : $(echo 「${n}」)のような$(echo 「${food}」)、${1}のような${0}。
 </DIV>
 
 <P>
-  <SPAN id="type">${1}</SPAN>�́A
-  <SPAN id="type">$(echo �u${n}�v)</SPAN>�̒���<SPAN id="type">${n}</SPAN>
-  ���Q�Ƃ��Ă��܂�Ȃ��̂ł��傤���H
-  �������́A���s�����Ƃ��Ă�<SPAN id="type">${n}</SPAN>
-  �̕�����̂悤�Ɏv���܂�����A
-  <SPAN id="type">${n}</SPAN>��0�ԖڂŁA
-  <SPAN id="type">$(echo �u${n}�v)</SPAN>��1�Ԗڂł��傤���B
+  <SPAN id="type">${1}</SPAN>は、
+  <SPAN id="type">$(echo 「${n}」)</SPAN>の中の<SPAN id="type">${n}</SPAN>
+  を参照してしまわないのでしょうか？
+  もしくは、実行順序としては<SPAN id="type">${n}</SPAN>
+  の方が先のように思えますから、
+  <SPAN id="type">${n}</SPAN>が0番目で、
+  <SPAN id="type">$(echo 「${n}」)</SPAN>が1番目でしょうか。
 </P><P>
-  �����͂ǂ���ł�����܂���B
-  <STRONG>�����Q�Ƃɂ����ẮA<SPAN id="type">'$'</SPAN>�̒��͊֒m���܂���B</STRONG>
-  ����āA
-  <SPAN id="type">$(echo �u${n}�v)</SPAN>��0�ԖڂŁA
-  <SPAN id="type">$(echo �u${food}�v)</SPAN>��1�Ԗڂł��B
+  答えはどちらでもありません。
+  <STRONG>履歴参照においては、<SPAN id="type">'$'</SPAN>の中は関知しません。</STRONG>
+  よって、
+  <SPAN id="type">$(echo 「${n}」)</SPAN>が0番目で、
+  <SPAN id="type">$(echo 「${food}」)</SPAN>が1番目です。
 </P><P>
-  ���ƌ����āA
-  <SPAN id="type">'$(' �` ')'</SPAN>�̒�(���邢�̓G���g���W�����Z���Ȃǂ̒�)�ł́A
-  �����Q�Ƃ͎g���Ȃ��Ƃ����Ӗ��ł͂���܂���B
-  �������g���܂��B�����ď]���ʂ�A���ʂ̊O�̈ȑO�̒u���������Q�Ɖ\�ł��B
+  かと言って、
+  <SPAN id="type">'$(' ～ ')'</SPAN>の中(あるいはエントリ集合演算式などの中)では、
+  履歴参照は使えないという意味ではありません。
+  もちろん使えます。そして従来通り、括弧の外の以前の置換履歴も参照可能です。
 </P>
 
 <DIV class="sample">
-  sentence : ${n}�̂悤��${food}�A$(echo �u${1}�v)�̂悤��$(echo �u${0}�v)�B
+  sentence : ${n}のような${food}、$(echo 「${1}」)のような$(echo 「${0}」)。
 </DIV>
 
 <P>
-  �������A�X�N���v�g�̊O����Q�Ƃ���Ƃ��́A�X�N���v�g�S�̂��������܂���B
+  しかし、スクリプトの外から参照するときは、スクリプト全体しか見えません。
 </P>
 
 <A name="tmpentry"></A>
-<H3>5.4. �ꎞ�G���g��(�㋉)</H3>
+<H3>5.4. 一時エントリ(上級)</H3>
 
 <P>
-  �������͑S���قȂ�܂����A����͗����Q�ƂƂقړ����@�\�ł��B
+  見かけは全く異なりますが、これは履歴参照とほぼ同じ機能です。
 </P>
 
 <P>
-  �ꎞ�G���g���Ƃ́A�ؘa�������i�����Ă��鎫���Ƃ͕ʂɁA
-  <STRONG>����G���g�����̈�̕������s���Ă���Ԃ̂ݑ��݂���ꎞ�I�Ȏ���</STRONG>
-  �ɓo�^�����G���g���ł��B
-  �G���g�����̐擪�ɃA�b�g�}�[�N<SPAN id="type">'@'</SPAN>���t���̂������ł��B
+  一時エントリとは、華和梨が普段持っている辞書とは別に、
+  <STRONG>あるエントリ中の一つの文を実行している間のみ存在する一時的な辞書</STRONG>
+  に登録されるエントリです。
+  エントリ名の先頭にアットマーク<SPAN id="type">'@'</SPAN>が付くのが特徴です。
 </P><P>
-  ���̎����́A���̎��s(�u����Ƃł���)���n�܂�Ɠ����ɁA���̕���p�Ɉ�쐬����A
-  �I���Ɠ����ɍ폜����܂��B
+  この辞書は、文の実行(置換作業ですね)が始まると同時に、その文専用に一つ作成され、
+  終わると同時に削除されます。
 </P><P>
-  �ꎞ�G���g���͎�����`���ɂ͑��݂��Ȃ�(�������s����Ă��Ȃ��̂ł����瓖�R�ł�)���߁A
-  �ʏ�̃G���g����`�ŕ���o�^���邱�Ƃ��ł��܂���B
-  �]���āA�ꎞ�G���g���͏�ɃX�N���v�g�ɂ���č���邱�ƂɂȂ�܂��B
+  一時エントリは辞書定義時には存在しない(何も実行されていないのですから当然です)ため、
+  通常のエントリ定義で文を登録することができません。
+  従って、一時エントリは常にスクリプトによって作られることになります。
 </P>
 
 <DIV class="sample">
-  sentence : $(setstr @���O ${���O})\0\s[0]���O�G���g������${@���O}��I�т܂����B\1\s[10]\w8����${@���O}\0\s[0]\w2���ł��Č����Ă��c�c
+  sentence : $(setstr @名前 ${名前})\0\s[0]名前エントリから${@名前}を選びました。\1\s[10]\w8何で${@名前}\0\s[0]\w2何でって言われても……
 </DIV>
 
 <P>
-  ��L�ł́A���̎��s���n�܂����u�ԂɈꎞ����(���g����)���ݒ肳��A
-  �ŏ��̃X�N���v�g��<SPAN clsss="tt">@���O</SPAN>�G���g����
-  (�ʏ펫����)���O�G���g�����Ăяo�������ʂ̕����񂪓���܂��B
-  ����ȍ~�A<SPAN id="type">@���O</SPAN>�G���g���́A
-  ���̕��̎��s���I������܂Ŏc��܂�
-  (�������A����ȑO�ɃX�N���v�g�ɂ���ď������邱�Ƃ͉\�ł�)�B
+  上記では、文の実行が始まった瞬間に一時辞書(中身無し)が設定され、
+  最初のスクリプトで<SPAN clsss="tt">@名前</SPAN>エントリに
+  (通常辞書の)名前エントリを呼び出した結果の文字列が入ります。
+  それ以降、<SPAN id="type">@名前</SPAN>エントリは、
+  この文の実行が終了するまで残ります
+  (もちろん、それ以前にスクリプトによって消去することは可能です)。
 </P><P>
-  �����Q�Ƃ��A�����I�ɐݒ肳���ߋ��̒u���������Q�Ƃ���Ƃ����P�@�\�ł���̂ɔ�ׁA
-  �ꎞ�G���g���͎��R�ɐݒ�E�ύX�E�Ăяo�����ł��A
-  �W�����Z�ɂ��g���܂��B
+  履歴参照が、自動的に設定される過去の置換履歴を参照するという単機能であるのに比べ、
+  一時エントリは自由に設定・変更・呼び出しができ、
+  集合演算にも使えます。
 </P>
 
 <DIV class="sample">
-  ���� : ${@���O}���ĉ��H
+  質問 : ${@名前}って何？
 </DIV>
 
 <P>
-  ���̃G���g���ɑ΂��ė����Q�Ƃł��Ȃ��̂Ɠ��l�A
-  ���̃G���g���̈ꎞ�������Q�Ƃ��邱�Ƃ͂ł��܂���B
+  他のエントリに対して履歴参照できないのと同様、
+  他のエントリの一時辞書を参照することはできません。
 </P>
 
 <DIV class="sample">
-  sentence : $(pushstr @���O ���Ȃ�)${����}
+  sentence : $(pushstr @名前 うなぎ)${質問}
 </DIV>
 
 <P>
-  �܂��u@���O�v�ꎞ�G���g���ɁA
-  �u���Ȃ��v�Ƃ�����������Z�b�g���Ă���A
-  �����قǂ́u����v�G���g�����Ăяo���Ă��܂����A
-  <STRONG>��������Ӗ��ł��B</STRONG>
-  �Ăяo�����ɑ΂��ė����Q�Ƃł��Ȃ��̂Ɠ��l�A
-  �Ăяo�����̈ꎞ�������Q�Ƃ��邱�Ƃ͂ł��܂���B
+  まず「@名前」一時エントリに、
+  「うなぎ」という文字列をセットしてから、
+  さきほどの「質問」エントリを呼び出していますが、
+  <STRONG>これも無意味です。</STRONG>
+  呼び出し元に対して履歴参照できないのと同様、
+  呼び出し元の一時辞書を参照することはできません。
 </P>
 
 <BR>
 
 <P>
-  �����Q�ƂƈႤ�_�́A
-  �������̒��ł��肳������΁A�X�N���v�g�≉�Z���̒����낤�ƊO���낤�ƁA
-  �ꏊ�Ɋ֌W�Ȃ������ꎞ�����ɃA�N�Z�X�ł���Ƃ���ł��B
-  �X�N���v�g���ő�����s�������ʂ��X�N���v�g�O�Ŏ󂯎�邱�Ƃ��ܘ_�ł��܂��B
-  ���ہA��ɋ�������ł����ɍs���Ă��܂��B
+  履歴参照と違う点は、
+  同じ文の中でありさえすれば、スクリプトや演算式の中だろうと外だろうと、
+  場所に関係なく同じ一時辞書にアクセスできるところです。
+  スクリプト中で操作を行った結果をスクリプト外で受け取ることも勿論できます。
+  実際、上に挙げた例でも既に行っています。
 </P><P>
-  �ꎞ�G���g���������Ƃ����p�����̂́A
-  KIS�̃��[�U��`�֐��ɂ����Ăł��傤�B
-  �ȑO�́u�֐��I�@�\�����G���g���v���Ăяo���ꍇ�A
-  ���̃G���g���ɓn���ׂ��l(����)����ʂɗp�ӂ���(�������ʏ펫���̈ꕔ�ł���)�G���g���ɃZ�b�g���Ă���Ăяo���̂��ʗ�ł����B
-  �������A���̌`���ł͖�肪����܂��F
+  一時エントリがもっとも活用されるのは、
+  KISのユーザ定義関数においてでしょう。
+  以前は「関数的機能を持つエントリ」を呼び出す場合、
+  そのエントリに渡すべき値(引数)を特別に用意した(しかし通常辞書の一部である)エントリにセットしてから呼び出すのが通例でした。
+  しかし、この形式では問題があります：
 </P>
 <DL>
-  <LI>�ē�(���̊֐��̎��s���ɍĂѓ����֐����Ăяo����邱��)�s�\</LI>
-  <LI>�֐��^�G���g�����s�I�����Ɉ����G���g�������������N���A���Ȃ�����A�ȑO�̒l���c���Ă���\��������</LI>
-  <LI>�Ăяo���ۈȊO�ɁA���R��������G���g���̒l�������ς��\��������</LI>
+  <LI>再入(その関数の実行中に再び同じ関数が呼び出されること)不能</LI>
+  <LI>関数型エントリ実行終了時に引数エントリをいちいちクリアしない限り、以前の値が残っている可能性がある</LI>
+  <LI>呼び出す際以外に、偶然から引数エントリの値が書き変わる可能性がある</LI>
 </DL>
 <P>
-  Phase 8�̃��[�U��`�֐��ł́A
-  �ؘa���V�X�e���ɂ���āA�����͎����I�ɌĂяo���ꂽ�֐����̈ꎞ�G���g��<SPAN id="type">@arg</SPAN>�ɃZ�b�g����܂��̂ŁA
-  ���S���Ĉ������g�����Ƃ��ł��܂��B
-  �����̃��[�U��`�֐����݂������x���Ăэ����Ă��A
-  ���̈����̃G���g�����㏑�����ꂽ��A�ߋ��̈������c���Ă����肷��댯�͂���܂���B
+  Phase 8のユーザ定義関数では、
+  華和梨システムによって、引数は自動的に呼び出された関数側の一時エントリ<SPAN id="type">@arg</SPAN>にセットされますので、
+  安心して引数を使うことができます。
+  複数のユーザ定義関数が互いを何度も呼び合っても、
+  その引数のエントリが上書きされたり、過去の引数が残っていたりする危険はありません。
 </P><P>
- �Ȃ��A���̋@�\�͖����Ɏg��Ȃ��Ă��\���܂���B
- �S�ẴG���g�������݂��ɂԂ���Ȃ��悤�Ɏ����ŊǗ��ł��Ă��āA
- �Ȃ�����function�ɂ��֐���`���g��Ȃ��ꍇ�́A�ꎞ�G���g�����g���K�v�͂���܂���B
- �G���g���Ăяo�����֐�����Ɏg���]���̎�@�𓥏P����ꍇ�Ȃǂł��B
+ なお、この機能は無理に使わなくても構いません。
+ 全てのエントリ名が互いにぶつからないように自分で管理できていて、
+ なおかつfunctionによる関数定義を使わない場合は、一時エントリを使う必要はありません。
+ エントリ呼び出しを関数代わりに使う従来の手法を踏襲する場合などです。
 </P>
 
 <A name="expression"></A>
-<H2>6. ���Z��</H2>
+<H2>6. 演算式</H2>
 
 <P>
- <SPAN id="type">$[ �` ]</SPAN>�ň͂܂ꂽ�̈���u���Z���v�ƌĂт܂��B
- ���Z���ł́A�������Z�A�r�b�g�P�ʉ��Z�A�_�����Z�A������r�A�������r���s���܂��B
+ <SPAN id="type">$[ ～ ]</SPAN>で囲まれた領域を「演算式」と呼びます。
+ 演算式では、整数演算、ビット単位演算、論理演算、整数比較、文字列比較が行えます。
 </P>
 
 <DIV class="syntax">
- <SPAN id="type">$[</SPAN> ���Z�� <SPAN id="type">]</SPAN>
+ <SPAN id="type">$[</SPAN> 演算式 <SPAN id="type">]</SPAN>
 </DIV>
 
 <DIV class="sample">
- # ��N�͉����H<BR>
+ # 一年は何分？<BR>
  $[ 365 * 24 * 60 ]<BR>
  <BR>
- # ���N��2002�N�ł����H<BR>
+ # 今年は2002年ですか？<BR>
  $[ $(date %y)==2002 ]<BR>
  <BR>
- # ���Ȃ��̖��O�́u�ق��v�ł����H<BR>
- $[ ${name}=="�ق�" ]<BR>
+ # あなたの名前は「ほげ」ですか？<BR>
+ $[ ${name}=="ほげ" ]<BR>
  <BR>
- # width����x�������āA10�Ŋ���<BR>
+ # widthからxを引いて、10で割る<BR>
  $[(${width}-${x})/10]
 </DIV>
 
 <P>
- �g�p�ł��鉉�Z�q�͈ȉ��ɂȂ�܂��B
- �����D��x���������̏��ł��B
- �D��x�̒�`��<A href="#setexpr">�W�����Z�̏�</A>�̂��̂Ɠ����ł��B
+ 使用できる演算子は以下になります。
+ 結合優先度が高いもの順です。
+ 優先度の定義は<A href="#setexpr">集合演算の章</A>のものと同じです。
 </P>
 
 <TABLE border="0" cellpadding="2" cellspacing="2" style="margin: 2ex 5% 3ex 5%;">
  <TR>
-  <TD style="width: 2em;">�L��</TD>
-  <TD style="width: 2em;">���l</TD>
-  <TD style="width: 2em;">������</TD>
-  <TD style="width: 8em;">����</TD>
-  <TD>��</TD>
+  <TD style="width: 2em;">記号</TD>
+  <TD style="width: 2em;">数値</TD>
+  <TD style="width: 2em;">文字列</TD>
+  <TD style="width: 8em;">動作</TD>
+  <TD>例</TD>
  </TR>
- <TR><TD>**</TD><TD>��</TD><TD></TD><TD>�ݏ�</TD><TD class="tt">$[10**2] =&gt; 100</TD></TR>
- <TR class="gb"><TD>-</TD><TD>��</TD><TD></TD><TD>�P���}�C�i�X</TD><TD class="tt">$[-10] =&gt; -10</TD></TR>
- <TR class="gb"><TD>+</TD><TD>��</TD><TD></TD><TD>�P���v���X</TD><TD class="tt">$[+10] =&gt; 10</TD></TR>
- <TR class="gb"><TD>!</TD><TD>��</TD><TD>��</TD><TD>(�P��)NOT</TD><TD class="tt">$[!1] =&gt; false, $[!"hoge"] =&gt; false, $[!""] =&gt; true</TD></TR>
- <TR class="gb"><TD>~</TD><TD>��</TD><TD></TD><TD>(�P��)�␔</TD><TD class="tt">$[~-10] =&gt; 9</TD></TR>
- <TR><TD>*</TD><TD>��</TD><TD></TD><TD>��Z</TD><TD class="tt">$[10*"2"] =&gt; 20, $["string"*10] =&gt; 0</TD></TR>
- <TR><TD>/</TD><TD>��</TD><TD></TD><TD>���Z</TD><TD class="tt">$[10/2] =&gt; 5, $[10/0] =&gt; "" (�G���[���O:"devided by 0")</TD></TR>
- <TR><TD>%</TD><TD>��</TD><TD></TD><TD>��]�Z</TD><TD class="tt">$[10%3] =&gt; 1</TD></TR>
- <TR class="gb"><TD>+</TD><TD>��</TD><TD></TD><TD>���Z</TD><TD class="tt">$[-10+2] =&gt; -8, $[""+1] =&gt; 1</TD></TR>
- <TR class="gb"><TD>-</TD><TD>��</TD><TD></TD><TD>���Z</TD><TD class="tt">$[10-3] =&gt; 7</TD></TR>
- <TR><TD>&amp;</TD><TD>��</TD><TD></TD><TD>�r�b�gAND</TD><TD class="tt">$[1&amp;2] =&gt; 0</TD></TR>
- <TR class="gb"><TD>|</TD><TD>��</TD><TD></TD><TD>�r�b�gOR</TD><TD class="tt">$[1|2] =&gt; 3</TD></TR>
- <TR class="gb"><TD>^</TD><TD>��</TD><TD></TD><TD>�r�b�gXOR</TD><TD class="tt">$[1^2] =&gt; 3</TD></TR>
- <TR><TD>&gt;</TD><TD>��</TD><TD></TD><TD>���傫��</TD><TD class="tt">$[10&gt;10] =&gt; false</TD></TR>
- <TR><TD>&gt;=</TD><TD>��</TD><TD></TD><TD>�ȏ�</TD><TD class="tt">$[10&gt;=10] =&gt; true</TD></TR>
- <TR><TD>&lt;</TD><TD>��</TD><TD></TD><TD>����</TD><TD class="tt">$[10&lt;10] =&gt; false</TD></TR>
- <TR><TD>&lt;=</TD><TD>��</TD><TD></TD><TD>�ȉ�</TD><TD class="tt">$[10&lt;=10] =&gt; true</TD></TR>
- <TR class="gb"><TD>==</TD><TD>��</TD><TD>��</TD><TD>������</TD><TD class="tt">$["string"=="string"] =&gt; true, $[10==8] =&gt; false</TD></TR>
- <TR class="gb"><TD>!=</TD><TD>��</TD><TD>��</TD><TD>�������Ȃ�</TD><TD class="tt">$["mac"!="mcdonalds"] =&gt; true</TD></TR>
- <TR class="gb"><TD>=~</TD><TD></TD><TD>��</TD><TD>�}�b�`</TD><TD class="tt">$["substring"=~"string"] =&gt; true</TD></TR>
- <TR class="gb"><TD>!~</TD><TD></TD><TD>��</TD><TD>��}�b�`</TD><TD class="tt">$["substring"!~"string"] =&gt; false</TD></TR>
- <TR><TD>&amp;&amp;</TD><TD>��</TD><TD>��</TD><TD>�_��AND</TD><TD class="tt">$["str"&amp;&amp;10] =&gt; "str", $["false"&amp;&amp;10] =&gt; false, $[0&amp;&amp;10] =&gt; false</TD></TR>
- <TR><TD>||</TD><TD>��</TD><TD>��</TD><TD>�_��OR</TD><TD class="tt">$["str"||0] =&gt; "str", $["false"||10] =&gt; 10</TD></TR>
+ <TR><TD>**</TD><TD>○</TD><TD></TD><TD>累乗</TD><TD class="tt">$[10**2] =&gt; 100</TD></TR>
+ <TR class="gb"><TD>-</TD><TD>○</TD><TD></TD><TD>単項マイナス</TD><TD class="tt">$[-10] =&gt; -10</TD></TR>
+ <TR class="gb"><TD>+</TD><TD>○</TD><TD></TD><TD>単項プラス</TD><TD class="tt">$[+10] =&gt; 10</TD></TR>
+ <TR class="gb"><TD>!</TD><TD>○</TD><TD>○</TD><TD>(単項)NOT</TD><TD class="tt">$[!1] =&gt; false, $[!"hoge"] =&gt; false, $[!""] =&gt; true</TD></TR>
+ <TR class="gb"><TD>~</TD><TD>○</TD><TD></TD><TD>(単項)補数</TD><TD class="tt">$[~-10] =&gt; 9</TD></TR>
+ <TR><TD>*</TD><TD>○</TD><TD></TD><TD>乗算</TD><TD class="tt">$[10*"2"] =&gt; 20, $["string"*10] =&gt; 0</TD></TR>
+ <TR><TD>/</TD><TD>○</TD><TD></TD><TD>除算</TD><TD class="tt">$[10/2] =&gt; 5, $[10/0] =&gt; "" (エラーログ:"devided by 0")</TD></TR>
+ <TR><TD>%</TD><TD>○</TD><TD></TD><TD>剰余算</TD><TD class="tt">$[10%3] =&gt; 1</TD></TR>
+ <TR class="gb"><TD>+</TD><TD>○</TD><TD></TD><TD>加算</TD><TD class="tt">$[-10+2] =&gt; -8, $[""+1] =&gt; 1</TD></TR>
+ <TR class="gb"><TD>-</TD><TD>○</TD><TD></TD><TD>減算</TD><TD class="tt">$[10-3] =&gt; 7</TD></TR>
+ <TR><TD>&amp;</TD><TD>○</TD><TD></TD><TD>ビットAND</TD><TD class="tt">$[1&amp;2] =&gt; 0</TD></TR>
+ <TR class="gb"><TD>|</TD><TD>○</TD><TD></TD><TD>ビットOR</TD><TD class="tt">$[1|2] =&gt; 3</TD></TR>
+ <TR class="gb"><TD>^</TD><TD>○</TD><TD></TD><TD>ビットXOR</TD><TD class="tt">$[1^2] =&gt; 3</TD></TR>
+ <TR><TD>&gt;</TD><TD>○</TD><TD></TD><TD>より大きい</TD><TD class="tt">$[10&gt;10] =&gt; false</TD></TR>
+ <TR><TD>&gt;=</TD><TD>○</TD><TD></TD><TD>以上</TD><TD class="tt">$[10&gt;=10] =&gt; true</TD></TR>
+ <TR><TD>&lt;</TD><TD>○</TD><TD></TD><TD>未満</TD><TD class="tt">$[10&lt;10] =&gt; false</TD></TR>
+ <TR><TD>&lt;=</TD><TD>○</TD><TD></TD><TD>以下</TD><TD class="tt">$[10&lt;=10] =&gt; true</TD></TR>
+ <TR class="gb"><TD>==</TD><TD>○</TD><TD>○</TD><TD>等しい</TD><TD class="tt">$["string"=="string"] =&gt; true, $[10==8] =&gt; false</TD></TR>
+ <TR class="gb"><TD>!=</TD><TD>○</TD><TD>○</TD><TD>等しくない</TD><TD class="tt">$["mac"!="mcdonalds"] =&gt; true</TD></TR>
+ <TR class="gb"><TD>=~</TD><TD></TD><TD>○</TD><TD>マッチ</TD><TD class="tt">$["substring"=~"string"] =&gt; true</TD></TR>
+ <TR class="gb"><TD>!~</TD><TD></TD><TD>○</TD><TD>非マッチ</TD><TD class="tt">$["substring"!~"string"] =&gt; false</TD></TR>
+ <TR><TD>&amp;&amp;</TD><TD>○</TD><TD>○</TD><TD>論理AND</TD><TD class="tt">$["str"&amp;&amp;10] =&gt; "str", $["false"&amp;&amp;10] =&gt; false, $[0&amp;&amp;10] =&gt; false</TD></TR>
+ <TR><TD>||</TD><TD>○</TD><TD>○</TD><TD>論理OR</TD><TD class="tt">$["str"||0] =&gt; "str", $["false"||10] =&gt; 10</TD></TR>
 </TABLE>
 
 <P>
- ����́A�l�����Z�ȊO�̉��Z�ɂ��āA���ɂ��������Ȑ��������܂��B
- �����ɂ��鉉�Z�`���͑S�Ċ�����(�v���O���~���O����Ƃ��Ă�)��ʓI�ȊT�O�ł��̂ŁA
- �����������͂��̎�̋��ȏ��������������B
+ 幾つかの、四則演算以外の演算について、非常にいい加減な説明をします。
+ ここにある演算形式は全て既存の(プログラミング言語としては)一般的な概念ですので、
+ 正しい説明はその手の教科書をご覧下さい。
 </P>
 
 <A name="expr_comp"></A>
-<H3>6.1. ��r���Z</H3>
+<H3>6.1. 比較演算</H3>
 
 <P>
- ��r���Z(<SPAN id="type">'&gt;', '&gt;=', '&lt;', '&lt;=', '==', '!=', '=~', '!~'</SPAN>)�́A
- �u���̋L�q�����������ۂ��v���m�F������̂��Ǝv���΂悢�ł��傤�B
- ���ʂƂ��āA�K���^�U�l��Ԃ��܂��B
- �Ⴆ�΁F
+ 比較演算(<SPAN id="type">'&gt;', '&gt;=', '&lt;', '&lt;=', '==', '!=', '=~', '!~'</SPAN>)は、
+ 「その記述が正しいか否か」を確認するものだと思えばよいでしょう。
+ 結果として、必ず真偽値を返します。
+ 例えば：
 </P>
 
 <DIV class="sample">
@@ -1288,15 +1288,15 @@ Input Keyword : this is test
 </DIV>
 
 <P>
- ����͖��炩�ɊԈ���Ă��܂��B
- �Ԉ���Ă��邱�Ƃ���p��Łu�U�v�ƌ����܂��B
- ���΂ɐ�������Ԃł��邱�Ƃ́u�^�v�ƌ����܂��B
- �U�̏ꍇ�͕�����"false"���Ԃ�܂��B
- �^�̏ꍇ�͕�����"true"���Ԃ�܂��B
+ これは明らかに間違っています。
+ 間違っていることを専門用語で「偽」と言います。
+ 反対に正しい状態であることは「真」と言います。
+ 偽の場合は文字列"false"が返ります。
+ 真の場合は文字列"true"が返ります。
 </P>
 
 <DIV class="sample">
- $[ "�΂悦�`��" == "����������[��" ]<BR>
+ $[ "ばよえ～ん" == "だいあきゅーと" ]<BR>
  # "false"<BR>
  <BR>
  $[ (100 / 2) &lt; 100 ]<BR>
@@ -1304,96 +1304,96 @@ Input Keyword : this is test
 </DIV>
 
 <P>
- �����摖��܂����A
- ���́u���������Ԉ���Ă��邩�v�𗘗p���āA
- �X�N���v�g�ŏ������򂷂邱�Ƃ��ł��܂��B
- �ؘa���̐^�U���f�̊�́A�_�����Z�q�A����сA
- if, while, until�Ȃǂ̍\���R�}���h�S�Ăɂ����ē��ꂳ��Ă��܂��B
+ 少し先走りますが、
+ この「正しいか間違っているか」を利用して、
+ スクリプトで条件分岐することができます。
+ 華和梨の真偽判断の基準は、論理演算子、および、
+ if, while, untilなどの構文コマンド全てにおいて統一されています。
 </P>
 
 <DIV class="syntax">
- "", "0", "false"�́u�U�v�A����ȊO�͑S�āu�^�v�Ƃ��Ĉ���
+ "", "0", "false"は「偽」、それ以外は全て「真」として扱う
 </DIV>
 
 <P>
- �ł́A�f�B�X�v���C�̕�(screen.width�G���g���Ɋi�[����Ă���Ƃ��܂�)
- ��1200���z���Ă�����u�L���f�B�X�v���C�v
- �G���g�����ĂԂ悤�ɂ��Ă݂܂��B
+ では、ディスプレイの幅(screen.widthエントリに格納されているとします)
+ が1200を越えていたら「広いディスプレイ」
+ エントリを呼ぶようにしてみます。
 </P>
 
 <DIV class="sample">
- $(if <SPAN id="green">$[ ${screen.width} &gt; 1200 ]</SPAN> ${�L���f�B�X�v���C})
+ $(if <SPAN id="green">$[ ${screen.width} &gt; 1200 ]</SPAN> ${広いディスプレイ})
 </DIV>
 
 <A name="expr_logic"></A>
-<H3>6.2. �_�����Z</H3>
+<H3>6.2. 論理演算</H3>
 
 <P>
- �_�����Z(<SPAN id="type">'!', '&amp;&amp;', '||'</SPAN>)�́A
- �^�U�l���g�������Z�ł��B
+ 論理演算(<SPAN id="type">'!', '&amp;&amp;', '||'</SPAN>)は、
+ 真偽値を使った演算です。
 </P>
 
 <P>
- <SPAN id="type">'!'</SPAN>�́A�u�ł͂Ȃ��v�Ƃł���������̂ŁA
- �E���̒l�̋t�̒l��Ԃ��܂��B
- �E���̒l���^�ł���΋U�A�U�ł���ΐ^��Ԃ��܂��B
+ <SPAN id="type">'!'</SPAN>は、「ではない」とでも言えるもので、
+ 右側の値の逆の値を返します。
+ 右側の値が真であれば偽、偽であれば真を返します。
 </P>
 
 <DIV class="sample">
- $[ ! "�ق�" ]<BR>
- # "�ق�"�́A��q�̋U�̏����ɓ��Ă͂܂�Ȃ�����^�B<BR>
- # �]���āA���̋t�ł���u�U�v��Ԃ��܂��B<BR>
- # �U��Ԃ��ꍇ��"false"�ł�����A"false"���Ԃ�܂��B<BR>
+ $[ ! "ほげ" ]<BR>
+ # "ほげ"は、上述の偽の条件に当てはまらないから真。<BR>
+ # 従って、その逆である「偽」を返します。<BR>
+ # 偽を返す場合は"false"ですから、"false"が返ります。<BR>
  $[ ! 0 ]<BR>
- # �u0�v�͋U�ł�����A�^���Ԃ�܂��B<BR>
- # "true"�ɂȂ�܂��B
+ # 「0」は偽ですから、真が返ります。<BR>
+ # "true"になります。
 </DIV>
 
 <P>
- <SPAN id="type">'&amp;&amp;'</SPAN>�́A�u���v�܂�A
- �u�`�`�` ���� �`�`�`�v�ł��B
- �E���̒l�ƍ����̒l���^�̎��̂݁A�^�A
- �����łȂ���΋U��Ԃ��܂��B
- �K���A���ׂĂ̗v�f��]�����܂��B
- �������^��Ԃ��ꍇ�́A"true"�ł͂Ȃ��A
- <EM>����ɕ��ׂ�ꂽ'&amp;&amp;'�́A��ԍ����̒l�����̂܂ܕԂ��܂��B</EM>
+ <SPAN id="type">'&amp;&amp;'</SPAN>は、「且つ」つまり、
+ 「～～～ 且つ ～～～」です。
+ 右側の値と左側の値が真の時のみ、真、
+ そうでなければ偽を返します。
+ 必ず、すべての要素を評価します。
+ ただし真を返す場合は、"true"ではなく、
+ <EM>並列に並べられた'&amp;&amp;'の、一番左側の値をそのまま返します。</EM>
 </P>
 
 <DIV class="sample">
- $[ 10 &lt; 100 &amp;&amp; "�ق��ق�" == "�ق��ق�" ]<BR>
- # �����A�E���̑o����"true"�Ȃ̂ŁA�^�A�܂�"true"��Ԃ��܂��B<BR>
- $[ 10 &lt;= ${���l} &amp;&amp; ${���l} &lt;= 100 ]<BR>
- # ${���l}���A10�ȏ�100�ȉ��̏ꍇ�A"true"�A�����łȂ����"false"��Ԃ��܂��B<BR>
- $[ ${���̃S�[�X�g} && $(��?) ]<BR>
- # ${���̃S�[�X�g}�G���g���ɖ��O����ȏ゠��A"��?"�R�}���h��true��Ԃ����ꍇ�Ɍ���A${���̃S�[�X�g}�G���g������I�΂ꂽ�����_���Ȗ��O����Ԃ�܂��B
+ $[ 10 &lt; 100 &amp;&amp; "ほげほげ" == "ほげほげ" ]<BR>
+ # 左側、右側の双方が"true"なので、真、つまり"true"を返します。<BR>
+ $[ 10 &lt;= ${数値} &amp;&amp; ${数値} &lt;= 100 ]<BR>
+ # ${数値}が、10以上100以下の場合、"true"、そうでなければ"false"を返します。<BR>
+ $[ ${他のゴースト} && $(暇?) ]<BR>
+ # ${他のゴースト}エントリに名前が一つ以上あり、"暇?"コマンドがtrueを返した場合に限り、${他のゴースト}エントリから選ばれたランダムな名前が一つ返ります。
 </DIV>
 
 <P>
- <SPAN id="type">'||'</SPAN>�́A�u�܂��́v�܂�A
- �u�`�`�` �܂��� �`�`�`�v�ł��B
- �����̒l�̂ǂ��炩���^�̎��A�^�A�����łȂ���΋U��Ԃ��܂��B
- �ŏ��ɐ^�̒l���o���������_�ŕ]�����I�����܂��B
- �������^��Ԃ��ꍇ�́A"true"�ł͂Ȃ��A
- <EM>����ɕ��ׂ�ꂽ'||'�̍������珇�Ƀe�X�g���āA
-  �ŏ��ɐ^�ƂȂ����l�����̂܂ܕԂ��܂��B</EM>
+ <SPAN id="type">'||'</SPAN>は、「または」つまり、
+ 「～～～ または ～～～」です。
+ 両側の値のどちらかが真の時、真、そうでなければ偽を返します。
+ 最初に真の値が出現した時点で評価を終了します。
+ ただし真を返す場合は、"true"ではなく、
+ <EM>並列に並べられた'||'の左側から順にテストして、
+  最初に真となった値をそのまま返します。</EM>
 </P>
 
 <DIV class="sample">
- $[ 100 &lt; 10 || "�ق��ق�" == "�ق��ق�" ]<BR>
- # ��҂��������̂ŁA"true"<BR>
- $[ ${�䎌}=~"��" || ${�䎌}=~"�K" ]<BR>
- # ${�䎌}���A�u���v���u�K�v���܂�ł����"true"<BR>
+ $[ 100 &lt; 10 || "ほげほげ" == "ほげほげ" ]<BR>
+ # 後者が正しいので、"true"<BR>
+ $[ ${台詞}=~"胸" || ${台詞}=~"尻" ]<BR>
+ # ${台詞}が、「胸」か「尻」を含んでいれば"true"<BR>
  $[ ${counter1} || ${counter2} || ${counter3} ]<BR>
- # counter1, counter2, counter3�̓��A�ŏ���0�ȊO���Ԃ����Ƃ���ł��̒l��Ԃ��B
+ # counter1, counter2, counter3の内、最初に0以外が返ったところでその値を返す。
 </DIV>
 
 <A name="expr_bits"></A>
-<H3>6.3. �r�b�g���Z</H3>
+<H3>6.3. ビット演算</H3>
 
 <P>
- �r�b�g���Z(<SPAN id="type">'&amp;', '|', '^'</SPAN>)�́A
- ���l��32bit�l�Ƃ��Ĉ������Z�ł��B
- �ʏ�͂܂��g��Ȃ��ł��傤�B
+ ビット演算(<SPAN id="type">'&amp;', '|', '^'</SPAN>)は、
+ 数値を32bit値として扱う演算です。
+ 通常はまず使わないでしょう。
 </P>
 
 <DIV class="sample">
@@ -1408,41 +1408,41 @@ Input Keyword : this is test
 </DIV>
 
 <A name="expr_nums"></A>
-<H3>6.4. ���l�ƕ�����̈���</H3>
+<H3>6.4. 数値と文字列の扱い</H3>
 
 <P>
- ���Z���ł�<EM>���l�Ƃ��Ĉ�������͕̂K�����l�Ƃ��Ĉ���</EM>
- �Ƃ����K��������܂��B
- ���̌��ʁA���̂悤�Ȏ��Ԃ��N���܂��B
+ 演算式では<EM>数値として扱えるものは必ず数値として扱う</EM>
+ という規則があります。
+ この結果、次のような事態が起きます。
 </P>
 
 <DIV class="sample">
  $[ "001" == "1" ]<BR>
- # "true"�ɂȂ�
+ # "true"になる
 </DIV>
 
 <P>
- ���̂悤�Ȍ��ۂ��������(�K��������Ƃ��Ĕ�r������)�ꍇ�́A
- KIS��compare�R�}���h��p���Ă��������B
+ このような現象を避けたい(必ず文字列として比較したい)場合は、
+ KISのcompareコマンドを用いてください。
 </P>
 
 <DIV class="sample">
  $[$(compare "001" "1")==0]<BR>
- # "false"�ɂȂ�
+ # "false"になる
 </DIV>
 
 
 <A name="kis"></A>
-<H2>7. �C�����C���X�N���v�g</H2>
+<H2>7. インラインスクリプト</H2>
 
 <P>
-  �G���g���Ăяo���Ƃ͕ʂɁA
-  <SPAN class="tt">'$(' �` ')'</SPAN>�ł������̕����͂����������A
-  �u�C�����C���X�N���v�g�v�ƌ����܂��B
-  �܂��A<SPAN class="tt">=kis</SPAN>�݂̂̍s�ƁA
-  <SPAN class="tt">=end</SPAN>�݂̂̍s�ň͂����������A
-  ���l�Ɂu�C�����C���X�N���v�g�v�ƌ����܂��B
-  �Ⴆ�΁A���t����Ԃ�date�R�}���h���g���ɂ́A���̂悤�ɏ����܂��B
+  エントリ呼び出しとは別に、
+  <SPAN class="tt">'$(' ～ ')'</SPAN>でいくつかの文を囲った部分を、
+  「インラインスクリプト」と言います。
+  また、<SPAN class="tt">=kis</SPAN>のみの行と、
+  <SPAN class="tt">=end</SPAN>のみの行で囲った部分も、
+  同様に「インラインスクリプト」と言います。
+  例えば、日付情報を返すdateコマンドを使うには、次のように書きます。
 </P>
 
 <DIV class="sample">
@@ -1450,42 +1450,42 @@ Input Keyword : this is test
 </DIV>
 
 <P>
-  �C�����C���X�N���v�g�́A
-  �G���g���Ăяo���́u���s����v�@�\���A
-  ��苭���������̂ƍl���ĉ������B
-  �G���g���Ăяo���Ɠ��l�A�C�����C���X�N���v�g���ĂԂƁA
-  �C�����C���X�N���v�g�͎��s���ʂɒu�������܂��B
+  インラインスクリプトは、
+  エントリ呼び出しの「実行する」機能を、
+  より強化したものと考えて下さい。
+  エントリ呼び出しと同様、インラインスクリプトを呼ぶと、
+  インラインスクリプトは実行結果に置き換わります。
 </P>
 
 <DIV class="sample">
-  \0\s[0]������$(date %n)��$(date %e)���ł��B\e<BR>
+  \0\s[0]今日は$(date %n)月$(date %e)日です。\e<BR>
 </DIV>
 
 <P>
-  �G���g���Ăяo���ƈႤ�̂́A
-  ��̗�Ō����Ɓu<SPAN class="tt">date</SPAN>�v���̃R�}���h���̌�ɁA
-  �󔒂�����Łu<SPAN class="tt">%n</SPAN>�v�Ȃǂ̕�������_�ł��B
-  �R�}���h���̓G���g���Ăяo���̃G���g�����ɑ������A
-  �ǂ̋@�\���ĂԂ������߂܂��B���̋@�\���u�R�}���h�v�ƌĂт܂��B
+  エントリ呼び出しと違うのは、
+  上の例で言うと「<SPAN class="tt">date</SPAN>」等のコマンド名の後に、
+  空白を挟んで「<SPAN class="tt">%n</SPAN>」などの文がある点です。
+  コマンド名はエントリ呼び出しのエントリ名に相当し、
+  どの機能を呼ぶかを決めます。この機能を「コマンド」と呼びます。
 </P><P>
-  ����A�󔒈ȍ~�̕��́A
-  �R�}���h���ĂԍۂɁA�⏕�I���Ƃ��ăR�}���h�ɓn����܂��B
-  ���̕⏕�I�����u�����v�ƌ����܂��B
-  �����̓R�}���h�̋�������A�󔒂ŋ�؂��Ċ�ł����ׂ邱�Ƃ��o���܂��B
+  一方、空白以降の文は、
+  コマンドを呼ぶ際に、補助的情報としてコマンドに渡されます。
+  この補助的情報を「引数」と言います。
+  引数はコマンドの許す限り、空白で区切って幾つでも並べることが出来ます。
 </P>
 
 <DIV class="sample">
-  $(echo ������ ��� ���ׂ邱�Ƃ��o���� ��ł�)<BR>
-  $(matchall ${System.Request.Reference1} �� ����)<BR>
+  $(echo 引数を 幾つも 並べることが出来る 例です)<BR>
+  $(matchall ${System.Request.Reference1} 胸 薄い)<BR>
 </DIV>
 
 
 
 <A name="statement"></A>
-<H3>7.1. �\���R�}���h�Ɗ֐��R�}���h</H3>
+<H3>7.1. 構文コマンドと関数コマンド</H3>
 
 <P>
-  �����̒��ɁA�G���g���Ăяo����C�����C���X�N���v�g���������ꍇ���l���܂��B
+  引数の中に、エントリ呼び出しやインラインスクリプトがあった場合を考えます。
 </P>
 
 <DIV class="sample">
@@ -1493,10 +1493,10 @@ Input Keyword : this is test
 </DIV>
 
 <P>
-  �R�}���h�����s����鎞�A�G���g���Ăяo����C�����C���X�N���v�g�́A
-  ���ꂼ��̎��s���ʂɒu������������̂������ƂȂ�A�R�}���h�ɓn��܂��B
-  ��̗�ł́A<SPAN class="tt">$(date %m%d)</SPAN>�͂��̓��̓��t�A
-  �Ⴆ�΁u0522�v�ɒu�������A<SPAN class="tt">set</SPAN>�R�}���h�́A
+  コマンドが実行される時、エントリ呼び出しやインラインスクリプトは、
+  それぞれの実行結果に置き換わったものが引数となり、コマンドに渡ります。
+  上の例では、<SPAN class="tt">$(date %m%d)</SPAN>はその日の日付、
+  例えば「0522」に置き換わり、<SPAN class="tt">set</SPAN>コマンドは、
 <P>
 
 <DIV class="sample">
@@ -1504,36 +1504,36 @@ Input Keyword : this is test
 </DIV>
 
 <P>
-  �Ə������̂Ɠ�����ԂŎ��s����܂��B
-  �����̒��̃C�����C���X�N���v�g�̈������A
-  ����ɃG���g���Ăяo���A�C�����C���X�N���v�g���܂ޏꍇ���L�蓾�܂��B
-  ���̏ꍇ�A�l�����̓G���g���Ăяo���Ɠ����ł��B
-  ��ԓ����̊��ʂ��珇�ԂɁA�u���q���Ȃ��Ȃ�܂Œu�������s���܂��B
-  �����āA���̌��ʂ������Ƃ��ăR�}���h�ɓn��܂��B
+  と書いたのと同じ状態で実行されます。
+  引数の中のインラインスクリプトの引数も、
+  さらにエントリ呼び出し、インラインスクリプトを含む場合も有り得ます。
+  この場合、考え方はエントリ呼び出しと同じです。
+  一番内側の括弧から順番に、置換子がなくなるまで置換を実行します。
+  そして、その結果が引数としてコマンドに渡ります。
 </P>
 
 <DIV class="sample">
-  �G���g���� : entry<BR>
-  ���e1 : ���e2<BR>
-  ���e2 : �� , �� , �� , �� , ��<BR>
+  エントリ名 : entry<BR>
+  内容1 : 内容2<BR>
+  内容2 : あ , い , う , え , お<BR>
   <BR>
-  # �͎��I�Ȉ����̒u���̗l�q<BR>
-  $(set ${�G���g����} $(get ${���e1}))<BR>
-  ��$(set entry $(get ���e2))<BR>
-  ��$(set entry ����������)<BR>
-  ��entry�G���g���Ɂu�����������v���Z�b�g����<BR>
+  # 模式的な引数の置換の様子<BR>
+  $(set ${エントリ名} $(get ${内容1}))<BR>
+  →$(set entry $(get 内容2))<BR>
+  →$(set entry あいうえお)<BR>
+  →entryエントリに「あいうえお」をセットする<BR>
 </DIV>
 
 <P>
-  �������A����̃R�}���h�ł́A���̈����̒u���^�C�~���O���Ⴂ�܂��B
-  ��̓I�ɂ́A<SPAN class="tt">if�Awhile�Aforeach</SPAN>�ȂǁA
-  �v���O�����̗�����i��R�}���h�ƁA
-  <SPAN class="tt">function�Areturn</SPAN>�R�}���h���ł��B
+  しかし、幾つかのコマンドでは、この引数の置換タイミングが違います。
+  具体的には、<SPAN class="tt">if、while、foreach</SPAN>など、
+  プログラムの流れを司るコマンドと、
+  <SPAN class="tt">function、return</SPAN>コマンド等です。
 </P><P>
-  �����̃R�}���h�́u�\���R�}���h�v���͒P�Ɂu�\���v�ƌĂт܂��B
-  �\���R�}���h�́A<EM>���̈������g���Ƃ��ɃG���g���Ăяo������u�����A
-  �g��Ȃ������͒u�����Ȃ�</EM>�Ƃ�������������܂��B
-  ��̓I�ȗ�������܂��B
+  これらのコマンドは「構文コマンド」又は単に「構文」と呼びます。
+  構文コマンドは、<EM>その引数を使うときにエントリ呼び出し等を置換し、
+  使わない引数は置換しない</EM>という性質があります。
+  具体的な例を挙げます。
 </P>
 
 <DIV class="sample">
@@ -1541,101 +1541,101 @@ Input Keyword : this is test
 </DIV>
 
 <P>
-  ���̗�̏ꍇ�A<SPAN class="tt">$[ ${a} == "Y" ]</SPAN>�̌��ʂɉ����āA
-  <SPAN class="tt">$(set answer Yes)</SPAN>�A
-  ��������<SPAN class="tt">$(set answer No)</SPAN>�̂ǂ��炩��������A
-  ���s(=�u��)����܂��B
+  この例の場合、<SPAN class="tt">$[ ${a} == "Y" ]</SPAN>の結果に応じて、
+  <SPAN class="tt">$(set answer Yes)</SPAN>、
+  もしくは<SPAN class="tt">$(set answer No)</SPAN>のどちらか一方だけ、
+  実行(=置換)されます。
 </P><P>
-  �\���R�}���h�ȊO�̃R�}���h�́A
-  �u�֐��R�}���h�v���͒P�Ɂu�R�}���h�v�ƌĂт܂��B
+  構文コマンド以外のコマンドは、
+  「関数コマンド」又は単に「コマンド」と呼びます。
 </P>
 
 <A name="if"></A>
 <H3>7.2. if</H3>
 
 <P>
-  �\���R�}���h�̂����A<SPAN class="tt">if</SPAN>��Phase 7.3.1�Ɣ�ׁA
-  ���ɕ��@���ς��܂����B
-  <SPAN class="tt">else</SPAN>��<SPAN class="tt">else if</SPAN>�́A
-  2�̃L�[���[�h��V���ɓ������܂����B
+  構文コマンドのうち、<SPAN class="tt">if</SPAN>はPhase 7.3.1と比べ、
+  特に文法が変わりました。
+  <SPAN class="tt">else</SPAN>と<SPAN class="tt">else if</SPAN>の、
+  2つのキーワードを新たに導入しました。
 <P>
 
 <P>
-  �]����<SPAN class="tt">if</SPAN>�́A
-  �A��������������œ���q��<SPAN class="tt">if</SPAN>���g���K�v������܂����B
-  ����͊��ʂ̑Ή����ԈႢ�₷�������ł͂Ȃ��A
-  �ԈႢ�𔭌����ɂ������̂ł����B
-  �����̏ꍇ�A
-  ����q��<SPAN class="tt">if</SPAN>���A
-  �ʂ̃G���g���ɋL�q���铙�̑΍􂪕K�v�ł����B
-  �������A������������q���G���g���ɕ���������@�́A
-  ������ǉ��E�폜����ۂɖ��ł��B
+  従来の<SPAN class="tt">if</SPAN>は、
+  連続した条件分岐で入れ子の<SPAN class="tt">if</SPAN>を使う必要がありました。
+  これは括弧の対応を間違いやすいだけではなく、
+  間違いを発見しにくいものでした。
+  多くの場合、
+  入れ子の<SPAN class="tt">if</SPAN>を、
+  別のエントリに記述する等の対策が必要でした。
+  ただし、こうした入れ子をエントリに分解する方法は、
+  条件を追加・削除する際に厄介です。
 </P>
 
 <DIV class="sample">
-  # �]����if<BR>
-  $(if &lt;����&gt; &lt;�������^�̎��̕�&gt; &lt;�������U�̎��̕�&gt;)<BR>
-  $(if &lt;����1&gt; &lt;����1���^�̎��̕�&gt;<BR>
-  �@�@$(if &lt;����2&gt; &lt;����1���U�A����2���^�̎��̕�&gt;<BR>
-  �@�@$(if &lt;����3&gt; &lt;����1�A2���U�A����3���^�̎��̕�&gt;<BR>
-  �@�@$(�c<BR>
-  �@�@�@&lt;���ׂĂ̏������U�̎��̕�&gt; <EM>)�c&lt;if�̐��ɑΉ����������ʂ̘A��&gt;�c)</EM><BR>
+  # 従来のif<BR>
+  $(if &lt;条件&gt; &lt;条件が真の時の文&gt; &lt;条件が偽の時の文&gt;)<BR>
+  $(if &lt;条件1&gt; &lt;条件1が真の時の文&gt;<BR>
+  　　$(if &lt;条件2&gt; &lt;条件1が偽、条件2が真の時の文&gt;<BR>
+  　　$(if &lt;条件3&gt; &lt;条件1、2が偽、条件3が真の時の文&gt;<BR>
+  　　$(…<BR>
+  　　　&lt;すべての条件が偽の時の文&gt; <EM>)…&lt;ifの数に対応した小括弧の連続&gt;…)</EM><BR>
   <BR>
-  # ���邢�́A���̂悤�ɃG���g���ɕ�������<BR>
-  if1 : $(if &lt;����1&gt; &lt;����1���^�̎��̕�&gt; ${if2})<BR>
-  if2 : $(if &lt;����2&gt; &lt;����1���U�A����2���^�̎��̕�&gt; ${if3})<BR>
-  if3 : $(if &lt;����3&gt; &lt;����1�A2���U�A����3���^�̎��̕�&gt; ${if4})<BR>
-  �@�c<BR>
-  ifn : $(if &lt;����n&gt; &lt;����1�cn-1���U�A����n���^�̎��̕�&gt; &lt;���ׂĂ̏������U�̎��̕�&gt;)
+  # あるいは、次のようにエントリに分解する<BR>
+  if1 : $(if &lt;条件1&gt; &lt;条件1が真の時の文&gt; ${if2})<BR>
+  if2 : $(if &lt;条件2&gt; &lt;条件1が偽、条件2が真の時の文&gt; ${if3})<BR>
+  if3 : $(if &lt;条件3&gt; &lt;条件1、2が偽、条件3が真の時の文&gt; ${if4})<BR>
+  　…<BR>
+  ifn : $(if &lt;条件n&gt; &lt;条件1…n-1が偽、条件nが真の時の文&gt; &lt;すべての条件が偽の時の文&gt;)
 </DIV>
 
 <P>
-  �V����<SPAN class="tt">if</SPAN>�ł́A����������肪�N���ɂ����Ȃ��Ă��܂��B
-  �����s�L�q�ƕ����A��̏����͈�̃G���g���̒��Ŋ������܂��B
-  �����e�i���X���e�ՂɂȂ�ł��傤�B
+  新しい<SPAN class="tt">if</SPAN>では、こうした問題が起きにくくなっています。
+  複数行記述と併せ、一つの処理は一つのエントリの中で完結します。
+  メンテナンスが容易になるでしょう。
 </P>
 
 <DIV class="sample">
-  # �V����if<BR>
-  $(if &lt;����&gt; &lt;�������^�̎��̕�&gt; <EM>else</EM> &lt;�������U�̎��̕�&gt;)<BR>
-  $(if &lt;����1&gt; &lt;����1���^�̎��̕�&gt;<BR>
-  �@�@<EM>else if</EM> &lt;����2&gt; &lt;����1���U�A����2���^�̎��̕�&gt;<BR>
-  �@�@<EM>else if</EM> &lt;����3&gt; &lt;����1�A2���U�A����3���^�̎��̕�&gt;<BR>
-  �@�@�c<BR>
-  �@�@<EM>else</EM> &lt;���ׂĂ̏������U�̎��̕�&gt;)<BR>
+  # 新しいif<BR>
+  $(if &lt;条件&gt; &lt;条件が真の時の文&gt; <EM>else</EM> &lt;条件が偽の時の文&gt;)<BR>
+  $(if &lt;条件1&gt; &lt;条件1が真の時の文&gt;<BR>
+  　　<EM>else if</EM> &lt;条件2&gt; &lt;条件1が偽、条件2が真の時の文&gt;<BR>
+  　　<EM>else if</EM> &lt;条件3&gt; &lt;条件1、2が偽、条件3が真の時の文&gt;<BR>
+  　　…<BR>
+  　　<EM>else</EM> &lt;すべての条件が偽の時の文&gt;)<BR>
 </DIV>
 
 <A name="function"></A>
-<H3>7.3. �g�ݍ��݃R�}���h�ƃ��[�U��`�R�}���h</H3>
+<H3>7.3. 組み込みコマンドとユーザ定義コマンド</H3>
 <P>
-  �G���g���ƈႢ�A�������̃R�}���h�́A���[�U����`���Ȃ��Ă����s�ł��܂��B
-  ���̂悤�ȃR�}���h���A�u�g�ݍ��݃R�}���h�v�ƌ����܂��B
-  ����Afunction�R�}���h���g�����[�U����`�����R�}���h���A
-  �u���[�U��`�R�}���h�v�ƌ����܂��B
-  ���[�U��`�R�}���h�́A��x��`����΁A�ؘa�����N�����Ă���ԗL���ł��B
-  �Ȃ��A���[�U��`�R�}���h�͕K���֐��R�}���h�ɂȂ�܂��B
+  エントリと違い、いくつかのコマンドは、ユーザが定義しなくても実行できます。
+  このようなコマンドを、「組み込みコマンド」と言います。
+  一方、functionコマンドを使いユーザが定義したコマンドを、
+  「ユーザ定義コマンド」と言います。
+  ユーザ定義コマンドは、一度定義すれば、華和梨が起動している間有効です。
+  なお、ユーザ定義コマンドは必ず関数コマンドになります。
 </P><P>
-  �R�}���h��`���ł́A
-  <SPAN class="tt">@arg</SPAN>�ꎞ�G���g���������Ƃ��Ďg���܂��B
-  ��1������<SPAN class="tt">$@arg[1]</SPAN>�A
-  ��2������<SPAN class="tt">$@arg[2]</SPAN>�A
-  �ȍ~��N������<SPAN class="tt">$@arg[N]</SPAN>�ŎQ�Ƃł��܂��B
-  <SPAN class="tt">$@arg[0]</SPAN>�͒�`���̃R�}���h���ƂȂ�܂��B
-  �ȉ��ɃR�}���h��`�̗�������܂��B
+  コマンド定義中では、
+  <SPAN class="tt">@arg</SPAN>一時エントリを引数として使います。
+  第1引数は<SPAN class="tt">$@arg[1]</SPAN>、
+  第2引数は<SPAN class="tt">$@arg[2]</SPAN>、
+  以降第N引数は<SPAN class="tt">$@arg[N]</SPAN>で参照できます。
+  <SPAN class="tt">$@arg[0]</SPAN>は定義中のコマンド名となります。
+  以下にコマンド定義の例を示します。
 </P>
 
 <DIV class="sample">
-  # @arg�G���g���Ɉ����������Ă�����̂Ƃ��ċL�q����<BR>
-  $(function ���s�}�� $(clear @arg[0] ; foreach i @arg $(echo ${i}\n)))<BR>
+  # @argエントリに引数が入っているものとして記述する<BR>
+  $(function 改行挿入 $(clear @arg[0] ; foreach i @arg $(echo ${i}\n)))<BR>
   <BR>
-  # �g�p��<BR>
-  # �u�J�X�e��1��\n�d�b��2��\n3���̂���͕�����\n�v���Ԃ�<BR>
-  $(���s�}�� �J�X�e��1�� �d�b��2�� 3���̂���͕�����)<BR>
+  # 使用例<BR>
+  # 「カステラ1番\n電話は2番\n3時のおやつは文明堂\n」が返る<BR>
+  $(改行挿入 カステラ1番 電話は2番 3時のおやつは文明堂)<BR>
 </DIV>
 
 <P>
-  ���ɁA�����̑g�ݍ��݃R�}���h�Ɠ������O�ŁA
-  ���[�U��`�R�}���h���`�����ꍇ���l���܂��B
+  次に、既存の組み込みコマンドと同じ名前で、
+  ユーザ定義コマンドを定義した場合を考えます。
 </P>
 
 <DIV class="sample">
@@ -1643,93 +1643,93 @@ Input Keyword : this is test
 </DIV>
 
 <P>
-  ���̗�̏ꍇ�A<SPAN class="tt">size</SPAN>�R�}���h�́A
-  ���[�U��`�R�}���h��<SPAN class="tt">size</SPAN>�ɏ㏑������܂��B
-  �K���g�ݍ��݃R�}���h���Ăт����ꍇ�A
-  <SPAN class="tt">$(.size entry)</SPAN>�̂悤�ɁA
-  �R�}���h���̐擪�Ɂu<SPAN class="tt">.</SPAN>�v��t���ČĂ�ŉ������B
+  この例の場合、<SPAN class="tt">size</SPAN>コマンドは、
+  ユーザ定義コマンド版<SPAN class="tt">size</SPAN>に上書きされます。
+  必ず組み込みコマンドを呼びたい場合、
+  <SPAN class="tt">$(.size entry)</SPAN>のように、
+  コマンド名の先頭に「<SPAN class="tt">.</SPAN>」を付けて呼んで下さい。
 </P><P>
-  �܂��A���[�U��`�R�}���h��������x��`����ƁA
-  ��ɒ�`���������Ă΂�܂��B
+  また、ユーザ定義コマンドをもう一度定義すると、
+  後に定義した方が呼ばれます。
 </P>
 
 <DIV class="sample">
-  $(function default $(echo ������) ; default)<BR>
-  # �u������v���Ԃ�<BR>
+  $(function default $(echo さくら) ; default)<BR>
+  # 「さくら」が返る<BR>
   <BR>
-  $(function default $(echo �܂��) ; default)<BR>
-  # �u�܂��v���Ԃ�<BR>
+  $(function default $(echo まゆら) ; default)<BR>
+  # 「まゆら」が返る<BR>
   <BR>
-  $(function default $(echo ����) ; default)<BR>
-  # �u�����v���Ԃ�<BR>
+  $(function default $(echo 涼璃) ; default)<BR>
+  # 「涼璃」が返る<BR>
 </DIV>
 
 <P>
-  ��̗�ł́A<SPAN class="tt">defalut</SPAN>�R�}���h��3��Ă�ł��܂��B
-  �������A���񒼑O�Œ�`���Ȃ����Ă��邽�߁A3��Ƃ��Ⴄ���ʂɂȂ�܂��B
+  上の例では、<SPAN class="tt">defalut</SPAN>コマンドを3回呼んでいます。
+  しかし、毎回直前で定義しなおしているため、3回とも違う結果になります。
 </P>
 
 <A name="shiorisaori"></A>
-<H2>8. SHIORI/SAORI�C���^�[�t�F�[�X</H2>
+<H2>8. SHIORI/SAORIインターフェース</H2>
 
 <P>
- �����܂łɁA�S�[�X�g�̓���L�q���@�ɂ��ẮA�قڑS�ĉ�����܂����B
- ���A�̐S��
- �u�_�u���N���b�N�C�x���g�ɑΉ�����ɂ́H�v
- �u��������URL��\������ɂ́H�v
- �Ȃǂ̐�������؂��܂���ł����B
+ ここまでに、ゴーストの動作記述方法については、ほぼ全て解説しました。
+ が、肝心の
+ 「ダブルクリックイベントに対応するには？」
+ 「おすすめURLを表示するには？」
+ などの説明を一切しませんでした。
 </P><P>
- �x�Ƃ��Ă̋@�\�ɂ��ẮA���̏͂ł܂Ƃ߂Đ������܂��B
- �܂��A�ؘa����SAORI�Ƃ��Ă��@�\���܂��̂ŁA����ɂ��Ă������Đ������܂��B
+ 栞としての機能については、この章でまとめて説明します。
+ また、華和梨はSAORIとしても機能しますので、それについても併せて説明します。
 </P>
 
 <A name="callback"></A>
-<H3>8.1. �R�[���o�b�N</H3>
+<H3>8.1. コールバック</H3>
 
 <P>
- �ؘa�������̂����̂��߁A
- ���ʈ�������G���g�����u�V�X�e���G���g���v�ƌĂт܂��B
- ���̂����A����̃G���g���͌Ăяo���ۂ̎d�g�݂��A
- ���̃G���g���Ƃ܂������Ⴂ�܂��B
- ���̐߂ł́A���̃V�X�e���G���g���̒��ł����قȁA
- �u�R�[���o�b�N�G���g���v��������܂��B
+ 華和梨が情報のやり取りのため、
+ 特別扱いするエントリを「システムエントリ」と呼びます。
+ このうち、幾つかのエントリは呼び出す際の仕組みが、
+ 他のエントリとまったく違います。
+ この節では、このシステムエントリの中でも特異な、
+ 「コールバックエントリ」を説明します。
 </P><P>
- �R�[���o�b�N�G���g���Ƃ́A�{�̂��C�x���g�ANOTIFY��ʒm���Ă����ہA
- �ŏ��ɕ]������G���g���ł��B
- �ʏ�̃G���g����]������ꍇ�A�G���g�����̕���������_���ɑI�сA
- ���̕��̕]�����ʂ��G���g���̕]�����ʂƂ��܂��B
- ����A�R�[���o�b�N�G���g�����{�̂���Ă΂ꂽ�ꍇ�A
- �R�[���o�b�N�G���g������<EM>���ׂĂ̕���Y��������</EM>�]�����A
- <EM>���ׂĂ̕]�����ʂ�������������</EM>��{�̂ɕԂ��܂��B
- ���ɁA<SPAN class="tt">System.Callback.OnGET</SPAN>�G���g�����A
- ���̂悤�ȓ��e�������Ƃ��܂��B
+ コールバックエントリとは、本体がイベント、NOTIFYを通知してきた際、
+ 最初に評価するエントリです。
+ 通常のエントリを評価する場合、エントリ中の文を一つランダムに選び、
+ その文の評価結果をエントリの評価結果とします。
+ 一方、コールバックエントリが本体から呼ばれた場合、
+ コールバックエントリ中の<EM>すべての文を添え字順に</EM>評価し、
+ <EM>すべての評価結果を結合したもの</EM>を本体に返します。
+ 仮に、<SPAN class="tt">System.Callback.OnGET</SPAN>エントリが、
+ 次のような内容だったとします。
 </P>
 
 <DIV class="sample">
  System.Callback.OnGET : \0<BR>
  System.Callback.OnGET : \s[0]<BR>
- System.Callback.OnGET : ���B<BR>
+ System.Callback.OnGET : 阿。<BR>
  System.Callback.OnGET : \1<BR>
  System.Callback.OnGET : \s[10]<BR>
- System.Callback.OnGET : �݁B<BR>
+ System.Callback.OnGET : 吽。<BR>
  System.Callback.OnGET : \e<BR>
 </DIV>
 
 <P>
- �������̃R�[���o�b�N�G���g�����{�̂���Ă΂ꂽ�Ƃ���ƁA
- �{�̂ɕԂ��X�N���v�g�͎��̂悤�ɂȂ�܂��B
+ もしこのコールバックエントリが本体から呼ばれたとすると、
+ 本体に返すスクリプトは次のようになります。
 </P>
 
 <DIV class="sample">
- \0\s[0]���B\1\s[10]�݁B\e<BR>
+ \0\s[0]阿。\1\s[10]吽。\e<BR>
 </DIV>
 
 <P>
- ���̌��ʂ́A
- KIS�R�}���h��<A href="kis_reference.html#get">get</A>���g���A
- ���̂悤�ɏ��������ʂƓ����ł��B
- �R�[���o�b�N�G���g���́A
- <EM>�R�[���o�b�N�G���g����get�ŕ]���������ʂ�{�̂ɕԂ�</EM>�ƍl���ĉ������B
+ この結果は、
+ KISコマンドの<A href="kis_reference.html#get">get</A>を使い、
+ 次のように書いた結果と等価です。
+ コールバックエントリは、
+ <EM>コールバックエントリをgetで評価した結果を本体に返す</EM>と考えて下さい。
 </P>
 
 <DIV class="sample">
@@ -1737,18 +1737,18 @@ Input Keyword : this is test
 </DIV>
 
 <P>
- ���̃R�[���o�b�N�G���g���̓���́A
- ��Ƀ~�h���E�F�A�̋L�q���ȑf������ۂɗL���ł��傤�B
- �~�h���E�F�A��<SPAN class="tt">OnSecondChange</SPAN>�C�x���g���ŁA
- �����̓Ɨ������@�\�𓮍삳���邱�Ƃ�����܂��B
- �]���A���̓Ɨ����삷��@�\��ǉ��������ꍇ�A
- �K�R�I�Ƀ~�h���E�F�A������������K�v������܂����B
- �������A���񂩂��<SPAN class="tt">System.Callback.*</SPAN>�G���g���ɁA
- �ǉ��@�\���Ăԕ���ǉ����邾���ő��v�ł��B
+ このコールバックエントリの動作は、
+ 主にミドルウェアの記述を簡素化する際に有効でしょう。
+ ミドルウェアは<SPAN class="tt">OnSecondChange</SPAN>イベント等で、
+ 多数の独立した機能を動作させることがあります。
+ 従来、この独立動作する機能を追加したい場合、
+ 必然的にミドルウェアを書き換える必要がありました。
+ しかし、今回からは<SPAN class="tt">System.Callback.*</SPAN>エントリに、
+ 追加機能を呼ぶ文を追加するだけで大丈夫です。
 </P>
 
 <P>
- ���ɁA�ؘa���̎g���S�R�[���o�b�N�G���g���������܂��B
+ 次に、華和梨の使う全コールバックエントリを示します。
 </P>
 
 <DIV align="center">
@@ -1757,50 +1757,50 @@ Input Keyword : this is test
   <TR><TD class="tt">System.Callback.OnGET</TD><TD>GET</TD></TR>
   <TR><TD class="tt">System.Callback.OnNOTIFY</TD><TD>NOTIFY</TD></TR>
   <TR><TD colspan="2" style="background: #ffe0e0">SHIORI/2.x</TD></TR>
-  <TR><TD class="tt">System.Callback.OnEvent</TD><TD>SHIORI/2.2 �C�x���g�����AGET Sentence�̂�</TD></TR>
-  <TR><TD class="tt">System.Callback.OnGetSentence</TD><TD>SHIORI/2.3b �R�~���j�P�[�g</TD></TR>
-  <TR><TD class="tt">System.Callback.OnGetStatus</TD><TD>�X�e�[�^�X�擾</TD></TR>
-  <TR><TD class="tt">System.Callback.OnResource</TD><TD>SHIORI/2.5���\�[�X�擾</TD></TR>
+  <TR><TD class="tt">System.Callback.OnEvent</TD><TD>SHIORI/2.2 イベント応答、GET Sentenceのみ</TD></TR>
+  <TR><TD class="tt">System.Callback.OnGetSentence</TD><TD>SHIORI/2.3b コミュニケート</TD></TR>
+  <TR><TD class="tt">System.Callback.OnGetStatus</TD><TD>ステータス取得</TD></TR>
+  <TR><TD class="tt">System.Callback.OnResource</TD><TD>SHIORI/2.5リソース取得</TD></TR>
 
   <TR><TD colspan="2" style="background: #ffe0e0">SAORI/1.0</TD></TR>
-  <TR><TD class="tt">System.Callback.OnSaoriExecute</TD><TD>SAORI���W���[���Ƃ��ČĂ΂ꂽ</TD></TR>
-  <TR><TD colspan="2" style="background: #ffe0e0">����</TD></TR>
-  <TR><TD class="tt">System.Callback.OnUnload</TD><TD>�؂藣���C�x���g(�ؘa�������s)</TD></TR>
-  <TR><TD class="tt">System.Callback.OnRequest</TD><TD>���̑��S�Ẵ��N�G�X�g(NOTIFY SHIORI/2.x�ATRANSLATE SHIORI/2.x��)</TD></TR>
+  <TR><TD class="tt">System.Callback.OnSaoriExecute</TD><TD>SAORIモジュールとして呼ばれた</TD></TR>
+  <TR><TD colspan="2" style="background: #ffe0e0">共通</TD></TR>
+  <TR><TD class="tt">System.Callback.OnUnload</TD><TD>切り離しイベント(華和梨が発行)</TD></TR>
+  <TR><TD class="tt">System.Callback.OnRequest</TD><TD>その他全てのリクエスト(NOTIFY SHIORI/2.x、TRANSLATE SHIORI/2.x等)</TD></TR>
 </TABLE>
 </DIV>
 
 <H4>System.Callback.OnRequest</H4>
 
 <P>
- ���̂���<SPAN class="tt">System.Callback.OnRequest</SPAN>�́A
- �����ς���Ă���̂ŉ�����܂��B
- ���̃R�[���o�b�N�G���g���́A���̃R�[���o�b�N�G���g���ɊY�����Ȃ������A
- �S�Ă̖{�̂���̃R�[���ŌĂ΂�܂��B
- ��̓I�ɂ�NOTIFY SHIORI/2.x�ATRANSLATE SHIORI/2.6�A
- TEACH SHIORI/2.4�����Y�����܂��B
- ���܂�g�p���Ȃ��Ăяo����A�����̖{�̎d�l�ύX�ɔ������G���g���ł��B
+ このうち<SPAN class="tt">System.Callback.OnRequest</SPAN>は、
+ 少し変わっているので解説します。
+ このコールバックエントリは、他のコールバックエントリに該当しなかった、
+ 全ての本体からのコールで呼ばれます。
+ 具体的にはNOTIFY SHIORI/2.x、TRANSLATE SHIORI/2.6、
+ TEACH SHIORI/2.4等が該当します。
+ あまり使用しない呼び出しや、将来の本体仕様変更に備えたエントリです。
 </P><P>
- �ǂ̂悤�ȌĂяo������������m�邽�߂ɂ́A
- <SPAN class="tt">System.Request</SPAN>�G���g�����Q�Ƃ��܂��B
- ���̃G���g���ɁA�{�̂̃R�[����ނ�����������ł���A
- �uTEACH�v��uNOTIFY OtherGhostName�v�����i�[����܂��B
- �܂��A�ڂ����͎��̐߂ŉ�����܂����A
- �{�̂��n�����w�b�_�́A
- <SPAN class="tt">System.Request.*</SPAN>�G���g���Q�Ɋi�[����܂��B
- �܂��A�{�̂ւ̉����w�b�_�́A
- <SPAN class="tt">System.Response.*</SPAN>�G���g���Q�ɏ������݂܂��B
- ������Ԃ������X�e�[�^�X�R�[�h�́A
- <SPAN class="tt">System.Response</SPAN>�G���g���ɏ������݂܂��B
- �ǂ̂悤�ȃw�b�_�����邩�A�ǂ̂悤�ȃw�b�_��Ԃ����A
- �ǂ̂悤�ȃX�e�[�^�X�R�[�h��Ԃ����ɂ��ẮA
- �{�̎d�l�����Q�Ƃ��ĉ������B
+ どのような呼び出しが来たかを知るためには、
+ <SPAN class="tt">System.Request</SPAN>エントリを参照します。
+ このエントリに、本体のコール種類を示す文字列である、
+ 「TEACH」や「NOTIFY OtherGhostName」等が格納されます。
+ また、詳しくは次の節で解説しますが、
+ 本体が渡したヘッダは、
+ <SPAN class="tt">System.Request.*</SPAN>エントリ群に格納されます。
+ また、本体への応答ヘッダは、
+ <SPAN class="tt">System.Response.*</SPAN>エントリ群に書き込みます。
+ 処理状態を示すステータスコードは、
+ <SPAN class="tt">System.Response</SPAN>エントリに書き込みます。
+ どのようなヘッダが来るか、どのようなヘッダを返すか、
+ どのようなステータスコードを返すかについては、
+ 本体仕様書を参照して下さい。
 </P><P>
- ���Ƃ��āATEACH SHIORI/2.4���ȈՓI�ɏ�������X�N���v�g�������܂��B
- TEACH SHIORI/2.4�́AWord�w�b�_�ɋ������P�ꂪ���܂��B
- �����̍ۂ́ASentence�w�b�_�ɏ����܂��B
- ����������������A�X�e�[�^�X�R�[�h�Ƃ���200�𔭍s���܂��B
- ������X�N���v�g�ɂ���ƁA���̂悤�ɂȂ�܂��B
+ 一例として、TEACH SHIORI/2.4を簡易的に処理するスクリプトを示します。
+ TEACH SHIORI/2.4は、Wordヘッダに教えた単語が来ます。
+ 応答の際は、Sentenceヘッダに書きます。
+ 処理が成功したら、ステータスコードとして200を発行します。
+ これをスクリプトにすると、次のようになります。
 </P>
 
 <DIV class="sample">
@@ -1808,91 +1808,91 @@ Input Keyword : this is test
  &nbsp;&nbsp;&nbsp;&nbsp;if $[ ${System.Request} == "TEACH" ] $(<BR>
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setstr @Word ${System.Request.Word};<BR>
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pushstr TeachWord ${@Word};<BR>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setstr System.Response.Sentence \0\s[0]${@Word}�ˁB\e;<BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setstr System.Response.Sentence \0\s[0]${@Word}ね。\e;<BR>
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setstr System.Response 200;<BR>
  &nbsp;&nbsp;&nbsp;&nbsp;);<BR>
  &nbsp;&nbsp;)<BR>
 </DIV>
 
 <A name="systementry"></A>
-<H3>8.2. ���̑��̃V�X�e���G���g��</H3>
+<H3>8.2. その他のシステムエントリ</H3>
 
 <P>
- �R�[���o�b�N�G���g���ȊO�ɂ��A����V�X�e���G���g�������݂��܂��B
- ���Ɉꗗ�������܂��B
+ コールバックエントリ以外にも、幾つかシステムエントリが存在します。
+ 次に一覧を示します。
 </P>
 
 <DIV align="center">
 <TABLE width="80%">
-  <TR><TD colspan="2" style="background: #ffe0e0">�{�̂���̒ʒm���</TD></TR>
-  <TR><TD class="tt">System.Request.*</TD><TD>���N�G�X�g�w�b�_</TD></TR>
-  <TR><TD colspan="2" style="background: #ffe0e0">�{�̂ւ̉���</TD></TR>
-  <TR><TD class="tt">System.Response.*</TD><TD>���X�|���X�w�b�_</TD></TR>
-  <TR><TD class="tt">System.Response.To</TD><TD>SHIORI/2.3b �b�����������S�[�X�g���B&quot;stop&quot;�őł��؂�B</TD></TR>
-  <TR><TD class="tt">System.Response</TD><TD>SHIORI/2.0 �X�e�[�^�X�R�[�h</TD></TR>
+  <TR><TD colspan="2" style="background: #ffe0e0">本体からの通知情報</TD></TR>
+  <TR><TD class="tt">System.Request.*</TD><TD>リクエストヘッダ</TD></TR>
+  <TR><TD colspan="2" style="background: #ffe0e0">本体への応答</TD></TR>
+  <TR><TD class="tt">System.Response.*</TD><TD>レスポンスヘッダ</TD></TR>
+  <TR><TD class="tt">System.Response.To</TD><TD>SHIORI/2.3b 話しかけたいゴースト名。&quot;stop&quot;で打ち切り。</TD></TR>
+  <TR><TD class="tt">System.Response</TD><TD>SHIORI/2.0 ステータスコード</TD></TR>
 
-  <TR><TD colspan="2" style="background: #ffe0e0">���̑�(���[�h�I�����[)</TD></TR>
-  <TR><TD class="tt">System.DataPath</TD><TD>shiori.dll�̑��݂���f�B���N�g��</TD></TR>
-  <TR><TD class="tt">System.SecurityLevel</TD><TD>�Z�L�����e�B���x��</TD></TR>
+  <TR><TD colspan="2" style="background: #ffe0e0">その他(リードオンリー)</TD></TR>
+  <TR><TD class="tt">System.DataPath</TD><TD>shiori.dllの存在するディレクトリ</TD></TR>
+  <TR><TD class="tt">System.SecurityLevel</TD><TD>セキュリティレベル</TD></TR>
 </TABLE>
 </DIV>
 
 <P>
- ���ɏd�v�Ȃ̂́A
- <SPAN class="tt">System.Request.*</SPAN>�̃��N�G�X�g�w�b�_�G���g���Q�ł��B
- ���̃G���g���Q�́ASHIORI/2.x�ASHIORI/3.0�ASAORI/1.0�ɂ����āA
- �{�̂������Ă����w�b�_�ɑΉ����܂��B
- ��̗�Ő�������ƁA
- �Ⴆ�΁u<SPAN class="tt">Reference0: �܂��</SPAN>�v�Ƃ����w�b�_�������ꍇ�A
- <SPAN class="tt">System.Request.Reference0</SPAN>�G���g���ɁA
- �u�܂��v�Ƃ����P����Z�b�g���邱�ƂɂȂ�܂��B
+ 特に重要なのは、
+ <SPAN class="tt">System.Request.*</SPAN>のリクエストヘッダエントリ群です。
+ このエントリ群は、SHIORI/2.x、SHIORI/3.0、SAORI/1.0において、
+ 本体が送ってきたヘッダに対応します。
+ 具体例で説明すると、
+ 例えば「<SPAN class="tt">Reference0: まゆら</SPAN>」というヘッダが来た場合、
+ <SPAN class="tt">System.Request.Reference0</SPAN>エントリに、
+ 「まゆら」という単語をセットすることになります。
 </P><P>
- ����Ƃ͔��΂ɁA
- <SPAN class="tt">System.Response.*</SPAN>�G���g���Q�́A
- �{�̂ɕԂ����X�|���X�w�b�_�ɑΉ����܂��B
- ��̓I�ɂ́A
- �Ⴆ��<SPAN class="tt">System.Response.Reference0</SPAN>�G���g���ɁA
- �u������v�Ƃ����P����Z�b�g�����ƍl���܂��B
- ����Ɩ{�̂ɕԂ��w�b�_�ɁA
- �u<SPAN class="tt">Reference0: ������</SPAN>�v�Ƃ����w�b�_���ǉ�����܂��B
- �܂��A<SPAN class="tt">System.Response</SPAN>�G���g���ɃZ�b�g���ꂽ�P��́A
- �{�̂ɕԂ��X�e�[�^�X�R�[�h�ɂȂ�܂��B
+ これとは反対に、
+ <SPAN class="tt">System.Response.*</SPAN>エントリ群は、
+ 本体に返すレスポンスヘッダに対応します。
+ 具体的には、
+ 例えば<SPAN class="tt">System.Response.Reference0</SPAN>エントリに、
+ 「さくら」という単語をセットしたと考えます。
+ すると本体に返すヘッダに、
+ 「<SPAN class="tt">Reference0: さくら</SPAN>」というヘッダが追加されます。
+ また、<SPAN class="tt">System.Response</SPAN>エントリにセットされた単語は、
+ 本体に返すステータスコードになります。
 </P>
 
 <P>
- ���N�G�X�g�w�b�_�G���g���A���X�|���X�w�b�_�G���g���Q�́A
- �{�̂���Ă΂�ăR�[���o�b�N�G���g����]�����钼�O�ɁA
- ��x���S�ɓ��e�������܂��B
+ リクエストヘッダエントリ、レスポンスヘッダエントリ群は、
+ 本体から呼ばれてコールバックエントリを評価する直前に、
+ 一度完全に内容を消します。
 </P>
 
 <A name="beshiori"></A>
-<H3>8.3. �x�Ƃ��Ẳؘa��</H3>
+<H3>8.3. 栞としての華和梨</H3>
 
 <P>
-  �x�T�u�V�X�e���̎d���͈ꌩ���G�ł����A�v�񂷂�΁A
-  �u�{�̂̒ʒm���Ă���ID����A������������������o���Ė{�̂ɕԂ��v���Ƃł��B
-  �ؘa��Phase 8��Phase 7�܂łƔ�ׂ�ƁA
-  ���������x�̎d�����A�g�p�҂ɂ��u���̂܂܁v�����Ă��܂��B
+  栞サブシステムの仕事は一見複雑ですが、要約すれば、
+  「本体の通知してきたIDから、相応しい応答を割り出して本体に返す」ことです。
+  華和梨Phase 8はPhase 7までと比べると、
+  こうした栞の仕事を、使用者により「生のまま」見せています。
 </P><P>
-  ��\�I�ȗ�̓C�x���g�����ł��B
-  �ؘa��Phase 8�̓C�x���g�����A���\�[�X������̗v���A
-  NOTIFY�����̌Ăѕ������AKIS���g���ď����K�v������܂��B
-  �{�̂��ʒm���Ă���ID(=�C�x���g���A���\�[�X��)�́A
-  <SPAN class="tt">System.Request.ID</SPAN>�G���g���ɓ����Ă��܂��B
-  ������g���ČĂѕ����܂��B
+  代表的な例はイベント応答です。
+  華和梨Phase 8はイベント応答、リソース文字列の要求、
+  NOTIFY処理の呼び分けを、KISを使って書く必要があります。
+  本体が通知してきたID(=イベント名、リソース名)は、
+  <SPAN class="tt">System.Request.ID</SPAN>エントリに入っています。
+  これを使って呼び分けます。
 </P>
 
 <P>
-  �ؘa��Phase 7.3.1�Ɠ������O�ŃC�x���g�G���g���A
-  ���\�[�X������G���g�����g�������ꍇ�A
-  <SPAN class="tt">System.Callback.OnGET</SPAN>�G���g���Ɏ��̂悤�ɏ����܂��B
+  華和梨Phase 7.3.1と同じ名前でイベントエントリ、
+  リソース文字列エントリを使いたい場合、
+  <SPAN class="tt">System.Callback.OnGET</SPAN>エントリに次のように書きます。
 </P>
 
 <DIV class="sample">
-  # GET SHIORI/3.0�ւ̉���<BR>
-  # �C�x���g�A���\�[�X������A�R�~���j�P�[�g�Aetc�c<BR>
-  # �C�x���g�́uevent.&lt;�C�x���g��&gt;�v�A<BR>
-  # ���\�[�X�́uResourece.&lt;���\�[�X��&gt;�v�Ƃ����G���g�����Ă�<BR>
+  # GET SHIORI/3.0への応答<BR>
+  # イベント、リソース文字列、コミュニケート、etc…<BR>
+  # イベントは「event.&lt;イベント名&gt;」、<BR>
+  # リソースは「Resourece.&lt;リソース名&gt;」というエントリを呼ぶ<BR>
   System.Callback.OnGET: $(<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;if $[ $(match_at ${System.Request.ID} On) ] <BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${event.${System.Request.ID}}<BR>
@@ -1902,176 +1902,176 @@ Input Keyword : this is test
 </DIV>
 
 <P>
-  ���̗�ł́A�Ⴆ�΃}�E�X�̃_�u���N���b�N�C�x���g���������A
-  <SPAN class="tt">event.OnMouseDoubleClick</SPAN>�G���g�����Ăт܂��B
-  �܂��A�Ⴆ�΂����瑤�́u��������URL�v�̗v�����������ꍇ�A
-  <SPAN class="tt">${resource.sakura.recommendsites}</SPAN>�̕]�����ʂ�Ԃ��܂��B
+  この例では、例えばマウスのダブルクリックイベントが来た時、
+  <SPAN class="tt">event.OnMouseDoubleClick</SPAN>エントリを呼びます。
+  また、例えばさくら側の「おすすめURL」の要求があった場合、
+  <SPAN class="tt">${resource.sakura.recommendsites}</SPAN>の評価結果を返します。
 </P>
 
 <P>
-  �������ASHIORI/3.0�ł̓C�x���g�ƃ��\�[�X������v���́A
-  �{�̂���̒ʒm�`���ɍ�������܂���B
-  �����ŁA�G���g�������]������ύX�������ɁA
-  �L�q���ȑf�����邱�Ƃ��o���܂��B
-  ���̏ꍇ�A���̂悤�ɏ����܂��B
+  しかし、SHIORI/3.0ではイベントとリソース文字列要求は、
+  本体からの通知形式に差がありません。
+  そこで、エントリ名を従来から変更する代わりに、
+  記述を簡素化することが出来ます。
+  この場合、次のように書きます。
 </P>
 
 <DIV class="sample">
-  # GET SHIORI/3.0�ւ̉���<BR>
-  # �C�x���g�A���\�[�X������A�R�~���j�P�[�g�Aetc�c<BR>
-  # �ureply.&lt;�v������Ă��鏈����&gt;�v�Ƃ����G���g�����Ă�<BR>
+  # GET SHIORI/3.0への応答<BR>
+  # イベント、リソース文字列、コミュニケート、etc…<BR>
+  # 「reply.&lt;要求されている処理名&gt;」というエントリを呼ぶ<BR>
   System.Callback.OnGET : ${reply.${System.Request.ID}}<BR>
 </DIV>
 
 <P>
-  ���̗�ł́A�Ⴆ�΃}�E�X�̃_�u���N���b�N�C�x���g���������A
-  <SPAN class="tt">reply.OnMouseDoubleClick</SPAN>�G���g�����Ăт܂��B
-  �܂��A�Ⴆ�΂����瑤�́u��������URL�v�̗v�����������ꍇ�A
-  <SPAN class="tt">${reply.sakura.recommendsites}</SPAN>�̕]�����ʂ�Ԃ��܂��B
+  この例では、例えばマウスのダブルクリックイベントが来た時、
+  <SPAN class="tt">reply.OnMouseDoubleClick</SPAN>エントリを呼びます。
+  また、例えばさくら側の「おすすめURL」の要求があった場合、
+  <SPAN class="tt">${reply.sakura.recommendsites}</SPAN>の評価結果を返します。
 </P>
 
 <P>
-  �Ō�ɁANOTIFY�̏����̌Ăѕ����G��܂��B
-  NOTIFY�̌`���̓C�x���g�E���\�[�X������v����GET�̏ꍇ�ƁA
-  �قƂ�Ǎ�������܂���B
+  最後に、NOTIFYの処理の呼び分け触れます。
+  NOTIFYの形式はイベント・リソース文字列要求のGETの場合と、
+  ほとんど差がありません。
 </P>
 
 <DIV class="sample">
-  # NOTIFY SHIORI/3.0�̏���<BR>
-  # HWnd�ʒm�A���̃S�[�X�g�ʒm�A�C���X�g�[���ς݃S�[�X�g�ʒm�Aetc�c<BR>
-  # �unotify.&lt;�ʒm���ꂽ���&gt;�v�Ƃ����G���g�����Ă�<BR>
+  # NOTIFY SHIORI/3.0の処理<BR>
+  # HWnd通知、他のゴースト通知、インストール済みゴースト通知、etc…<BR>
+  # 「notify.&lt;通知された情報名&gt;」というエントリを呼ぶ<BR>
   System.Callback.OnNOTIFY : ${notify.${System.Request.ID}}<BR>
 </DIV>
 
 <P>
-  �Ⴆ�Α��ɋN�����̃S�[�X�g�̖��O��NOTIFY���ꂽ�ꍇ�A
-  <SPAN class="tt">notify.otherghostname<SPAN>�G���g�����Ăт܂��B
+  例えば他に起動中のゴーストの名前がNOTIFYされた場合、
+  <SPAN class="tt">notify.otherghostname<SPAN>エントリを呼びます。
 </P>
 
 <P>
-  �~�h���E�F�A���g�킸�ɉؘa�����g���ꍇ�A���������L�q���K���K�v�ł��B
-  �������A�����̃~�h���E�F�A�ł́A
-  ���������჌�x��(���v���O�����ɖ�������)�̋L�q���A
-  ���Ƀp�b�P�[�W������Ă��܂��B
-  ���炩�̎����������A���������~�h���E�F�A�̎g�p���������߂��܂��B
+  ミドルウェアを使わずに華和梨を使う場合、こうした記述が必ず必要です。
+  しかし、多くのミドルウェアでは、
+  こうした低レベル(よりプログラムに密着した)の記述が、
+  既にパッケージ化されています。
+  何らかの事情が無い限り、こうしたミドルウェアの使用をおすすめします。
 </P>
 
 <A name="besaori">
-<H3>8.4. SAORI���W���[���Ƃ��Ẳؘa��</H3>
+<H3>8.4. SAORIモジュールとしての華和梨</H3>
 
 <P>
-  �ؘa����SHIORI�K�i�̏�AI���W���[���ł����A
-  ������SAORI�K�i���W���[���ł�����܂��B
-  SAORI���W���[���Ƃ��Ďg���ƁA
+  華和梨はSHIORI規格の準AIモジュールですが、
+  同時にSAORI規格モジュールでもあります。
+  SAORIモジュールとして使うと、
 </P>
 <UL>
-  <LI>�ؘa��Phase 7����ڍs����ہA�V���X�N���v�g�𓯎��Ɏg����</LI>
-  <LI>���̞x���g�p���Ă���ꍇ�ł��A�ؘa���̗~�����@�\�������g����</LI>
+  <LI>華和梨Phase 7から移行する際、新旧スクリプトを同時に使える</LI>
+  <LI>他の栞を使用している場合でも、華和梨の欲しい機能だけを使える</LI>
 </UL>
 <P>
-  �Ƃ����������b�g������܂��B
+  といったメリットがあります。
 </P>
 
 <P>
-  �ؘa����SAORI�Ƃ��Ďg���Ƃ��A����3�̂��Ƃɒ��ӂ��܂��B
+  華和梨をSAORIとして使うとき、次の3つのことに注意します。
 </P>
 
-<H4>�����̎󂯎��</H4>
+<H4>引数の受け取り</H4>
 
 <P>
-  �ؘa����SAORI�Ƃ��ČĂ΂ꂽ���A
-  <SPAN class="tt">System.Callback.OnSaoriExecute</SPAN>�G���g����]�����܂��B
-  ���̃R�[���o�b�N�G���g���Ɠ��l�A��������S�Ă̒P���]�����܂��B
-  ���̎��ASAORI���W���[���ɗ^����ꂽ�����́A
-  <SPAN class="tt">System.Request.*</SPAN>�ȉ��A
-  <SPAN class="tt">System.Request.Argument0</SPAN>�A
+  華和梨がSAORIとして呼ばれた時、
+  <SPAN class="tt">System.Callback.OnSaoriExecute</SPAN>エントリを評価します。
+  他のコールバックエントリと同様、所属する全ての単語を評価します。
+  この時、SAORIモジュールに与えられた引数は、
+  <SPAN class="tt">System.Request.*</SPAN>以下、
+  <SPAN class="tt">System.Request.Argument0</SPAN>、
   <SPAN class="tt">System.Request.Argument1</SPAN>
-  ���̃G���g���ɑ��݂��܂��B
+  等のエントリに存在します。
 </P><P>
-  �����������邩����m�肽���ꍇ�Alisttree�R�}���h���g���A
+  引数が何個あるか等を知りたい場合、listtreeコマンドを使い、
 </P>
 
 <DIV class="sample">
   listtree arguments System.Request
 </DIV>
 <P>
-  �Ƃ��āAarguments�G���g���𒲂ׂ�ƒm�邱�Ƃ��o���܂��B
+  として、argumentsエントリを調べると知ることが出来ます。
 </P>
 
-<H4>�߂�l�̈��n��</H4>
+<H4>戻り値の引渡し</H4>
 
 <P>
-  �߂�l��Ԃ��������̓R�~���j�P�[�g�Ɠ��l�A
-  <SPAN class="tt">System.Response.*</SPAN>�G���g���Q���g���܂��B
-  SAORI�K�i�ɏ]���āA�߂�l�́A
-  <SPAN class="tt">System.Response.Result</SPAN>�ɏ������݂܂��B
-  �ȉ��A
-  <SPAN class="tt">System.Response.Value0</SPAN>�A
-  <SPAN class="tt">System.Response.Value1</SPAN>�A
+  戻り値を返したい時はコミュニケートと同様、
+  <SPAN class="tt">System.Response.*</SPAN>エントリ群を使います。
+  SAORI規格に従って、戻り値は、
+  <SPAN class="tt">System.Response.Result</SPAN>に書き込みます。
+  以下、
+  <SPAN class="tt">System.Response.Value0</SPAN>、
+  <SPAN class="tt">System.Response.Value1</SPAN>、
   <SPAN class="tt">System.Response.Value2</SPAN>
-  ���̃G���g���ɕ⏕�����������݂܂��B
+  等のエントリに補助情報を書き込みます。
 </P>
 
-<H4>�X�e�[�^�X</H4>
+<H4>ステータス</H4>
 
 <P>
-  �߂�l��Ԃ��ɂ́A���͂��ꂾ���ł͕s�\���ł��B
-  <SPAN class="tt">System.Resopose</SPAN>�G���g���ɁA
-  �X�e�[�^�X���������ޕK�v������܂��B
-  ���̃X�e�[�^�X�R�[�h�����āA
-  SAORI���W���[�����Ăяo�������͏����̐���/���s�𔻒f����ׁA
-  �K�{���ł��B
-  ��ȃX�e�[�^�X�R�[�h�͎��̒ʂ�ł��B
+  戻り値を返すには、実はこれだけでは不十分です。
+  <SPAN class="tt">System.Resopose</SPAN>エントリに、
+  ステータスを書き込む必要があります。
+  このステータスコードを見て、
+  SAORIモジュールを呼び出した側は処理の成功/失敗を判断する為、
+  必須情報です。
+  主なステータスコードは次の通りです。
 <P>
 
 <TABLE border="0" cellpadding="2" cellspacing="2" style="margin: 2ex 5% 3ex 5%;">
-<TR><TD>200</TD><TD>�����𐳂����������A�߂�l����������</TD></TR>
-<TR><TD>204</TD><TD>�����͐����������������A�߂�l���Ȃ�</TD></TR>
-<TR><TD>400(�ȗ����f�t�H���g)</TD><TD>�����ł��Ȃ�����������</TD><TR>
+<TR><TD>200</TD><TD>引数を正しく理解し、戻り値を書き込んだ</TD></TR>
+<TR><TD>204</TD><TD>引数は正しく理解したが、戻り値がない</TD></TR>
+<TR><TD>400(省略時デフォルト)</TD><TD>理解できない引数が来た</TD><TR>
 </TABLE>
 
 <P>
-  �Ȃ��A
-  <SPAN class="tt">System.Callback.OnSaoriExecute</SPAN>�̕]�����ʂ́A
-  �X�e�[�^�X�Ɩ��֌W�ł��B
-  ���̓_�����̃R�[���o�b�N�G���g���ƈႢ�܂��̂ŁA���ӂ��K�v�ł�
+  なお、
+  <SPAN class="tt">System.Callback.OnSaoriExecute</SPAN>の評価結果は、
+  ステータスと無関係です。
+  この点が他のコールバックエントリと違いますので、注意が必要です
 </P>
 
 <DIV class="sample">
   System.Callback.OnSaoriExecute : $(<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;if $[ ${System.Request.Argument0} == "����1" ] $(<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SAORI����1;<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;) else if $[ ${System.Request.Argument0} == "����2" ] $(<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SAORI����2;<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;if $[ ${System.Request.Argument0} == "処理1" ] $(<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SAORI処理1;<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;) else if $[ ${System.Request.Argument0} == "処理2" ] $(<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SAORI処理2;<BR>
   &nbsp;&nbsp;);<BR>
   <BR>
-  # SAORI�������킴�킴�֐��ɂ���K�R���͂Ȃ��̂����c<BR>
-  # �V�@���Ɍ�����ĖႤ���߂ɁA�����Ċ֐��ŋL�q�����B<BR>
-  # ���ʂɃG���g���Ƃ��ď����Ă����̖����Ȃ��B<BR>
-  # ������System.Request.*�ɑ��݂��A�֐��̈����Ƃ��ė^����K�v���Ȃ�����B<BR>
+  # SAORI処理をわざわざ関数にする必然性はないのだが…<BR>
+  # 新機軸に見慣れて貰うために、あえて関数で記述した。<BR>
+  # 普通にエントリとして書いても何の問題もない。<BR>
+  # 引数はSystem.Request.*に存在し、関数の引数として与える必要がないから。<BR>
   <BR>
   =kis<BR>
-  function SAORI����1 $(<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;if $[ ${System.Request.Argument1} == "�v��" ] $(<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Result�̂ݕԂ���<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setstr System.Response.Result "���ށA��낵���I";<BR>
+  function SAORI処理1 $(<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;if $[ ${System.Request.Argument1} == "貢物" ] $(<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Resultのみ返す例<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setstr System.Response.Result "うむ、よろしい！";<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setstr System.Response 200;<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;) else $(<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Result��Value*�𕹗p�����<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setstr System.Response.Result "�v���͂ǂ������I";<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setstr System.Response.Value0 "����";<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setstr System.Response.Value1 "�s��";<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# ResultとValue*を併用する例<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setstr System.Response.Result "貢物はどうした！";<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setstr System.Response.Value0 "文句";<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setstr System.Response.Value1 "不満";<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setstr System.Response.Value2 $(date %y%m%d);<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setstr System.Response 200;<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;);<BR>
   );<BR>
   <BR>
-  function SAORI����2 $(<BR>
+  function SAORI処理2 $(<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;if $[ ${System.Request.Argument1} == "1" ] $(<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Result�Ȃ���������I���̗�<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Resultなしだが正常終了の例<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setstr System.Response 204;<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;) else $(<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# �ُ�I���̗�<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 異常終了の例<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setstr System.Response 400;<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;);<BR>
   );<BR>
@@ -2079,128 +2079,128 @@ Input Keyword : this is test
 </DIV>
 
 <A name="declaresaori"></A>
-<H3>8.5. SAORI���W���[���̎g�p�錾</H3>
+<H3>8.5. SAORIモジュールの使用宣言</H3>
 
 <P>
-  SAORI���W���[�����g�p����ۂ́A
-  �u���ꂩ�炱��SAORI���g���v�Ƃ����g�p�錾�̋L�q���K�v�ł��B
-  ���̋L�q���󂯂āA
-  �ؘa����SAORI���W���[����ǂݍ��񂾂�A�ǂݍ��ޏ��������܂��B
+  SAORIモジュールを使用する際は、
+  「これからこのSAORIを使う」という使用宣言の記述が必要です。
+  この記述を受けて、
+  華和梨はSAORIモジュールを読み込んだり、読み込む準備をします。
 </P><P>
-  �ؘa��Phase 8�ȑO�ł́A
-  ����SAORI�g�p�錾��<SPAN class="tt">kawari.ini</SPAN>�ɋL�q���܂����B
-  �������APhase 8����<SPAN class="tt">kawari.ini</SPAN>�͔p�~�ɂȂ�A
-  �g�p�錾��KIS�ŋL�q���邱�ƂɂȂ�܂����B
+  華和梨Phase 8以前では、
+  このSAORI使用宣言は<SPAN class="tt">kawari.ini</SPAN>に記述しました。
+  しかし、Phase 8から<SPAN class="tt">kawari.ini</SPAN>は廃止になり、
+  使用宣言はKISで記述することになりました。
 </P>
 
 <P>
-  SAORI���W���[���g�p�錾�́A
-  <SPAN class="tt">saoriregist</SPAN>�R�}���h���g���܂��B
+  SAORIモジュール使用宣言は、
+  <SPAN class="tt">saoriregist</SPAN>コマンドを使います。
 </P>
 
 <DIV class="sample">
-  saoriregist ��SAORI���W���[������ ���G�C���A�X�� [���I�v�V������]<BR>
+  saoriregist ＜SAORIモジュール名＞ ＜エイリアス＞ [＜オプション＞]<BR>
 </DIV>
 
 <DL>
-  <DT>SAORI���W���[����(�K�{)</DT>
-  <DD>SAORI���W���[���̃t�@�C�������L�q���܂��B�g���q(�u.dll�v��)���܂߂܂��B
-  �ؘa���̑��݂���t�H���_����̑��΃p�X�ŋL�q���܂��B</DD>
-  <DT>�G�C���A�X(�K�{)</DT>
-  <DD>���ۂ�SAORI���W���[�����g�p����ہA
-  �g�p���郂�W���[������ʂ��邽�߂̃��x���ł��B
-  ������SAORI���W���[�����g���ꍇ�A���W���[�����Ƃɕʂ̖��O��t���Ă��������B
-  �܂��A���W���[����������g���ꍇ���A�K���G�C���A�X���K�v�ł��B</DD>
-  <DT>�I�v�V����(�ȗ��\)</DT>
-  <DD>SAORI���W���[����ǂݍ��ރ^�C�~���O���w�肵�܂��B
-  �u<SPAN class="tt">preload</SPAN>�v�Œ����ɂɓǂݍ��݁A
-  �u<SPAN class="tt">loadoncall</SPAN>�v�Ń��W���[�����g�p���钼�O�ɓǂݍ��݁A
-  �u<SPAN class="tt">noresident</SPAN>�v�Ń��W���[�����g�p���钼�O�ɓǂݍ��݁A
-  �g�p��ɐ؂藣���ł��B<BR>
-  �ȗ������ꍇ�A�u<SPAN class="tt">loadoncall</SPAN>�v�Ɠ����ł��B
-  �g�p����SAORI���W���[���̃}�j���A���ɒ��ӏ������Ȃ��ꍇ�A
-  �ʏ�̓I�v�V�������ȗ����č\���܂���B</DD>
+  <DT>SAORIモジュール名(必須)</DT>
+  <DD>SAORIモジュールのファイル名を記述します。拡張子(「.dll」等)を含めます。
+  華和梨の存在するフォルダからの相対パスで記述します。</DD>
+  <DT>エイリアス(必須)</DT>
+  <DD>実際にSAORIモジュールを使用する際、
+  使用するモジュールを区別するためのラベルです。
+  複数のSAORIモジュールを使う場合、モジュールごとに別の名前を付けてください。
+  また、モジュールを一つだけ使う場合も、必ずエイリアスが必要です。</DD>
+  <DT>オプション(省略可能)</DT>
+  <DD>SAORIモジュールを読み込むタイミングを指定します。
+  「<SPAN class="tt">preload</SPAN>」で直ちにに読み込み、
+  「<SPAN class="tt">loadoncall</SPAN>」でモジュールを使用する直前に読み込み、
+  「<SPAN class="tt">noresident</SPAN>」でモジュールを使用する直前に読み込み、
+  使用後に切り離しです。<BR>
+  省略した場合、「<SPAN class="tt">loadoncall</SPAN>」と等価です。
+  使用するSAORIモジュールのマニュアルに注意書きがない場合、
+  通常はオプションを省略して構いません。</DD>
 </DL>
 
 <P>
-  �������Ďg�p�錾������ƁA�ؘa������SAORI���W���[�����Ăяo�����Ƃ��o���܂��B
+  こうして使用宣言をすると、華和梨からSAORIモジュールを呼び出すことが出来ます。
 </P>
 
 <A name="callsaori"></A>
-<H3>8.6. SAORI���W���[���Ăяo��</H3>
+<H3>8.6. SAORIモジュール呼び出し</H3>
 
 <P>
-  SAORI���W���[�����Ăяo�����́A
-  <SPAN class="tt">callsaori</SPAN>�R�}���h�A
-  <SPAN class="tt">callsaorix</SPAN>�R�}���h���g���܂��B
-  <SPAN class="tt">callsaori</SPAN>�R�}���h�A
-  <SPAN class="tt">callsaorix</SPAN>�R�}���h�́A
-  ��ɒ�`�����u�G�C���A�X�v��SAORI���W���[�����Ăт܂��B
-  ���ɁA<SPAN class="tt">music.dll</SPAN>�Ƃ���SAORI���W���[�����A
-  �u���y�v�Ƃ����G�C���A�X�Ŏg�p�錾�����Ƃ��܂��B
+  SAORIモジュールを呼び出す時は、
+  <SPAN class="tt">callsaori</SPAN>コマンド、
+  <SPAN class="tt">callsaorix</SPAN>コマンドを使います。
+  <SPAN class="tt">callsaori</SPAN>コマンド、
+  <SPAN class="tt">callsaorix</SPAN>コマンドは、
+  先に定義した「エイリアス」でSAORIモジュールを呼びます。
+  仮に、<SPAN class="tt">music.dll</SPAN>というSAORIモジュールを、
+  「音楽」というエイリアスで使用宣言したとします。
 </P>
 
 <DIV class="sample">
-  saoriregist music.dll ���y<BR>
+  saoriregist music.dll 音楽<BR>
 </DIV>
 
 <P>
-  ����SAORI���W���[���̋@�\���w�肵�����y�t�@�C���̍Đ����Ƃ�����A
-  �Đ����鉹�y�t�@�C�������w�肷��̂����ʂł��傤�B
-  ���̏ꍇ�ASAORI���W���[���ɍĐ�����t�@�C������`����K�v������܂��B
-  �b�̓s����A<SPAN class="tt">music.dll</SPAN>��
+  このSAORIモジュールの機能が指定した音楽ファイルの再生だとしたら、
+  再生する音楽ファイル名を指定するのが普通でしょう。
+  この場合、SAORIモジュールに再生するファイル名を伝える必要があります。
+  話の都合上、<SPAN class="tt">music.dll</SPAN>は
 </P>
 <UL>
-<LI>��1�������uplay�v�ōĐ��J�n�A�ustop�v�ōĐ���~</LI>
-<LI>��2�������Đ��J�n���͍Đ�����t�@�C�����A��~���͖���</LI>
+<LI>第1引数が「play」で再生開始、「stop」で再生停止</LI>
+<LI>第2引数が再生開始時は再生するファイル名、停止時は無し</LI>
 </UL>
 <P>
-  �Ƃ����d�l���Ƃ��܂��B
+  という仕様だとします。
 </P><P>
-  ����<SPAN class="tt">music.dll</SPAN>�ŁA
- �u<SPAN class="tt">technopolis.mid</SPAN>�v�Ƃ������y�t�@�C�����Đ��������ꍇ�A
+  この<SPAN class="tt">music.dll</SPAN>で、
+ 「<SPAN class="tt">technopolis.mid</SPAN>」という音楽ファイルを再生したい場合、
 </P>
 
 <DIV class="sample">
-  callsaori ���y play technopolis.mid<BR>
+  callsaori 音楽 play technopolis.mid<BR>
 </DIV>
 
 <P>
-  �Ə����܂��B
-  <SPAN class="tt">callsaori</SPAN>�R�}���h�̃G�C���A�X�����̈����́A
-  SAORI���W���[���Ɉ����Ƃ��ēn���܂��B
+  と書きます。
+  <SPAN class="tt">callsaori</SPAN>コマンドのエイリアスより後ろの引数は、
+  SAORIモジュールに引数として渡します。
 </P>
 
 <P>
-  <SPAN class="tt">callsaorix</SPAN>�R�}���h�́A
-  SAORI���W���[�����߂�l�ȊO�ɁA
-  �l�X�ȏ��𑗂��Ă���^�C�v�̏ꍇ�Ɏg�p���܂��B
-  ���ɁA��قǂ�<SPAN class="tt">music.dll</SPAN>���uplay�v���w�������ꍇ�A
-  ���̂悤�ȏ��𑗂��Ă���Ƃ��܂��B
+  <SPAN class="tt">callsaorix</SPAN>コマンドは、
+  SAORIモジュールが戻り値以外に、
+  様々な情報を送ってくるタイプの場合に使用します。
+  仮に、先ほどの<SPAN class="tt">music.dll</SPAN>が「play」を指示した場合、
+  次のような情報を送ってくるとします。
 </P>
 <UL>
-<LI>Result: �Đ��ɐ���������uOK�v</LI>
-<LI>Value0: ���y�t�@�C���̃^�C�g��</LI>
-<LI>Value1: ���y�t�@�C���̃A�[�e�B�X�g</LI>
-<LI>Value2: ���y�t�@�C���̉��t����(mm:ss�`��)</LI>
+<LI>Result: 再生に成功したら「OK」</LI>
+<LI>Value0: 音楽ファイルのタイトル</LI>
+<LI>Value1: 音楽ファイルのアーティスト</LI>
+<LI>Value2: 音楽ファイルの演奏時間(mm:ss形式)</LI>
 </UL>
 
 <P>
-  �ł́A<SPAN class="tt">callsaorix</SPAN>���g���āA
-  ���y�t�@�C���u<SPAN class="tt">Truth21c.mid</SPAN>�v���Đ����܂��B
-  �G�C���A�X��<SPAN class="tt">callsaori</SPAN>�R�}���h�A
-  <SPAN class="tt">callsaorix</SPAN>�R�}���h�ɋ��ʂŎg���܂��B
+  では、<SPAN class="tt">callsaorix</SPAN>を使って、
+  音楽ファイル「<SPAN class="tt">Truth21c.mid</SPAN>」を再生します。
+  エイリアスは<SPAN class="tt">callsaori</SPAN>コマンド、
+  <SPAN class="tt">callsaorix</SPAN>コマンドに共通で使えます。
 </P>
 
 <DIV class="sample">
-  callsaorix ���y music.info play Truth21c.mid<BR>
+  callsaorix 音楽 music.info play Truth21c.mid<BR>
 </DIV>
 
 <P>
-  �����ŁA�G�C���A�X�̂������́u<SPAN class="tt">music.info</SPAN>�v�́A
-  SAORI���W���[���������Ă��������L�^����ۂ́A
-  ��ƂȂ�G���g���̖��O�ł��B���̃G���g���̖��O�͎��R�Ɍ��߂��܂��B
-  ��̗�̏ꍇ�A���̂悤�ȃG���g���ɏ����������݂܂��B
+  ここで、エイリアスのすぐ後ろの「<SPAN class="tt">music.info</SPAN>」は、
+  SAORIモジュールが送ってきた情報を記録する際の、
+  基準となるエントリの名前です。このエントリの名前は自由に決められます。
+  上の例の場合、次のようなエントリに情報を書き込みます。
 </P>
 <UL>
 <LI>music.info.Value0: "TRUTH(21C Remix)"</LI>
@@ -2211,232 +2211,232 @@ Input Keyword : this is test
 </UL>
 
 <P>
-  size��Value�������邩�������܂��B
+  sizeはValueが何個あるかを示します。
 </P>
 
 <P>
-  <SPAN class="tt">callsaori</SPAN>�A
-  <SPAN class="tt">callsaorix</SPAN>�͂Ƃ��ɖ߂�l��Ԃ��֐��R�}���h�ł��B
-  �߂�l��SAORI���W���[���̕Ԃ���<SPAN class="tt">Result</SPAN>�w�b�_�ł��B
+  <SPAN class="tt">callsaori</SPAN>、
+  <SPAN class="tt">callsaorix</SPAN>はともに戻り値を返す関数コマンドです。
+  戻り値はSAORIモジュールの返した<SPAN class="tt">Result</SPAN>ヘッダです。
 </P>
 
 <A name="extension"></A>
-<H2>9. ���p��</H2>
+<H2>9. 応用編</H2>
 
 <P>
-  ��L�𓥂܂��A�S�[�X�g�̊�{�������������ہA
-  �ؘa��Phase 8�ł͂ǂ̂悤�ɋL�q����̂��A
-  �����������ďЉ�܂��B
+  上記を踏まえ、ゴーストの基本動作を実装する際、
+  華和梨Phase 8ではどのように記述するのか、
+  幾つか例を交えて紹介します。
 </P>
 
 <A name="event"></A>
-<H3>9.1. �C�x���g</H3>
+<H3>9.1. イベント</H3>
 
 <P>
-  �C�x���g�ʒm�̍ہA�{�̂����Reference�w�b�_���ؘa������Q�Ƃ���ɂ́A
-  <SPAN class="tt">${System.Request.Reference0}</SPAN>�ȂǁA
-  ���ɒ����G���g�������L�q����K�v������܂��B
-  �g���Ă݂�ƁA����͕s�ւł��B
-  �����ŁA�R�}���h������ċL�q���ȒP�ɂ���ꍇ���l���܂��B
+  イベント通知の際、本体からのReferenceヘッダを華和梨から参照するには、
+  <SPAN class="tt">${System.Request.Reference0}</SPAN>など、
+  非常に長いエントリ名を記述する必要があります。
+  使ってみると、これは不便です。
+  そこで、コマンドを作って記述を簡単にする場合を考えます。
 </P><P>
-  �R�}���h���`����ۂ̒��ӂł����A
-  �X�N���v�g�L�q�]�[���Œ�`���ĉ������B
-  �����L�q�]�[���̃G���g����`���ŃR�}���h���`�����ꍇ�A
-  �R�}���h�̒�`�́u���̃G���g�����Ăяo����āv���߂ċ@�\���܂��B
-  �����ꍇ�A�R�}���h�͖���`�����R�ƂȂ�܂��B
+  コマンドを定義する際の注意ですが、
+  スクリプト記述ゾーンで定義して下さい。
+  辞書記述ゾーンのエントリ定義中でコマンドを定義した場合、
+  コマンドの定義は「そのエントリが呼び出されて」初めて機能します。
+  多く場合、コマンドは未定義も同然となります。
 </P><P>
-  �ł́A���ۂɒ�`���Ă݂܂��B
+  では、実際に定義してみます。
 </P>
 
 <DIV class="sample">
   =kis<BR>
-  # Reference��Ԃ��R�}���h "Reference"<BR>
+  # Referenceを返すコマンド "Reference"<BR>
   function Reference $(<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;# �������Ȃ������ꍇ�A�����Ԃ��Ȃ�<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;# 引数がなかった場合、何も返さない<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;if $[ $(size @arg) &lt;= 1 ] $(return);<BR>
   <BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;# System.Request.Reference?�G���g���̈�ڂ̒P��𓾂�<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;# System.Request.Reference?エントリの一つ目の単語を得る<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;get System.Request.Reference$@arg[1][0];<BR>
   );<BR>
   =end<BR>
 </DIV>
 
 <P>
-  ���̗�ł́A����Reference�ԍ���Reference�w�b�_����������ꍇ��z�肵�A
-  get��0�Ԗڂ�Refernce?���Q�Ƃ��Ă��܂��B
+  この例では、同じReference番号のReferenceヘッダが複数来る場合を想定し、
+  getで0番目のRefernce?を参照しています。
 </P>
 
 <A name="communicate"></A>
-<H3>9.2. �R�~���j�P�[�g</H3>
+<H3>9.2. コミュニケート</H3>
 
 <P>
-  ���̃S�[�X�g�ɘb���|���鎞�́A
-  <SPAN class="tt">Reference0</SPAN>�ɘb���|�������S�[�X�g�����Z�b�g���āA
-  �g�[�N��Ԃ��܂��B
-  <SPAN class="tt">ReferenceN</SPAN>(N��0�ȏ�̐���)��Ԃ��ɂ́A
-  <SPAN class="tt">System.Response.ReferenceN</SPAN>�G���g���ɒP����Z�b�g���܂��B
-  �Ȃ��A<SPAN class="tt">System.Response</SPAN>�Ŏn�܂�G���g���́A
-  �R�[���o�b�N���Ƃɖ�����e����������܂��B
+  他のゴーストに話し掛ける時は、
+  <SPAN class="tt">Reference0</SPAN>に話し掛けたいゴースト名をセットして、
+  トークを返します。
+  <SPAN class="tt">ReferenceN</SPAN>(Nは0以上の整数)を返すには、
+  <SPAN class="tt">System.Response.ReferenceN</SPAN>エントリに単語をセットします。
+  なお、<SPAN class="tt">System.Response</SPAN>で始まるエントリは、
+  コールバックごとに毎回内容が消去されます。
 </P>
 
 <DIV class="sample">
   sentence : (<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;$(setstr System.Response.Reference0 �Ŏq)<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;\0\s[0]���[���A�Ŏq����A�������邩�[���B<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;\1\s[11]��߂Ƃ��A�A���͋U�Ŏq���B�ςȒ��˂���邼�B\e<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;$(setstr System.Response.Reference0 毒子)<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;\0\s[0]おーい、毒子さん、聞こえるかーい。<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;\1\s[11]やめとけ、アレは偽毒子だ。変な注射されるぞ。\e<BR>
   &nbsp;&nbsp;)<BR>
 </DIV>
 
 <P>
-  �������Ęb���|����ꂽ�S�[�X�g�ɂ́A
-  <SPAN class="tt">OnCommunicate</SPAN>������Ă��܂��B
-  SHIORI/3.0����A�R�~���j�P�[�g�̓C�x���g�̈��ɂȂ�܂����B
+  こうして話し掛けられたゴーストには、
+  <SPAN class="tt">OnCommunicate</SPAN>がやってきます。
+  SHIORI/3.0から、コミュニケートはイベントの一種になりました。
 </P>
 
 <DIV class="sample">
-  # �u��b�v�G���g���̑S���e��]�����A�߂�l�̈���G���g�����Ƃ���<BR>
-  # �G���g���Ăяo��<BR>
-  # �߂�l���Ȃ���΁Acommunicate.unknown�G���g�����Ă�<BR>
-  reply.OnCommunicate : $(communicate ��b ${communicate.unknown})<BR>
+  # 「会話」エントリの全内容を評価し、戻り値の一つをエントリ名として<BR>
+  # エントリ呼び出し<BR>
+  # 戻り値がなければ、communicate.unknownエントリを呼ぶ<BR>
+  reply.OnCommunicate : $(communicate 会話 ${communicate.unknown})<BR>
 </DIV>
 
 <P>
-  ��������b���|����Ƃ��Ɠ��l�A
-  �b���|����S�[�X�g����<SPAN class="tt">Reference0</SPAN>�ɐݒ肵�ĉ������B
+  自分から話し掛けるときと同様、
+  話し掛けるゴースト名を<SPAN class="tt">Reference0</SPAN>に設定して下さい。
 </P><P>
-  �Ȃ��A�R�~���j�P�[�g�p�R�}���h�́A
-  ���[�U��`�R�}���h�Ŏg���₷���悤���b�s���O����̂�����ł����A
-  �����ł͈�ԑf���ɏ������ꍇ��Ꭶ���܂��B
+  なお、コミュニケート用コマンドは、
+  ユーザ定義コマンドで使いやすいようラッピングするのが得策ですが、
+  ここでは一番素直に書いた場合を例示します。
 </P><P>
-  �R�~���j�P�[�g�̊�{�I�������́A���̂悤�ɂȂ�܂��B
+  コミュニケートの基本的書き方は、次のようになります。
 </P>
 
 <OL>
-<LI>��������L�[���[�h���������G���g�������B
-�L�[���[�h�Q1�ɂ��G���g����Ƃ���B����key�Ƃ���B</LI>
-<LI>�L�[���[�h�Q�ɑΉ�����A�Ԏ����������G���g�������B
-������L�[���[�h�Q1�ɂ��G���g��1�Ƃ���B����answer�Ƃ���B</LI>
-<LI><SPAN class="tt">communicate</SPAN>�R�}���h�ő��˂�G���g�����A
-����<SPAN class="tt">com</SPAN>�Ƃ���B</LI>
-<LI>�L�[���[�h�A�Ԏ���<SPAN class="tt">com</SPAN>�G���g���ɓo�^���鎞�́A
+<LI>反応するキーワードを書いたエントリを作る。
+キーワード群1個につきエントリ一個とする。仮にkeyとする。</LI>
+<LI>キーワード群に対応する、返事を書いたエントリを作る。
+これもキーワード群1個につきエントリ1個とする。仮にanswerとする。</LI>
+<LI><SPAN class="tt">communicate</SPAN>コマンドで束ねるエントリを、
+仮に<SPAN class="tt">com</SPAN>とする。</LI>
+<LI>キーワード、返事を<SPAN class="tt">com</SPAN>エントリに登録する時は、
   <DIV class="sample">
     com : $(<BR>
     &nbsp;&nbsp;&nbsp;&nbsp;if $(xargs key matchall ${System.Request.Reference1}) <BR>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;answer<BR>
     &nbsp;&nbsp;)<BR>
   </DIV>
-�Ə����B</LI>
-<LI><SPAN class="tt">OnCommunicate</SPAN>�C�x���g�ŁA
+と書く。</LI>
+<LI><SPAN class="tt">OnCommunicate</SPAN>イベントで、
   <DIV class="sample">
     $(communicate com)<BR>
   </DIV>
-�Ə����B</LI>
+と書く。</LI>
 </OL>
 
 <P>
-  �ȏ���܂Ƃ߂���������܂��B
+  以上をまとめた例を挙げます。
 </P>
 
 <DIV class="sample">
-  # �Ⴆ�΁u���Ȃ��̖��O�͉��H�v�ɔ�������<BR>
-  com.key.1 : ���Ȃ� , ���O , ���H<BR>
+  # 例えば「あなたの名前は何？」に反応する<BR>
+  com.key.1 : あなた , 名前 , 何？<BR>
   com.answer.1 : (<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;\0\s[0]���̖��O��${myname}�ł��B\s[5]���Ȃ��́H\e<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;\0\s[0]私の名前は${myname}です。\s[5]あなたは？\e<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;$(setstr System.Response.Reference0 $(Reference 0))<BR>
   &nbsp;&nbsp;)<BR>
-  com.answer.1 : \0\s[4]���[�B\1\s[10]���܂�A�������@���������Ă�\e<BR>
-  com.answer.1 : \0\s[8]�c�B\1\s[10]��������B\e<BR>
+  com.answer.1 : \0\s[4]うー。\1\s[10]すまん、こいつ今機嫌が悪くてな\e<BR>
+  com.answer.1 : \0\s[8]…。\1\s[10]無視かよ。\e<BR>
   com : $(<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;if $(xargs com.key.1 matchall $(Reference 1))<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;com.answer.1<BR>
   &nbsp;&nbsp;)<BR>
   <BR>
-  # �u���������v�ƌ�����ƃL���<BR>
-  com.key.2 : �� , ����<BR>
-  com.answer.2 : \0\s[25]�c�B\1\s[11]�������Ԃ��҂��A����������I\e<BR>
+  # 「胸が無い」と言われるとキれる<BR>
+  com.key.2 : 胸 , 無い<BR>
+  com.answer.2 : \0\s[25]…。\1\s[11]俺が時間を稼ぐ、早く逃げろ！\e<BR>
   com : $(<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;if $(xargs com.key.2 matchall $(Reference 1))<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;com.answer.2<BR>
   &nbsp;&nbsp;)<BR>
   <BR>
-  # �����̃S�[�X�g�̌Ăт����ɉ������<BR>
-  # �u���ɂ�ڂ�ňꏏ�ɗV�ڂ��v���ɔ�������<BR>
-  com.key.3 : ���ɂ�ڂ� , �ꏏ , �V�ڂ�<BR>
+  # 複数のゴーストの呼びかけに応じる例<BR>
+  # 「うにゅぼんで一緒に遊ぼう」等に反応する<BR>
+  com.key.3 : うにゅぼん , 一緒 , 遊ぼう<BR>
   com.answer.3 : (<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;\0\s[5]����I����A���́u${installedghost}�v�g����B\e<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;\0\s[5]うん！じゃ、私は「${installedghost}」使うよ。\e<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;$(setstr System.Response.Reference0 $(Reference 0))<BR>
   &nbsp;&nbsp;)<BR>
-  # ��������S�[�X�g���ꗗ<BR>
-  com.ghost.3  : ���o , �܂�� , ������ , ���肱<BR>
-  com.ghost.3  : �Ŏq , ����� , �ޗ� , ���q<BR>
-  # find���g���A��������ׂ��S�[�X�g���ǂ�������<BR>
+  # 反応するゴースト名一覧<BR>
+  com.ghost.3  : 黒姉 , まゆら , さくら , せりこ<BR>
+  com.ghost.3  : 毒子 , あると , 奈留 , 安子<BR>
+  # findを使い、反応するべきゴーストかどうか判定<BR>
   com : $(<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;if $[ $(find com.ghost.3 $(Reference 0)) &gt;= 0 &&<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(xargs com.key.3 matchall $(Reference 1)) ]<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;com.answer.3<BR>
   &nbsp;&nbsp;)<BR>
   <BR>
-  # ����S�[�X�g�Ɏ����̖��O���Ă΂ꂽ�Ƃ��ɔ���<BR>
+  # あるゴーストに自分の名前を呼ばれたときに反応<BR>
   com.key.4 : ${myname}<BR>
-  com.answer.4 : \0\s[5]�c�c$(Reference 0)�l�I\e$(setstr FlagMode happy)<BR>
-  com.ghost.4 : �܂��<BR>
+  com.answer.4 : \0\s[5]……$(Reference 0)様！\e$(setstr FlagMode happy)<BR>
+  com.ghost.4 : まゆら<BR>
   com : $(<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;if $[ $(Reference 0) == ${com.ghost.4} &&<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(xargs com.key.4 matchall $(Reference 1)) ]<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;com.answer.4<BR>
   &nbsp;&nbsp;)<BR>
   <BR>
-  # �L�[���[�h�O�̔�����<BR>
-  com.unknown : \0\s[4]���߂�A�悭������Ȃ��B\e<BR>
-  com.unknown : \0\s[8]�ȃv�[�B\1\s[10]�c�B\e<BR>
+  # キーワード外の反応文<BR>
+  com.unknown : \0\s[4]ごめん、よく分かんない。\e<BR>
+  com.unknown : \0\s[8]なプー。\1\s[10]…。\e<BR>
   com.unknown : (<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;\0\s[0]�c���ꂩ��H\e<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;\0\s[0]…それから？\e<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;$(setstr System.Response.Reference0 $(Reference 0))<BR>
   &nbsp;&nbsp;)<BR>
   <BR>
-  # �R�~���j�P�[�g�C�x���g��com�G���g����o�^<BR>
+  # コミュニケートイベントでcomエントリを登録<BR>
   reply.OnCommunicate : $(communicate com ${com.unknown})<BR>
 </DIV>
 
 <A name="randomtalk"></A>
-<H3>9.3. �����g�[�N</H3>
+<H3>9.3. 自発トーク</H3>
 
 <P>
-  �����I�Ƀg�[�N������ɂ́A
-  <SPAN class="tt">OnSecondChange</SPAN>�C�x���g���g���̂���ʓI�ł��B
-  �قږ��b���邱�̃C�x���g���������邽�тɓ����ŃJ�E���^��1�����₵�A
-  �J�E���^���w��̒l�ɂȂ�����A
-  <SPAN class="tt">OnSecondChange</SPAN>�Ńg�[�N��Ԃ��A�Ƃ������@�ł��B
+  自発的にトークをするには、
+  <SPAN class="tt">OnSecondChange</SPAN>イベントを使うのが一般的です。
+  ほぼ毎秒来るこのイベントが発生するたびに内部でカウンタを1ずつ増やし、
+  カウンタが指定の値になったら、
+  <SPAN class="tt">OnSecondChange</SPAN>でトークを返す、という方法です。
 </P><P>
-  ���̂Ƃ����ӂ��K�v�Ȃ̂́A
-  <SPAN class="tt">OnSecondChange</SPAN>���ŏ������Ă���Ƃ�����������A
-  �Ƃ����_�ł��B
-  <SPAN class="tt">OnSecondChange</SPAN>�Ńg�[�N���̂Ă��邩�ۂ��́A
-  Reference3��1/0�Ŕ���ł��܂��B
+  このとき注意が必要なのは、
+  <SPAN class="tt">OnSecondChange</SPAN>が最小化しているときも発生する、
+  という点です。
+  <SPAN class="tt">OnSecondChange</SPAN>でトークが捨てられるか否かは、
+  Reference3の1/0で判定できます。
 </P><P>
-  �ȏ�𓥂܂��āA�ȒP�Ȏ����g�[�N������X�N���v�g��g��ł݂܂��B
-  �`���I���R����A
-  �g�[�N��<SPAN class="tt">sentence</SPAN>�G���g���ɂ�����̂Ƃ��܂��B
+  以上を踏まえて、簡単な自発トークをするスクリプトを組んでみます。
+  伝統的理由から、
+  トークは<SPAN class="tt">sentence</SPAN>エントリにあるものとします。
 </P>
 
 <DIV class="sample">
   System.Callback.OnGET : ${reply.${System.Request.ID}}<BR>
   <BR>
-  # �g�[�N����(�b)<BR>
-  # ���̃G���g���Ɏw�肵�����ԊԊu�Ŕ��b����<BR>
+  # トーク周期(秒)<BR>
+  # このエントリに指定した時間間隔で発話する<BR>
   interval : 90<BR>
   <BR>
-  # �g�[�N�J�E���^<BR>
-  # ���̃J�E���^���g�[�N�����Ɠ������Ȃ����甭�b����<BR>
+  # トークカウンタ<BR>
+  # このカウンタがトーク周期と等しくなったら発話する<BR>
   talkcounter : 0<BR>
   <BR>
-  # OnSecondChange�C�x���g<BR>
-  # Reference3��1�Ȃ�A�g�[�N��Ԃ��Ă����v<BR>
+  # OnSecondChangeイベント<BR>
+  # Reference3が1なら、トークを返しても大丈夫<BR>
   reply.OnSecondChange : $(<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;if ${System.Request.Reference3} $(<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inc talkcounter;<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# �J�E���^���g�[�N�����ȏ�ɂȂ��Ă����甭�b���A<BR>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# �J�E���^�����Z�b�g����<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# カウンタがトーク周期以上になっていたら発話し、<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# カウンタをリセットする<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if $[ ${talkcounter} &gt;= ${interval} ] $(<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entry sentence;<BR>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setstr talkcounter 0;<BR>

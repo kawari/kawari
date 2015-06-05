@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/loose.dtd">
 <HTML>
 <HEAD>
- <META http-equiv="Content-Type" content="text/html; charset=SHIFT_JIS">
+ <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <META http-equiv="Content-Script-Type" content="text/javascript">
  <META http-equiv="Content-Style-Type" content="text/css">
  <LINK rel="stylesheet" type="text/css" href="kawari.css">
@@ -14,93 +14,93 @@
 
 <BLOCKQUOTE>
 <P>
-  �{�h�L�������g�́A�ؘa��Phase8��ł̃v���O���~���O���t�@�����X�ł���A
-  <STRONG>�~�h���E�F�A����ҁA�ؘa���̈ڐA���s���f�x���b�p���^�[�Q�b�g�Ƃ��Ă���B</STRONG>
-  �S�[�X�g�x���_�����ȈՃK�C�h�Ƃ��Ă�<A href="users.html">���[�U�[�Y�}�j���A��</A>�A
-  �ؘa�����S�Ҍ����K�C�h�Ƃ��Ă�<A href="start.html">Getting Started</A>
-  �����ꂼ��p�ӂ��Ă���̂ŁA��������Q�l�ɂ��ꂽ���B
-  �܂��A�ؘa�����g�p�����S�[�X�g���쏉�S�Ҍ����̓����ɂ��ẮA
-  �u�ؘa�����g���|���v�u���I�u�ؘa���v�����c�v
-  �Ȃǂ̉���T�C�g���Q�l�ɂ��ꂽ���B
+  本ドキュメントは、華和梨Phase8上でのプログラミングリファレンスであり、
+  <STRONG>ミドルウェア制作者、華和梨の移植を行うデベロッパをターゲットとしている。</STRONG>
+  ゴーストベンダ向け簡易ガイドとしては<A href="users.html">ユーザーズマニュアル</A>、
+  華和梨初心者向けガイドとしては<A href="start.html">Getting Started</A>
+  をそれぞれ用意しているので、そちらを参考にされたい。
+  また、華和梨を使用したゴースト制作初心者向けの導入については、
+  「華和梨を使い倒す」「私的「華和梨」応援団」
+  などの解説サイトを参考にされたい。
 </P>
 </BLOCKQUOTE>
 
 <BR>
-<A href="index.html" class="toindex">�� back</A>
+<A href="index.html" class="toindex">← back</A>
 <BR>
 
 <H2>Index</H2>
 
 <BLOCKQUOTE>
-  <A href="programming_1.html">1. �ؘa���Ƃ͉����H</A><BR>
-  �@�@<A href="programming_1.html#prg1_1">1.1. ��{�T�O</A><BR>
-  �@�@<A href="programming_1.html#prg1_2">1.2. �����ؘa�����������Ă��邩</A><BR>
-  �@�@<A href="programming_1.html#prg1_3">1.3. Phase 8�ɂ�����ϊv</A><BR>
-  <A href="programming_2.html">2. �ؘa������d�l</A><BR>
-  �@�@<A href="programming_2.html#prg2_1">2.1. �����ƃG���g��</A><BR>
-  �@�@<A href="programming_2.html#prg2_2">2.2. ��</A><BR>
-  �@�@<A href="programming_2.html#prg2_3">2.3. �G���g���Ăяo��</A><BR>
-  �@�@<A href="programming_2.html#prg2_4">2.4. �C�����C���X�N���v�g(KIS)</A><BR>
-  �@�@<A href="programming_2.html#prg2_5">2.5. ���Z��</A><BR>
-  �@�@<A href="programming_2.html#prg2_6">2.6. �R���e�L�X�g�A�����Q�ƁA�ꎞ�G���g��</A><BR>
-  �@�@<A href="programming_2.html#prg2_7">2.7. �󕶎���</A><BR>
-  <A href="programming_3.html">3. �ؘa�����@</A><BR>
-  �@�@<A href="programming_3.html#prg3_1">3.1. ����\��</A><BR>
-  �@�@<A href="programming_3.html#prg3_2">3.2. �����t�@�C���`���A�]�[���؂�ւ�</A><BR>
-  �@�@<A href="programming_3.html#prg3_3">3.3. �����L�q</A><BR>
-  �@�@<A href="programming_3.html#prg3_4">3.4. ���ƒP��</A><BR>
-  �@�@<A href="programming_3.html#prg3_5">3.5. �u���b�N</A><BR>
-  �@�@<A href="programming_3.html#prg3_6">3.6. �u���q</A><BR>
-  �@�@<A href="programming_3.html#prg3_7">3.7. ���Z��</A><BR>
-  �@�@<A href="programming_3.html#prg3_8">3.8. �W�����Z��</A><BR>
-  <A href="programming_4.html">4. �O���C���^�[�t�F�[�X</A><BR>
-  �@�@<A href="programming_4.html#prg4_1">4.1. SHIORI-Server�C���^�[�t�F�[�X</A><BR>
-  �@�@<A href="programming_4.html#prg4_2">4.2. SAORI-Server�C���^�[�t�F�[�X</A><BR>
-  <A href="programming_5.html">5. ���[�h�}�b�v</A><BR>
+  <A href="programming_1.html">1. 華和梨とは何か？</A><BR>
+  　　<A href="programming_1.html#prg1_1">1.1. 基本概念</A><BR>
+  　　<A href="programming_1.html#prg1_2">1.2. 何が華和梨を難しくさせているか</A><BR>
+  　　<A href="programming_1.html#prg1_3">1.3. Phase 8における変革</A><BR>
+  <A href="programming_2.html">2. 華和梨言語仕様</A><BR>
+  　　<A href="programming_2.html#prg2_1">2.1. 辞書とエントリ</A><BR>
+  　　<A href="programming_2.html#prg2_2">2.2. 文</A><BR>
+  　　<A href="programming_2.html#prg2_3">2.3. エントリ呼び出し</A><BR>
+  　　<A href="programming_2.html#prg2_4">2.4. インラインスクリプト(KIS)</A><BR>
+  　　<A href="programming_2.html#prg2_5">2.5. 演算式</A><BR>
+  　　<A href="programming_2.html#prg2_6">2.6. コンテキスト、履歴参照、一時エントリ</A><BR>
+  　　<A href="programming_2.html#prg2_7">2.7. 空文字列</A><BR>
+  <A href="programming_3.html">3. 華和梨文法</A><BR>
+  　　<A href="programming_3.html#prg3_1">3.1. 字句構造</A><BR>
+  　　<A href="programming_3.html#prg3_2">3.2. 辞書ファイル形式、ゾーン切り替え</A><BR>
+  　　<A href="programming_3.html#prg3_3">3.3. 辞書記述</A><BR>
+  　　<A href="programming_3.html#prg3_4">3.4. 文と単語</A><BR>
+  　　<A href="programming_3.html#prg3_5">3.5. ブロック</A><BR>
+  　　<A href="programming_3.html#prg3_6">3.6. 置換子</A><BR>
+  　　<A href="programming_3.html#prg3_7">3.7. 演算式</A><BR>
+  　　<A href="programming_3.html#prg3_8">3.8. 集合演算式</A><BR>
+  <A href="programming_4.html">4. 外部インターフェース</A><BR>
+  　　<A href="programming_4.html#prg4_1">4.1. SHIORI-Serverインターフェース</A><BR>
+  　　<A href="programming_4.html#prg4_2">4.2. SAORI-Serverインターフェース</A><BR>
+  <A href="programming_5.html">5. ロードマップ</A><BR>
 </BLOCKQUOTE>
 
 
-<H2>�͂��߂�</H2>
+<H2>はじめに</H2>
 
 <P>
-  ���N�Ԃ�ؘ̉a�����W���[�o�[�W�����A�b�v�ƂȂ�Phase8(�J���R�[�h�l�[��"KIU")�́A
-  �]���A�ؘa���̒����ł���A�܂���_�Ƃ���Ă���KIS(Kawari Inline Script)�ɂ��āA
-  ���̋L�q���A�ǐ���啝�Ɍ��コ���邱�Ƃ�ړI�Ƃ��č쐬���ꂽ�B
-  ����KIS�͎�����`�S�́A�Ђ��Ăؘ͉a�����p�S�̂��x����V�X�e���ƂȂ��Ă���A
-  ���̕��@�����������A�@�\�𐮗��A�������邱�Ƃ͑�Ϗd�v�ł���B
-  ����ɂ���Ă�荂�x�ȃS�[�X�g����A�~�h���E�F�A���삪�\�ƂȂ�ق��A
-  �ؘa���{�̂ɖ��ߍ��܂�Ă����V�X�e���ˑ��������X�N���v�g�����邱�Ƃ��\�ƂȂ�A
-  �ύX�̑����u�����B�v�ɑ΂��ď_��ɑΉ��ł���B
+  半年ぶりの華和梨メジャーバージョンアップとなるPhase8(開発コードネーム"KIU")は、
+  従来、華和梨の長所であり、また弱点とされてきたKIS(Kawari Inline Script)について、
+  その記述性、可読性を大幅に向上させることを目的として作成された。
+  既にKISは辞書定義全体、ひいては華和梨利用全体を支えるシステムとなっており、
+  その文法を厳密化し、機能を整理、強化することは大変重要である。
+  これによってより高度なゴースト制作、ミドルウェア制作が可能となるほか、
+  華和梨本体に埋め込まれていたシステム依存部分をスクリプト化することが可能となり、
+  変更の多い「何か。」に対して柔軟に対応できる。
 </P><P>
-  Phase7�n�ŐV�o�[�W�����ł���KAWARI.kpcg/7.3.1�ɑ΂��čs�����ύX�́A
-  ��ȃ|�C���g�͎��̒ʂ�B
-  �Ȃ��A "(7.9.0)"�ƕt���Ă�����̂́AKAWARI.meister/7.9.0����p�����ꂽ���́A
-  "(ebi)"�ƕt���Ă�����̂́A���т��킳��o�[�W��������p�����ꂽ���̂ł���B
-  7.9.0��"KIU"�̃R���Z�v�g�͂قڊ��S�ɒ������Ă���A
-  ���̃}�[�W�͋����قǃX���[�Y�������B
+  Phase7系最新バージョンであるKAWARI.kpcg/7.3.1に対して行った変更の、
+  主なポイントは次の通り。
+  なお、 "(7.9.0)"と付いているものは、KAWARI.meister/7.9.0から継承されたもの、
+  "(ebi)"と付いているものは、えびさわさんバージョンから継承されたものである。
+  7.9.0と"KIU"のコンセプトはほぼ完全に直交しており、
+  そのマージは驚くほどスムーズだった。
 </P>
 
 <UL>
-  <LI>�����s�Ή�</LI>
-  <LI>�V�\��$[ ]</LI>
-  <LI>�V�\��()</LI>
-  <LI>�V�\��$...[]</LI>
-  <LI>��if��p�~�B�V�\���R�}���hif�`else if�`else, break, return</LI>
-  <LI>KIS�֐�</LI>
-  <LI>�ꎞ�G���g��(�����ϐ�)</LI>
-  <LI>�����Q�ƃ��[���̌�����</LI>
-  <LI>�G���g���W�����Z�̋���</LI>
-  <LI>(7.9.0)kawari.ini�̔p�~</LI>
-  <LI>(7.9.0)�]���^�}�b�`�G���g���̔p�~</LI>
-  <LI>(7.9.0)����piro�p�~</LI>
-  <LI>(7.9.0)�����t�@�C������KIS���ڎ��s</LI>
-  <LI>(7.9.0)KIS�R�}���h�̑啝����</LI>
-  <LI>(7.9.0)�����C���^�[�t�F�[�X�̐���</LI>
-  <LI>(7.9.0)�G���g���c���[�̓���</LI>
-  <LI>(7.9.0)�e��O���C���^�[�t�F�[�X(SHIORI/SAORI-Server)�̍��V</LI>
-  <LI>(ebi)SAORI-Client�̓���</LI>
-  <LI>�S���@�̌�����</LI>
-  <LI>�L�q�G���[���o�@�\�̓���</LI>
+  <LI>複数行対応</LI>
+  <LI>新構文$[ ]</LI>
+  <LI>新構文()</LI>
+  <LI>新構文$...[]</LI>
+  <LI>旧ifを廃止。新構文コマンドif～else if～else, break, return</LI>
+  <LI>KIS関数</LI>
+  <LI>一時エントリ(自動変数)</LI>
+  <LI>履歴参照ルールの厳密化</LI>
+  <LI>エントリ集合演算の強化</LI>
+  <LI>(7.9.0)kawari.iniの廃止</LI>
+  <LI>(7.9.0)従来型マッチエントリの廃止</LI>
+  <LI>(7.9.0)内蔵piro廃止</LI>
+  <LI>(7.9.0)辞書ファイル中のKIS直接実行</LI>
+  <LI>(7.9.0)KISコマンドの大幅増強</LI>
+  <LI>(7.9.0)辞書インターフェースの整理</LI>
+  <LI>(7.9.0)エントリツリーの導入</LI>
+  <LI>(7.9.0)各種外部インターフェース(SHIORI/SAORI-Server)の刷新</LI>
+  <LI>(ebi)SAORI-Clientの導入</LI>
+  <LI>全文法の厳密化</LI>
+  <LI>記述エラー検出機能の導入</LI>
 </UL>
 
 
