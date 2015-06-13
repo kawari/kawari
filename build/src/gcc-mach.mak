@@ -34,14 +34,14 @@ LIBEXT_freebsd = .l
 LIBEXT_darwin = .l
 
 CFLAGS_cygwin =  -DUSEKDB
-CFLAGS_mingw =   -DUSEKDB
+CFLAGS_mingw =   -DUSEKDB -static
 CFLAGS_js =      -UWIN32 -U_WIN32 -U_Windows -U__CYGWIN__ -s ALLOW_MEMORY_GROWTH=1
 CFLAGS_linux =
 CFLAGS_freebsd =
 CFLAGS_darwin =  
 
 LDFLAGS_cygwin = -Wl,--enable-auto-import -Wl,--enable-stdcall-fixup
-LDFLAGS_mingw = -Wl,--enable-auto-import -Wl,--enable-stdcall-fixup
+LDFLAGS_mingw = -Wl,--enable-auto-import -Wl,--enable-stdcall-fixup -static
 EXPORTED_FUNCTIONS = "['_load','_unload','_request','_so_library_init','_so_library_cleanup','_so_getmoduleversion','_so_create','_so_dispose','_so_request','_so_free']"
 LDFLAGS_js = -Wl,--enable-auto-import -Wl,--enable-stdcall-fixup -O3 --memory-init-file 0 --pre-js em-pre.js --post-js em-post.js -s EXPORTED_FUNCTIONS=$(EXPORTED_FUNCTIONS) -s ALLOW_MEMORY_GROWTH=1
 LDFLAGS_linux = 
