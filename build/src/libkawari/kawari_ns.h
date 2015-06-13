@@ -17,6 +17,7 @@
 #include <vector>
 #include <map>
 #include <set>
+#include <climits>
 using namespace std;
 //---------------------------------------------------------------------------
 #include "libkawari/wordcollection.h"
