@@ -1,1 +1,1 @@
-Kawari=function(){
+var Kawari = function(){
