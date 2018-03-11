@@ -7,7 +7,7 @@ include files.mak
 # Targets and Features
 #==========================================================================
 
-## choose your target: cygwin, mingw, linux, freebsd, darwin
+## choose your target: cygwin, mingw, js, wasm, linux, freebsd, darwin
 MACH_TYPE = mingw
 
 ## output name
