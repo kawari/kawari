@@ -1,2 +1,2 @@
 };
-if (typeof module !== 'undefined' && module !== null && module.exports) module.exports = instantiate;
+if (typeof module !== 'undefined' && module !== null && module.exports) module.exports = newKawari;

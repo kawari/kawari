@@ -1,4 +1,4 @@
-var instantiate = function(onRuntimeInitialized){
+var newKawari = function(onRuntimeInitialized){
   var Module = {};
   Module["onRuntimeInitialized"] = function() {
     var info = {
